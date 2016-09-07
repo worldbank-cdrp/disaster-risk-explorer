@@ -55,7 +55,7 @@ gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
 
-gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'data'], function () {
+gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts'], function () {
   browserSync({
     port: 3000,
     server: {
@@ -159,7 +159,7 @@ gulp.task('vendorScripts', function () {
 // ----------------------------------------------------------------------------//
 
 gulp.task('build', ['vendorScripts', 'javascript'], function () {
-  gulp.start(['html', 'images', 'fonts', 'data', 'extras'], function () {
+  gulp.start(['html', 'images', 'fonts', 'extras'], function () {
     return gulp.src('dist/**/*')
       .pipe($.size({title: 'build', gzip: true}))
       .pipe(exit());
@@ -167,10 +167,6 @@ gulp.task('build', ['vendorScripts', 'javascript'], function () {
 });
 
 gulp.task('styles', function () {
-  // Write jeet configuration file
-  const jeetConfigStr = "@import '_settings';\n@import '_jeet';\n@import '_functions';\n@import '_grid';\n";
-  const jeetConfigFile = 'node_modules/jeet/scss/jeet/index.scss';
-  fs.writeFile(jeetConfigFile, jeetConfigStr);
   return gulp.src('app/assets/styles/main.scss')
     .pipe($.plumber(function (e) {
       notifier.notify({
@@ -195,7 +191,7 @@ gulp.task('styles', function () {
           return v;
         }
       },
-      includePaths: ['.'].concat(require('node-bourbon').includePaths).concat(['node_modules/jeet/scss'])
+      includePaths: ['.'].concat(require('node-bourbon').includePaths)
     }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
@@ -229,12 +225,6 @@ gulp.task('fonts', function () {
   return gulp.src('app/assets/fonts/**/*')
     .pipe(gulp.dest('.tmp/assets/fonts'))
     .pipe(gulp.dest('dist/assets/fonts'));
-});
-
-gulp.task('data', function () {
-  return gulp.src('app/assets/data/*')
-    .pipe(gulp.dest('.tmp/assets/data'))
-    .pipe(gulp.dest('dist/assets/data'));
 });
 
 gulp.task('extras', function () {
