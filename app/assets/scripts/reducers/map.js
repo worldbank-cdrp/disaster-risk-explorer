@@ -1,6 +1,6 @@
-import { UPDATE_HOVERED, UPDATE_SELECTED } from './actions'
+import { UPDATE_HOVERED, UPDATE_SELECTED } from '../actions'
 
-const initialState = {
+export const initialState = {
   mapData: 'mapbox://nbumbarg.ary69jed',
   hovered: 0,
   selected: 0

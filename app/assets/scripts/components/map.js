@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import mapboxgl from 'mapbox-gl'
 import chroma from 'chroma-js'
 
@@ -8,16 +7,17 @@ import { updateHovered, updateSelected } from '../actions'
 export const Map = React.createClass({
   propTypes: {
     mapData: React.PropTypes.string,
-    hovered: React.PropTypes.string,
-    selected: React.PropTypes.string,
+    hovered: React.PropTypes.number,
+    selected: React.PropTypes.number,
     dispatch: React.PropTypes.func
   },
+
   componentDidMount: function () {
     this.mapData = this.props.mapData
     this.mapCenter = [-94.1629, 34.5133]
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+
     const map = this._map = new mapboxgl.Map({
-      container: 'map',
+      container: this.refs.map,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: this.mapCenter,
       zoom: 3,
@@ -61,7 +61,7 @@ export const Map = React.createClass({
 
   },
 
-  _addData (id, source, property, scale, filter) {
+  _addData: function (id, source, property, scale, filter) {
     this._map.addSource(id, {
       type: 'vector',
       url: this.mapData
@@ -83,7 +83,7 @@ export const Map = React.createClass({
     })
   },
 
-  _addOutlineData (id, source, filter) {
+  _addOutlineData: function (id, source, filter) {
     this._map.addSource(id, {
       type: 'vector',
       url: this.mapData
@@ -128,7 +128,7 @@ export const Map = React.createClass({
 
   _deselectFeature: function () {
     this._map.setFilter('countries-active', ['==', 'MAPCOLOR7', ''])
-    this.props.dispatch(updateSelected(''))
+    this.props.dispatch(updateSelected(0))
   },
 
   _highlightFeature: function (filter) {
@@ -138,20 +138,12 @@ export const Map = React.createClass({
 
   _unhighlightFeature: function () {
     this._map.setFilter('countries-hover', ['==', 'MAPCOLOR7', ''])
-    this.props.dispatch(updateHovered(''))
+    this.props.dispatch(updateHovered(0))
   },
 
   render: function () {
-    return <div id='map' className='map' />
+    return <div id='map' className='map' ref='map'/>
   }
 })
 
-function mapStateToProps (state) {
-  return {
-    mapData: state.mapData,
-    hovered: state.hovered,
-    selected: state.selected
-  }
-}
-
-export default connect(mapStateToProps)(Map)
+export default Map
