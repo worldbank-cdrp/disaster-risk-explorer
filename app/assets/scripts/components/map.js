@@ -1,8 +1,11 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import chroma from 'chroma-js'
+import { render } from 'react-dom'
+import _ from 'lodash'
 
 import { updateHovered, updateSelected } from '../actions'
+import MapPopup from './map-popup'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
 
@@ -13,6 +16,12 @@ export const Map = React.createClass({
     selected: React.PropTypes.number,
     dispatch: React.PropTypes.func
   },
+
+  _popup: null,
+
+  //
+  // Start life-cycle methods
+  //
 
   componentDidMount: function () {
     this.mapData = this.props.mapData
@@ -60,6 +69,34 @@ export const Map = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
 
+  },
+
+  //
+  // Start helper methods
+  //
+  _showPopup: function (lngLat, feature) {
+    let popupContent = document.createElement('div')
+    render(<MapPopup country={feature.properties.ADMIN} />, popupContent)
+
+    if (this._popup === null) {
+      this._popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+        offset: 8
+      })
+    }
+
+    this._popup
+      .setLngLat([lngLat.lng, lngLat.lat])
+      .setDOMContent(popupContent)
+      .addTo(this._map)
+  },
+
+  // Will be created the first time is needed.
+  _showPopupThrottled: null,
+
+  _hidePopup: function () {
+    this._popup !== null && this._popup.remove()
   },
 
   _addData: function (id, source, property, scale, filter) {
@@ -116,9 +153,15 @@ export const Map = React.createClass({
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties['MAPCOLOR7'])
+
+      if (this._showPopupThrottled === null) {
+        this._showPopupThrottled = _.throttle(this._showPopup, 30)
+      }
+      this._showPopupThrottled(e.lngLat, features[0])
     } else {
       this._map.getCanvas().style.cursor = ''
       this._unhighlightFeature()
+      this._hidePopup()
     }
   },
 
@@ -141,6 +184,10 @@ export const Map = React.createClass({
     this._map.setFilter('countries-hover', ['==', 'MAPCOLOR7', ''])
     this.props.dispatch(updateHovered(0))
   },
+
+  //
+  // Start render methods
+  //
 
   render: function () {
     return <div id='map' className='map' ref='map'/>
