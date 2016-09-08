@@ -21,13 +21,21 @@ import reducer from './reducer'
 const store = createStore(reducer, applyMiddleware(logger))
 
 // Components
+import Header from './components/header.js'
 import Map from './components/map'
+import Legend from './components/legend.js'
+import Selection from './components/selection-panel.js'
+import Results from './components/results-panel.js'
 
 const App = React.createClass({
   render: function () {
     return (
       <div className='app'>
+        <Header />
         <Map />
+        <Legend />
+        <Selection />
+        <Results />
       </div>
     )
   }
