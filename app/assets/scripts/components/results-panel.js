@@ -7,7 +7,7 @@ const Results = React.createClass({
   },
   render: function () {
     return (
-      <section className='Results'>
+      <section className='results'>
         <h2 className='results__title'>Selected Area</h2>
         <h3 className='results__subtitle'>Exposure</h3>
         <dl className='results__stat'>

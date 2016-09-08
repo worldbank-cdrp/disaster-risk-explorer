@@ -7,7 +7,7 @@ const Selection = React.createClass({
   },
   render: function () {
     return (
-      <section className='Selection'>
+      <section className='selection'>
         <dl className='selection__panel'>
           <dt className='selection__panel--feature'>Risk</dt>
           <dd className='selection__panel--drop'>Dropdown</dd>

@@ -1,4 +1,4 @@
-.Legend{
+.legend {
 	position: absolute;
 	bottom: 2em;
 	margin-left: 2em;
@@ -7,11 +7,11 @@
 	@include containter;
 }
 
-.legend__title{
+.legend__title {
 	@include section_header;
 }
 
-.legend__scale{
+.legend__scale {
 	height: 2em;
 	width: 100%;
 	margin: 0;

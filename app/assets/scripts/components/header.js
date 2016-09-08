@@ -7,7 +7,7 @@ const Header = React.createClass({
   },
   render: function () {
     return (
-      <header className='Header'>
+      <header className='header'>
         <h1 className='header__title'>World Bank Risk Tool</h1>
         <button className='header__information'>I</button>
         <div className='header__language'>

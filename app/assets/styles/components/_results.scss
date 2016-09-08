@@ -1,4 +1,4 @@
-.Results{
+.results {
 	position: absolute;
 	top: $page-header-y;
 	right: 2em;
@@ -7,6 +7,6 @@
 	@include containter();
 }
 
-.results__title{
+.results__title {
 	@include section_header;
 }
