@@ -5,7 +5,7 @@ import chroma from 'chroma-js'
 
 import { updateHovered, updateSelected } from '../actions'
 
-const Map = React.createClass({
+export const Map = React.createClass({
   propTypes: {
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.string,
