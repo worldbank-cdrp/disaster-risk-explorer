@@ -2,8 +2,11 @@
 	position: absolute;
 	top: $page-header-y;
 	right: 2em;
-	margin-right: 2em;
 	z-index: 100;
 	@include debug();
 	@include containter();
+}
+
+.results__title{
+	@include section_header;
 }

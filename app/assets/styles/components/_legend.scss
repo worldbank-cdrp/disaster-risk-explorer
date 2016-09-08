@@ -3,8 +3,12 @@
 	bottom: 2em;
 	margin-left: 2em;
 	z-index: 100;
-	@include debug();
-	@include containter();
+	@include debug;
+	@include containter;
+}
+
+.legend__title{
+	@include section_header;
 }
 
 .legend__scale{
