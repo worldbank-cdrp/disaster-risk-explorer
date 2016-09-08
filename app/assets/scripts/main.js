@@ -1,12 +1,14 @@
 'use strict'
-
 import React from 'react'
-
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+
 import config from './config'
+import reducer from './reducers'
 
 const logger = createLogger({
   level: 'info',
@@ -16,26 +18,19 @@ const logger = createLogger({
   }
 })
 
-// Reducer
-import reducer from './reducer'
 const store = createStore(reducer, applyMiddleware(logger))
+const history = syncHistoryWithStore(hashHistory, store)
 
 // Components
-import Map from './components/map'
+import App from './views/app'
+import Home from './views/home'
 
-const App = React.createClass({
-  render: function () {
-    return (
-      <div className='app'>
-        <Map />
-      </div>
-    )
-  }
-})
-
-ReactDOM.render(
+render((
   <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('site-canvas')
-)
+    <Router history={history}>
+      <Route path='/' component={App}>
+        <IndexRoute component={Home} pageClass='page--homepage' />
+      </Route>
+    </Router>
+  </Provider>
+), document.querySelector('#app-container'))
