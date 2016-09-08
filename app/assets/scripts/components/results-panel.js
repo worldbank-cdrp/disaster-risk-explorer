@@ -7,37 +7,32 @@ const Results = React.createClass({
   },
   render: function () {
     return (
-      <section id='Results'>
+      <section className='Results'>
         <h2 className='results__title'>Selected Area</h2>
         <h3 className='results__subtitle'>Exposure</h3>
-        <div className='results__stat'>
-          <div className='results__stat--attribute'>Building Stock Exposure</div>
-          <div className='results__stat--value'>$19 Billion</div>
-        </div>
+        <dl className='results__stat'>
+          <dt className='results__stat--attribute'>Building Stock Exposure</dt>
+          <dd className='results__stat--value'>$19 Billion</dd>
+        </dl>
 
         <h3 className='results__subtitle'>Loss</h3>
-        <div className='results__stat'>
-          <div className='results__stat--attribute'>Probable Maximum Loss</div>
-          <div className='results__stat--value'>$9.5 Billion</div>
-        </div>
-        <div className='results__stat'>
-          <div className='results__stat--attribute'>Average Annual Loss</div>
-          <div className='results__stat--value'>$10 Billion</div>
-        </div>
-        <div className='results__temporal'>
-          <div className='results__stat--attribute'>Average Annual Loss over time</div>
-          <figure className='results__temporal'></figure>
-        </div>
+        <dl className='results__stat'>
+          <dt className='results__stat--attribute'>Probable Maximum Loss</dt>
+          <dd className='results__stat--value'>$9.5 Billion</dd>
+          <dt className='results__stat--attribute'>Average Annual Loss</dt>
+          <dd className='results__stat--value'>$10 Billion</dd>
+          <dt className='results__stat--attribute'>Average Annual Loss over time</dt>
+          <dd className='results__temporal'></dd>
+        </dl>
 
         <h3 className='results__subtitle'>Risk</h3>
-        <div className='results__stat'>
-          <div className='results__stat--attribute'>Average Annual Loss</div>
+        <dl className='results__stat'>
+          <dt className='results__stat--attribute'>Average Annual Loss</dt>
           <div className='results__stat--value'>$10 Billion</div>
-        </div>
+        </dl>
 
         <article className='calculator__container'>
         </article>
-
       </section>
     )
   }

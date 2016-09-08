@@ -7,23 +7,23 @@ const Selection = React.createClass({
   },
   render: function () {
     return (
-      <section id='Selection'>
-        <div className='selection__panel'>
-          <div className='selection__panel--feature'>Risk</div>
-          <div className='selection__panel--drop'>Dropdown</div>
-        </div>
-        <div className='selection__panel'>
-          <div className='selection__panel--feature'>Risk</div>
-          <div className='selection__panel--drop'>Dropdown</div>
-        </div>
-        <div className='selection__panel'>
-          <div className='selection__panel--feature'>Risk</div>
-          <div className='selection__panel--drop'>Dropdown</div>
-        </div>
-        <div className='selection__panel'>
-          <div className='selection__panel--feature'>Risk</div>
-          <div className='selection__panel--drop'>Dropdown</div>
-        </div>
+      <section className='Selection'>
+        <dl className='selection__panel'>
+          <dt className='selection__panel--feature'>Risk</dt>
+          <dd className='selection__panel--drop'>Dropdown</dd>
+        </dl>
+        <dl className='selection__panel'>
+          <dt className='selection__panel--feature'>Risk</dt>
+          <dd className='selection__panel--drop'>Dropdown</dd>
+        </dl>
+        <dl className='selection__panel'>
+          <dt className='selection__panel--feature'>Risk</dt>
+          <dd className='selection__panel--drop'>Dropdown</dd>
+        </dl>
+        <dl className='selection__panel'>
+          <dt className='selection__panel--feature'>Risk</dt>
+          <dd className='selection__panel--drop'>Dropdown</dd>
+        </dl>
       </section>
     )
   }
