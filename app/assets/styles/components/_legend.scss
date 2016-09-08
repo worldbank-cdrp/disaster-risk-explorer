@@ -6,3 +6,10 @@
 	@include debug();
 	@include containter();
 }
+
+.legend__scale{
+	height: 2em;
+	width: 100%;
+	margin: 0;
+	background-color: orange;
+}

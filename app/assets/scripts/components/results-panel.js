@@ -7,8 +7,8 @@ const Results = React.createClass({
   },
   render: function () {
     return (
-      <div id='Results'>
-      </div>
+      <section id='Results'>
+      </section>
     )
   }
 })

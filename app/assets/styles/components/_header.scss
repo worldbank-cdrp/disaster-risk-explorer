@@ -5,3 +5,15 @@
 	z-index: 100;
 	@include debug();
 }
+
+.header__title{
+	float: left;
+}
+
+.header__language{
+	float: right;
+}
+
+.header__information{
+	float: right;
+}

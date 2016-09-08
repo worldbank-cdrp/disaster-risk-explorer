@@ -7,8 +7,24 @@ const Selection = React.createClass({
   },
   render: function () {
     return (
-      <div id='Selection'>
-      </div>
+      <section id='Selection'>
+        <div className='selection__panel'>
+          <div className='selection__panel--feature'>Risk</div>
+          <div className='selection__panel--drop'>Dropdown</div>
+        </div>
+        <div className='selection__panel'>
+          <div className='selection__panel--feature'>Risk</div>
+          <div className='selection__panel--drop'>Dropdown</div>
+        </div>
+        <div className='selection__panel'>
+          <div className='selection__panel--feature'>Risk</div>
+          <div className='selection__panel--drop'>Dropdown</div>
+        </div>
+        <div className='selection__panel'>
+          <div className='selection__panel--feature'>Risk</div>
+          <div className='selection__panel--drop'>Dropdown</div>
+        </div>
+      </section>
     )
   }
 })
