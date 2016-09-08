@@ -43,9 +43,14 @@
    ========================================================================== */
 
 @import "settings/variables";
+@import "settings/mixins";
 
 /* Main
    ========================================================================== */
 
 @import "base";
 @import "components/map";
+@import "components/legend";
+@import "components/selection";
+@import "components/header";
+@import "components/results";
