@@ -4,6 +4,8 @@ import chroma from 'chroma-js'
 
 import { updateHovered, updateSelected } from '../actions'
 
+mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+
 export const Map = React.createClass({
   propTypes: {
     mapData: React.PropTypes.string,
