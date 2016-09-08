@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import config from './config'
@@ -24,13 +24,16 @@ const history = syncHistoryWithStore(hashHistory, store)
 // Components
 import App from './views/app'
 import Home from './views/home'
+import UhOh from './views/uhoh'
 
 render((
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={App}>
+      <Route path='/uhoh' component={UhOh} />
+      <Route path='/:lang' component={App}>
         <IndexRoute component={Home} pageClass='page--homepage' />
       </Route>
+      <Redirect from='/' to='/en' />
     </Router>
   </Provider>
 ), document.querySelector('#app-container'))
