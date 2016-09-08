@@ -1,0 +1,15 @@
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+
+.waffle-legend{
+	position: absolute;
+	margin: 3em;
+	background-color: white;
+	height: 400px;
+	width: 200px;
+	z-index: 100;
+}

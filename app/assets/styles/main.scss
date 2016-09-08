@@ -21,15 +21,15 @@
  */
 
 @import "bourbon";
-@import "mapboxgl";
+@import "vendor/mapboxgl";
 
 
 
 /* Reboot
    ========================================================================== */
 
-@import "normalize";
-@import "reset";
+@import "vendor/normalize";
+@import "vendor/reset";
 
 /**
  * Using Kenneth Ormandy's OpenType features—ligatures, kerning, and
@@ -37,14 +37,15 @@
  * https://github.com/kennethormandy/normalize-opentype.css
  */
 
-@import "normalize-opentype";
+@import "vendor/normalize-opentype";
 
 /* Settings
    ========================================================================== */
 
+@import "settings/variables";
 
 /* Main
    ========================================================================== */
 
 @import "base";
-@import "site-layout";
+@import "components/map";
