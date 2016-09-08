@@ -23,8 +23,7 @@ export const Map = React.createClass({
       style: 'mapbox://styles/mapbox/streets-v9',
       center: this.mapCenter,
       zoom: 3,
-      minZoom: 2,
-      scrollZoom: false
+      minZoom: 2
     })
 
     map.on('load', () => {

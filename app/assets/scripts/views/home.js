@@ -2,7 +2,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Map from '../components/map'
+import Header from '../components/header.js'
+import Map from '../components/map.js'
+import Legend from '../components/legend.js'
+import Selection from '../components/selection-panel.js'
+import Results from '../components/results-panel.js'
+
 import { t } from '../utils/i18n'
 
 var Home = React.createClass({
@@ -22,11 +27,15 @@ var Home = React.createClass({
         {/* Example: remove */}
         <p style={{position: 'absolute', zIndex: 1000, background: 'lightgray', padding: '1rem'}}>{t('hello')}</p>
         {/* Example: remove */}
+        <Header />
         <Map
           mapData={this.props.mapData}
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
+        <Selection />
+        <Legend />
+        <Results />
       </div>
     )
   }

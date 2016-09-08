@@ -1,0 +1,22 @@
+.selection {
+	position: absolute;
+	margin: $page-header-y 2em 2em;
+	z-index: 100;
+	@include debug();
+	@include containter();
+}
+
+.selection__panel {
+	padding: 0 1em 1em 1em;
+	height: 1.5em;
+	clear: both;
+	@include debug();
+}
+
+.selection__panel--feature {
+	float: left;
+}
+
+.selection__panel--drop {
+	float: right;
+}

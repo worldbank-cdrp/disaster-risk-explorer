@@ -1,0 +1,19 @@
+.legend {
+	position: absolute;
+	bottom: 2em;
+	margin-left: 2em;
+	z-index: 100;
+	@include debug;
+	@include containter;
+}
+
+.legend__title {
+	@include section_header;
+}
+
+.legend__scale {
+	height: 2em;
+	width: 100%;
+	margin: 0;
+	background-color: orange;
+}
