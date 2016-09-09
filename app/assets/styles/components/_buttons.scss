@@ -1,29 +1,95 @@
-button {
-	background-color: white;
+.button {
   display: inline-block;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   font-size: 0.9rem;
-  padding: 0.25rem 0.75rem 0.05rem;
+  padding: 0.2rem 0.65rem;
   min-width: 2rem;
+  background: none; 
   text-shadow: none;
   border: 0;
   border-radius: $base-border-radius;
-  font-size: 0.9em;
-  color: #aaa;
-  font-weight: 500;
+  font-weight: $base-font-bold;
   cursor: pointer;
-  border-bottom: 3px solid $secondary-color;
 
   /* States */
 
   &:hover {
-  	background-color: #eee;
     opacity: initial;
+  }
+
+  .drop--open > &,
+  &.button--active,
+  &:active {
+    z-index: 2;
+    transform: none;
+  }
+
+  &, &:focus {
+    outline: none; // This causes usability problems. Needs fixing.
+  }
+
+  /* Icon handling */
+  &::before { margin-right: 0.375rem; }
+  &::after { margin-left: 0.375rem; }
+
+  &::before,
+  &::after,
+  > * {
+    vertical-align: top;
+    display: inline-block;
+    line-height: 1.22em !important;
   }
 
   /* Animation */
   transition: background-color 0.24s ease 0s;
 }
+
+
+/* Button color modifiers
+   ========================================================================== */
+
+/* Base */
+
+.button{
+  color: #aaa;
+  background-color: white;
+
+  &:hover{
+    color: #888;
+    background-color: #eee;
+    box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 2px 0 0 $secondary-color;
+  };
+
+  &:active{
+  };
+
+  box-shadow: inset 0 -4px 0 0 $secondary-color, inset 0 0 0 1px white;
+/*  .drop--open > &,
+  &.button--active,
+  &:active {
+    box-shadow: inset 0 3px 0 0 green, inset 0 0 0 1px orange;
+  }*/
+}
+
+.collecticon{
+  font-size: 1.2em;
+}
+
+.button__leftside{
+  border-radius: 0.3rem 0 0 0.3rem;
+}
+
+.button__rightside{
+  border-left: 2px solid $secondary-color;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+
+
+
+
+
+

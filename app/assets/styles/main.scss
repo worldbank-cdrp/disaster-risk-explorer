@@ -44,6 +44,7 @@
 
 @import "settings/variables";
 @import "settings/mixins";
+@import "core/collecticons";
 
 /* Main
    ========================================================================== */
@@ -52,7 +53,6 @@
 
 @import "components/buttons";
 
-@import "core/collecticons";
 @import "components/map";
 @import "components/legend";
 @import "components/selection";

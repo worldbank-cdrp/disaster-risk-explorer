@@ -9,9 +9,9 @@ const Header = React.createClass({
     return (
       <header className='header'>
         <h1 className='header__title'>World Bank Risk Tool</h1>
-        <button className='header__information'>I</button>
+        <button className='button header__information'><i className='collecticon collecticon-circle-information' /></button>
         <div className='header__language'>
-          <button className='header__language--toggle'>EN</button> | <button className='header__language--toggle'>ES</button>
+          <button className='button header__language--toggle button__leftside'>EN</button><button className='button header__language--toggle button__rightside'>ES</button>
         </div>
       </header>
     )
