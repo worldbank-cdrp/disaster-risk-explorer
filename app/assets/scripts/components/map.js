@@ -16,11 +16,11 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.mapData = this.props.mapData
-    this.mapCenter = [-94.1629, 34.5133]
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+    this.mapCenter = [-86.066895, 10.821166]
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
       zoom: 3,
       minZoom: 2

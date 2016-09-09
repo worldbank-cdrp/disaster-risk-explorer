@@ -21,12 +21,13 @@ var Home = React.createClass({
     selected: React.PropTypes.number
   },
 
+  // {/* Example: remove */}
+  // <p style={{position: 'absolute', zIndex: 1000, background: 'lightgray', padding: '1rem'}}>{t('hello')}</p>
+  // {/* Example: remove */}
+
   render: function () {
     return (
       <div>
-        {/* Example: remove */}
-        <p style={{position: 'absolute', zIndex: 1000, background: 'lightgray', padding: '1rem'}}>{t('hello')}</p>
-        {/* Example: remove */}
         <Header />
         <Map
           mapData={this.props.mapData}
