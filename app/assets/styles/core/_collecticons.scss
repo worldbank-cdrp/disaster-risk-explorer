@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Icon font: Collecticons
+   ========================================================================== */
+
+/**
+ * Designed by Development Seed
+ * https://developmentseed.org/
+ *
+ * Generated with collecticons-processor on September 9, 2016
+ * http://collecticons.io/
+ */
+
+
+
+
+@font-face {
+  font-family: "Collecticons";
+  
+  
+  src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAQkAAsAAAAABmAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAAPgAAAFZAdkhpY21hcAAAAXwAAABLAAABcOspwa1nbHlmAAAByAAAAIYAAACM7joX22hlYWQAAAJQAAAAKwAAADYKijRraGhlYQAAAnwAAAAaAAAAJAfYBANobXR4AAACmAAAAAgAAAAIBAAAAGxvY2EAAAKgAAAABgAAAAYARgAAbWF4cAAAAqgAAAAeAAAAIAEOADhuYW1lAAACyAAAATMAAAJGGkJN9XBvc3QAAAP8AAAAJQAAADYtU1BWeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYmCcwMDKwMHownSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGBxeMb5iZAFxY1ggwowgAgCMpQhiAAB4nGNgYGBlYGBgBmIdIGZhYGAMYWBkAAE/oCgjWJyZgQsszsKgBFbDAhJ/xfj/P4wE8lnAJAMjG8Mo4AGTMlAeOKwgmIERADU0CX0AeJxjYGIAAuZqFiDBoM3AwKgoqsjMx6ikx2Rix2QkJi4mbqzHqK6mrMTOxs4mAuSKGRuZ2zGaK7MxM/xjYGLwVolLi/NQV/cAUiqGQs38OQHBsRlR4cYmJsbhURmxwQE5/M2CLAwNf7tVIKqAilUMXaImaWqDVFwAKdXWnBTlzMAAAMdwHAgAAHicY2BkYGAAYs5f17bH89t8ZeBmYQCByz/KtyPTzNVgcQ4GJhAFAE3wCr8AeJxjYGRgYGEAghgwycBczcDIgAqYABRTAOcAAAAAAAAEAAAAAAAAAABGAAB4nGNgZGBgYGLQAWIGMIuBgQsIGRj+g/kMAAz6AUcAAHicdZE9TsNAEIWfEyeIBCEkJETHVjRIzk9BkZJISZ8iBZ3jrBNHttdabyKl4xicgGNQcgROwSF4XqaIkLIrrb/59s3YkgHc4AsBmhXgyp/NauGC1R+3SbfCIflBuIM+noS79M/CPdoX4T47C04Iwkuae7wJt3CNd+E2/YdwSP4U7uAO38Jd+h/hHpZBKNzHY/A6NXmuE5clpqwXerPPY3uqTnmpbZ2ZUo2i4ame61Lb2Om1Wh1VfdiMnUtVak2hZqZ0Os+NqqzZMR5tnasmg0EqPkpMgSkMcm6NBA4ZT4MSNRY0G+x5E8OeTZ3zSxrLZ+ZrhREiDM+m5zSl74jpNdbsWOHIs8aBXzGmdUhZp8wY/hWFme9t0s1EQ1P5u51Mj7D1XRUmGHCn//KRf3vxC/O5a0EAeJxjYGKAAC4G7ICJkYmRmYEnOT8nJzW5JDM5P6+YgQEALfoFJAAAAA==) format('woff');
+  
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+%collecticon,
+[class^="collecticon-"],
+[class*=" collecticon-"] {
+  speak: none;
+  font-family: "Collecticons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better font rendering */
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+%collecticon-collecticons {
+  @extend %collecticon;
+  content: "\EA01"
+}
+.collecticon-collecticons:before {
+  content: "\EA01"
+}
