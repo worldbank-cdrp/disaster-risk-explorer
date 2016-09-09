@@ -4,6 +4,10 @@ import React from 'react'
 var MapPopup = React.createClass({
   displayName: 'MapPopup',
 
+  propTypes: {
+    country: React.PropTypes.string
+  },
+
   render: function () {
     return (
       <article className='popover'>
