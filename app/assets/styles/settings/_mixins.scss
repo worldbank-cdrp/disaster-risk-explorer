@@ -55,8 +55,8 @@
    ========================================================================== */
 
 @mixin debug() {
-    background-color: rgba(255,255,255,0.4);
-    border: 1px black solid;
+    background-color: rgba(0,0,0,0.2);
+    border: 1px black rgba(0,0,0,0.2);
   }
 
 /* ==========================================================================
@@ -64,9 +64,10 @@
    ========================================================================== */
 
 @mixin containter() {
-  width: 20rem;
+  background-color: white;
+  width: 22rem;
+  border-bottom: 3px solid $secondary-color;
 }
-
 
 /* ==========================================================================
    Containers
@@ -74,7 +75,13 @@
 
 @mixin section_header() {
   font-size: 0.8em;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  font-family: 'Hind';
   text-transform: uppercase;
+  color: white;
+  background-color: $base-color;
+  padding: 1.25em;
 }
 
 /* ==========================================================================

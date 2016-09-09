@@ -1,7 +1,7 @@
 .results {
 	position: absolute;
 	top: $page-header-y;
-	right: 2em;
+	right: 1em;
 	z-index: 100;
 	@include debug();
 	@include containter();

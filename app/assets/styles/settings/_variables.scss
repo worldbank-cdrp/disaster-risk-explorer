@@ -5,9 +5,9 @@
 /* Colors
    ========================================================================== */
 
-$base-color: #192f35;                                   // Color name (Dark blue)
+$base-color: #E19B5F;                                   // Color name (Dark blue)
 $primary-color: #C76706;                                // Color name (Orange)
-$secondary-color: #077c94;                              // Color name (Blue)
+$secondary-color: #b3c7ca;                              // Color name (Blue)
 
 $danger-color: #ff5252;                                 // Red
 $success-color: $secondary-color;                       //
@@ -20,7 +20,7 @@ $info-color: $primary-color;                            //
 $root-font-size: 16px;
 
 $base-font-color: tint($base-color, 24%);
-$base-font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-style: normal;
 $base-font-light: 100;
 $base-font-regular: 200;

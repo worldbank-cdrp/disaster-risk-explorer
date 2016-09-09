@@ -1,0 +1,29 @@
+button {
+	background-color: white;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem 0.05rem;
+  min-width: 2rem;
+  text-shadow: none;
+  border: 0;
+  border-radius: $base-border-radius;
+  font-size: 0.9em;
+  color: #aaa;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid $secondary-color;
+
+  /* States */
+
+  &:hover {
+  	background-color: #eee;
+    opacity: initial;
+  }
+
+  /* Animation */
+  transition: background-color 0.24s ease 0s;
+}

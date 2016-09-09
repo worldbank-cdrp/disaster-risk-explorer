@@ -3,17 +3,22 @@
 	height: $page-header-y;
 	width: 100%;
 	z-index: 100;
-	@include debug();
+	padding: 0.5em 0 0 0;
 }
 
 .header__title{
 	float: left;
+	margin-left: 1em;
+	font-weight: 800;
+	font-family: 'Hind';
 }
 
 .header__language{
 	float: right;
+	margin-right: 1em;
 }
 
 .header__information{
 	float: right;
+	margin-right: 1em;
 }

@@ -1,9 +1,8 @@
 .legend {
 	position: absolute;
 	bottom: 2em;
-	margin-left: 2em;
+	margin-left: 1em;
 	z-index: 100;
-	@include debug;
 	@include containter;
 }
 
@@ -15,5 +14,12 @@
 	height: 2em;
 	width: 100%;
 	margin: 0;
-	background-color: orange;
+}
+
+.legend__caption{
+	font-family: 'Hind';
+	font-size: 0.8em;
+	color: grey;
+	line-height: 1.25em;
+	padding: 1.25em;
 }

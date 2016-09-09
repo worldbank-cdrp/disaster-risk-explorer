@@ -49,8 +49,12 @@
    ========================================================================== */
 
 @import "base";
+
+@import "components/buttons";
+
 @import "components/map";
 @import "components/legend";
 @import "components/selection";
 @import "components/header";
 @import "components/results";
+
