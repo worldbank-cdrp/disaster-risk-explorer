@@ -80,8 +80,9 @@
   font-family: 'Hind';
   text-transform: uppercase;
   color: white;
-  background-color: $base-color;
-  padding: 1.25em;
+  background-color: $primary-color;
+  padding: 1em 1.25em;
+  border-bottom: 3px solid $secondary-color;
 }
 
 /* ==========================================================================

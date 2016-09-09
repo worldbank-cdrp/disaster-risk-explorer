@@ -21,14 +21,18 @@
 }
 
 .selection__panel--attribute {
-	font-size: 0.9em;
-	font-weight: 500;
-	color: #bbb;
-	text-transform: uppercase;
-	float: left;
 }
 
 .selection__panel--drop {
 	float: right;
 	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.2s;
+	&:hover{
+		opacity: 0.4;
+	}
+	i{
+		font-size: 0.5em;
+		margin-left: 1em;
+	}
 }
