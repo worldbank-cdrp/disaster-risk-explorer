@@ -9,24 +9,24 @@ const Selection = React.createClass({
     return (
       <section className='selection'>
         <dl className='selection__panel'>
-          <dt className='selection__panel--attribute'>Current hazard</dt>
-          <dd className='selection__panel--drop'>Earthquake</dd>
+          <dt className='subtitle selection__panel--attribute'>Current hazard</dt>
+          <dd className='selection__panel--drop'>Earthquake <i className='collecticon collecticon-triangle-down' /></dd>
         </dl>
         <dl className='selection__panel'>
-          <dt className='selection__panel--attribute'>Year</dt>
-          <dd className='selection__panel--drop'>2000</dd>
+          <dt className='subtitle selection__panel--attribute'>Year</dt>
+          <dd className='selection__panel--drop'>2000 <i className='collecticon collecticon-triangle-down' /></dd>
         </dl>
         <dl className='selection__panel selection__panel--split'>
-          <dt className='selection__panel--attribute'>Building exposure</dt>
-          <dd className='selection__panel--drop'>Retrofitted</dd>
+          <dt className='subtitle selection__panel--attribute'>Building exposure</dt>
+          <dd className='selection__panel--drop'>Retrofitted <i className='collecticon collecticon-triangle-down' /></dd>
         </dl>
         <dl className='selection__panel'>
-          <dt className='selection__panel--attribute'>Select data by</dt>
-          <dd className='selection__panel--drop'>Country</dd>
+          <dt className='subtitle selection__panel--attribute'>Select data by</dt>
+          <dd className='selection__panel--drop'>Country <i className='collecticon collecticon-triangle-down' /></dd>
         </dl>
         <dl className='selection__panel'>
-          <dt className='selection__panel--attribute'>Change Basemap</dt>
-          <dd className='selection__panel--drop'>Basic</dd>
+          <dt className='subtitle selection__panel--attribute'>Change Basemap</dt>
+          <dd className='selection__panel--drop'>Basic <i className='collecticon collecticon-triangle-down' /></dd>
         </dl>
       </section>
     )
