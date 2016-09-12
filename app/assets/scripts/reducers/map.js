@@ -1,7 +1,8 @@
 import { UPDATE_HOVERED, UPDATE_SELECTED } from '../actions'
+import { mapSources } from '../constants'
 
 export const initialState = {
-  mapData: 'mapbox://nbumbarg.ary69jed',
+  mapSource: mapSources[0],
   hovered: 0,
   selected: 0
 }

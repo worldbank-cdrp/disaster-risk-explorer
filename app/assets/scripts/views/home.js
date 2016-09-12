@@ -16,7 +16,7 @@ var Home = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
 
-    mapData: React.PropTypes.string,
+    mapSource: React.PropTypes.object,
     hovered: React.PropTypes.number,
     selected: React.PropTypes.number
   },
@@ -29,7 +29,7 @@ var Home = React.createClass({
         {/* Example: remove */}
         <Header />
         <Map
-          mapData={this.props.mapData}
+          mapSource={this.props.mapSource}
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
@@ -46,7 +46,7 @@ var Home = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    mapData: state.map.mapData,
+    mapSource: state.map.mapSource,
     hovered: state.map.hovered,
     selected: state.map.selected
   }

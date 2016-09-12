@@ -1,23 +1,44 @@
+import chroma from 'chroma-js'
 
 export const mapSources = {
-  0: { // Represents admin 0, temporarily is NE States and Provinces
+  admin0: { // Represents admin 0, temporarily is NE States and Provinces
     sourceLayer: 'ne_10m_admin_1_states_provinc-89mtkq',
     idProp: 'scalerank',
     url: 'mapbox://nbumbarg.07mallbu'
   },
-  1: { // Represents admin 0, temporarily is NE Countries
+  admin1: { // Represents admin 1, temporarily is NE Countries
     sourceLayer: 'ne_10m_admin_0_countries-1mfz41',
     idProp: 'scalerank',
     url: 'mapbox://nbumbarg.ary69jed'
   },
-  2: { // Represents admin 0, temporarily is NE Lakes
+  admin2: { // Represents admin2?, temporarily is NE Lakes
     sourceLayer: 'ne_10m_lakes-a6ve5w',
     idProp: 'scalerank',
     url: 'mapbox://nbumbarg.ae5132j0'
   },
-  3: { // Represents admin 0, temporarily is NE Urban Areas
+  km10: { // Represents 10km grid, temporarily is NE Urban Areas
     sourceLayer: 'ne_50m_urban_areas-635qev',
     idProp: 'scalerank',
     url: 'mapbox://nbumbarg.b5h1mumk'
   }
 }
+
+const inactiveScale = chroma.scale(['black', 'red'])
+export const inactiveLegend = [
+  [1, inactiveScale(0).hex()],
+  [2, inactiveScale(0.17).hex()],
+  [3, inactiveScale(0.34).hex()],
+  [4, inactiveScale(0.51).hex()],
+  [5, inactiveScale(0.68).hex()],
+  [6, inactiveScale(0.85).hex()],
+  [7, inactiveScale(1).hex()]]
+
+let hoverScale = chroma.scale(['black', 'blue'])
+export const hoverLegend = [
+  [1, hoverScale(0).hex()],
+  [2, hoverScale(0.17).hex()],
+  [3, hoverScale(0.34).hex()],
+  [4, hoverScale(0.51).hex()],
+  [5, hoverScale(0.68).hex()],
+  [6, hoverScale(0.85).hex()],
+  [7, hoverScale(1).hex()]]
