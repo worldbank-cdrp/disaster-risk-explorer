@@ -15,28 +15,28 @@ const DataSelection = DataSelectionFactory({
 
 test('return default option for risk when not in query', function (t) {
   let mockQuery = {}
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.risk.getActive(), {key: 'earthquake', value: 'Earthquake'})
 })
 
 test('return default option for risk is invalid', function (t) {
   let mockQuery = { risk: 'nothing' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.risk.getActive(), {key: 'earthquake', value: 'Earthquake'})
 })
 
 test('return correct option for valid risk', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.risk.getActive(), {key: 'flood', value: 'Flood'})
 })
 
 test('return correct boolean for active option', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.true(selection.risk.isActive('flood'))
   t.false(selection.risk.isActive('nothing'))
@@ -45,7 +45,7 @@ test('return correct boolean for active option', function (t) {
 
 test('set the correct option as active', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.true(selection.risk.isActive('flood'))
   t.false(selection.risk.isActive('nothing'))
@@ -55,7 +55,7 @@ test('set the correct option as active', function (t) {
 
 test('set the default option as active when invalid provided', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.true(selection.risk.isActive('flood'))
   selection.risk.setActive('invalid')
@@ -64,7 +64,7 @@ test('set the default option as active when invalid provided', function (t) {
 
 test('get the default option', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.risk.getActive(), {key: 'flood', value: 'Flood'})
   t.deepEqual(selection.risk.getDefault(), {key: 'earthquake', value: 'Earthquake'})
@@ -72,7 +72,7 @@ test('get the default option', function (t) {
 
 test('get the correct options', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.getSelection(), {
     risk: 'flood',
@@ -93,7 +93,7 @@ test('get the correct options', function (t) {
 
 test('get the correct options with clean flag', function (t) {
   let mockQuery = { risk: 'flood' }
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.deepEqual(selection.getSelection(true), {
     risk: 'flood'
@@ -109,7 +109,7 @@ test('get the correct options with clean flag', function (t) {
 
 test('get the correct query string', function (t) {
   let mockQuery = {}
-  let selection = new DataSelection(mockQuery)
+  let selection = DataSelection(mockQuery)
 
   t.is(selection.getQS(), '')
 

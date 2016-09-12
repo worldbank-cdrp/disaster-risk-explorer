@@ -2,6 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import DataSelection from '../utils/data-selection'
+import { mapSources } from '../constants'
+
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
@@ -15,13 +18,10 @@ var Home = React.createClass({
 
   propTypes: {
     dispatch: React.PropTypes.func,
-<<<<<<< HEAD
-    mapSource: React.PropTypes.object,
-=======
     location: React.PropTypes.object,
 
+    mapSource: React.PropTypes.object,
     mapData: React.PropTypes.string,
->>>>>>> 7bf3d8ed921c258bb68065b8c233d98b176e1e62
     hovered: React.PropTypes.number,
     selected: React.PropTypes.number
   },
@@ -31,21 +31,20 @@ var Home = React.createClass({
   // {/* Example: remove */}
 
   render: function () {
+    const dataSelection = DataSelection(this.props.location.query)
+    const mapSource = mapSources[dataSelection.admin.getActive().key]
     return (
       <div>
         <Header />
         <Map
-          mapSource={this.props.mapSource}
+          mapSource={mapSource}
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
-<<<<<<< HEAD
         <Selection
+          queryParams={this.props.location.query}
           mapSource={this.props.mapSource}
           dispatch={this.props.dispatch} />
-=======
-        <Selection queryParams={this.props.location.query} />
->>>>>>> 7bf3d8ed921c258bb68065b8c233d98b176e1e62
         <Legend />
         <Results />
       </div>

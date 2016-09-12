@@ -31,30 +31,33 @@ export function DataSelectionFactory (availableParams) {
   const paramsKeys = Object.keys(availableParams)
 
   return function (query) {
+    let box = {}
     // Clean flag removes the default options from the returned object.
     // Cleaner for the query string.
-    this.getSelection = (clean) => {
+    box.getSelection = (clean) => {
       const keys = paramsKeys
 
       let res = {}
       keys.forEach(k => {
-        if (!clean || this[k].getActive().key !== this[k].getDefault().key) {
-          res[k] = this[k].getActive().key
+        if (!clean || box[k].getActive().key !== box[k].getDefault().key) {
+          res[k] = box[k].getActive().key
         }
       })
       return res
     }
 
-    this.getQS = (current = {}) => {
-      let sel = Object.assign({}, current, this.getSelection(true))
+    box.getQS = (current = {}) => {
+      let sel = Object.assign({}, current, box.getSelection(true))
       return stringify(sel)
     }
 
     // Construct
     let k
     for (k in availableParams) {
-      this[k] = paramFactory(availableParams[k], query[k])
+      box[k] = paramFactory(availableParams[k], query[k])
     }
+
+    return box
   }
 }
 
@@ -75,8 +78,9 @@ let availableParams = {
     {key: 'opt2', value: 'Normal'}
   ],
   admin: [
-    {key: 'country', value: 'Country'},
-    {key: 'region', value: 'Region'}
+    {key: 'admin0', value: 'Admin Level 0'},
+    {key: 'admin1', value: 'Admin Level 1'},
+    {key: 'km10', value: '0km Grids'}
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},

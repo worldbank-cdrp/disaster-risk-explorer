@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl'
 import { mapSources, inactiveLegend, hoverLegend } from '../constants'
 import { updateHovered, updateSelected } from '../actions'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
 export const Map = React.createClass({
   propTypes: {
@@ -16,7 +16,6 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.mapCenter = [-80, 15]
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
