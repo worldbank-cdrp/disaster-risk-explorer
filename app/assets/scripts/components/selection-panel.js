@@ -10,7 +10,7 @@ const Selection = React.createClass({
     return (
       <section className='selection'>
         <dl className='selection__panel'>
-          <dt className='selection__panel--attribute'>Risk</dt>
+          <dt className='subtitle selection__panel--attribute'>Risk</dt>
           <dd className='selection__panel--drop'>
             <Dropdown
               triggerElement='button'
