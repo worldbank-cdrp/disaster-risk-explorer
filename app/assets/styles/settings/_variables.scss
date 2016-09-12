@@ -8,6 +8,11 @@ $base-color: #E19B5F;                                   // Color name (Dark blue
 $primary-color: #928577;                                // Color name (Brown)
 $secondary-color: #b3c7ca;                              // Color name (Blue)
 
+/* Helper colors */
+
+$base-alpha-color: rgba($base-color, 0.12);
+$base-semi-alpha-color: rgba($base-color, 0.08);
+
 /* Typography
    ========================================================================== */
 
