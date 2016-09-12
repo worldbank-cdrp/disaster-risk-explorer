@@ -2,6 +2,7 @@
 import React from 'react'
 import TetherComponent from 'react-tether'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import _ from 'lodash'
 
 const Dropdown = React.createClass({
   displayName: 'Dropdown',
@@ -20,8 +21,11 @@ const Dropdown = React.createClass({
     children: React.PropTypes.node
   },
 
+  dropId: null,
+
   _bodyListener: function (e) {
-    if (e.preventClose !== true && this.state.open) {
+    if (e.triggerDropId !== this.dropId ||
+      e.preventClose !== true && this.state.open) {
       this.close()
     }
   },
@@ -30,6 +34,7 @@ const Dropdown = React.createClass({
     // Access native event so it propagates upward.
     if (e.target.getAttribute('data-hook') !== 'dropdown:close') {
       e.nativeEvent.preventClose = true
+      e.nativeEvent.triggerDropId = this.dropId
     }
   },
 
@@ -51,6 +56,7 @@ const Dropdown = React.createClass({
   // Called once as soon as the component has a DOM representation.
   componentDidMount: function () {
     window.addEventListener('click', this._bodyListener)
+    this.dropId = _.uniqueId('dropdown')
   },
 
   // Lifecycle method.
@@ -63,6 +69,7 @@ const Dropdown = React.createClass({
     e.preventDefault()
     // Access native event so it propagates upward.
     e.nativeEvent.preventClose = true
+    e.nativeEvent.triggerDropId = this.dropId
     this.toggle()
   },
 
