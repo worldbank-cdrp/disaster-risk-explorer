@@ -55,24 +55,43 @@ export const Map = React.createClass({
       type: 'vector',
       url: url
     })
-    // this._map.addLayer({
-    //   'id': id,
-    //   'type': 'fill',
-    //   'source': id,
-    //   'source-layer': layer,
-    //   'filter': filter,
-    //   'layout': {
-    //     'visibility': visibility
-    //   },
-    //   'paint': {
-    //     'fill-color': {
-    //       property: property,
-    //       stops: colorscale
-    //     },
-    //     'fill-opacity': 1,
-    //     'fill-outline-color': 'white'
-    //   }
-    // })
+    this._map.addLayer({
+      'id': id,
+      'type': 'fill',
+      'source': id,
+      'source-layer': layer,
+      'filter': filter,
+      'layout': {
+        'visibility': visibility
+      },
+      'paint': {
+        'fill-color': {
+          property: property,
+          stops: colorscale
+        },
+        'fill-opacity': 1,
+        'fill-outline-color': 'white'
+      }
+    })
+    console.log(url)
+    console.log({
+      'id': id,
+      'type': 'fill',
+      'source': id,
+      'source-layer': layer,
+      'filter': filter,
+      'layout': {
+        'visibility': visibility
+      },
+      'paint': {
+        'fill-color': {
+          property: property,
+          stops: colorscale
+        },
+        'fill-opacity': 1,
+        'fill-outline-color': 'white'
+      }
+    })
   },
 
   _addOutlineData: function (id, url, layer, filter, visibility) {

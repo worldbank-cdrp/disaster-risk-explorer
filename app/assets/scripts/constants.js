@@ -1,27 +1,27 @@
 import chroma from 'chroma-js'
 
 export const mapSources = {
-  admin0: { // Represents admin 0, temporarily is NE States and Provinces
+  admin0: {
     id: 'admin0',
     sourceLayer: 'states-03siee',
     idProp: 'random',
     url: 'mapbox://nbumbarg.0u72jvpm'
   },
-  admin1: { // Represents admin 1, temporarily is NE Countries
+  admin1: {
     id: 'admin1',
     sourceLayer: 'countries-0fa7el',
-    idProp: 'ADM0_A3',
+    idProp: 'random',
     url: 'mapbox://nbumbarg.0bpph7d3'
   },
-  km10: { // // Represents 10km grid, temporarily is NE Lakes
+  km10: { // Represents 10km grid, temporarily is NE Lakes
     id: 'km10',
     sourceLayer: 'lakes-4r5olz',
-    idProp: 'name',
+    idProp: 'random',
     url: 'mapbox://nbumbarg.6p0hhoxg'
   }
 }
 
-const inactiveScale = chroma.scale(['rgb(240, 240, 240)', 'rgb(185, 185, 185)'])
+const inactiveScale = chroma.scale(['rgb(240, 240, 240)', 'rgb(125, 125, 125)'])
 export const inactiveLegend = [
   [0, inactiveScale(0).hex()],
   [1, inactiveScale(0.1).hex()],
@@ -34,7 +34,7 @@ export const inactiveLegend = [
   [8, inactiveScale(0.8).hex()],
   [9, inactiveScale(0.9).hex()]]
 
-let hoverScale = chroma.scale(['black', 'blue'])
+let hoverScale = chroma.scale(['rgb(240, 255, 255)', 'rgb(155, 195, 195)'])
 export const hoverLegend = [
   [0, hoverScale(0).hex()],
   [1, hoverScale(0.1).hex()],
