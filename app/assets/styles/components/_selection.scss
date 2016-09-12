@@ -8,7 +8,7 @@
 
 .selection__panel {
 	padding: 0.25em 1em 1em 1em;
-	height: 1.75em;
+	height: 3em;
 	clear: both;
 	background-color: white;
 	line-height: 2.75em;
@@ -21,6 +21,7 @@
 }
 
 .selection__panel--attribute {
+	float: left;
 }
 
 .selection__panel--drop {
@@ -36,3 +37,5 @@
 		margin-left: 1em;
 	}
 }
+
+

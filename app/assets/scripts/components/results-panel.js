@@ -8,7 +8,7 @@ const Results = React.createClass({
   render: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Nicaragua <button className='button results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+        <h2 className='results__title'>Nicaragua <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'>Exposure</h3>
             <dl className='stats'>

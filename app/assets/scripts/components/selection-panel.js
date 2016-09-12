@@ -10,16 +10,18 @@ const Selection = React.createClass({
     return (
       <section className='selection'>
         <dl className='selection__panel'>
-          <dt className='selection__panel--feature'>Risk</dt>
+          <dt className='selection__panel--attribute'>Risk</dt>
           <dd className='selection__panel--drop'>
             <Dropdown
               triggerElement='button'
-              triggerClassName='button button--base-unbounded drop__toggle--caret'
+              triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
               triggerTitle='Show/hide parameter options'
               triggerText={'Hello'} >
 
               <ul role='menu' className='drop__menu drop__menu--select'>
-                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Value</span></a></li>
+                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Earthquake</span></a></li>
+                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Hurricane</span></a></li>
+                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Flood</span></a></li>
               </ul>
 
             </Dropdown>

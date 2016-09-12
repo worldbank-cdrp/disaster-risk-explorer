@@ -11,7 +11,7 @@ const Header = React.createClass({
         <h1 className='header__title'>World Bank Risk Tool</h1>
         <button className='button header__information'><i className='collecticon collecticon-circle-information' /></button>
         <div className='header__language'>
-          <button className='button header__language--toggle button__leftside'>EN</button><button className='button header__language--toggle button__rightside'>ES</button>
+          <button className='button header__language--toggle button__leftside button--active'>EN</button><button className='button header__language--toggle button__rightside'>ES</button>
         </div>
       </header>
     )
