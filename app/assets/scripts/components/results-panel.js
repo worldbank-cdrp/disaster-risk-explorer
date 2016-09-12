@@ -46,8 +46,8 @@ const Results = React.createClass({
                 <dd className='stat__value'>$10 Billion</dd>
                 <dt className='stat__attribute'>Converted AAL</dt>
                 <dd className='stat__value'>$10 Billion</dd>
-                <dt className='stat__attribute'>Change in AAL</dt>
-                <dd className='stat__value stat__value--last stat__value--positive'>+10%</dd>
+                <dt className='stat__attribute'>Years until breaking even</dt>
+                <dd className='stat__value stat__value--last stat__value--positive'>101</dd>
               </dl>
             </article>
           </div>
