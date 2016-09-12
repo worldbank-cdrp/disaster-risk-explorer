@@ -54,7 +54,7 @@ const Selection = React.createClass({
               <ul role='menu' className='drop__menu drop__menu--select'>
                 <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close' onClick={() => this._toggleSource('admin0')}><span>Admin Level 0</span></a></li>
                 <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close' onClick={() => this._toggleSource('admin1')}><span>Admin Level 1</span></a></li>
-                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close' onClick={() => this._toggleSource('km10')}><span>Water Bodies</span></a></li>
+                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close' onClick={() => this._toggleSource('km10')}><span>10km Grids</span></a></li>
               </ul>
 
             </Dropdown>

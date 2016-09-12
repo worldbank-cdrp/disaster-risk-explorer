@@ -47,6 +47,7 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
+    this.activeSource = this.props.mapSource
     this._toggleLayer(this.props.mapSource.id, nextProps.mapSource.id)
   },
 
@@ -94,21 +95,21 @@ export const Map = React.createClass({
   },
 
   _mapClick: function (e) {
-    const source = this.props.mapSource
-    const features = this._map.queryRenderedFeatures(e.point, { layers: [source.id + '-inactive', source.id + '-hover'] })
+    const features = this._map.queryRenderedFeatures(e.point, {
+      layers: [this.activeSource.id + '-inactive', this.activeSource.id + '-hover'] })
     if (features.length) {
-      this._selectFeature(features[0].properties[source.idProp])
+      this._selectFeature(features[0].properties[this.activeSource.idProp])
     } else {
       this._deselectFeature()
     }
   },
 
   _mouseMove: function (e) {
-    const source = this.props.mapSource
-    const features = this._map.queryRenderedFeatures(e.point, { layers: [source.id + '-inactive', source.id + '-hover'] })
+    const features = this._map.queryRenderedFeatures(e.point, {
+      layers: [this.activeSource.id + '-inactive', this.activeSource.id + '-hover'] })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
-      this._highlightFeature(features[0].properties[source.idProp])
+      this._highlightFeature(features[0].properties[this.activeSource.idProp])
     } else {
       this._map.getCanvas().style.cursor = ''
       this._unhighlightFeature()
@@ -116,26 +117,22 @@ export const Map = React.createClass({
   },
 
   _selectFeature: function (filter) {
-    const source = this.props.mapSource
-    this._map.setFilter(source.id + '-active', ['==', source.idProp, filter])
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, filter])
     this.props.dispatch(updateSelected(filter))
   },
 
   _deselectFeature: function () {
-    const source = this.props.mapSource
-    this._map.setFilter(source.id + '-active', ['==', source.idProp, ''])
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
     this.props.dispatch(updateSelected(0))
   },
 
   _highlightFeature: function (filter) {
-    const source = this.props.mapSource
-    this._map.setFilter(source.id + '-hover', ['==', source.idProp, filter])
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, filter])
     this.props.dispatch(updateHovered(filter))
   },
 
   _unhighlightFeature: function () {
-    const source = this.props.mapSource
-    this._map.setFilter(source.id + '-hover', ['==', source.idProp, ''])
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
     this.props.dispatch(updateHovered(0))
   },
 
