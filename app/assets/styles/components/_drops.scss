@@ -8,14 +8,12 @@
 }
 
 .drop__toggle {
-  margin-top:0.5em;
   &--caret {
     &:after {
-      @extend %collecticon-triangle-down;
-      font-size: 0.5rem;
+      @extend %collecticon-sm-triangle-down;
+      font-size: 1rem;
       line-height: inherit;
       vertical-align: top;
-      margin-top: 0.25rem;
       margin-left: 0.5rem;
     }
   }
