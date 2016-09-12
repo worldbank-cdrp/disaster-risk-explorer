@@ -15,14 +15,14 @@ export const Map = React.createClass({
   },
 
   componentDidMount: function () {
-    this.mapCenter = [-86.066895, 10.821166]
+    this.mapCenter = [-80, 15]
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
       style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
-      zoom: 3,
+      zoom: 5,
       minZoom: 2
     })
     map.on('load', () => {
@@ -56,25 +56,6 @@ export const Map = React.createClass({
       url: url
     })
     this._map.addLayer({
-      'id': id,
-      'type': 'fill',
-      'source': id,
-      'source-layer': layer,
-      'filter': filter,
-      'layout': {
-        'visibility': visibility
-      },
-      'paint': {
-        'fill-color': {
-          property: property,
-          stops: colorscale
-        },
-        'fill-opacity': 1,
-        'fill-outline-color': 'white'
-      }
-    })
-    console.log(url)
-    console.log({
       'id': id,
       'type': 'fill',
       'source': id,
