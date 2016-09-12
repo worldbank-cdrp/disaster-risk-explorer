@@ -17,7 +17,7 @@
   "homepage": "https://github.com/developmentseed/risk-data",
   "scripts": {
     "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {}' > app/assets/scripts/config/local.js",
-    "serve": "DS_ENV=development gulp serve",
+    "serve": "DS_ENV=development gulp collecticons && gulp serve",
     "build": "NODE_ENV=production gulp",
     "lint": "eslint app/assets/scripts/ --ext .js",
     "test": "nyc ava test -c 4",
@@ -70,6 +70,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.12.5",
     "browserify": "^13.0.1",
+    "collecticons-processor": "^2.0.0",
     "del": "^2.2.0",
     "envify": "^3.4.0",
     "enzyme": "^2.4.1",
@@ -113,10 +114,12 @@
     "lodash": "^4.14.2",
     "mapbox-gl": "^0.21.0",
     "react": "^15.3.0",
+    "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "react-router-redux": "^4.0.5",
+    "react-tether": "^0.5.2",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1"
   }

@@ -4,15 +4,14 @@
 
 /* Colors
    ========================================================================== */
+$base-color: #E19B5F;                                   // Color name (Dark blue)
+$primary-color: #928577;                                // Color name (Brown)
+$secondary-color: #b3c7ca;                              // Color name (Blue)
 
-$base-color: #192f35;                                   // Color name (Dark blue)
-$primary-color: #C76706;                                // Color name (Orange)
-$secondary-color: #077c94;                              // Color name (Blue)
+/* Helper colors */
 
-$danger-color: #ff5252;                                 // Red
-$success-color: $secondary-color;                       //
-$warning-color: #f6d55f;                                // Energy Yellow
-$info-color: $primary-color;                            //
+$base-alpha-color: rgba($base-color, 0.12);
+$base-semi-alpha-color: rgba($base-color, 0.08);
 
 /* Typography
    ========================================================================== */
@@ -20,7 +19,7 @@ $info-color: $primary-color;                            //
 $root-font-size: 16px;
 
 $base-font-color: tint($base-color, 24%);
-$base-font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-style: normal;
 $base-font-light: 100;
 $base-font-regular: 200;
@@ -37,7 +36,7 @@ $code-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 /* Border radius */
 
-$base-border-radius: 0.25rem;
+$base-border-radius: 0.3rem;
 $full-border-radius: 60rem;
 
 

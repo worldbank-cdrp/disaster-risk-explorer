@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Global: Pages
+   ========================================================================== */
+
+.nocando-viewport {
+  background-color: rgba($base-color, 0.08);
+  height: 100vh;
+
+  p {
+    text-align: center;
+    text-transform: uppercase;
+    color: $base-color;
+    transform: translate(0, 50vh);
+  }
+}
