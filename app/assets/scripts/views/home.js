@@ -8,13 +8,14 @@ import Legend from '../components/legend.js'
 import Selection from '../components/selection-panel.js'
 import Results from '../components/results-panel.js'
 
-import { t } from '../utils/i18n'
+// import { t } from '../utils/i18n'
 
 var Home = React.createClass({
   displayName: 'Home',
 
   propTypes: {
     dispatch: React.PropTypes.func,
+    location: React.PropTypes.object,
 
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.number,
@@ -34,7 +35,7 @@ var Home = React.createClass({
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
-        <Selection />
+        <Selection queryParams={this.props.location.query} />
         <Legend />
         <Results />
       </div>

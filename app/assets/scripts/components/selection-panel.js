@@ -1,47 +1,76 @@
 import React from 'react'
+import { hashHistory } from 'react-router'
+import c from 'classnames'
 
 import Dropdown from './dropdown'
 import { } from '../actions'
+import DataSelection from '../utils/data-selection'
+import { getLanguage } from '../utils/i18n'
 
 const Selection = React.createClass({
   propTypes: {
+    queryParams: React.PropTypes.object
   },
+
+  onOptSelect: function (key, value, e) {
+    e.preventDefault()
+    const dataSelection = new DataSelection(this.props.queryParams)
+    dataSelection[key].setActive(value)
+    hashHistory.push(`/${getLanguage()}?${dataSelection.getQS()}`)
+  },
+
+  renderDropdown: function (paramKey, active, dropOpts) {
+    return (
+      <Dropdown
+        triggerElement='button'
+        triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
+        triggerTitle='Show/hide parameter options'
+        triggerText={active.value} >
+
+        <ul role='menu' className='drop__menu drop__menu--select'>
+          {dropOpts.map(o => {
+            return <li key={o.key}><a className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})} href='#' title='' data-hook='dropdown:close' onClick={this.onOptSelect.bind(null, paramKey, o.key)}><span>{o.key}</span></a></li>
+          })}
+        </ul>
+
+      </Dropdown>
+    )
+  },
+
   render: function () {
+    const dataSelection = new DataSelection(this.props.queryParams)
+
     return (
       <section className='selection'>
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Risk</dt>
           <dd className='selection__panel--drop'>
-            <Dropdown
-              triggerElement='button'
-              triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
-              triggerTitle='Show/hide parameter options'
-              triggerText={'Hello'} >
-
-              <ul role='menu' className='drop__menu drop__menu--select'>
-                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Earthquake</span></a></li>
-                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Hurricane</span></a></li>
-                <li><a className={'drop__menu-item'} href='#' title='' data-hook='dropdown:close'><span>Flood</span></a></li>
-              </ul>
-
-            </Dropdown>
+            {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Year</dt>
-          <dd className='selection__panel--drop'>2000 <i className='collecticon collecticon-triangle-down' /></dd>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('year', dataSelection.year.getActive(), dataSelection.year.getOptions())}
+          </dd>
         </dl>
         <dl className='selection__panel selection__panel--split'>
           <dt className='subtitle selection__panel--attribute'>Building exposure</dt>
-          <dd className='selection__panel--drop'>Retrofitted <i className='collecticon collecticon-triangle-down' /></dd>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('building', dataSelection.building.getActive(), dataSelection.building.getOptions())}
+          </dd>
         </dl>
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Select data by</dt>
-          <dd className='selection__panel--drop'>Country <i className='collecticon collecticon-triangle-down' /></dd>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('admin', dataSelection.admin.getActive(), dataSelection.admin.getOptions())}
+          </dd>
         </dl>
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Change Basemap</dt>
-          <dd className='selection__panel--drop'>Basic <i className='collecticon collecticon-triangle-down' /></dd>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('basemap', dataSelection.basemap.getActive(), dataSelection.basemap.getOptions())}
+          </dd>
         </dl>
       </section>
     )
