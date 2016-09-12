@@ -16,6 +16,12 @@ var App = React.createClass({
     params: React.PropTypes.object
   },
 
+  getInitialState: function () {
+    return {
+      vpTooSmall: false
+    }
+  },
+
   validateLanguage: function (lang) {
     if (isValidLanguage(lang)) {
       setLanguage(lang)
@@ -24,11 +30,21 @@ var App = React.createClass({
     }
   },
 
+  onWindowResize: function () {
+    if (window.innerWidth < 768) {
+      !this.state.vpTooSmall && this.setState({vpTooSmall: true})
+    } else {
+      this.state.vpTooSmall && this.setState({vpTooSmall: false})
+    }
+  },
+
   //
   // Start life-cycle methods
   //
   componentWillMount: function () {
     this.validateLanguage(this.props.params.lang)
+    window.addEventListener('resize', this.onWindowResize)
+    this.onWindowResize()
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -41,7 +57,11 @@ var App = React.createClass({
   render: function () {
     let pageClass = _.get(_.last(this.props.routes), 'pageClass', '')
 
-    return (
+    return this.state.vpTooSmall ? (
+      <div className='nocando-viewport'>
+        <p>Screen is too small</p>
+      </div>
+    ) : (
       <div className={c('page', pageClass)}>
         <main className='page__body' role='main'>
           {this.props.children}
