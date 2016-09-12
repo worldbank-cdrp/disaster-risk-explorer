@@ -8,10 +8,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K
 
 export const Map = React.createClass({
   propTypes: {
+    dispatch: React.PropTypes.func,
     mapSource: React.PropTypes.object,
     hovered: React.PropTypes.number,
-    selected: React.PropTypes.number,
-    dispatch: React.PropTypes.func
+    selected: React.PropTypes.number
   },
 
   componentDidMount: function () {
@@ -45,7 +45,7 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-
+    this._toggleLayer(this.props.mapSource.id, nextProps.mapSource.id)
   },
 
   _addData: function (id, url, layer, property, colorscale, filter, visibility) {
@@ -106,7 +106,6 @@ export const Map = React.createClass({
     const features = this._map.queryRenderedFeatures(e.point, { layers: [source.id + '-inactive', source.id + '-hover'] })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
-      console.log(features[0].properties)
       this._highlightFeature(features[0].properties[source.idProp])
     } else {
       this._map.getCanvas().style.cursor = ''
@@ -136,6 +135,17 @@ export const Map = React.createClass({
     const source = this.props.mapSource
     this._map.setFilter(source.id + '-hover', ['==', source.idProp, ''])
     this.props.dispatch(updateHovered(0))
+  },
+
+  _toggleLayer: function (prevLayer, nextLayer) {
+    if (nextLayer !== prevLayer) {
+      this._map.setLayoutProperty(nextLayer + '-inactive', 'visibility', 'visible')
+      this._map.setLayoutProperty(nextLayer + '-hover', 'visibility', 'visible')
+      this._map.setLayoutProperty(nextLayer + '-active', 'visibility', 'visible')
+      this._map.setLayoutProperty(prevLayer + '-inactive', 'visibility', 'none')
+      this._map.setLayoutProperty(prevLayer + '-hover', 'visibility', 'none')
+      this._map.setLayoutProperty(prevLayer + '-active', 'visibility', 'none')
+    }
   },
 
   render: function () {

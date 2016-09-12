@@ -33,7 +33,9 @@ var Home = React.createClass({
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
-        <Selection />
+        <Selection
+          mapSource={this.props.mapSource}
+          dispatch={this.props.dispatch} />
         <Legend />
         <Results />
       </div>
