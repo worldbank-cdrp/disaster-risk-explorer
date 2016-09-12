@@ -139,12 +139,10 @@ export const Map = React.createClass({
 
   _toggleLayer: function (prevLayer, nextLayer) {
     if (nextLayer !== prevLayer) {
-      this._map.setLayoutProperty(nextLayer + '-inactive', 'visibility', 'visible')
-      this._map.setLayoutProperty(nextLayer + '-hover', 'visibility', 'visible')
-      this._map.setLayoutProperty(nextLayer + '-active', 'visibility', 'visible')
-      this._map.setLayoutProperty(prevLayer + '-inactive', 'visibility', 'none')
-      this._map.setLayoutProperty(prevLayer + '-hover', 'visibility', 'none')
-      this._map.setLayoutProperty(prevLayer + '-active', 'visibility', 'none')
+      ['-inactive', '-hover', '-active'].forEach((layer) => {
+        this._map.setLayoutProperty(nextLayer + layer, 'visibility', 'visible')
+        this._map.setLayoutProperty(prevLayer + layer, 'visibility', 'none')
+      })
     }
   },
 
