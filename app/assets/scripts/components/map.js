@@ -16,11 +16,11 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.mapData = this.props.mapData
-    this.mapCenter = [-94.1629, 34.5133]
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+    this.mapCenter = [-86.066895, 10.821166]
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
       zoom: 3,
       minZoom: 2
@@ -29,23 +29,23 @@ export const Map = React.createClass({
     map.on('load', () => {
       let inactiveScale = chroma.scale(['black', 'red'])
       inactiveScale = [
-        [1, inactiveScale(0).hex()],
-        [2, inactiveScale(0.17).hex()],
-        [3, inactiveScale(0.34).hex()],
-        [4, inactiveScale(0.51).hex()],
-        [5, inactiveScale(0.68).hex()],
-        [6, inactiveScale(0.85).hex()],
-        [7, inactiveScale(1).hex()]
+        // [1, inactiveScale(0).hex()],
+        // [2, inactiveScale(0.17).hex()],
+        // [3, inactiveScale(0.34).hex()],
+        // [4, inactiveScale(0.51).hex()],
+        // [5, inactiveScale(0.68).hex()],
+        // [6, inactiveScale(0.85).hex()],
+        // [7, inactiveScale(1).hex()]
       ]
       let hoverScale = chroma.scale(['black', 'blue'])
       hoverScale = [
-        [1, hoverScale(0).hex()],
-        [2, hoverScale(0.17).hex()],
-        [3, hoverScale(0.34).hex()],
-        [4, hoverScale(0.51).hex()],
-        [5, hoverScale(0.68).hex()],
-        [6, hoverScale(0.85).hex()],
-        [7, hoverScale(1).hex()]
+        // [1, hoverScale(0).hex()],
+        // [2, hoverScale(0.17).hex()],
+        // [3, hoverScale(0.34).hex()],
+        // [4, hoverScale(0.51).hex()],
+        // [5, hoverScale(0.68).hex()],
+        // [6, hoverScale(0.85).hex()],
+        // [7, hoverScale(1).hex()]
       ]
 
       this._addData('countries', 'ne_10m_admin_0_countries-1mfz41',

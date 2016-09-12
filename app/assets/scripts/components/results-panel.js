@@ -8,31 +8,49 @@ const Results = React.createClass({
   render: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Selected Area</h2>
-        <h3 className='results__subtitle'>Exposure</h3>
-        <dl className='results__stat'>
-          <dt className='results__stat--attribute'>Building Stock Exposure</dt>
-          <dd className='results__stat--value'>$19 Billion</dd>
-        </dl>
+        <h2 className='results__title'>Nicaragua <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+          <div className='results__container'>
+            <h3 className='subtitle results__subtitle'>Exposure</h3>
+            <dl className='stats'>
+              <dt className='stat__attribute'>Building Stock Exposure</dt>
+              <dd className='stat__value stat__value--last'>$19 Billion</dd>
+            </dl>
 
-        <h3 className='results__subtitle'>Loss</h3>
-        <dl className='results__stat'>
-          <dt className='results__stat--attribute'>Probable Maximum Loss</dt>
-          <dd className='results__stat--value'>$9.5 Billion</dd>
-          <dt className='results__stat--attribute'>Average Annual Loss</dt>
-          <dd className='results__stat--value'>$10 Billion</dd>
-          <dt className='results__stat--attribute'>Average Annual Loss over time</dt>
-          <dd className='results__temporal'></dd>
-        </dl>
+            <div className='results__divider results__divider--first'></div>
 
-        <h3 className='results__subtitle'>Risk</h3>
-        <dl className='results__stat'>
-          <dt className='results__stat--attribute'>Average Annual Loss</dt>
-          <div className='results__stat--value'>$10 Billion</div>
-        </dl>
+            <h3 className='subtitle results__subtitle'>Loss</h3>
+            <dl className='stats'>
+              <dt className='stat__attribute'>Probable Maximum Loss</dt>
+              <dd className='stat__value'>$9.5 Billion</dd>
+              <dt className='stat__attribute'>Average Annual Loss</dt>
+              <dd className='stat__value'>$10 Billion</dd>
+              <dt className='stat__attribute'>Average Annual Loss over time</dt>
+              <dd className='stat__value stat__value--chart stat__value--last'></dd>
+            </dl>
 
-        <article className='calculator__container'>
-        </article>
+            <div className='results__divider results__divider--second'></div>
+
+            <h3 className='subtitle results__subtitle'>Risk</h3>
+            <dl className='stats'>
+              <dt className='stat__attribute'>Average Annual Loss</dt>
+              <div className='stat__value stat__value--last'>$10 Billion</div>
+            </dl>
+
+            <article className='calculator__container'>
+              <h3 className='subtitle results__subtitle'>Building Conversion Calculator</h3>
+              <dl className='stats'>
+                <div className='stat__attribute'>Convert <span className='convert__dropdown'></span> to <span className='convert__dropdown'></span></div>
+                <dt className='stat__attribute'>Percent Converted</dt>
+                <dd className='stat__value'>10%</dd>
+                <dt className='stat__attribute'>Conversion Cost</dt>
+                <dd className='stat__value'>$10 Billion</dd>
+                <dt className='stat__attribute'>Converted AAL</dt>
+                <dd className='stat__value'>$10 Billion</dd>
+                <dt className='stat__attribute'>Years until breaking even</dt>
+                <dd className='stat__value stat__value--last stat__value--positive'>101</dd>
+              </dl>
+            </article>
+          </div>
       </section>
     )
   }

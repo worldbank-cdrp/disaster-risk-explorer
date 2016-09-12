@@ -1,22 +1,43 @@
 .selection {
 	position: absolute;
-	margin: $page-header-y 2em 2em;
+	margin: $page-header-y 1em;
 	z-index: 100;
-	@include debug();
 	@include containter();
+	background-color: rgba(0,0,0,0);
 }
 
 .selection__panel {
-	padding: 0 1em 1em 1em;
-	height: 1.5em;
+	padding: 0.25em 1em 1em 1em;
+	height: 3em;
 	clear: both;
-	@include debug();
+	background-color: white;
+	line-height: 2.75em;
+	border-bottom: 2px solid $secondary-color;
+	font-size: 0.9em;
 }
 
-.selection__panel--feature {
+.selection__panel--split {
+	margin-bottom: 0.5em;
+}
+
+.selection__panel--attribute {
 	float: left;
+	margin-top: 0.65em;
+	line-height: 1.5;
 }
 
 .selection__panel--drop {
 	float: right;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.2s;
+	&:hover{
+		opacity: 0.4;
+	}
+	i{
+		font-size: 0.5em;
+		margin-left: 1em;
+	}
 }
+
+
