@@ -2,23 +2,27 @@ import chroma from 'chroma-js'
 
 export const mapSources = {
   admin0: { // Represents admin 0, temporarily is NE States and Provinces
+    id: 'admin0',
     sourceLayer: 'ne_10m_admin_1_states_provinc-89mtkq',
-    idProp: 'scalerank',
+    idProp: 'OBJECTID_1',
     url: 'mapbox://nbumbarg.07mallbu'
   },
   admin1: { // Represents admin 1, temporarily is NE Countries
+    id: 'admin1',
     sourceLayer: 'ne_10m_admin_0_countries-1mfz41',
-    idProp: 'scalerank',
+    idProp: 'ADM0_A3',
     url: 'mapbox://nbumbarg.ary69jed'
   },
   admin2: { // Represents admin2?, temporarily is NE Lakes
+    id: 'admin2',
     sourceLayer: 'ne_10m_lakes-a6ve5w',
-    idProp: 'scalerank',
+    idProp: 'name',
     url: 'mapbox://nbumbarg.ae5132j0'
   },
   km10: { // Represents 10km grid, temporarily is NE Urban Areas
+    id: 'km10',
     sourceLayer: 'ne_50m_urban_areas-635qev',
-    idProp: 'scalerank',
+    idProp: 'area_sqkm',
     url: 'mapbox://nbumbarg.b5h1mumk'
   }
 }
