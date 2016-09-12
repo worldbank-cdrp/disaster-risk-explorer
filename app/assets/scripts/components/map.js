@@ -29,23 +29,23 @@ export const Map = React.createClass({
     map.on('load', () => {
       let inactiveScale = chroma.scale(['black', 'red'])
       inactiveScale = [
-        [1, inactiveScale(0).hex()],
-        [2, inactiveScale(0.17).hex()],
-        [3, inactiveScale(0.34).hex()],
-        [4, inactiveScale(0.51).hex()],
-        [5, inactiveScale(0.68).hex()],
-        [6, inactiveScale(0.85).hex()],
-        [7, inactiveScale(1).hex()]
+        // [1, inactiveScale(0).hex()],
+        // [2, inactiveScale(0.17).hex()],
+        // [3, inactiveScale(0.34).hex()],
+        // [4, inactiveScale(0.51).hex()],
+        // [5, inactiveScale(0.68).hex()],
+        // [6, inactiveScale(0.85).hex()],
+        // [7, inactiveScale(1).hex()]
       ]
       let hoverScale = chroma.scale(['black', 'blue'])
       hoverScale = [
-        [1, hoverScale(0).hex()],
-        [2, hoverScale(0.17).hex()],
-        [3, hoverScale(0.34).hex()],
-        [4, hoverScale(0.51).hex()],
-        [5, hoverScale(0.68).hex()],
-        [6, hoverScale(0.85).hex()],
-        [7, hoverScale(1).hex()]
+        // [1, hoverScale(0).hex()],
+        // [2, hoverScale(0.17).hex()],
+        // [3, hoverScale(0.34).hex()],
+        // [4, hoverScale(0.51).hex()],
+        // [5, hoverScale(0.68).hex()],
+        // [6, hoverScale(0.85).hex()],
+        // [7, hoverScale(1).hex()]
       ]
 
       this._addData('countries', 'ne_10m_admin_0_countries-1mfz41',

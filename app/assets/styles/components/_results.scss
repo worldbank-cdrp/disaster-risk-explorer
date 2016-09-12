@@ -73,7 +73,7 @@
 
 .results__divider {
 	width:100%;
-	background-color: $secondary-color;
+	background-color: lighten($secondary-color, 15);
 	height: 2px;
 	left:0;
 	position: absolute;

@@ -40,13 +40,14 @@ const Results = React.createClass({
               <h3 className='subtitle results__subtitle'>Building Conversion Calculator</h3>
               <dl className='stats'>
                 <div className='stat__attribute'>Convert <span className='convert__dropdown'></span> to <span className='convert__dropdown'></span></div>
-                <div className='stat__attribute'>Percent Converted</div>
+                <dt className='stat__attribute'>Percent Converted</dt>
+                <dd className='stat__value'>10%</dd>
                 <dt className='stat__attribute'>Conversion Cost</dt>
-                <div className='stat__value'>$10 Billion</div>
+                <dd className='stat__value'>$10 Billion</dd>
                 <dt className='stat__attribute'>Converted AAL</dt>
-                <div className='stat__value'>$10 Billion</div>
+                <dd className='stat__value'>$10 Billion</dd>
                 <dt className='stat__attribute'>Change in AAL</dt>
-                <div className='stat__value stat__value--last stat__value--positive'>+10%</div>
+                <dd className='stat__value stat__value--last stat__value--positive'>+10%</dd>
               </dl>
             </article>
           </div>
