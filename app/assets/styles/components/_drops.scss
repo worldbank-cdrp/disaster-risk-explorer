@@ -10,11 +10,12 @@
 .drop__toggle {
   &--caret {
     &:after {
-      // @extend %collecticon-sm-chevron-down;
-      font-size: 1rem;
+      @extend %collecticon-triangle-down;
+      font-size: 0.5rem;
       line-height: inherit;
       vertical-align: top;
-      margin-left: 0.25rem;
+      margin-top: 0.25rem;
+      margin-left: 0.5rem;
     }
   }
   &:focus {
