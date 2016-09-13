@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import DataSelection from '../utils/data-selection'
 import { mapSources } from '../constants'
 
+import About from '../components/About-modal.js'
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
@@ -47,6 +48,7 @@ var Home = React.createClass({
           dispatch={this.props.dispatch} />
         <Legend />
         <Results />
+        <About />
       </div>
     )
   }
