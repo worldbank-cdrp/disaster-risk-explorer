@@ -20,6 +20,10 @@
 .about__title {
 	@include section_header;
 	padding-left: 2rem;
+	i{
+		font-size: 0.9em;
+		float: right;
+	}
 }
 
 .about__text{
