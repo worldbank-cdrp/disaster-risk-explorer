@@ -38,6 +38,7 @@ var Home = React.createClass({
         <Header />
         <Map
           mapSource={mapSource}
+          dataSelection={dataSelection}
           hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />

@@ -9,6 +9,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0td
 export const Map = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
+
     mapSource: React.PropTypes.object,
     hovered: React.PropTypes.number,
     selected: React.PropTypes.number
@@ -25,6 +27,7 @@ export const Map = React.createClass({
       minZoom: 2
     })
     map.on('load', () => {
+      this.sources = {}
       Object.keys(mapSources).forEach((id) => {
         const source = mapSources[id]
         this.activeSource = this.props.mapSource
@@ -32,12 +35,21 @@ export const Map = React.createClass({
         if (this.activeSource.sourceLayer === source.sourceLayer) {
           visibility = 'visible'
         }
-        this._addData(id + '-inactive', source.url, source.sourceLayer, source.idProp,
-                      inactiveLegend, ['!=', source.idProp, ''], visibility)
-        this._addData(id + '-hover', source.url, source.sourceLayer, source.idProp,
-                      hoverLegend, ['==', source.idProp, ''], visibility)
-        this._addOutlineData(id + '-active', source.url, source.sourceLayer,
-                             ['==', source.idProp, ''], visibility)
+        this.sources[id] = {
+          id: id,
+          url: source.url,
+          sourceLayer: source.sourceLayer,
+          colorProperty: source.idProp,
+          query: ['!=', source.idProp, ''],
+          visibility: visibility
+        }
+        console.log(['!=', source.idProp, ''])
+        this._addSource(false, id + '-inactive', source.url, source.sourceLayer,
+                       ['!=', source.idProp, ''], visibility, inactiveLegend, source.idProp)
+        this._addSource(false, id + '-hover', source.url, source.sourceLayer,
+                       ['==', source.idProp, ''], visibility, hoverLegend, source.idProp)
+        this._addSource(true, id + '-active', source.url, source.sourceLayer,
+                       ['==', source.idProp, ''], visibility)
 
         map.on('mousemove', this._mouseMove)
         map.on('click', this._mapClick)
@@ -47,14 +59,49 @@ export const Map = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
     this.activeSource = this.props.mapSource
-    this._toggleLayer(this.props.mapSource.id, nextProps.mapSource.id)
+    this._toggleSource(this.props.mapSource.id, nextProps.mapSource.id)
+
+    const prevColorProp = this.props.dataSelection.risk.getActive().key
+    const nextColorProp = nextProps.dataSelection.risk.getActive().key
+    if (nextColorProp !== prevColorProp) {
+      this._toggleLayerProperties(prevColorProp, nextColorProp)
+    }
   },
 
-  _addData: function (id, url, layer, property, colorscale, filter, visibility) {
+  _toggleLayerProperties: function (prevColorProp, nextColorProp) {
+    // id, layer, filter, visibility, colorProperty, colorScale
+    const activeSource = this.props.dataSelection.admin.getActive().key
+    const params = this.sources[activeSource]
+    console.log(activeSource)
+    // use dummy data field name mapping for testing
+    const dummyColumnMap = {earthquake: 'AAL', hurricane: 'RP_10', flood: 'RP_100'}
+    nextColorProp = dummyColumnMap[nextColorProp]
+    const states = ['-inactive', '-hover', '-active']
+    states.forEach((layerState) => {
+      this._map.removeLayer(activeSource + layerState)
+    })
+
+    this._addLayer(activeSource + '-inactive', params.sourceLayer, ['!=', params.idProp, ''],
+                   params.visibility, nextColorProp, inactiveLegend)
+    this._addLayer(activeSource + '-hover', params.sourceLayer, ['==', params.idProp, ''],
+                   params.visibility, nextColorProp, hoverLegend)
+    this._addOutlineLayer(activeSource + '-active', params.sourceLayer,
+                         ['==', params.idProp, ''], params.visibility)
+  },
+
+  _addSource: function (outline, id, url, layer, filter, visibility, colorScale, colorProperty) {
     this._map.addSource(id, {
       type: 'vector',
       url: url
     })
+    if (!outline) {
+      this._addLayer(id, layer, filter, visibility, colorProperty, colorScale)
+    } else {
+      this._addOutlineLayer(id, layer, filter, visibility)
+    }
+  },
+
+  _addLayer: function (id, layer, filter, visibility, colorProperty, colorScale) {
     this._map.addLayer({
       'id': id,
       'type': 'fill',
@@ -66,8 +113,8 @@ export const Map = React.createClass({
       },
       'paint': {
         'fill-color': {
-          property: property,
-          stops: colorscale
+          property: colorProperty,
+          stops: colorScale
         },
         'fill-opacity': 1,
         'fill-outline-color': 'white'
@@ -75,11 +122,7 @@ export const Map = React.createClass({
     })
   },
 
-  _addOutlineData: function (id, url, layer, filter, visibility) {
-    this._map.addSource(id, {
-      type: 'vector',
-      url: url
-    })
+  _addOutlineLayer: function (id, layer, filter, visibility) {
     this._map.addLayer({
       'id': id,
       'type': 'line',
@@ -135,11 +178,11 @@ export const Map = React.createClass({
     this.props.dispatch(updateHovered(0))
   },
 
-  _toggleLayer: function (prevLayer, nextLayer) {
-    if (nextLayer !== prevLayer) {
-      ['-inactive', '-hover', '-active'].forEach((layer) => {
-        this._map.setLayoutProperty(nextLayer + layer, 'visibility', 'visible')
-        this._map.setLayoutProperty(prevLayer + layer, 'visibility', 'none')
+  _toggleSource: function (prevSource, nextSource) {
+    if (nextSource !== prevSource) {
+      ['-inactive', '-hover', '-active'].forEach((source) => {
+        this._map.setLayoutProperty(nextSource + source, 'visibility', 'visible')
+        this._map.setLayoutProperty(prevSource + source, 'visibility', 'none')
       })
     }
   },

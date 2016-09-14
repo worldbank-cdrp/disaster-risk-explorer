@@ -3,9 +3,9 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'gadm0-1rsbey',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.8qeutq45'
+    sourceLayer: 'CA_Earthquake_PML_AAL_Admin1-6dnqpw',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://devseed.5vzd5cic'
   },
   admin1: {
     id: 'admin1',
