@@ -60,7 +60,7 @@ export const Map = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     this.activeSource = this.props.mapSource
     this._toggleSource(this.props.mapSource.id, nextProps.mapSource.id)
-
+    console.log(nextProps.dataSelection.getSelection())
     const prevColorProp = this.props.dataSelection.risk.getActive().key
     const nextColorProp = nextProps.dataSelection.risk.getActive().key
     if (nextColorProp !== prevColorProp) {
@@ -72,7 +72,7 @@ export const Map = React.createClass({
     // id, layer, filter, visibility, colorProperty, colorScale
     const activeSource = this.props.dataSelection.admin.getActive().key
     const params = this.sources[activeSource]
-    console.log(activeSource)
+    console.log(params)
     // use dummy data field name mapping for testing
     const dummyColumnMap = {earthquake: 'AAL', hurricane: 'RP_10', flood: 'RP_100'}
     nextColorProp = dummyColumnMap[nextColorProp]
@@ -81,12 +81,12 @@ export const Map = React.createClass({
       this._map.removeLayer(activeSource + layerState)
     })
 
-    this._addLayer(activeSource + '-inactive', params.sourceLayer, ['!=', params.idProp, ''],
+    this._addLayer(activeSource + '-inactive', params.sourceLayer, ['!=', params.colorProperty, ''],
                    params.visibility, nextColorProp, inactiveLegend)
-    this._addLayer(activeSource + '-hover', params.sourceLayer, ['==', params.idProp, ''],
+    this._addLayer(activeSource + '-hover', params.sourceLayer, ['==', params.colorProperty, ''],
                    params.visibility, nextColorProp, hoverLegend)
     this._addOutlineLayer(activeSource + '-active', params.sourceLayer,
-                         ['==', params.idProp, ''], params.visibility)
+                         ['==', params.colorProperty, ''], params.visibility)
   },
 
   _addSource: function (outline, id, url, layer, filter, visibility, colorScale, colorProperty) {
@@ -102,6 +102,7 @@ export const Map = React.createClass({
   },
 
   _addLayer: function (id, layer, filter, visibility, colorProperty, colorScale) {
+    console.log(id, layer, filter, visibility, colorProperty, colorScale)
     this._map.addLayer({
       'id': id,
       'type': 'fill',

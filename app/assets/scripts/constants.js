@@ -3,15 +3,15 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'CA_Earthquake_PML_AAL_Admin1-6dnqpw',
-    idProp: 'UNIQUE_ID',
-    url: 'mapbox://devseed.5vzd5cic'
-  },
-  admin1: {
-    id: 'admin1',
     sourceLayer: 'gadm1-8qp5sw',
     idProp: 'RANDOM_1',
     url: 'mapbox://nbumbarg.9bbi1f15'
+  },
+  admin1: {
+    id: 'admin1',
+    sourceLayer: 'CA_Earthquake_PML_AAL_Admin1-6dnqpw',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://devseed.5vzd5cic'
   },
   km10: { // Represents 10km grid, temporarily is NE Lakes
     id: 'km10',
