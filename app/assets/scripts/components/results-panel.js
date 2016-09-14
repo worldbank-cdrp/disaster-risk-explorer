@@ -12,6 +12,8 @@ const Results = React.createClass({
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'>Exposure</h3>
             <dl className='stats'>
+              <dt className='stat__attribute'>Gross Domestic Product</dt>
+              <dd className='stat__value'>$20 Billion</dd>
               <dt className='stat__attribute'>Building Stock Exposure</dt>
               <dd className='stat__value stat__value--last'>$19 Billion</dd>
             </dl>
@@ -20,11 +22,9 @@ const Results = React.createClass({
 
             <h3 className='subtitle results__subtitle'>Loss</h3>
             <dl className='stats'>
-              <dt className='stat__attribute'>Probable Maximum Loss</dt>
-              <dd className='stat__value'>$9.5 Billion</dd>
               <dt className='stat__attribute'>Average Annual Loss</dt>
               <dd className='stat__value'>$10 Billion</dd>
-              <dt className='stat__attribute'>Average Annual Loss over time</dt>
+              <dt className='stat__attribute'>Potential Future Losses</dt>
               <dd className='stat__value stat__value--chart stat__value--last'></dd>
             </dl>
 
@@ -32,8 +32,8 @@ const Results = React.createClass({
 
             <h3 className='subtitle results__subtitle'>Risk</h3>
             <dl className='stats'>
-              <dt className='stat__attribute'>Average Annual Loss</dt>
-              <div className='stat__value stat__value--last'>$10 Billion</div>
+              <dt className='stat__attribute'>Structures most at risk</dt>
+              <div className='stat__value stat__value--last'>Adobe</div>
             </dl>
 
             <article className='calculator__container'>
