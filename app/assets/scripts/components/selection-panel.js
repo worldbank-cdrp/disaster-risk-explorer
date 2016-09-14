@@ -57,16 +57,10 @@ const Selection = React.createClass({
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
-        <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Year</dt>
+        <dl className='selection__panel selection__panel--split'>
+          <dt className='subtitle selection__panel--attribute'>View Data As</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('year', dataSelection.year.getActive(), dataSelection.year.getOptions())}
-          </dd>
-        </dl>
-        <dl className='selection__panel selection__panel--split'>
-          <dt className='subtitle selection__panel--attribute'>Building exposure</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('building', dataSelection.building.getActive(), dataSelection.building.getOptions())}
           </dd>
         </dl>
         <dl className='selection__panel'>
@@ -75,7 +69,6 @@ const Selection = React.createClass({
             {this.renderDropdown('admin', dataSelection.admin.getActive(), dataSelection.admin.getOptions())}
           </dd>
         </dl>
-
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Change Basemap</dt>
           <dd className='selection__panel--drop'>

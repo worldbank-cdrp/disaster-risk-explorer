@@ -70,12 +70,8 @@ let availableParams = {
     {key: 'flood', value: 'Flood'}
   ],
   year: [
-    {key: '2000', value: '2000'},
-    {key: '2001', value: '2001'}
-  ],
-  building: [
-    {key: 'retrofitted', value: 'Retrofitted'},
-    {key: 'opt2', value: 'Normal'}
+    {key: 'Average Annual Loss', value: 'Average Annual Loss'},
+    {key: 'RISK', value: 'Risk'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
@@ -84,7 +80,7 @@ let availableParams = {
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},
-    {key: 'special', value: 'Special'}
+    {key: 'special', value: 'Satellite'}
   ]
 }
 
