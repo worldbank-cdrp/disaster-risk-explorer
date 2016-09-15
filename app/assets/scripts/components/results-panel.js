@@ -1,11 +1,26 @@
 import React from 'react'
 
 import { } from '../actions'
+import BarChart from './charts/bar-chart'
 
 const Results = React.createClass({
   propTypes: {
   },
+
   render: function () {
+    let data = [
+      {value: 10, name: 'Historical'},
+      {value: 20, name: '25y'},
+      {value: 45, name: '50y'},
+      {value: 33, name: '100y'},
+      {value: 81, name: '200y'}
+    ]
+    let margin = {
+      top: 16,
+      left: 50,
+      right: 16,
+      bottom: 56
+    }
     return (
       <section className='results'>
         <h2 className='results__title'>Nicaragua <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
@@ -25,7 +40,14 @@ const Results = React.createClass({
               <dt className='stat__attribute'>Average Annual Loss</dt>
               <dd className='stat__value'>$10 Billion</dd>
               <dt className='stat__attribute'>Average Annual Loss over time</dt>
-              <dd className='stat__value stat__value--chart stat__value--last'></dd>
+              <dd className='stat__value stat__value--chart stat__value--last'>
+                <BarChart
+                  data={data}
+                  margin={margin}
+                  yTitle='Y title'
+                  xTitle='X title'
+                />
+              </dd>
             </dl>
 
             <div className='results__divider results__divider--second'></div>

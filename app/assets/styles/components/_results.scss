@@ -50,14 +50,17 @@
 }
 
 .stat__value--chart {
-	width:100%;
-	height: 100px;
+	margin-bottom:1.5em;
 	background-color: #eee;
+	float: none;
+	clear: left;
+
+	.chart-container {
+		width: 100%;
+		height: 150px;
+	}
 }
 
-.stat__value--chart {
-	margin-bottom:1.5em;
-}
 
 .calculator__container {
 	background-color: #eee;

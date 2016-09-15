@@ -14,7 +14,7 @@ export const Map = React.createClass({
     selected: React.PropTypes.number
   },
 
-  componentDidMount: function () {
+  componentDidMount: function () { return;
     this.mapCenter = [-80, 15]
 
     const map = this._map = new mapboxgl.Map({
