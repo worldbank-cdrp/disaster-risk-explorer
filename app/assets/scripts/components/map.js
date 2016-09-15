@@ -27,28 +27,19 @@ export const Map = React.createClass({
       minZoom: 2
     })
     map.on('load', () => {
-      this.sources = {}
       Object.keys(mapSources).forEach((id) => {
-        const source = mapSources[id]
         this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+        const source = mapSources[id]
+
         let visibility = 'none'
-        if (this.activeSource.sourceLayer === source.sourceLayer) {
-          visibility = 'visible'
-        }
-        this.sources[id] = {
-          id: id,
-          url: source.url,
-          sourceLayer: source.sourceLayer,
-          colorProperty: source.idProp,
-          query: ['!=', source.idProp, ''],
-          visibility: visibility
-        }
-        this._addSource(false, id + '-inactive', source.url, source.sourceLayer,
-                       ['!=', source.idProp, ''], visibility, inactiveLegend, source.idProp)
+        if (this.activeSource.sourceLayer === source.sourceLayer) visibility = 'visible'
+
+        this._addSource(false, source.id + '-inactive', source.url, source.sourceLayer,
+                       ['!=', source.id, ''], visibility, inactiveLegend, source.id)
         this._addSource(false, id + '-hover', source.url, source.sourceLayer,
-                       ['==', source.idProp, ''], visibility, hoverLegend, source.idProp)
+                       ['==', source.id, ''], visibility, hoverLegend, source.id)
         this._addSource(true, id + '-active', source.url, source.sourceLayer,
-                       ['==', source.idProp, ''], visibility)
+                       ['==', source.id, ''], visibility)
 
         map.on('mousemove', this._mouseMove)
         map.on('click', this._mapClick)
@@ -69,23 +60,24 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevColorProp, nextColorProp) {
-    const activeSource = this.props.dataSelection.admin.getActive().key
-    const params = this.sources[activeSource]
+    // const params = this.sources[this.activeSource]
+    // console.log(params)
 
     // use dummy data field name mapping for testing
-    const dummyColumnMap = {earthquake: 'AAL', hurricane: 'RP_10', flood: 'RP_100'}
+    const dummyColumnMap = {earthquake: 'RP_10', hurricane: 'RP_25', flood: 'RP_50'}
     nextColorProp = dummyColumnMap[nextColorProp]
+
     const states = ['-inactive', '-hover', '-active']
     states.forEach((layerState) => {
-      this._map.removeLayer(activeSource + layerState)
+      this._map.removeLayer(this.activeSource.id + layerState)
     })
 
-    this._addLayer(activeSource + '-inactive', params.sourceLayer, ['!=', params.colorProperty, ''],
-                   params.visibility, nextColorProp, inactiveLegend)
-    this._addLayer(activeSource + '-hover', params.sourceLayer, ['==', params.colorProperty, ''],
-                   params.visibility, nextColorProp, hoverLegend)
-    this._addOutlineLayer(activeSource + '-active', params.sourceLayer,
-                         ['==', params.colorProperty, ''], params.visibility)
+    this._addLayer(this.activeSource.id + '-inactive', this.activeSource.sourceLayer,
+                  ['!=', this.activeSource.idProp, ''], 'visible', nextColorProp, inactiveLegend)
+    this._addLayer(this.activeSource.id + '-hover', this.activeSource.sourceLayer,
+                  ['==', this.activeSource.idProp, ''], 'none', nextColorProp, hoverLegend)
+    this._addOutlineLayer(this.activeSource.id + '-active', this.activeSource.sourceLayer,
+                         ['==', this.activeSource.idProp, ''], 'none')
   },
 
   _addSource: function (outline, id, url, layer, filter, visibility, colorScale, colorProperty) {
@@ -146,9 +138,8 @@ export const Map = React.createClass({
   },
 
   _mouseMove: function (e) {
-    const activeSource = this.props.dataSelection.admin.getActive().key
     const features = this._map.queryRenderedFeatures(e.point, {
-      layers: [activeSource + '-inactive', activeSource + '-hover'] })
+      layers: [this.activeSource.id + '-inactive', this.activeSource.id + '-hover'] })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties[this.activeSource.idProp])
@@ -174,8 +165,8 @@ export const Map = React.createClass({
   },
 
   _unhighlightFeature: function () {
-    const activeSource = this.props.dataSelection.admin.getActive().key
-    this._map.setFilter(activeSource + '-hover', ['==', this.activeSource.idProp, ''])
+    console.log(this.activeSource)
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
     this.props.dispatch(updateHovered(0))
   },
 
