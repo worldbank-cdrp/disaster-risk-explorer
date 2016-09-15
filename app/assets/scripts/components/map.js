@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 
 import { mapSources, inactiveLegends, hoverLegend } from '../constants'
-import { updateHovered, updateSelected } from '../actions'
+// import { updateHovered, updateSelected } from '../actions'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -27,7 +27,6 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    console.log('this.activeSource', this.activeSource)
     this.mapCenter = [-80, 15]
 
     const map = this._map = new mapboxgl.Map({
@@ -89,14 +88,12 @@ export const Map = React.createClass({
   },
 
   _selectFeature: function (feature) {
-    let propId = this.getColorProperty(this.props.dataSelection.risk.getActive().key)
-    this._map.setFilter(this.activeSource.id + '-active', ['==', propId, feature.properties[propId]])
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
     // this.props.dispatch(updateSelected(feature))
   },
 
   _deselectFeature: function () {
-    let propId = this.getColorProperty(this.props.dataSelection.risk.getActive().key)
-    this._map.setFilter(this.activeSource.id + '-active', ['==', propId, ''])
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
     // this.props.dispatch(updateSelected())
   },
 
@@ -115,14 +112,12 @@ export const Map = React.createClass({
   },
 
   _highlightFeature: function (feature) {
-    let propId = this.getColorProperty(this.props.dataSelection.risk.getActive().key)
-    this._map.setFilter(this.activeSource.id + '-hover', ['==', propId, feature.properties[propId]])
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
     // this.props.dispatch(updateHovered(feature))
   },
 
   _unhighlightFeature: function () {
-    let propId = this.getColorProperty(this.props.dataSelection.risk.getActive().key)
-    this._map.setFilter(this.activeSource.id + '-hover', ['==', propId, ''])
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
     // this.props.dispatch(updateHovered())
   },
 
