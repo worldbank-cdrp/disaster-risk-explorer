@@ -4,7 +4,7 @@ import { mapSources } from '../constants'
 export const initialState = {
   mapSource: mapSources.admin1,
   hovered: 0,
-  selected: 0
+  selected: null
 }
 
 export default function reducer (state = initialState, action) {
