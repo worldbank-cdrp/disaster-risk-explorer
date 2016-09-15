@@ -3,15 +3,15 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'gadm0-773uw6',
+    sourceLayer: 'CA_Earthquake_Admin_0-3k2o2l',
     idProp: 'UNIQUE_ID',
-    url: 'mapbox://nbumbarg.08g2uxh7'
+    url: 'mapbox://devseed.8r149eiv'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'CA_Earthquake_PML_AAL_Admin1-6dnqpw',
+    sourceLayer: 'CA_Earthquake_Admin_1-8hvttj',
     idProp: 'UNIQUE_ID',
-    url: 'mapbox://devseed.5vzd5cic'
+    url: 'mapbox://devseed.2j87qn16'
   },
   km10: {
     id: 'km10',
@@ -21,12 +21,14 @@ export const mapSources = {
   }
 }
 
+export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
+
 const makeLegend = (scale, steps) => {
   return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
 }
 
-const inactiveScale = chroma.scale(['rgb(240, 240, 240)', 'rgb(125, 125, 125)'])
-const hoverScale = chroma.scale(['rgb(240, 255, 255)', 'rgb(155, 195, 195)'])
+const inactiveScale = chroma.scale(['rgb(200, 200, 255)', 'rgb(40, 40, 80)'])
+const hoverScale = chroma.scale(['rgb(200, 240, 240)', 'rgb(40, 80, 80)'])
 
 export const inactiveLegends = {
   hurricane: makeLegend(inactiveScale,

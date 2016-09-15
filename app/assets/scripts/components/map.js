@@ -1,7 +1,7 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 
-import { mapSources, inactiveLegends, hoverLegend } from '../constants'
+import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
 // import { updateHovered, updateSelected } from '../actions'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
@@ -21,19 +21,18 @@ export const Map = React.createClass({
   },
 
   getColorProperty: function (risk) {
-    const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
     return columnMap[risk]
   },
 
   componentDidMount: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    this.mapCenter = [-80, 15]
+    this.mapCenter = [-86, 13]
 
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
       style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
-      zoom: 5,
+      zoom: 5.5,
       minZoom: 2
     })
 
@@ -81,6 +80,7 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
+      console.log(features[0].properties)
       this._selectFeature(features[0])
     } else {
       this._deselectFeature()
@@ -157,8 +157,8 @@ export const Map = React.createClass({
           property: colorProperty,
           stops: colorScale
         },
-        'fill-opacity': 1,
-        'fill-outline-color': 'white'
+        'fill-opacity': 0.8,
+        'fill-outline-color': 'rgb(140, 140, 160)'
       }
     })
   },
@@ -171,8 +171,8 @@ export const Map = React.createClass({
       'source-layer': layer,
       'filter': filter,
       'paint': {
-        'line-color': 'rgb(255, 255, 255)',
-        'line-width': 3
+        'line-color': 'rgb(50, 50, 90)',
+        'line-width': 2
       }
     })
   },
