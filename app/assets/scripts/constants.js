@@ -3,9 +3,9 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'gadm1-8qp5sw',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.9bbi1f15'
+    sourceLayer: 'gadm0-773uw6',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://nbumbarg.08g2uxh7'
   },
   admin1: {
     id: 'admin1',
@@ -15,9 +15,9 @@ export const mapSources = {
   },
   km10: { // Represents 10km grid, temporarily is NE Lakes
     id: 'km10',
-    sourceLayer: 'grid-8c283l',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.044pdhvx'
+    sourceLayer: 'grid-10s7dj',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://nbumbarg.9p1j2upq'
   }
 }
 

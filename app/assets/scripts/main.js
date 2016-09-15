@@ -18,8 +18,8 @@ const logger = createLogger({
   }
 })
 
-const store = createStore(reducer, applyMiddleware(logger))
-// const store = createStore(reducer)
+// const store = createStore(reducer, applyMiddleware(logger))
+const store = createStore(reducer)
 const history = syncHistoryWithStore(hashHistory, store)
 
 // Components

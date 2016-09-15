@@ -30,7 +30,7 @@ export const Map = React.createClass({
       this.sources = {}
       Object.keys(mapSources).forEach((id) => {
         const source = mapSources[id]
-        this.activeSource = this.props.mapSource
+        this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
         let visibility = 'none'
         if (this.activeSource.sourceLayer === source.sourceLayer) {
           visibility = 'visible'
@@ -43,7 +43,6 @@ export const Map = React.createClass({
           query: ['!=', source.idProp, ''],
           visibility: visibility
         }
-        console.log(['!=', source.idProp, ''])
         this._addSource(false, id + '-inactive', source.url, source.sourceLayer,
                        ['!=', source.idProp, ''], visibility, inactiveLegend, source.idProp)
         this._addSource(false, id + '-hover', source.url, source.sourceLayer,
@@ -58,9 +57,10 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    this.activeSource = this.props.mapSource
-    this._toggleSource(this.props.mapSource.id, nextProps.mapSource.id)
-    console.log(nextProps.dataSelection.getSelection())
+    this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+    this._toggleSource(this.props.dataSelection.admin.getActive().key,
+                       nextProps.dataSelection.admin.getActive().key)
+
     const prevColorProp = this.props.dataSelection.risk.getActive().key
     const nextColorProp = nextProps.dataSelection.risk.getActive().key
     if (nextColorProp !== prevColorProp) {
@@ -69,10 +69,9 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevColorProp, nextColorProp) {
-    // id, layer, filter, visibility, colorProperty, colorScale
     const activeSource = this.props.dataSelection.admin.getActive().key
     const params = this.sources[activeSource]
-    console.log(params)
+
     // use dummy data field name mapping for testing
     const dummyColumnMap = {earthquake: 'AAL', hurricane: 'RP_10', flood: 'RP_100'}
     nextColorProp = dummyColumnMap[nextColorProp]
@@ -102,7 +101,6 @@ export const Map = React.createClass({
   },
 
   _addLayer: function (id, layer, filter, visibility, colorProperty, colorScale) {
-    console.log(id, layer, filter, visibility, colorProperty, colorScale)
     this._map.addLayer({
       'id': id,
       'type': 'fill',
@@ -148,8 +146,9 @@ export const Map = React.createClass({
   },
 
   _mouseMove: function (e) {
+    const activeSource = this.props.dataSelection.admin.getActive().key
     const features = this._map.queryRenderedFeatures(e.point, {
-      layers: [this.activeSource.id + '-inactive', this.activeSource.id + '-hover'] })
+      layers: [activeSource + '-inactive', activeSource + '-hover'] })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties[this.activeSource.idProp])
@@ -175,7 +174,8 @@ export const Map = React.createClass({
   },
 
   _unhighlightFeature: function () {
-    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
+    const activeSource = this.props.dataSelection.admin.getActive().key
+    this._map.setFilter(activeSource + '-hover', ['==', this.activeSource.idProp, ''])
     this.props.dispatch(updateHovered(0))
   },
 
