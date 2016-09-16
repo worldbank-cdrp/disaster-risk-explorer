@@ -3,48 +3,40 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'gadm0-1rsbey',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.8qeutq45'
+    sourceLayer: 'CA_Earthquake_Admin_0-3k2o2l',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://devseed.8r149eiv'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'gadm1-8qp5sw',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.9bbi1f15'
+    sourceLayer: 'CA_Earthquake_Admin_1-8hvttj',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://devseed.2j87qn16'
   },
-  km10: { // Represents 10km grid, temporarily is NE Lakes
+  km10: {
     id: 'km10',
-    sourceLayer: 'grid-8c283l',
-    idProp: 'RANDOM_1',
-    url: 'mapbox://nbumbarg.044pdhvx'
+    sourceLayer: 'grid-10s7dj',
+    idProp: 'UNIQUE_ID',
+    url: 'mapbox://nbumbarg.9p1j2upq'
   }
 }
 
-const inactiveScale = chroma.scale(['rgb(240, 240, 240)', 'rgb(125, 125, 125)'])
-export const inactiveLegend = [
-  [0, inactiveScale(0).hex()],
-  [10, inactiveScale(0.1).hex()],
-  [20, inactiveScale(0.2).hex()],
-  [30, inactiveScale(0.3).hex()],
-  [40, inactiveScale(0.4).hex()],
-  [50, inactiveScale(0.5).hex()],
-  [60, inactiveScale(0.6).hex()],
-  [70, inactiveScale(0.7).hex()],
-  [80, inactiveScale(0.8).hex()],
-  [90, inactiveScale(0.8).hex()],
-  [100, inactiveScale(0.9).hex()]]
+export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
 
-let hoverScale = chroma.scale(['rgb(240, 255, 255)', 'rgb(155, 195, 195)'])
-export const hoverLegend = [
-  [0, hoverScale(0).hex()],
-  [10, hoverScale(0.1).hex()],
-  [20, hoverScale(0.2).hex()],
-  [30, hoverScale(0.3).hex()],
-  [40, hoverScale(0.4).hex()],
-  [50, hoverScale(0.5).hex()],
-  [60, hoverScale(0.6).hex()],
-  [70, hoverScale(0.7).hex()],
-  [80, hoverScale(0.8).hex()],
-  [90, hoverScale(0.8).hex()],
-  [100, hoverScale(0.9).hex()]]
+const makeLegend = (scale, steps) => {
+  return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
+}
+
+const inactiveScale = chroma.scale(['rgb(200, 200, 255)', 'rgb(40, 40, 80)'])
+const hoverScale = chroma.scale(['rgb(200, 240, 240)', 'rgb(40, 80, 80)'])
+
+export const inactiveLegends = {
+  hurricane: makeLegend(inactiveScale,
+    [450000, 1500000, 4500000, 13500000, 26000000, 250000000]),
+  earthquake: makeLegend(inactiveScale,
+    [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000]),
+  flood: makeLegend(inactiveScale,
+    [26000000, 47600000, 69200000, 90800000, 112400000, 134000000])}
+
+export const hoverLegend = makeLegend(hoverScale,
+  [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])

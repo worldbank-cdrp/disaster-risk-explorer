@@ -4,11 +4,31 @@ import { } from '../actions'
 
 const Results = React.createClass({
   propTypes: {
+    data: React.PropTypes.object
   },
-  render: function () {
+
+  deleteThis: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Nicaragua <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+        <h2 className='results__title'>Title</h2>
+          <div className='results__container'>
+            <h3 className='subtitle results__subtitle'>This is a dummy title</h3>
+            <p>More dummy content</p>
+          </div>
+      </section>
+    )
+  },
+
+  render: function () {
+    let d = this.props.data
+    if (d === null) {
+      return this.deleteThis()
+    }
+
+    return (
+      <section className='results'>
+        <h2 className='results__title'>{d.Country} <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+          <pre>{JSON.stringify(d, null, '  ')}</pre>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'>Exposure</h3>
             <dl className='stats'>
