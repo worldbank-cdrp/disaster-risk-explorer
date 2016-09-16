@@ -21,7 +21,7 @@ const Axis = React.createClass({
         break
       case 'left':
         transform = `translate(0,${margin.top})`
-        dy = 0
+        dy = '0.5em'
         break
       case 'bottom':
       default:

@@ -66,7 +66,16 @@
 	height: 150px;
 }
 
-.chart__bar{
+.chart {
+	.zebra {
+		opacity: 0.5;
+		&--odd {
+			fill: steelblue;
+		}
+		&--even {
+			fill: none;
+		}
+	}
 }
 
 .chart__axis-title{

@@ -36,6 +36,60 @@ const BarColumnChart = React.createClass({
     window.removeEventListener('resize', this.onWindowResize)
   },
 
+  renderBgLines: function (yScale, yLabels) {
+    const { width } = this.state
+    const {top, right, left} = this.props.margin
+    const w = width - left - right
+
+    let rects = yLabels.map((o, i) => {
+      if (i === 0) return null
+      let currY = yScale(o)
+      let prevY = yScale(yLabels[i - 1])
+      return <rect
+        key={i}
+        x={0}
+        y={currY}
+        width={w}
+        height={prevY - currY}
+        className={i % 2 ? 'zebra--even' : 'zebra--odd'}
+      />
+    })
+
+    return (
+      <g transform={`translate(${left}, ${top})`} className='zebra'>
+        {rects}
+      </g>
+    )
+
+    // return
+    // const { width, height } = this.state
+    // const {top, right, bottom, left} = this.props.margin
+    // const w = width - left - right
+    // const h = height - top - bottom
+
+    // const lineHeight = h / lines
+
+    // let rects = []
+    // for (let i = 0; i < lines; i++) {
+    //   rects.push(
+    //     <rect
+    //       key={i}
+    //       x={0}
+    //       y={i * lineHeight}
+    //       width={w}
+    //       height={lineHeight}
+    //       className={i % 2 ? 'zebra--even' : 'zebra--odd'}
+    //     />
+    //   )
+    // }
+
+    // return (
+    //   <g transform={`translate(${left}, ${top})`} className='zebra'>
+    //     {rects}
+    //   </g>
+    // )
+  },
+
   render: function () {
     const { width, height } = this.state
     const { data, margin, yTitle, xTitle } = this.props
@@ -61,6 +115,7 @@ const BarColumnChart = React.createClass({
     return (
       <div className='chart-container' ref='chartContainer'>
         <svg className='chart' width={width} height={height} ref='svg'>
+          {this.renderBgLines(yScale, yLabels)}
           <Axis
             scale={xScale}
             labels={xLabels}
@@ -84,7 +139,7 @@ const BarColumnChart = React.createClass({
                 className='chart__bar'
                 y={yScale(d.value)}
                 x={xScale(d.name)}
-                fill={'rgba(0,0,0,0.4'} 
+                fill={'rgba(0,0,0,0.4'}
                 height={innerHeight - yScale(d.value)}
                 width={rectWidth}
               />
