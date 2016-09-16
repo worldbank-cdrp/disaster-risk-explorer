@@ -13,7 +13,6 @@
 .legend__scale {
 	height: 2em;
 	margin: 0;
-	background-color: yellow;
 	margin: 1em 1em 0;
 }
 
@@ -23,4 +22,19 @@
 	color: #aaa;
 	line-height: 1.25em;
 	padding: 1.25em;
+}
+
+.legend__category {
+  display: block;
+  float: left;
+  height: 100%;
+}
+
+.legend__labels {
+	float: left;
+  font-size: 0.675rem;
+	font-weight: 600;
+  &:last-child {
+		float:right;
+  }
 }
