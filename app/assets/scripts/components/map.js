@@ -12,7 +12,8 @@ export const Map = React.createClass({
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
 
-    mapSource: React.PropTypes.object
+    mapSource: React.PropTypes.object,
+    selected: React.PropTypes.object
   },
 
   getLegendStops: function (risk) {
@@ -69,6 +70,16 @@ export const Map = React.createClass({
       this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName)
     }
 
+    const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
+    const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
+    if (prevId !== nextId) {
+      if (nextId !== null) {
+        this._selectFeature(nextProps.selected)
+      } else {
+        this._deselectFeature()
+      }
+    }
+
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
   },
@@ -79,20 +90,18 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
-      this._selectFeature(features[0])
+      this.props.dispatch(updateSelected(features[0].properties))
     } else {
-      this._deselectFeature()
+      this.props.dispatch(updateSelected(null))
     }
   },
 
-  _selectFeature: function (feature) {
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
-    this.props.dispatch(updateSelected(feature.properties))
+  _selectFeature: function (featureProps) {
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
   _deselectFeature: function () {
     this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
-    this.props.dispatch(updateSelected(null))
   },
 
   _mouseMove: function (e) {
