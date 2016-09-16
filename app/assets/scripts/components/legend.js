@@ -35,8 +35,8 @@ const Legend = React.createClass({
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
+          <figcaption className='legend__caption'>The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.</figcaption>
         </figure>
-        <figcaption className='legend__caption'>The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.</figcaption>
       </section>
     )
   }
