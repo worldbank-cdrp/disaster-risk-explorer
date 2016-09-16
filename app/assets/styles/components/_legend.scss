@@ -30,10 +30,12 @@
   height: 100%;
 }
 
-.legend__labels {
+.legend__label {
+	display: block;
 	float: left;
   font-size: 0.675rem;
 	font-weight: 600;
+	text-align: center;
   &:last-child {
 		float:right;
   }
