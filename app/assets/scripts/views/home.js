@@ -23,7 +23,7 @@ var Home = React.createClass({
     mapSource: React.PropTypes.object,
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.number,
-    selected: React.PropTypes.number
+    selected: React.PropTypes.object
   },
 
   // {/* Example: remove */}
@@ -39,7 +39,6 @@ var Home = React.createClass({
         <Map
           mapSource={mapSource}
           dataSelection={dataSelection}
-          hovered={this.props.hovered}
           selected={this.props.selected}
           dispatch={this.props.dispatch} />
         <Selection
@@ -47,7 +46,9 @@ var Home = React.createClass({
           mapSource={this.props.mapSource}
           dispatch={this.props.dispatch} />
         <Legend dataSelection={dataSelection}/>
-        <Results />
+        <Legend />
+        <Results
+          data={this.props.selected} />
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 
 import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
-// import { updateHovered, updateSelected } from '../actions'
+import { updateSelected } from '../actions'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -12,8 +12,7 @@ export const Map = React.createClass({
     dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
-    hovered: React.PropTypes.number,
-    selected: React.PropTypes.number
+    selected: React.PropTypes.object
   },
 
   getLegendStops: function (risk) {
@@ -70,6 +69,16 @@ export const Map = React.createClass({
       this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName)
     }
 
+    const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
+    const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
+    if (prevId !== nextId) {
+      if (nextId !== null) {
+        this._selectFeature(nextProps.selected)
+      } else {
+        this._deselectFeature()
+      }
+    }
+
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
   },
@@ -80,21 +89,18 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
-      console.log(features[0].properties)
-      this._selectFeature(features[0])
+      this.props.dispatch(updateSelected(features[0].properties))
     } else {
-      this._deselectFeature()
+      this.props.dispatch(updateSelected(null))
     }
   },
 
-  _selectFeature: function (feature) {
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
-    // this.props.dispatch(updateSelected(feature))
+  _selectFeature: function (featureProps) {
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
   _deselectFeature: function () {
     this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
-    // this.props.dispatch(updateSelected())
   },
 
   _mouseMove: function (e) {
@@ -113,12 +119,10 @@ export const Map = React.createClass({
 
   _highlightFeature: function (feature) {
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
-    // this.props.dispatch(updateHovered(feature))
   },
 
   _unhighlightFeature: function () {
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
-    // this.props.dispatch(updateHovered())
   },
 
   _toggleSource: function (prevSource, nextSource) {
