@@ -1,88 +1,88 @@
 .results {
-	position: absolute;
-	top: $page-header-y;
-	right: 1em;
-	z-index: 100;
-	@include debug();
-	@include containter();
+  position: absolute;
+  top: $page-header-y;
+  right: 1em;
+  z-index: 100;
+  @include debug();
+  @include containter();
 }
 
 .results__title {
-	@include section_header;
+  @include section_header;
 }
 
 .results__subtitle{
-	font-size:0.8em;
-	float: initial;
-	clear: both;
+  font-size:0.8em;
+  float: initial;
+  clear: both;
 }
 
 .results__container{
-	margin: 0.5em 1em 13.3em 1em;
+  margin: 0.5em 1em 13.3em 1em;
 }
 
 .results__download{
-	position: absolute;
-	right: 1em;
-	top: 10px;
-	i{
-		margin-right: 10px;
-	}
+  position: absolute;
+  right: 1em;
+  top: 10px;
+  i{
+    margin-right: 10px;
+  }
 }
 
 .stats{
 }
 
 .stat__attribute{
-	font-size: 0.85em;
-	clear: both;
-	float: left;
+  font-size: 0.85em;
+  clear: both;
+  float: left;
 }
 
 .stat__value{
-	font-size: 0.85em;
-	font-weight: 600;
-	float: right;
+  font-size: 0.85em;
+  font-weight: 600;
+  float: right;
 }
 
 .stat__value--last{
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .stat__value--chart {
-	width:100%;
-	height: 100px;
-	background-color: #eee;
+  width:100%;
+  height: 100px;
+  background-color: #eee;
 }
 
 .stat__value--chart {
-	margin-bottom:1.5em;
+  margin-bottom:1.5em;
 }
 
 .calculator__container {
-	background-color: #eee;
-	clear: both;
-	height: 174px;
-	border-radius: 8px;
-	bottom: 8px;
-	left: 8px;
-	width: 320px;
-	padding: 8px;
-	position: absolute;
+  background-color: #eee;
+  clear: both;
+  height: 174px;
+  border-radius: 8px;
+  bottom: 8px;
+  left: 8px;
+  width: 320px;
+  padding: 8px;
+  position: absolute;
 }
 
 .results__divider {
-	width:100%;
-	background-color: lighten($secondary-color, 15);
-	height: 2px;
-	left:0;
-	position: absolute;
+  width:100%;
+  background-color: lighten($secondary-color, 15);
+  height: 2px;
+  left:0;
+  position: absolute;
 }
 
 .results__divider--first {
-	top:120px;
+  top:120px;
 }
 
 .results__divider--second {
-	top: 350px;
+  top: 350px;
 }
