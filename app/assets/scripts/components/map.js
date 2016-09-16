@@ -2,7 +2,6 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 
 import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
-// import { updateHovered, updateSelected } from '../actions'
 import { updateSelected } from '../actions'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
@@ -120,12 +119,10 @@ export const Map = React.createClass({
 
   _highlightFeature: function (feature) {
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
-    // this.props.dispatch(updateHovered(feature))
   },
 
   _unhighlightFeature: function () {
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
-    // this.props.dispatch(updateHovered())
   },
 
   _toggleSource: function (prevSource, nextSource) {
