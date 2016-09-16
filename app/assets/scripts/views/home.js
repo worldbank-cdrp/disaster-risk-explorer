@@ -46,7 +46,6 @@ var Home = React.createClass({
           mapSource={this.props.mapSource}
           dispatch={this.props.dispatch} />
         <Legend dataSelection={dataSelection}/>
-        <Legend />
         <Results
           data={this.props.selected} />
       </div>
