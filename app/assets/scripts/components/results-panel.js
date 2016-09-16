@@ -28,40 +28,38 @@ const Results = React.createClass({
             <h3 className='subtitle results__subtitle'>Exposure</h3>
             <dl className='stats'>
               <dt className='stat__attribute'>Building Stock Exposure</dt>
-              <dd className='stat__value stat__value--last'>$19 Billion</dd>
+              <dd className='stat__value'>$19 Billion</dd>
             </dl>
 
             <div className='results__divider results__divider--first'></div>
 
-            <h3 className='subtitle results__subtitle'>Loss</h3>
+            <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
             <dl className='stats'>
-              <dt className='stat__attribute'>Probable Maximum Loss</dt>
-              <dd className='stat__value'>$9.5 Billion</dd>
               <dt className='stat__attribute'>Average Annual Loss</dt>
               <dd className='stat__value'>$10 Billion</dd>
-              <dt className='stat__attribute'>Average Annual Loss over time</dt>
+              <dt className='stat__attribute'>Probable loss over time</dt>
               <dd className='stat__value stat__value--chart stat__value--last'>
                 <BarChart
                   data={data}
                   margin={margin}
-                  yTitle='Y title'
-                  xTitle='X title'
+                  yTitle='Millions USD$'
+                  xTitle='Return Period'
                 />
               </dd>
             </dl>
 
             <div className='results__divider results__divider--second'></div>
 
-            <h3 className='subtitle results__subtitle'>Risk</h3>
+            <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
             <dl className='stats'>
-              <dt className='stat__attribute'>Average Annual Loss</dt>
-              <div className='stat__value stat__value--last'>$10 Billion</div>
+              <dt className='stat__attribute'>Building Type most at Risk</dt>
+              <div className='stat__value'>Adobe and Wood</div>
             </dl>
 
             <article className='calculator__container'>
               <h3 className='subtitle results__subtitle'>Building Conversion Calculator</h3>
               <dl className='stats'>
-                <div className='stat__attribute'>Convert <span className='convert__dropdown'></span> to <span className='convert__dropdown'></span></div>
+                <div className='stat__attribute'>Convert <input type='dropdown' className='convert__dropdown'></input> to <span className='convert__dropdown'></span></div>
                 <dt className='stat__attribute'>Percent Converted</dt>
                 <dd className='stat__value'>10%</dd>
                 <dt className='stat__attribute'>Conversion Cost</dt>
