@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl'
 
 import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
 // import { updateHovered, updateSelected } from '../actions'
+import { updateSelected } from '../actions'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -11,9 +12,7 @@ export const Map = React.createClass({
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
 
-    mapSource: React.PropTypes.object,
-    hovered: React.PropTypes.number,
-    selected: React.PropTypes.number
+    mapSource: React.PropTypes.object
   },
 
   getLegendStops: function (risk) {
@@ -80,7 +79,6 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
-      console.log(features[0].properties)
       this._selectFeature(features[0])
     } else {
       this._deselectFeature()
@@ -89,12 +87,12 @@ export const Map = React.createClass({
 
   _selectFeature: function (feature) {
     this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
-    // this.props.dispatch(updateSelected(feature))
+    this.props.dispatch(updateSelected(feature.properties))
   },
 
   _deselectFeature: function () {
     this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
-    // this.props.dispatch(updateSelected())
+    this.props.dispatch(updateSelected(null))
   },
 
   _mouseMove: function (e) {
