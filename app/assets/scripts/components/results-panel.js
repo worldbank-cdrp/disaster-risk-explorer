@@ -9,11 +9,10 @@ const Results = React.createClass({
 
   render: function () {
     let data = [
-      {value: 10, name: 'Historical'},
-      {value: 20, name: '25y'},
-      {value: 45, name: '50y'},
-      {value: 33, name: '100y'},
-      {value: 81, name: '200y'}
+      {value: 20, name: '25'},
+      {value: 45, name: '50'},
+      {value: 66, name: '100'},
+      {value: 88, name: '200'}
     ]
     let margin = {
       top: 16,
@@ -42,7 +41,7 @@ const Results = React.createClass({
                 <BarChart
                   data={data}
                   margin={margin}
-                  yTitle='Millions USD$'
+                  yTitle='Millions (US$)'
                   xTitle='Return Period'
                 />
               </dd>

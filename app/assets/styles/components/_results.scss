@@ -53,11 +53,10 @@
 }
 
 .stat__value--last{
-	margin-bottom: 1em;
 }
 
 .stat__value--chart {
-	background-color: #eee;
+	/*background-color: #eee;*/
 	float: none;
 	clear: left;
 }
@@ -67,6 +66,18 @@
 	height: 150px;
 }
 
+.chart__bar{
+}
+
+.chart__axis-title{
+	font-size: 0.9em;
+	font-weight: 300;
+}
+
+.chart__axis-ticks{
+	font-size: 0.8em;
+	font-weight: 300;
+}
 
 .calculator__container {
 	background-color: #eee;

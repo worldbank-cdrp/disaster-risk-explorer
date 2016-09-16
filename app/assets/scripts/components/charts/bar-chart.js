@@ -49,13 +49,13 @@ const BarColumnChart = React.createClass({
     const dataValues = data.map(a => a.value)
 
     const ordinalScale = scaleBand()
-      .paddingInner(0.5)
+      .paddingInner(0.7)
       .paddingOuter(0.1)
 
     let xScale = ordinalScale.rangeRound([0, innerWidth]).domain(dataNames)
     let xLabels = dataNames
     let yScale = scaleLinear().range([innerHeight, 0]).domain([0, _.max(dataValues)])
-    let yLabels = yScale.ticks(5)
+    let yLabels = yScale.ticks(3)
     let rectWidth = xScale.bandwidth()
 
     return (
@@ -81,25 +81,28 @@ const BarColumnChart = React.createClass({
             {data.map(d => {
               return <rect
                 key={d.name}
-                className='bar'
+                className='chart__bar'
                 y={yScale(d.value)}
                 x={xScale(d.name)}
+                fill={'rgba(0,0,0,0.4'} 
                 height={innerHeight - yScale(d.value)}
                 width={rectWidth}
               />
             })}
           </g>
           <text
-            x={-(height / 2)}
+            x={-(height / 2) + 24}
             y={4}
             dy={'1em'}
             transform={'rotate(-90)'}
             textAnchor={'middle'}
+            className={'chart__axis-title'}
             >{yTitle}</text>
           <text
             x={(width - margin.left - margin.right) / 2 + margin.left}
-            y={height - 8}
+            y={height - 14}
             textAnchor={'middle'}
+            className={'chart__axis-title'}
             >{xTitle}</text>
         </svg>
       </div>
