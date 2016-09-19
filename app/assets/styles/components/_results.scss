@@ -1,20 +1,20 @@
 .results {
-	position: absolute;
-	top: $page-header-y;
-	right: 1em;
-	z-index: 100;
-	@include debug();
-	@include containter();
+  position: absolute;
+  top: $page-header-y;
+  right: 1em;
+  z-index: 100;
+  @include debug();
+  @include containter();
 }
 
 .results__title {
-	@include section_header;
+  @include section_header;
 }
 
 .results__subtitle{
-	font-size:0.8em;
-	float: initial;
-	clear: both;
+  font-size:0.8em;
+  float: initial;
+  clear: both;
 }
 
 .results__subtitle--secondary{
@@ -22,16 +22,16 @@
 }
 
 .results__container{
-	margin: 0.5em 1em 11.5em 1em;
+  margin: 0.5em 1em 13.3em 1em;
 }
 
 .results__download{
-	position: absolute;
-	right: 1em;
-	top: 10px;
-	i{
-		margin-right: 10px;
-	}
+  position: absolute;
+  right: 1em;
+  top: 10px;
+  i{
+    margin-right: 10px;
+  }
 }
 
 .stats{
@@ -41,24 +41,23 @@
 }
 
 .stat__attribute{
-	font-size: 0.85em;
-	clear: both;
-	float: left;
+  font-size: 0.85em;
+  clear: both;
+  float: left;
 }
 
 .stat__value{
-	font-size: 0.85em;
-	font-weight: 600;
-	float: right;
+  font-size: 0.85em;
+  font-weight: 600;
+  float: right;
 }
 
-.stat__value--last{
-}
 
 .stat__value--chart {
 	/*background-color: #eee;*/
 	float: none;
 	clear: left;
+  margin-bottom:1.5em;
 }
 
 .chart-container {
@@ -86,24 +85,33 @@
 .chart__axis-ticks{
 	font-size: 0.8em;
 	font-weight: 300;
+  margin-bottom: 1em;
 }
 
 .calculator__container {
-	background-color: #eee;
-	clear: both;
-	height: 174px;
-	border-radius: 8px;
-	bottom: 8px;
-	left: 8px;
-	width: 320px;
-	padding: 8px;
-	position: absolute;
+  background-color: #eee;
+  clear: both;
+  height: 174px;
+  border-radius: 8px;
+  bottom: 8px;
+  left: 8px;
+  width: 320px;
+  padding: 8px;
+  position: absolute;
 }
 
 .results__divider {
-	width:100%;
-	background-color: lighten($secondary-color, 15);
-	height: 2px;
-	left:0;
-	position: absolute;
+  width:100%;
+  background-color: lighten($secondary-color, 15);
+  height: 2px;
+  left:0;
+  position: absolute;
+}
+
+.results__divider--first {
+  top:120px;
+}
+
+.results__divider--second {
+  top: 350px;
 }
