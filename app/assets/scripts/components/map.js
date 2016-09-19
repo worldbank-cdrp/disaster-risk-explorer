@@ -31,7 +31,7 @@ export const Map = React.createClass({
       container: this.refs.map,
       style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
-      zoom: 5.5,
+      zoom: 5.75,
       minZoom: 2
     })
 
