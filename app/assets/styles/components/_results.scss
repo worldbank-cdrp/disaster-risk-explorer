@@ -1,10 +1,11 @@
 .results {
-  position: absolute;
-  top: $page-header-y;
-  right: 1em;
-  z-index: 100;
-  @include debug();
-  @include containter();
+	position: absolute;
+	top: $page-header-y;
+	right: 1em;
+	z-index: 100;
+	line-height:1.6em;
+	@include debug();
+	@include containter();
 }
 
 .results__title {
@@ -18,11 +19,11 @@
 }
 
 .results__subtitle--secondary{
-	margin-top: 1em;
+	margin-top: 0.5em;
 }
 
 .results__container{
-  margin: 0.5em 1em 13.3em 1em;
+	padding: 0.5em 1em 0.4em 1em;
 }
 
 .results__download{
@@ -36,7 +37,7 @@
 
 .stats{
 	clear: both;
-  overflow: auto;
+  overflow: hidden;
   margin-bottom:4px;
 }
 
@@ -57,7 +58,6 @@
 	/*background-color: #eee;*/
 	float: none;
 	clear: left;
-  margin-bottom:1.5em;
 }
 
 .chart-container {
@@ -69,7 +69,7 @@
 	.zebra {
 		opacity: 0.5;
 		&--odd {
-			fill: steelblue;
+			fill: #ddd;
 		}
 		&--even {
 			fill: none;
@@ -88,30 +88,24 @@
   margin-bottom: 1em;
 }
 
+.chart__bar{
+	fill: #aaa;
+	stroke: #777;
+}
+
 .calculator__container {
   background-color: #eee;
   clear: both;
-  height: 174px;
   border-radius: 8px;
-  bottom: 8px;
   left: 8px;
-  width: 320px;
+  width: 340px;
   padding: 8px;
-  position: absolute;
+  margin: 0 -10px;
 }
 
 .results__divider {
-  width:100%;
-  background-color: lighten($secondary-color, 15);
-  height: 2px;
-  left:0;
-  position: absolute;
-}
-
-.results__divider--first {
-  top:120px;
-}
-
-.results__divider--second {
-  top: 350px;
+	background-color: lighten($secondary-color, 15);
+	height: 2px;
+	left:0;
+	margin: 0 -1em 0 -1em;
 }

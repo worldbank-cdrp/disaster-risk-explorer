@@ -27,6 +27,7 @@ const Results = React.createClass({
     }
 
     let data = [
+      {value: 10, name: '10'},
       {value: 20, name: '25'},
       {value: 45, name: '50'},
       {value: 66, name: '100'},
@@ -42,10 +43,11 @@ const Results = React.createClass({
     return (
       <section className='results'>
         <h2 className='results__title'>{d.Country} <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
-          <pre>{JSON.stringify(d, null, '  ')}</pre>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'>Exposure</h3>
             <dl className='stats'>
+              <dt className='stat__attribute'>GDP</dt>
+              <dd className='stat__value'>$63.79 billion</dd>
               <dt className='stat__attribute'>Building Stock Exposure</dt>
               <dd className='stat__value'>$19 Billion</dd>
             </dl>

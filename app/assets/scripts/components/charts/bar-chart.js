@@ -139,7 +139,6 @@ const BarColumnChart = React.createClass({
                 className='chart__bar'
                 y={yScale(d.value)}
                 x={xScale(d.name)}
-                fill={'rgba(0,0,0,0.4'}
                 height={innerHeight - yScale(d.value)}
                 width={rectWidth}
               />
