@@ -65,17 +65,13 @@ export function DataSelectionFactory (availableParams) {
 
 let availableParams = {
   risk: [
-    {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'},
-    {key: 'flood', value: 'Flood'}
+    {key: 'Earthquake', value: 'Earthquake'},
+    {key: 'Hurricane', value: 'Hurricane'}
   ],
-  year: [
-    {key: '2000', value: '2000'},
-    {key: '2001', value: '2001'}
-  ],
-  building: [
-    {key: 'retrofitted', value: 'Retrofitted'},
-    {key: 'opt2', value: 'Normal'}
+  display: [
+    {key: 'Exposure', value: 'Exposure'},
+    {key: 'Loss', value: 'Loss'},
+    {key: 'Risk', value: 'Risk'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},

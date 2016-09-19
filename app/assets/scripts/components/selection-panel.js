@@ -58,15 +58,9 @@ const Selection = React.createClass({
           </dd>
         </dl>
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Year</dt>
+          <dt className='subtitle selection__panel--attribute'>Displayed As</dt>
           <dd className='selection__panel--drop'>
-            {this.renderDropdown('year', dataSelection.year.getActive(), dataSelection.year.getOptions())}
-          </dd>
-        </dl>
-        <dl className='selection__panel selection__panel--split'>
-          <dt className='subtitle selection__panel--attribute'>Building exposure</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('building', dataSelection.building.getActive(), dataSelection.building.getOptions())}
+            {this.renderDropdown('display', dataSelection.year.getActive(), dataSelection.display.getOptions())}
           </dd>
         </dl>
         <dl className='selection__panel'>
