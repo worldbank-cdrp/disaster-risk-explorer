@@ -1,26 +1,43 @@
 .legend {
-	position: absolute;
-	bottom: 2em;
-	margin-left: 1em;
-	z-index: 100;
-	@include containter;
+  position: absolute;
+  bottom: 2em;
+  margin-left: 1em;
+  z-index: 100;
+  @include containter;
 }
 
 .legend__title {
-	@include section_header;
+  @include section_header;
 }
 
 .legend__scale {
-	height: 2em;
-	margin: 0;
-	background-color: yellow;
-	margin: 1em 1em 0;
+  height: 2em;
+  margin: 0;
+  margin: 1em 1em 0;
 }
 
 .legend__caption{
-	font-family: 'Hind';
-	font-size: 0.8em;
-	color: #aaa;
-	line-height: 1.25em;
-	padding: 1.25em;
+  float: left;
+  font-family: 'Hind';
+  font-size: 0.8em;
+  color: #aaa;
+  line-height: 1.25em;
+  padding: 1em;
+}
+
+.legend__category {
+  display: block;
+  float: left;
+  height: 100%;
+}
+
+.legend__label {
+  display: block;
+ float: left;
+  font-size: 0.675rem;
+  font-weight: 600;
+  text-align: center;
+  &:last-child {
+    float:right;
+  }
 }
