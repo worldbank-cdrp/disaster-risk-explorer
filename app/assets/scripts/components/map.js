@@ -32,7 +32,10 @@ export const Map = React.createClass({
       style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
       zoom: 5.75,
-      minZoom: 2
+      minZoom: 2,
+      attributionControl: {
+          position: 'bottom-left'
+      }
     })
 
     map.on('load', () => {
