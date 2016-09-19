@@ -12,7 +12,7 @@ const Axis = React.createClass({
   },
 
   render: function () {
-    const { scale, labels, orientation, height, width, margin } = this.props
+    const { scale, labels, orientation, height, margin } = this.props
     let transform, dy
     switch (orientation) {
       case 'top':
@@ -49,12 +49,3 @@ const Axis = React.createClass({
 })
 
 export default Axis
-
-       // {orientation === 'bottom'
-       //   ? <line
-       //      x1={0}
-       //      y1={4}
-       //      x2={width - margin.left - margin.right}
-       //      y2={4}
-       //      stroke={'black'} />
-       //    : null }
