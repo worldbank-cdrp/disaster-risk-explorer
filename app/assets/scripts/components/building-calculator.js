@@ -44,7 +44,7 @@ const Results = React.createClass({
           <div className='calculator__divider-broken-label'>are converted into</div>
           <div className='calculator__divider-broken right'></div>
           <div className='calculator__description bottom'>
-            Wood braced frame with load-bearing infill wall system single family - on stilts
+            Waffle Houses just stacked one on top of the other
           </div>
           <div className='calculator__divider'></div>
         </div>
