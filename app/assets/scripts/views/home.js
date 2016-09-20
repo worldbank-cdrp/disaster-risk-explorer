@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import DataSelection from '../utils/data-selection'
 import { mapSources } from '../constants'
 
-// import About from '../components/About-modal.js'
+import About from '../components/about-modal.js'
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
@@ -24,7 +24,9 @@ var Home = React.createClass({
     mapSource: React.PropTypes.object,
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.number,
-    selected: React.PropTypes.object
+    selected: React.PropTypes.object,
+
+    modalAbout: React.PropTypes.object
   },
 
   // {/* Example: remove */}
@@ -36,7 +38,7 @@ var Home = React.createClass({
     const mapSource = mapSources[dataSelection.admin.getActive().key]
     return (
       <div>
-        <Header />
+        <Header dispatch={this.props.dispatch} />
         <Map
           mapSource={mapSource}
           dataSelection={dataSelection}
@@ -49,6 +51,9 @@ var Home = React.createClass({
         <Legend dataSelection={dataSelection}/>
         <Results
           data={this.props.selected} />
+        <About
+          dispatch={this.props.dispatch}
+          visible={this.props.modalAbout.visible} />
       </div>
     )
   }
@@ -61,7 +66,8 @@ function mapStateToProps (state) {
   return {
     mapSource: state.map.mapSource,
     hovered: state.map.hovered,
-    selected: state.map.selected
+    selected: state.map.selected,
+    modalAbout: state.modalAbout
   }
 }
 
