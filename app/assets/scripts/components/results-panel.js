@@ -97,5 +97,3 @@ const Results = React.createClass({
 })
 
 export default Results
-
-// `onClick={() => this._toggleSource('admin0')}` or `onClick={this._toggleSource.bind(null, 'admin0')}`

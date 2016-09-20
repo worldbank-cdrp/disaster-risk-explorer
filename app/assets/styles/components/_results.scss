@@ -97,14 +97,24 @@
 }
 
 .calculator__link-container {
-  font-size: 0.85em;
-  background-color: #eee;
-  clear: both;
-  border-radius: 8px;
-  left: 8px;
-  width: 340px;
-  padding: 8px 8px 8px 14px;
-  margin: 0 -10px;
+  a {
+    display: block;
+    font-size: 0.85em;
+    background-color: lighten(#aaa, 27);
+    clear: both;
+    border-radius: 3px;
+    left: 8px;
+    width: 340px;
+    padding: 4px 4px 3px 10px;
+    margin: 0 -10px;
+    color: #aaa;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      background-color: lighten(#aaa, 20);
+      color: darken(#aaa, 15)
+    }
+  }
 }
 
 .results__divider {

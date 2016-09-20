@@ -47,6 +47,18 @@ const Results = React.createClass({
             Waffle Houses just stacked one on top of the other
           </div>
           <div className='calculator__divider'></div>
+          <dl className='stats'>
+            <dt className='stat__attribute'>Conversion Cost</dt>
+            <dd className='stat__value'>10%</dd>
+            <dt className='stat__attribute'>Reduction of AAL</dt>
+            <dd className='stat__value'>$10 Billion</dd>
+            <dt className='stat__attribute'>Change in AAL for these buildings</dt>
+            <dd className='stat__value'>$10 Billion</dd>
+            <dt className='stat__attribute'>Change in overall AAL</dt>
+            <dd className='stat__value'>$10 Billion</dd>
+            <dt className='stat__attribute'>Flat rate years to break even</dt>
+            <dd className='stat__value stat__value--last stat__value--positive'>101</dd>
+          </dl>
         </div>
       </section>
     )
