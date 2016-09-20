@@ -13,17 +13,17 @@
   @include section_header;
 }
 
-.calculator__subtitle{
+.calculator__subtitle {
   font-size: 0.8em;
   float: initial;
   clear: both;
 }
 
-.calculator__container{
+.calculator__container {
   padding: 0.5em 1em 0.4em 1em;
 }
 
-.calculator__widget-container{
+.calculator__widget-container {
   clear: both;
   overflow: hidden;
   margin-bottom: 10px;
@@ -35,56 +35,57 @@
   float: left;
 }
 
-.calculator__radio{
+.calculator__radio {
   font-size: 0.85em;
   font-weight: 600;
   float: right;
+  margin-right: 0.75em;
   .inline{
     display: inline-block;
   }
-  .inline + .inline{
+  .inline + .inline {
     margin-left: 30px;
   }
-  .radio{
+  .radio {
     color:#aaa;
     font-size: 0.85em;
-    position:relative;
+    position: relative;
   }
-  .radio span{
-    position:relative;
-    padding-left:20px;
+  .radio span {
+    position: relative;
+    padding-left: 20px;
   }
-  .radio span:after{
+  .radio span:after {
     content:'';
-    width:15px;
-    height:15px;
-    border:3px solid;
-    position:absolute;
-    left:0;
-    top:1px;
-    border-radius:100%;
+    width: 15px;
+    height: 15px;
+    border: 3px solid;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    border-radius: 100%;
     box-sizing:border-box;
   }
-  .radio input[type="radio"]{
+  .radio input[type="radio"] {
     cursor: pointer;
-    position:absolute;
-    width:100%;
-    height:100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     z-index: 1;
     opacity: 0;
   }
-  .radio input[type="radio"]:checked + span{
-    color:#000;
+  .radio input[type="radio"]:checked + span {
+    color: #000;
   }
-  .radio input[type="radio"]:checked + span:before{
-    content:'';
-    width:5px;
-    height:5px;
-    position:absolute;
-    background-color:#000;
-    left:5px;
-    top:6px;
-    border-radius:100%;
+  .radio input[type="radio"]:checked + span:before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    background-color: #000;
+    left: 5px;
+    top: 6px;
+    border-radius: 100%;
   }
 }
 
@@ -95,7 +96,7 @@
 }
 
 .noUi-horizontal {
-  height: 5px;
+  height: 1px;
 }
 
 .noUi-horizontal .noUi-handle {
@@ -114,13 +115,62 @@
   font-size: 10px;
   margin-top: 0;
   padding-top: 0;
-  line-height: 14px;
+  line-height: 16px;
 }
 
 .noUi-marker-horizontal.noUi-marker-large {
-  height: 8px;
+  height: 12px;
+}
+.noUi-marker-horizontal.noUi-marker {
+  height: 10px;
 }
 
 .noUi-pips-horizontal {
-  padding-top: 7px;
+  margin-top: -15px;
+}
+
+.calculator__description {
+  width: 90%;
+  margin: 1em auto 1.5em auto;
+  font-size: 0.85em;
+  font-weight: 500;
+  line-height: 1.5em;
+  color: #aaa;
+  &.top {
+
+  }
+  &.bottom {
+    margin-top: 3em;
+  }
+}
+
+.calculator__divider {
+  background-color: lighten($secondary-color, 15);
+  height: 2px;
+  left:0;
+  margin: 0 -1em 1em -1em;
+}
+
+.calculator__divider-broken {
+  border: 0;
+  height: 2px;
+  width: 33%;
+  background-color: lighten($secondary-color, 15);
+  &.left {
+    margin-left: -1em;
+    float: left;
+  }
+  &.right {
+    margin-right: -1em;
+    float: right;
+  }
+}
+
+.calculator__divider-broken-label {
+  float: left;
+  width: calc(34% + 3em);
+  font-size: .8em;
+  color: #aaa;
+  line-height: 0.1em;
+  text-align: center;
 }

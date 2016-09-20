@@ -31,12 +31,22 @@ const Results = React.createClass({
             <dd className='calculator__slider'>
             <Nouislider
               range={{min: 0, max: 100}}
-              start={[70]}
+              start={[40]}
               step={5}
-              pips={{mode: 'range', density: 3}}
+              pips={{mode: 'range', density: 20}}
             />
             </dd>
           </dl>
+          <div className='calculator__description top'>
+            Wood braced frame with load-bearing infill wall system single family - on stilts
+          </div>
+          <div className='calculator__divider-broken left'></div>
+          <div className='calculator__divider-broken-label'>are converted into</div>
+          <div className='calculator__divider-broken right'></div>
+          <div className='calculator__description bottom'>
+            Wood braced frame with load-bearing infill wall system single family - on stilts
+          </div>
+          <div className='calculator__divider'></div>
         </div>
       </section>
     )
