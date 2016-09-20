@@ -1,20 +1,30 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
-import chroma from 'chroma-js'
 import { render } from 'react-dom'
 import _ from 'lodash'
 
-import { updateHovered, updateSelected } from '../actions'
+import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
 export const Map = React.createClass({
   propTypes: {
-    mapData: React.PropTypes.string,
-    hovered: React.PropTypes.number,
-    selected: React.PropTypes.number,
-    dispatch: React.PropTypes.func
+    dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
+
+    mapSource: React.PropTypes.object,
+    selected: React.PropTypes.object
+  },
+
+  getLegendStops: function (risk) {
+    return inactiveLegends[risk]
+  },
+
+  getColorProperty: function (risk) {
+    return columnMap[risk]
   },
 
   _popup: null,
@@ -24,51 +34,62 @@ export const Map = React.createClass({
   //
 
   componentDidMount: function () {
-    this.mapData = this.props.mapData
-    this.mapCenter = [-94.1629, 34.5133]
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmJ1bWJhcmciLCJhIjoiWG1NN1BlYyJ9.nbifRhdBcN1K-mdtwwi0eQ'
+    this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+    this.mapCenter = [-86, 13]
+
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
       center: this.mapCenter,
-      zoom: 3,
+      zoom: 5.75,
       minZoom: 2
     })
 
     map.on('load', () => {
-      let inactiveScale = chroma.scale(['black', 'red'])
-      inactiveScale = [
-        [1, inactiveScale(0).hex()],
-        [2, inactiveScale(0.17).hex()],
-        [3, inactiveScale(0.34).hex()],
-        [4, inactiveScale(0.51).hex()],
-        [5, inactiveScale(0.68).hex()],
-        [6, inactiveScale(0.85).hex()],
-        [7, inactiveScale(1).hex()]
-      ]
-      let hoverScale = chroma.scale(['black', 'blue'])
-      hoverScale = [
-        [1, hoverScale(0).hex()],
-        [2, hoverScale(0.17).hex()],
-        [3, hoverScale(0.34).hex()],
-        [4, hoverScale(0.51).hex()],
-        [5, hoverScale(0.68).hex()],
-        [6, hoverScale(0.85).hex()],
-        [7, hoverScale(1).hex()]
-      ]
+      let risk = this.props.dataSelection.risk.getActive().key
+      Object.keys(mapSources).forEach((id) => {
+        const source = mapSources[id]
+        let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
 
-      this._addData('countries', 'ne_10m_admin_0_countries-1mfz41',
-                    'MAPCOLOR7', inactiveScale, ['!=', 'MAPCOLOR7', ''])
-      this._addData('countries-hover', 'ne_10m_admin_0_countries-1mfz41',
-                    'MAPCOLOR7', hoverScale, ['==', 'MAPCOLOR7', ''])
-      this._addOutlineData('countries-active', 'ne_10m_admin_0_countries-1mfz41', ['==', 'MAPCOLOR7', ''])
+        this._map.addSource(id, {
+          type: 'vector',
+          url: source.url
+        })
+
+        this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), this.getLegendStops(risk))
+        this._addLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, this.getColorProperty(risk), hoverLegend)
+        this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility)
+      })
+
       map.on('mousemove', this._mouseMove)
       map.on('click', this._mapClick)
     })
   },
 
   componentWillReceiveProps: function (nextProps) {
+    const prevSourceName = this.props.dataSelection.admin.getActive().key
+    const nextSourceName = nextProps.dataSelection.admin.getActive().key
+    if (nextSourceName !== prevSourceName) {
+      this._toggleSource(prevSourceName, nextSourceName)
+    }
 
+    const prevColorProp = this.props.dataSelection.risk.getActive().key
+    const nextColorProp = nextProps.dataSelection.risk.getActive().key
+    if (nextColorProp !== prevColorProp) {
+      this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName)
+    }
+    const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
+    const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
+    if (prevId !== nextId) {
+      if (nextId !== null) {
+        this._selectFeature(nextProps.selected)
+      } else {
+        this._deselectFeature()
+      }
+    }
+
+    // Done with switching. Update the active source
+    this.activeSource = mapSources[nextSourceName]
   },
 
   //
@@ -121,38 +142,34 @@ export const Map = React.createClass({
     })
   },
 
-  _addOutlineData: function (id, source, filter) {
-    this._map.addSource(id, {
-      type: 'vector',
-      url: this.mapData
-    })
-    this._map.addLayer({
-      'id': id,
-      'type': 'line',
-      'source': id,
-      'source-layer': source,
-      'filter': filter,
-      'paint': {
-        'line-color': 'rgb(255, 255, 255)',
-        'line-width': 3
-      }
-    })
-  },
-
   _mapClick: function (e) {
-    const features = this._map.queryRenderedFeatures(e.point, { layers: ['countries', 'countries-hover'] })
+    let sourceId = this.activeSource.id
+    const features = this._map.queryRenderedFeatures(e.point, {
+      layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
+    })
     if (features.length) {
-      this._selectFeature(features[0].properties['MAPCOLOR7'])
+      this.props.dispatch(updateSelected(features[0].properties))
     } else {
-      this._deselectFeature()
+      this.props.dispatch(updateSelected(null))
     }
   },
 
+  _selectFeature: function (featureProps) {
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
+  },
+
+  _deselectFeature: function () {
+    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
+  },
+
   _mouseMove: function (e) {
-    const features = this._map.queryRenderedFeatures(e.point, { layers: ['countries', 'countries-hover'] })
+    let sourceId = this.activeSource.id
+    const features = this._map.queryRenderedFeatures(e.point, {
+      layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
+    })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
-      this._highlightFeature(features[0].properties['MAPCOLOR7'])
+      this._highlightFeature(features[0].properties)
 
       if (this._showPopupThrottled === null) {
         this._showPopupThrottled = _.throttle(this._showPopup, 30)
@@ -165,24 +182,69 @@ export const Map = React.createClass({
     }
   },
 
-  _selectFeature: function (filter) {
-    this._map.setFilter('countries-active', ['==', 'MAPCOLOR7', filter])
-    this.props.dispatch(updateSelected(filter))
-  },
-
-  _deselectFeature: function () {
-    this._map.setFilter('countries-active', ['==', 'MAPCOLOR7', ''])
-    this.props.dispatch(updateSelected(0))
-  },
-
-  _highlightFeature: function (filter) {
-    this._map.setFilter('countries-hover', ['==', 'MAPCOLOR7', filter])
-    this.props.dispatch(updateHovered(filter))
+  _highlightFeature: function (feature) {
+    console.log(feature)
+    // this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
   },
 
   _unhighlightFeature: function () {
-    this._map.setFilter('countries-hover', ['==', 'MAPCOLOR7', ''])
-    this.props.dispatch(updateHovered(0))
+    // this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
+  },
+
+  _toggleSource: function (prevSource, nextSource) {
+    ['-inactive', '-hover', '-active'].forEach((type) => {
+      this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
+      this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
+    })
+  },
+
+  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName) {
+    // Remove old layers
+    ['-inactive', '-hover', '-active'].forEach((type) => {
+      this._map.removeLayer(prevSourceName + type)
+    })
+
+    const nextSource = mapSources[nextSourceName]
+    let id = nextSource.id
+
+    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp))
+    this._addLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', this.getColorProperty(nextColorProp), hoverLegend)
+    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible')
+  },
+
+  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale) {
+    this._map.addLayer({
+      'id': id,
+      'type': 'fill',
+      'source': source,
+      'source-layer': layer,
+      'filter': filter,
+      'layout': {
+        'visibility': visibility
+      },
+      'paint': {
+        'fill-color': {
+          property: colorProperty,
+          stops: colorScale
+        },
+        'fill-opacity': 0.8,
+        'fill-outline-color': 'rgb(140, 140, 160)'
+      }
+    })
+  },
+
+  _addOutlineLayer: function (id, layer, source, filter, visibility) {
+    this._map.addLayer({
+      'id': id,
+      'type': 'line',
+      'source': source,
+      'source-layer': layer,
+      'filter': filter,
+      'paint': {
+        'line-color': 'rgb(50, 50, 90)',
+        'line-width': 2
+      }
+    })
   },
 
   //
