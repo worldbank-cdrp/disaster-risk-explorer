@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { toggleCalculator } from '../actions'
+import { t } from '../utils/i18n'
 import BarChart from './charts/bar-chart'
 import BuildingCalculator from './building-calculator'
 
@@ -50,12 +51,12 @@ const Results = React.createClass({
       right: 16,
       bottom: 56
     }
-    // <pre>{JSON.stringify(d, null, '  ')}</pre>
+
     return (
       <div>
         {buildingCalculator}
         <section className='results'>
-          <h2 className='results__title'>{d.NAME_0} <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+          <h2 className='results__title'>{d.NAME_0}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
             <div className='results__container'>
               <h3 className='subtitle results__subtitle'>Exposure</h3>
               <dl className='stats'>
@@ -70,7 +71,7 @@ const Results = React.createClass({
               <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
               <dl className='stats'>
                 <dt className='stat__attribute'>Average Annual Loss</dt>
-                <dd className='stat__value'>${d.AAL}</dd>
+                <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
                 <dt className='stat__attribute'>Probable loss over time</dt>
                 <dd className='stat__value stat__value--chart stat__value--last'>
                   <BarChart
