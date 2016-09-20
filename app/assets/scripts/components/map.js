@@ -95,9 +95,13 @@ export const Map = React.createClass({
   //
   // Start helper methods
   //
+
+  // Will be created the first time is needed.
+  _showPopupThrottled: null,
+
   _showPopup: function (lngLat, feature) {
     let popupContent = document.createElement('div')
-    render(<MapPopup country={feature.properties.ADMIN} />, popupContent)
+    render(<MapPopup country={feature.properties.NAME_0} />, popupContent)
 
     if (this._popup === null) {
       this._popup = new mapboxgl.Popup({
@@ -112,9 +116,6 @@ export const Map = React.createClass({
       .setDOMContent(popupContent)
       .addTo(this._map)
   },
-
-  // Will be created the first time is needed.
-  _showPopupThrottled: null,
 
   _hidePopup: function () {
     this._popup !== null && this._popup.remove()
@@ -182,13 +183,12 @@ export const Map = React.createClass({
     }
   },
 
-  _highlightFeature: function (feature) {
-    console.log(feature)
-    // this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
+  _highlightFeature: function (featureProps) {
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
   _unhighlightFeature: function () {
-    // this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
   },
 
   _toggleSource: function (prevSource, nextSource) {
