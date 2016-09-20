@@ -11,7 +11,7 @@ const Legend = React.createClass({
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
-    let legend = inactiveLegends[activeRisk]
+    let legend = inactiveLegends[activeRisk.toLowerCase()]
 
     const legendBlocks = legend.map((cat, i) => {
       return (

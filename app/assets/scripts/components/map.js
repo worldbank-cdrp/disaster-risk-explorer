@@ -20,11 +20,11 @@ export const Map = React.createClass({
   },
 
   getLegendStops: function (risk) {
-    return inactiveLegends[risk]
+    return inactiveLegends[risk.toLowerCase()]
   },
 
   getColorProperty: function (risk) {
-    return columnMap[risk]
+    return columnMap[risk.toLowerCase()]
   },
 
   _popup: null,
