@@ -2,6 +2,7 @@ import React from 'react'
 
 import { toggleCalculator } from '../actions'
 import { t } from '../utils/i18n'
+
 import BarChart from './charts/bar-chart'
 import BuildingCalculator from './building-calculator'
 
@@ -11,11 +12,13 @@ const Results = React.createClass({
     dataSelection: React.PropTypes.object,
 
     calculatorOpen: React.PropTypes.bool,
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
+    conversion: React.PropTypes.string
   },
 
-  openCalculator: function () {
-    this.props.dispatch(toggleCalculator(true))
+  toggleCalculator: function () {
+    const visibility = !this.props.calculatorOpen
+    this.props.dispatch(toggleCalculator(visibility))
   },
 
   deleteThis: function () {
@@ -31,8 +34,6 @@ const Results = React.createClass({
   },
 
   render: function () {
-    const buildingCalculator = this.props.calculatorOpen ? <BuildingCalculator /> : ''
-
     let d = this.props.data
     if (d === null) {
       return this.deleteThis()
@@ -51,6 +52,13 @@ const Results = React.createClass({
       right: 16,
       bottom: 56
     }
+
+    const buildingCalculator = this.props.calculatorOpen
+      ? <BuildingCalculator
+          selectedCode={d.Country}
+          conversion={this.props.conversion}
+          dispatch={this.props.dispatch} />
+      : ''
 
     return (
       <div>
@@ -87,7 +95,7 @@ const Results = React.createClass({
 
               <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
               <article className='calculator__link-container'>
-                <a href='#' onClick={this.openCalculator}>Building Stock Conversion Calculator</a>
+                <a href='#' onClick={this.toggleCalculator}>Building Stock Conversion Calculator</a>
               </article>
 
             </div>

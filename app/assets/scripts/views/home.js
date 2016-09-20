@@ -24,7 +24,8 @@ var Home = React.createClass({
     hovered: React.PropTypes.number,
     selected: React.PropTypes.object,
     calculatorOpen: React.PropTypes.bool,
-    modalAbout: React.PropTypes.object
+    modalAbout: React.PropTypes.object,
+    conversion: React.PropTypes.string
   },
 
   render: function () {
@@ -44,12 +45,13 @@ var Home = React.createClass({
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource}
           dispatch={this.props.dispatch} />
-        <Legend dataSelection={dataSelection}/>
+        <Legend dataSelection={dataSelection} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
           calculatorOpen={this.props.calculatorOpen}
-          data={this.props.selected} />
+          data={this.props.selected}
+          conversion={this.props.conversion} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
@@ -67,7 +69,8 @@ function mapStateToProps (state) {
     hovered: state.map.hovered,
     selected: state.map.selected,
     calculatorOpen: state.resultsPanel.calculatorOpen,
-    modalAbout: state.modalAbout
+    modalAbout: state.modalAbout,
+    conversion: state.buildingCalculator.conversion
   }
 }
 

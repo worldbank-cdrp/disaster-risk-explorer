@@ -1,7 +1,7 @@
 import { TOGGLE_CALCULATOR } from '../actions'
 
 export const initialState = {
-  calculatorOpen: false
+  calculatorOpen: true
 }
 
 export default function reducer (state = initialState, action) {

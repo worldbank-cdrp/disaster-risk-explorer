@@ -44,7 +44,7 @@ export const Map = React.createClass({
       zoom: 5.75,
       minZoom: 2,
       attributionControl: {
-          position: 'bottom-left'
+        position: 'bottom-left'
       }
     })
 
