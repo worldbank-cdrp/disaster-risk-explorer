@@ -96,13 +96,14 @@
   stroke: #777;
 }
 
-.calculator__container {
+.calculator__link-container {
+  font-size: 0.85em;
   background-color: #eee;
   clear: both;
   border-radius: 8px;
   left: 8px;
   width: 340px;
-  padding: 8px;
+  padding: 8px 8px 8px 14px;
   margin: 0 -10px;
 }
 

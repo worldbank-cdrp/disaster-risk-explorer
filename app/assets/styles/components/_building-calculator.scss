@@ -18,3 +18,70 @@
   float: initial;
   clear: both;
 }
+
+.calculator__container{
+  padding: 0.5em 1em 0.4em 1em;
+}
+
+.calculator__radio-container{
+  clear: both;
+  overflow: hidden;
+  margin-bottom:4px;
+  .calculator__radio-name {
+    font-size: 0.85em;
+    clear: both;
+    float: left;
+  }
+  .calculator__radio{
+    font-size: 0.85em;
+    font-weight: 600;
+    float: right;
+  }
+  .inline{
+    display: inline-block;
+  }
+  .inline + .inline{
+    margin-left:30px;
+  }
+  .radio{
+    color:#aaa;
+    font-size: 0.85em;
+    position:relative;
+  }
+  .radio span{
+    position:relative;
+    padding-left:20px;
+  }
+  .radio span:after{
+    content:'';
+    width:15px;
+    height:15px;
+    border:3px solid;
+    position:absolute;
+    left:0;
+    top:1px;
+    border-radius:100%;
+    box-sizing:border-box;
+  }
+  .radio input[type="radio"]{
+    cursor: pointer;
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index: 1;
+    opacity: 0;
+  }
+  .radio input[type="radio"]:checked + span{
+    color:#000;
+  }
+  .radio input[type="radio"]:checked + span:before{
+    content:'';
+    width:5px;
+    height:5px;
+    position:absolute;
+    background:#000;
+    left:5px;
+    top:6px;
+    border-radius:100%;
+  }
+}

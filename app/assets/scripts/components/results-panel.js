@@ -85,7 +85,7 @@ const Results = React.createClass({
               <div className='results__divider results__divider--second'></div>
 
               <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
-              <article className='calculator__container'>
+              <article className='calculator__link-container'>
                 <a href='#' onClick={this.openCalculator}>Building Stock Conversion Calculator</a>
               </article>
 
