@@ -1,7 +1,8 @@
 import React from 'react'
 import { inactiveLegends } from '../constants'
 
-import { capitalizeFirstLetter, shortenNumber } from '../utils/format'
+import { shortenNumber } from '../utils/format'
+import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
@@ -31,11 +32,11 @@ const Legend = React.createClass({
     })
     return (
       <section className='legend'>
-        <h2 className='legend__title'>Average Annual Loss from {capitalizeFirstLetter(activeRisk)}</h2>
+        <h2 className='legend__title'>{t('Average Annual Loss from')} {t(activeRisk)}</h2>
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'>The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.</figcaption>
+          <figcaption className='legend__caption'>{t('legend description')}</figcaption>
         </figure>
       </section>
     )

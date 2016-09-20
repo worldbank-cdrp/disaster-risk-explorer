@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { } from '../actions'
+import { t } from '../utils/i18n'
 
 const Results = React.createClass({
   propTypes: {
@@ -27,7 +27,7 @@ const Results = React.createClass({
 
     return (
       <section className='results'>
-        <h2 className='results__title'>{d.Country} <button className='button button_results results__download'><i className='collecticon collecticon-download' />Download Profile</button></h2>
+        <h2 className='results__title'>{d.Country} <button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
           <pre>{JSON.stringify(d, null, '  ')}</pre>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'>Exposure</h3>
