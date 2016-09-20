@@ -27,17 +27,10 @@ const mergedFeatures = pointLayer.features.map(feature => {
 
   const match = searchResults[0]
 
-
   const mergedProperties = Object.assign({}, match.properties, feature.properties)
-
-  // console.log(mergedProperties)
-
-  // console.log(Object.assign({}, match, {properties: mergedProperties}))
 
   return Object.assign({}, match, {properties: mergedProperties})
 })
-
-console.log(mergedFeatures)
 
 geojsonOutput.features = mergedFeatures
 
