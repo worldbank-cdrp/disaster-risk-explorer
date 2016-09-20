@@ -1,11 +1,14 @@
 'use strict'
 import React from 'react'
 
+import { shortenNumber } from '../utils/format'
+
 var MapPopup = React.createClass({
   displayName: 'MapPopup',
 
   propTypes: {
-    country: React.PropTypes.string
+    country: React.PropTypes.string,
+    aal: React.PropTypes.number
   },
   render: function () {
     return (
@@ -16,7 +19,7 @@ var MapPopup = React.createClass({
           </header>
           <div className='popover__body'>
             <p>Average Annual Loss</p>
-            <p className='popover__stat'>$610 Million</p>
+            <p className='popover__stat'>{'$' + shortenNumber(this.props.aal, 2, false)}</p>
           </div>
           <footer className='popover__footer'>
           </footer>

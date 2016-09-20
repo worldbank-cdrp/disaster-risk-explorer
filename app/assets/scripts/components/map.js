@@ -101,7 +101,10 @@ export const Map = React.createClass({
 
   _showPopup: function (lngLat, feature) {
     let popupContent = document.createElement('div')
-    render(<MapPopup country={feature.properties.NAME_0} />, popupContent)
+    render(<MapPopup
+             country={feature.properties.NAME_0}
+             aal={feature.properties.AAL}
+           />, popupContent)
 
     if (this._popup === null) {
       this._popup = new mapboxgl.Popup({
