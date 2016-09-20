@@ -1,0 +1,20 @@
+.calculator {
+  position: absolute;
+  top: $page-header-y;
+  right: 24em;
+  top: 20em;
+  z-index: 99;
+  line-height:1.6em;
+  @include debug();
+  @include containter();
+}
+
+.calculator__title {
+  @include section_header;
+}
+
+.calculator__subtitle{
+  font-size:0.8em;
+  float: initial;
+  clear: both;
+}

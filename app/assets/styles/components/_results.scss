@@ -1,11 +1,11 @@
 .results {
-	position: absolute;
-	top: $page-header-y;
-	right: 1em;
-	z-index: 100;
-	line-height:1.6em;
-	@include debug();
-	@include containter();
+  position: absolute;
+  top: $page-header-y;
+  right: 1em;
+  z-index: 100;
+  line-height:1.6em;
+  @include debug();
+  @include containter();
 }
 
 .results__title {
@@ -19,11 +19,11 @@
 }
 
 .results__subtitle--secondary{
-	margin-top: 0.5em;
+  margin-top: 0.5em;
 }
 
 .results__container{
-	padding: 0.5em 1em 0.4em 1em;
+  padding: 0.5em 1em 0.4em 1em;
 }
 
 .results__download{
@@ -39,7 +39,7 @@
 }
 
 .stats{
-	clear: both;
+  clear: both;
   overflow: hidden;
   margin-bottom:4px;
 }
@@ -58,42 +58,42 @@
 
 
 .stat__value--chart {
-	/*background-color: #eee;*/
-	float: none;
-	clear: left;
+  /*background-color: #eee;*/
+  float: none;
+  clear: left;
 }
 
 .chart-container {
-	width: 100%;
-	height: 150px;
+  width: 100%;
+  height: 150px;
 }
 
 .chart {
-	.zebra {
-		opacity: 0.5;
-		&--odd {
-			fill: #ddd;
-		}
-		&--even {
-			fill: none;
-		}
-	}
+  .zebra {
+    opacity: 0.5;
+    &--odd {
+      fill: #ddd;
+    }
+    &--even {
+      fill: none;
+    }
+  }
 }
 
 .chart__axis-title{
-	font-size: 0.9em;
-	font-weight: 300;
+  font-size: 0.9em;
+  font-weight: 300;
 }
 
 .chart__axis-ticks{
-	font-size: 0.8em;
-	font-weight: 300;
+  font-size: 0.8em;
+  font-weight: 300;
   margin-bottom: 1em;
 }
 
 .chart__bar{
-	fill: #aaa;
-	stroke: #777;
+  fill: #aaa;
+  stroke: #777;
 }
 
 .calculator__container {
@@ -107,8 +107,8 @@
 }
 
 .results__divider {
-	background-color: lighten($secondary-color, 15);
-	height: 2px;
-	left:0;
-	margin: 0 -1em 0 -1em;
+  background-color: lighten($secondary-color, 15);
+  height: 2px;
+  left:0;
+  margin: 0 -1em 0 -1em;
 }
