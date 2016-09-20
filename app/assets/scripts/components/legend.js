@@ -31,11 +31,11 @@ const Legend = React.createClass({
     })
     return (
       <section className='legend'>
-        <h2 className='legend__title'>Average Annual Loss from {capitalizeFirstLetter(activeRisk)}</h2>
+        <h2 className='legend__title'>Average Annual Loss from {capitalizeFirstLetter(activeRisk)}s</h2>
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'>The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.</figcaption>
+          <figcaption className='legend__caption'></figcaption>
         </figure>
       </section>
     )
