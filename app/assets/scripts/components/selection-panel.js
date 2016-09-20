@@ -48,6 +48,7 @@ const Selection = React.createClass({
 
   render: function () {
     const dataSelection = new DataSelection(this.props.queryParams)
+    console.log(dataSelection)
 
     return (
       <section className='selection'>
@@ -57,12 +58,7 @@ const Selection = React.createClass({
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
-        <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Displayed As</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('display', dataSelection.year.getActive(), dataSelection.display.getOptions())}
-          </dd>
-        </dl>
+
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>Select data by</dt>
           <dd className='selection__panel--drop'>
