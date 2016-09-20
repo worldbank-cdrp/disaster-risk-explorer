@@ -4,3 +4,21 @@
   bottom: 0;
   width: 100%;
 }
+
+.mapboxgl-popup-anchor-bottom{
+	top: -10px;
+}
+
+.subtitle__popover{
+	float: initial;
+	font-size: 1em;
+}
+
+.popover__stat{
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.mapboxgl-popup-content{
+	padding: 8px 12px 10px;
+}
