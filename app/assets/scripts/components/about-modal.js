@@ -9,11 +9,17 @@ const About = React.createClass({
     visible: React.PropTypes.bool
   },
 
+  onOutClick: function (e) {
+    if (e.target === e.currentTarget) {
+      this.props.dispatch(hideModalAbout())
+    }
+  },
+
   renderModal: function () {
     if (!this.props.visible) return null
 
     return (
-      <section className='modal modal--large modal--about'>
+      <section className='modal modal--large modal--about' onClick={this.onOutClick}>
         <div className='modal__inner'>
           <header className='modal__header'>
             <div className='modal__headline'>
