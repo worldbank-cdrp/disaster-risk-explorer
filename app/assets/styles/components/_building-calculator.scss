@@ -2,9 +2,9 @@
   position: absolute;
   top: $page-header-y;
   right: 24em;
-  top: 20em;
+  top: 18.5em;
   z-index: 99;
-  line-height:1.6em;
+  line-height: 1.6em;
   @include debug();
   @include containter();
 }
@@ -14,7 +14,7 @@
 }
 
 .calculator__subtitle{
-  font-size:0.8em;
+  font-size: 0.8em;
   float: initial;
   clear: both;
 }
@@ -23,25 +23,27 @@
   padding: 0.5em 1em 0.4em 1em;
 }
 
-.calculator__radio-container{
+.calculator__widget-container{
   clear: both;
   overflow: hidden;
-  margin-bottom:4px;
-  .calculator__radio-name {
-    font-size: 0.85em;
-    clear: both;
-    float: left;
-  }
-  .calculator__radio{
-    font-size: 0.85em;
-    font-weight: 600;
-    float: right;
-  }
+  margin-bottom: 10px;
+}
+
+.calculator__widget-name {
+  font-size: 0.85em;
+  clear: both;
+  float: left;
+}
+
+.calculator__radio{
+  font-size: 0.85em;
+  font-weight: 600;
+  float: right;
   .inline{
     display: inline-block;
   }
   .inline + .inline{
-    margin-left:30px;
+    margin-left: 30px;
   }
   .radio{
     color:#aaa;
@@ -79,9 +81,46 @@
     width:5px;
     height:5px;
     position:absolute;
-    background:#000;
+    background-color:#000;
     left:5px;
     top:6px;
     border-radius:100%;
   }
+}
+
+.calculator__slider {
+  width: 10em;
+  float: right;
+  margin: 7px 10px 40px 0;
+}
+
+.noUi-horizontal {
+  height: 5px;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 16px;
+  height: 16px;
+  left: -8px;
+  top: -8px;
+}
+
+.noUi-handle:before,
+.noUi-handle:after {
+  display: none;
+}
+
+.noUi-value-large {
+  font-size: 10px;
+  margin-top: 0;
+  padding-top: 0;
+  line-height: 14px;
+}
+
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 8px;
+}
+
+.noUi-pips-horizontal {
+  padding-top: 7px;
 }

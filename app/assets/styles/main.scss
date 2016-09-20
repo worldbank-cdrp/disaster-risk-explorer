@@ -21,7 +21,7 @@
  */
 
 @import "bourbon";
-@import "vendor/mapboxgl";
+
 
 /* Reboot
    ========================================================================== */
@@ -48,6 +48,10 @@
 @import "settings/variables";
 @import "settings/mixins";
 @import "core/collecticons";
+@import "vendor/mapboxgl";
+@import "vendor/nouislider";
+@import "vendor/nouislider.tooltips";
+@import "vendor/nouislider.pips";
 
 /* Main
    ========================================================================== */
