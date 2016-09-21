@@ -9,7 +9,7 @@
   @include containter();
 }
 
-.calculator:after, .calculator:before {
+.calculator:after {
   left: 100%;
   top: 57%;
   border: solid transparent;
@@ -18,19 +18,9 @@
   width: 0;
   position: absolute;
   pointer-events: none;
-}
-
-.calculator:after {
-  border-color: rgba(0, 0, 0, 0);
   border-left-color: #fff;
   border-width: 13px;
   margin-top: -13px;
-}
-.calculator:before {
-  border-color: rgba(0, 0, 0, 0);
-  border-left-color: #aaa;
-  border-width: 14px;
-  margin-top: -14px;
 }
 
 .calculator__title {

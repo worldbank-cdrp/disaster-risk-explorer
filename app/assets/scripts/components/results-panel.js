@@ -64,6 +64,7 @@ const Results = React.createClass({
             attributes={this.props.data}
             conversion={this.props.conversion}
             sliderValue={this.props.sliderValue}
+            calculatorOpen={this.props.calculatorOpen}
             dispatch={this.props.dispatch} />
         : ''}
         <section className='results'>

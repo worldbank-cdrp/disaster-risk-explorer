@@ -1,18 +1,24 @@
 import React from 'react'
 import Nouislider from 'react-nouislider'
+import outside from 'react-onclickoutside'
 
 import buildingData from '../../data/buildings.json'
-import { selectConversion, updateSliderValue } from '../actions'
+import { selectConversion, updateSliderValue, toggleCalculator } from '../actions'
 import { shortenNumber } from '../utils/format'
 
-const Results = React.createClass({
+const Results = outside(React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
 
     attributes: React.PropTypes.object,
     selectedCode: React.PropTypes.object,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
+    sliderValue: React.PropTypes.number,
+    calculatorOpen: React.PropTypes.bool
+  },
+
+  handleClickOutside: function (e) {
+    this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
   },
 
   onChangeSlide: function (e) {
@@ -90,6 +96,6 @@ const Results = React.createClass({
       </section>
     )
   }
-})
+}))
 
 export default Results
