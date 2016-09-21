@@ -133,7 +133,7 @@ const Dropdown = React.createClass({
           className={triggerKlasses.join(' ')}
           onClick={this._toggleDropdown}
           ref='trigger' >
-            <span>{ this.props.triggerText }</span>
+            <span className='attribute'>{ this.props.triggerText }</span>
         </this.props.triggerElement>
 
         <ReactCSSTransitionGroup
