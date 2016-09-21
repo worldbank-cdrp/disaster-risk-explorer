@@ -8,6 +8,7 @@ const Results = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
 
+    attributes: React.PropTypes.object,
     selectedCode: React.PropTypes.object,
     conversion: React.PropTypes.string
   },
@@ -68,7 +69,7 @@ const Results = React.createClass({
             <dt className='stat__attribute'>Conversion Cost</dt>
             <dd className='stat__value'>{data.conversionCost}</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
-            <dd className='stat__value'>Unknown Attribute</dd>
+            <dd className='stat__value'>${Number(((1 - data.overallChangeAAL) * this.props.attributes.AAL).toFixed(2)).toLocaleString()}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
             <dd className='stat__value'>{data.buildingChangeAAL}</dd>
             <dt className='stat__attribute'>Change in overall AAL</dt>

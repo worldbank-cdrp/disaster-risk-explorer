@@ -9,6 +9,7 @@ import Dropdown from './dropdown'
 const Selection = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+
     mapSource: React.PropTypes.object,
     queryParams: React.PropTypes.object
   },

@@ -56,6 +56,7 @@ const Results = React.createClass({
     const buildingCalculator = this.props.calculatorOpen
       ? <BuildingCalculator
           selectedCode={d.Country}
+          attributes={this.props.data}
           conversion={this.props.conversion}
           dispatch={this.props.dispatch} />
       : ''
