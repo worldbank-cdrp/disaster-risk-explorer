@@ -32,6 +32,11 @@ export function t (string, replace = {}) {
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.',
       'Download Profile': 'Download Profile',
       'risk': 'Risk',
+
+      'metric': 'Metric',
+      'loss': 'Loss',
+      'exposure': 'Exposure',
+
       'year': 'Year',
       'building': 'Building exposure',
       'data by': 'Select data by',
@@ -56,7 +61,11 @@ export function t (string, replace = {}) {
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes. ES',
       'Download Profile': 'Download Profile ES',
       'risk': 'Risk ES',
-      'year': 'Year ES',
+
+      'metric': 'Metric ES',
+      'loss': 'Average Anuall Loss ES',
+      'exposure': 'Exposure',
+
       'building': 'Building exposure ES',
       'data by': 'Select data by ES',
       'basemap': 'Change Basemap ES',
