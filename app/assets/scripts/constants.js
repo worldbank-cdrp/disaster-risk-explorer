@@ -23,6 +23,11 @@ export const mapSources = {
 
 export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
 
+export const basemaps = {
+  basic: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
+  special: 'mapbox://styles/mapbox/satellite-v9'
+}
+
 const makeLegend = (scale, steps) => {
   return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
 }
