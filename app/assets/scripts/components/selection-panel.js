@@ -49,8 +49,6 @@ const Selection = React.createClass({
 
   render: function () {
     const dataSelection = new DataSelection(this.props.queryParams)
-    const riskMenuStyle = (dataSelection.metric.getActive().key === 'exposure')
-      ? 'disabled' : ''
 
     return (
       <section className='selection'>
@@ -62,7 +60,8 @@ const Selection = React.createClass({
           </dd>
         </dl>
 
-        <dl className={'selection__panel ' + riskMenuStyle}>
+        <dl className={'selection__panel ' +
+        (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
           <dt className='subtitle selection__panel--attribute'>{t('risk')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}

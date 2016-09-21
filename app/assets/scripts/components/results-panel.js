@@ -56,18 +56,16 @@ const Results = React.createClass({
       bottom: 56
     }
 
-    const buildingCalculator = this.props.calculatorOpen
-      ? <BuildingCalculator
-          selectedCode={d.Country}
-          attributes={this.props.data}
-          conversion={this.props.conversion}
-          dispatch={this.props.dispatch}
-          sliderValue={this.props.sliderValue} />
-      : ''
-
     return (
       <div>
-        {buildingCalculator}
+        {this.props.calculatorOpen
+        ? <BuildingCalculator
+            selectedCode={d.Country}
+            attributes={this.props.data}
+            conversion={this.props.conversion}
+            sliderValue={this.props.sliderValue}
+            dispatch={this.props.dispatch} />
+        : ''}
         <section className='results'>
           <h2 className='results__title'>{d.NAME_0}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
             <div className='results__container'>

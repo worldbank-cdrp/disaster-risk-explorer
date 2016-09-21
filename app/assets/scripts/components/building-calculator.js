@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Nouislider from 'react-nouislider'
 
 import buildingData from '../../data/buildings.json'
@@ -24,16 +25,29 @@ const Results = React.createClass({
   },
 
   render: function () {
+    console.log(this.props)
     const sliderValue = this.props.sliderValue
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
     const data = buildingData[countryCode][this.props.conversion]
-
     const conversionValue = Math.round(data.conversionCost * sliderValue)
-    const conversionSuffix = conversionValue > 0 ? 'Million' : ''
-
+    // <ReactCSSTransitionGroup
+    //   component='section'
+    //   transitionName='drop-trans'
+    //   transitionEnterTimeout={300}
+    //   transitionLeaveTimeout={300} >
+    //       { this.state.open
+    //        ? <div className={klasses.join(' ')} ref='dropdown' onClick={this._dropdownContentClick}>{ this.props.children }</div>
+    //      : null }
+    //  </ReactCSSTransitionGroup>
     return (
+      <ReactCSSTransitionGroup
+        component='div'
+        transitionName='drop-trans'
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300} >
+
       <section className='calculator'>
         <h2 className='calculator__title'>Building Stock Conversion Calculator</h2>
         <div className='calculator__container'>
@@ -78,7 +92,7 @@ const Results = React.createClass({
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
-            <dd className='stat__value'>${`${conversionValue} ${conversionSuffix}`}</dd>
+            <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
             <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
@@ -90,6 +104,8 @@ const Results = React.createClass({
           </dl>
         </div>
       </section>
+
+      </ReactCSSTransitionGroup>
     )
   }
 })
