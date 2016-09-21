@@ -40,12 +40,15 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    let data = [
-      {value: 10, name: '10'},
-      {value: 20, name: '25'},
-      {value: 45, name: '50'},
-      {value: 66, name: '100'},
-      {value: 88, name: '200'}
+    let data = this.props.data
+    console.log(data)
+    data = [
+      {value: Math.round(data.RP_10 / 1000000), name: 'RP 10'},
+      {value: Math.round(data.RP_50 / 1000000), name: 'RP 50'},
+      {value: Math.round(data.RP_100 / 1000000), name: 'RP 100'},
+      {value: Math.round(data.RP_250 / 1000000), name: 'RP 250'},
+      {value: Math.round(data.RP_500 / 1000000), name: 'RP 500'},
+      {value: Math.round(data.RP_1000 / 1000000), name: 'RP 1000'}
     ]
     let margin = {
       top: 16,
@@ -72,9 +75,9 @@ const Results = React.createClass({
               <h3 className='subtitle results__subtitle'>Exposure</h3>
               <dl className='stats'>
                 <dt className='stat__attribute'>GDP</dt>
-                <dd className='stat__value'>$63.79 billion</dd>
+                <dd className='stat__value'>Unimplemented</dd>
                 <dt className='stat__attribute'>Building Stock Exposure</dt>
-                <dd className='stat__value'>$19 Billion</dd>
+                <dd className='stat__value'>Unimplemented</dd>
               </dl>
 
               <div className='results__divider results__divider--first'></div>
@@ -84,6 +87,7 @@ const Results = React.createClass({
                 <dt className='stat__attribute'>Average Annual Loss</dt>
                 <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
                 <dt className='stat__attribute'>Probable loss over time</dt>
+                <dd className='stat__value'>Unimplemented</dd>
                 <dd className='stat__value stat__value--chart stat__value--last'>
                   <BarChart
                     data={data}

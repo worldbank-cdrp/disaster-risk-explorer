@@ -24,12 +24,11 @@ const Results = React.createClass({
   },
 
   render: function () {
-    // Country codes not yet added to Mapbox data; hardcoding a country code for now
+    const sliderValue = this.props.sliderValue
 
+    // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
     const data = buildingData[countryCode][this.props.conversion]
-
-    const sliderValue = this.props.sliderValue
 
     const conversionValue = Math.round(data.conversionCost * sliderValue)
     const conversionSuffix = conversionValue > 0 ? 'Million' : ''
@@ -68,13 +67,13 @@ const Results = React.createClass({
             </dd>
           </dl>
           <div className='calculator__description top'>
-            Wood braced frame with load-bearing infill wall system single family - on stilts
+            (Unimplemented) Wood braced frame with load-bearing infill wall system single family - on stilts
           </div>
           <div className='calculator__divider-broken left'></div>
           <div className='calculator__divider-broken-label'>are converted into</div>
           <div className='calculator__divider-broken right'></div>
           <div className='calculator__description bottom'>
-            Waffle Houses just stacked one on top of the other
+            (Unimplemented) Waffle Houses just stacked one on top of the other
           </div>
           <div className='calculator__divider'></div>
           <dl className='stats'>
