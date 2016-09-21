@@ -41,7 +41,6 @@ const Results = React.createClass({
     }
 
     let data = this.props.data
-    console.log(data)
     data = [
       {value: Math.round(data.RP_10 / 1000000), name: 'RP 10'},
       {value: Math.round(data.RP_50 / 1000000), name: 'RP 50'},
