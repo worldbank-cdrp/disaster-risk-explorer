@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Nouislider from 'react-nouislider'
 
 import buildingData from '../../data/buildings.json'
@@ -25,29 +24,14 @@ const Results = React.createClass({
   },
 
   render: function () {
-    console.log(this.props)
     const sliderValue = this.props.sliderValue
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
     const data = buildingData[countryCode][this.props.conversion]
     const conversionValue = Math.round(data.conversionCost * sliderValue)
-    // <ReactCSSTransitionGroup
-    //   component='section'
-    //   transitionName='drop-trans'
-    //   transitionEnterTimeout={300}
-    //   transitionLeaveTimeout={300} >
-    //       { this.state.open
-    //        ? <div className={klasses.join(' ')} ref='dropdown' onClick={this._dropdownContentClick}>{ this.props.children }</div>
-    //      : null }
-    //  </ReactCSSTransitionGroup>
-    return (
-      <ReactCSSTransitionGroup
-        component='div'
-        transitionName='drop-trans'
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300} >
 
+    return (
       <section className='calculator'>
         <h2 className='calculator__title'>Building Stock Conversion Calculator</h2>
         <div className='calculator__container'>
@@ -104,8 +88,6 @@ const Results = React.createClass({
           </dl>
         </div>
       </section>
-
-      </ReactCSSTransitionGroup>
     )
   }
 })
