@@ -4,6 +4,7 @@ export const TOGGLE_CALCULATOR = 'TOGGLE_CALCULATOR'
 export const SHOW_MODAL_ABOUT = 'SHOW_MODAL_ABOUT'
 export const HIDE_MODAL_ABOUT = 'HIDE_MODAL_ABOUT'
 export const SELECT_CONVERSION = 'SELECT_CONVERSION'
+export const UPDATE_SLIDER_VALUE = 'UPDATE_SLIDER_VALUE'
 
 export function updateMapSource (mapSource) {
   return { type: UPDATE_MAP_SOURCE, data: mapSource }
@@ -27,4 +28,8 @@ export function hideModalAbout () {
 
 export function selectConversion (conversion) {
   return { type: SELECT_CONVERSION, data: conversion }
+}
+
+export function updateSliderValue (sliderValue) {
+  return { type: UPDATE_SLIDER_VALUE, data: sliderValue }
 }

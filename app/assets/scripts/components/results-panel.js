@@ -13,7 +13,8 @@ const Results = React.createClass({
 
     calculatorOpen: React.PropTypes.bool,
     data: React.PropTypes.object,
-    conversion: React.PropTypes.string
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
   },
 
   toggleCalculator: function () {
@@ -58,7 +59,8 @@ const Results = React.createClass({
           selectedCode={d.Country}
           attributes={this.props.data}
           conversion={this.props.conversion}
-          dispatch={this.props.dispatch} />
+          dispatch={this.props.dispatch}
+          sliderValue={this.props.sliderValue} />
       : ''
 
     return (

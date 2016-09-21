@@ -2,7 +2,7 @@ import React from 'react'
 import Nouislider from 'react-nouislider'
 
 import buildingData from '../../data/buildings.json'
-import { selectConversion } from '../actions'
+import { selectConversion, updateSliderValue } from '../actions'
 import { shortenNumber } from '../utils/format'
 
 const Results = React.createClass({
@@ -11,7 +11,12 @@ const Results = React.createClass({
 
     attributes: React.PropTypes.object,
     selectedCode: React.PropTypes.object,
-    conversion: React.PropTypes.string
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
+  },
+
+  onChangeSlide: function (e) {
+    this.props.dispatch(updateSliderValue(Number(e[0]) / 100))
   },
 
   selectConversion: function (conversion) {
@@ -23,6 +28,11 @@ const Results = React.createClass({
 
     const countryCode = 'GT-JU' // this.props.selectedCode
     const data = buildingData[countryCode][this.props.conversion]
+
+    const sliderValue = this.props.sliderValue
+
+    const conversionValue = Math.round(data.conversionCost * sliderValue)
+    const conversionSuffix = conversionValue > 0 ? 'Million' : ''
 
     return (
       <section className='calculator'>
@@ -50,9 +60,10 @@ const Results = React.createClass({
             <dd className='calculator__slider'>
             <Nouislider
               range={{min: 0, max: 100}}
-              start={[40]}
+              start={[Math.round(this.props.sliderValue * 100)]}
               step={5}
               pips={{mode: 'range', density: 20}}
+              onSlide={this.onChangeSlide}
             />
             </dd>
           </dl>
@@ -68,13 +79,13 @@ const Results = React.createClass({
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
-            <dd className='stat__value'>${Math.round(data.conversionCost)} Million</dd>
+            <dd className='stat__value'>${`${conversionValue} ${conversionSuffix}`}</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
-            <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL, 0, false)}</dd>
+            <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
-            <dd className='stat__value'>{data.buildingChangeAAL * 100}%</dd>
+            <dd className='stat__value'>{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dd>
             <dt className='stat__attribute'>Change in overall AAL</dt>
-            <dd className='stat__value'>{data.overallChangeAAL * 100}%</dd>
+            <dd className='stat__value'>{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dd>
             <dt className='stat__attribute'>Flat rate years to break even</dt>
             <dd className='stat__value stat__value--last stat__value--positive'>{Math.round(data.breakEven)} Years</dd>
           </dl>

@@ -25,7 +25,8 @@ var Home = React.createClass({
     selected: React.PropTypes.object,
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
-    conversion: React.PropTypes.string
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
   },
 
   render: function () {
@@ -51,7 +52,8 @@ var Home = React.createClass({
           dataSelection={dataSelection}
           calculatorOpen={this.props.calculatorOpen}
           data={this.props.selected}
-          conversion={this.props.conversion} />
+          conversion={this.props.conversion}
+          sliderValue={this.props.sliderValue} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
@@ -70,7 +72,8 @@ function mapStateToProps (state) {
     selected: state.map.selected,
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
-    conversion: state.buildingCalculator.conversion
+    conversion: state.buildingCalculator.conversion,
+    sliderValue: state.buildingCalculator.sliderValue
   }
 }
 
