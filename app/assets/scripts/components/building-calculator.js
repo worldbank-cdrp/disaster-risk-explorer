@@ -3,6 +3,7 @@ import Nouislider from 'react-nouislider'
 
 import buildingData from '../../data/buildings.json'
 import { selectConversion } from '../actions'
+import { shortenNumber } from '../utils/format'
 
 const Results = React.createClass({
   propTypes: {
@@ -32,14 +33,14 @@ const Results = React.createClass({
             <dd className='calculator__radio'>
               <label className='radio inline'>
                 <input type='radio' name='improvement' value='retrofit'
-                       checked={this.props.conversion === 'retrofit'}
-                       onChange={() => this.selectConversion('retrofit')} />
+                       defaultChecked={this.props.conversion === 'retrofit'}
+                       onClick={() => this.selectConversion('retrofit')} />
                 <span>Retrofit</span>
                </label>
               <label className='radio inline'>
                 <input type='radio' name='improvement' value='replacement'
-                       checked={this.props.conversion === 'replacement'}
-                       onChange={() => this.selectConversion('replacement')} />
+                       defaultChecked={this.props.conversion === 'replacement'}
+                       onClick={() => this.selectConversion('replacement')} />
                 <span>Replace</span>
               </label>
             </dd>
@@ -67,15 +68,15 @@ const Results = React.createClass({
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
-            <dd className='stat__value'>{data.conversionCost}</dd>
+            <dd className='stat__value'>${Math.round(data.conversionCost)} Million</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
-            <dd className='stat__value'>${Number(((1 - data.overallChangeAAL) * this.props.attributes.AAL).toFixed(2)).toLocaleString()}</dd>
+            <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
-            <dd className='stat__value'>{data.buildingChangeAAL}</dd>
+            <dd className='stat__value'>{data.buildingChangeAAL * 100}%</dd>
             <dt className='stat__attribute'>Change in overall AAL</dt>
-            <dd className='stat__value'>{data.overallChangeAAL}</dd>
+            <dd className='stat__value'>{data.overallChangeAAL * 100}%</dd>
             <dt className='stat__attribute'>Flat rate years to break even</dt>
-            <dd className='stat__value stat__value--last stat__value--positive'>{data.breakEven}</dd>
+            <dd className='stat__value stat__value--last stat__value--positive'>{Math.round(data.breakEven)} Years</dd>
           </dl>
         </div>
       </section>
