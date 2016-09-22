@@ -66,15 +66,11 @@ const Results = React.createClass({
             />
             </dd>
           </dl>
-          <div className='calculator__description top'>
-            (Unimplemented) Wood braced frame with load-bearing infill wall system single family - on stilts
-          </div>
+          <div className='calculator__description top'>{data.buildingFrom}</div>
           <div className='calculator__divider-broken left'></div>
           <div className='calculator__divider-broken-label'>are converted into</div>
           <div className='calculator__divider-broken right'></div>
-          <div className='calculator__description bottom'>
-            (Unimplemented) Waffle Houses just stacked one on top of the other
-          </div>
+          <div className='calculator__description bottom'>{data.buildingTo}</div>
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
@@ -82,9 +78,9 @@ const Results = React.createClass({
             <dt className='stat__attribute'>Reduction of AAL</dt>
             <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
-            <dd className='stat__value'>{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dd>
+            <dd className='stat__value'>-{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dd>
             <dt className='stat__attribute'>Change in overall AAL</dt>
-            <dd className='stat__value'>{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dd>
+            <dd className='stat__value'>-{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dd>
             <dt className='stat__attribute'>Flat rate years to break even</dt>
             <dd className='stat__value stat__value--last stat__value--positive'>{Math.round(data.breakEven)} Years</dd>
           </dl>
