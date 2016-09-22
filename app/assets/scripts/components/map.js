@@ -16,7 +16,8 @@ export const Map = React.createClass({
     dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
-    selected: React.PropTypes.object
+    selected: React.PropTypes.object,
+    opacity: React.PropTypes.number
   },
 
   getLegendStops: function (risk) {
@@ -89,6 +90,8 @@ export const Map = React.createClass({
       this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility)
     })
 
+    this._adjustOpacity(this.props.opacity)
+
     this._map.on('mousemove', this._mouseMove)
     this._map.on('click', this._mapClick)
   },
@@ -115,13 +118,13 @@ export const Map = React.createClass({
     }
     const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
     const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
-    if (prevId !== nextId) {
-      if (nextId !== null) {
-        this._selectFeature(nextProps.selected)
-      } else {
-        this._deselectFeature()
-      }
+    if (prevId !== nextId && nextId !== null) {
+      this._selectFeature(nextProps.selected)
+    } else {
+      this._deselectFeature()
     }
+
+    this._adjustOpacity(nextProps.opacity)
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
@@ -178,6 +181,20 @@ export const Map = React.createClass({
         'fill-opacity': 1,
         'fill-outline-color': 'white'
       }
+    })
+  },
+
+  _adjustOpacity: function (opacity) {
+    const maps = ['admin0', 'admin1', 'km10']
+    maps.forEach((map) => {
+      this._map.setPaintProperty(map + '-inactive', 'fill-opacity',
+        (opacity / 100))
+      this._map.setPaintProperty(map + '-hover', 'fill-opacity',
+        (opacity / 100))
+      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color',
+        `rgba(50, 50, 90, ${opacity / 100})`)
+      this._map.setPaintProperty(map + '-hover', 'fill-outline-color',
+        `rgba(50, 50, 90, ${opacity / 100})`)
     })
   },
 
@@ -265,7 +282,7 @@ export const Map = React.createClass({
           property: colorProperty,
           stops: colorScale
         },
-        'fill-opacity': 0.8,
+        'fill-opacity': 1,
         'fill-outline-color': 'rgb(140, 140, 160)'
       }
     })

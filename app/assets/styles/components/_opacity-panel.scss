@@ -1,0 +1,15 @@
+.opacity-panel {
+  position: absolute;
+  bottom: 2em;
+  right: 1em;
+  width: 20em;
+  background-color: #fff;
+}
+
+.opacity-panel__title {
+  @include section_header;
+}
+
+.opacity-panel__slider {
+  margin: 1.5em;
+}
