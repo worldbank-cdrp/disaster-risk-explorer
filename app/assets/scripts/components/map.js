@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, columnMap, inactiveLegends, hoverLegend, basemaps } from '../constants'
+import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -35,13 +35,13 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    this.mapCenter = [-86, 13]
-    this.basemap = basemaps[this.props.dataSelection.basemap.getActive().key]
+    const basemap = 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv'
 
+    const mapCenter = [-86, 13]
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: this.basemap,
-      center: this.mapCenter,
+      style: basemap,
+      center: mapCenter,
       zoom: 5.75,
       minZoom: 2,
       attributionControl: {
@@ -50,8 +50,26 @@ export const Map = React.createClass({
     })
 
     map.on('load', () => {
+      if (this.props.dataSelection.basemap.getActive().key === 'special') this._loadSatellite()
       this._loadLayers()
     })
+  },
+
+  _loadSatellite: function () {
+    this._map.addSource('satellite', {
+      type: 'raster',
+      url: 'mapbox://mapbox.satellite'
+    })
+    this._map.addLayer({
+      id: 'satellite',
+      type: 'raster',
+      source: 'satellite'
+    }, 'road-pedestrian-case')
+  },
+
+  _removeSatellite: function () {
+    this._map.removeSource('satellite')
+    this._map.removeLayer('satellite')
   },
 
   _loadLayers: function () {
@@ -78,8 +96,11 @@ export const Map = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
-
-    if (prevBasemap !== nextBasemap) this._switchBasemap(nextBasemap)
+    if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
+      this._loadSatellite()
+    } else if (prevBasemap !== nextBasemap && nextBasemap === 'basic') {
+      this._removeSatellite()
+    }
 
     const prevSourceName = this.props.dataSelection.admin.getActive().key
     const nextSourceName = nextProps.dataSelection.admin.getActive().key
@@ -136,16 +157,6 @@ export const Map = React.createClass({
 
   _hidePopup: function () {
     this._popup !== null && this._popup.remove()
-  },
-
-  _switchBasemap: function (basemap) {
-    this.basemap = basemaps[basemap]
-    this._map.setStyle(this.basemap)
-    let component = this
-    // A delay between basemap and layer loading is needed to prevent race condition
-    setTimeout(function () {
-      component._loadLayers()
-    }, 150)
   },
 
   _addData: function (id, source, property, scale, filter) {
