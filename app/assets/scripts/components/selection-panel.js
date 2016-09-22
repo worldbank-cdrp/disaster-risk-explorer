@@ -52,7 +52,16 @@ const Selection = React.createClass({
 
     return (
       <section className='selection'>
+
         <dl className='selection__panel'>
+          <dt className='subtitle selection__panel--attribute'>{t('metric')}</dt>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('metric', dataSelection.metric.getActive(), dataSelection.metric.getOptions())}
+          </dd>
+        </dl>
+
+        <dl className={'selection__panel ' +
+        (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
           <dt className='subtitle selection__panel--attribute'>{t('risk')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}

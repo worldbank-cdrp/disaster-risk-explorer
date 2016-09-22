@@ -1,18 +1,24 @@
 import React from 'react'
 import Nouislider from 'react-nouislider'
+import outside from 'react-onclickoutside'
 
 import buildingData from '../../data/buildings.json'
-import { selectConversion, updateSliderValue } from '../actions'
+import { selectConversion, updateSliderValue, toggleCalculator } from '../actions'
 import { shortenNumber } from '../utils/format'
 
-const Results = React.createClass({
+const Results = outside(React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
 
     attributes: React.PropTypes.object,
     selectedCode: React.PropTypes.object,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
+    sliderValue: React.PropTypes.number,
+    calculatorOpen: React.PropTypes.bool
+  },
+
+  handleClickOutside: function (e) {
+    this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
   },
 
   onChangeSlide: function (e) {
@@ -29,9 +35,7 @@ const Results = React.createClass({
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
     const data = buildingData[countryCode][this.props.conversion]
-
     const conversionValue = Math.round(data.conversionCost * sliderValue)
-    const conversionSuffix = conversionValue > 0 ? 'Million' : ''
 
     return (
       <section className='calculator'>
@@ -74,7 +78,7 @@ const Results = React.createClass({
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
-            <dd className='stat__value'>${`${conversionValue} ${conversionSuffix}`}</dd>
+            <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
             <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
@@ -88,6 +92,6 @@ const Results = React.createClass({
       </section>
     )
   }
-})
+}))
 
 export default Results

@@ -17,7 +17,8 @@ const Results = React.createClass({
     sliderValue: React.PropTypes.number
   },
 
-  toggleCalculator: function () {
+  toggleCalculator: function (e) {
+    e.preventDefault()
     const visibility = !this.props.calculatorOpen
     this.props.dispatch(toggleCalculator(visibility))
   },
@@ -40,15 +41,18 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    let data = this.props.data
-    data = [
-      {value: Math.round(data.RP_10 / 1000000), name: 'RP 10'},
-      {value: Math.round(data.RP_50 / 1000000), name: 'RP 50'},
-      {value: Math.round(data.RP_100 / 1000000), name: 'RP 100'},
-      {value: Math.round(data.RP_250 / 1000000), name: 'RP 250'},
-      {value: Math.round(data.RP_500 / 1000000), name: 'RP 500'},
-      {value: Math.round(data.RP_1000 / 1000000), name: 'RP 1000'}
+    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
+    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+
+    const data = [
+      {value: Math.round(d.RP_10 / 1000000), name: 'RP 10'},
+      {value: Math.round(d.RP_50 / 1000000), name: 'RP 50'},
+      {value: Math.round(d.RP_100 / 1000000), name: 'RP 100'},
+      {value: Math.round(d.RP_250 / 1000000), name: 'RP 250'},
+      {value: Math.round(d.RP_500 / 1000000), name: 'RP 500'},
+      {value: Math.round(d.RP_1000 / 1000000), name: 'RP 1000'}
     ]
+
     let margin = {
       top: 16,
       left: 50,
@@ -56,20 +60,19 @@ const Results = React.createClass({
       bottom: 56
     }
 
-    const buildingCalculator = this.props.calculatorOpen
-      ? <BuildingCalculator
-          selectedCode={d.Country}
-          attributes={this.props.data}
-          conversion={this.props.conversion}
-          dispatch={this.props.dispatch}
-          sliderValue={this.props.sliderValue} />
-      : ''
-
     return (
       <div>
-        {buildingCalculator}
+        {this.props.calculatorOpen
+        ? <BuildingCalculator
+            selectedCode={d.Country}
+            attributes={this.props.data}
+            conversion={this.props.conversion}
+            sliderValue={this.props.sliderValue}
+            calculatorOpen={this.props.calculatorOpen}
+            dispatch={this.props.dispatch} />
+        : ''}
         <section className='results'>
-          <h2 className='results__title'>{d.NAME_0}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
+          <h2 className='results__title'>{title}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
             <div className='results__container'>
               <h3 className='subtitle results__subtitle'>Exposure</h3>
               <dl className='stats'>

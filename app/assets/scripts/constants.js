@@ -23,6 +23,11 @@ export const mapSources = {
 
 export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
 
+export const basemaps = {
+  basic: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
+  special: 'mapbox://styles/mapbox/satellite-v9'
+}
+
 const makeLegend = (scale, steps) => {
   return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
 }
@@ -34,9 +39,8 @@ export const inactiveLegends = {
   hurricane: makeLegend(inactiveScale,
     [450000, 1500000, 4500000, 13500000, 26000000, 250000000]),
   earthquake: makeLegend(inactiveScale,
-    [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000]),
-  flood: makeLegend(inactiveScale,
-    [26000000, 47600000, 69200000, 90800000, 112400000, 134000000])}
+    [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
+}
 
 export const hoverLegend = makeLegend(hoverScale,
   [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
