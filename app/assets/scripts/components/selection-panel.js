@@ -9,6 +9,7 @@ import Dropdown from './dropdown'
 const Selection = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+
     mapSource: React.PropTypes.object,
     queryParams: React.PropTypes.object
   },
@@ -57,18 +58,7 @@ const Selection = React.createClass({
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
-        <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>{t('year')}</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('year', dataSelection.year.getActive(), dataSelection.year.getOptions())}
-          </dd>
-        </dl>
-        <dl className='selection__panel selection__panel--split'>
-          <dt className='subtitle selection__panel--attribute'>{t('building')}</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('building', dataSelection.building.getActive(), dataSelection.building.getOptions())}
-          </dd>
-        </dl>
+
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>{t('data by')}</dt>
           <dd className='selection__panel--drop'>

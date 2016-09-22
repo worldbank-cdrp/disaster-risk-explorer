@@ -1,10 +1,25 @@
 import React from 'react'
 
+import { toggleCalculator } from '../actions'
 import { t } from '../utils/i18n'
+
+import BarChart from './charts/bar-chart'
+import BuildingCalculator from './building-calculator'
 
 const Results = React.createClass({
   propTypes: {
-    data: React.PropTypes.object
+    dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
+
+    calculatorOpen: React.PropTypes.bool,
+    data: React.PropTypes.object,
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
+  },
+
+  toggleCalculator: function () {
+    const visibility = !this.props.calculatorOpen
+    this.props.dispatch(toggleCalculator(visibility))
   },
 
   deleteThis: function () {
@@ -25,53 +40,73 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
+    let data = this.props.data
+    data = [
+      {value: Math.round(data.RP_10 / 1000000), name: 'RP 10'},
+      {value: Math.round(data.RP_50 / 1000000), name: 'RP 50'},
+      {value: Math.round(data.RP_100 / 1000000), name: 'RP 100'},
+      {value: Math.round(data.RP_250 / 1000000), name: 'RP 250'},
+      {value: Math.round(data.RP_500 / 1000000), name: 'RP 500'},
+      {value: Math.round(data.RP_1000 / 1000000), name: 'RP 1000'}
+    ]
+    let margin = {
+      top: 16,
+      left: 50,
+      right: 16,
+      bottom: 56
+    }
+
+    const buildingCalculator = this.props.calculatorOpen
+      ? <BuildingCalculator
+          selectedCode={d.Country}
+          attributes={this.props.data}
+          conversion={this.props.conversion}
+          dispatch={this.props.dispatch}
+          sliderValue={this.props.sliderValue} />
+      : ''
+
     return (
-      <section className='results'>
-        <h2 className='results__title'>{d.Country} <button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
-          <pre>{JSON.stringify(d, null, '  ')}</pre>
-          <div className='results__container'>
-            <h3 className='subtitle results__subtitle'>Exposure</h3>
-            <dl className='stats'>
-              <dt className='stat__attribute'>Building Stock Exposure</dt>
-              <dd className='stat__value stat__value--last'>$19 Billion</dd>
-            </dl>
-
-            <div className='results__divider results__divider--first'></div>
-
-            <h3 className='subtitle results__subtitle'>Loss</h3>
-            <dl className='stats'>
-              <dt className='stat__attribute'>Probable Maximum Loss</dt>
-              <dd className='stat__value'>$9.5 Billion</dd>
-              <dt className='stat__attribute'>Average Annual Loss</dt>
-              <dd className='stat__value'>$10 Billion</dd>
-              <dt className='stat__attribute'>Average Annual Loss over time</dt>
-              <dd className='stat__value stat__value--chart stat__value--last'></dd>
-            </dl>
-
-            <div className='results__divider results__divider--second'></div>
-
-            <h3 className='subtitle results__subtitle'>Risk</h3>
-            <dl className='stats'>
-              <dt className='stat__attribute'>Average Annual Loss</dt>
-              <div className='stat__value stat__value--last'>$10 Billion</div>
-            </dl>
-
-            <article className='calculator__container'>
-              <h3 className='subtitle results__subtitle'>Building Conversion Calculator</h3>
+      <div>
+        {buildingCalculator}
+        <section className='results'>
+          <h2 className='results__title'>{d.NAME_0}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
+            <div className='results__container'>
+              <h3 className='subtitle results__subtitle'>Exposure</h3>
               <dl className='stats'>
-                <div className='stat__attribute'>Convert <span className='convert__dropdown'></span> to <span className='convert__dropdown'></span></div>
-                <dt className='stat__attribute'>Percent Converted</dt>
-                <dd className='stat__value'>10%</dd>
-                <dt className='stat__attribute'>Conversion Cost</dt>
-                <dd className='stat__value'>$10 Billion</dd>
-                <dt className='stat__attribute'>Converted AAL</dt>
-                <dd className='stat__value'>$10 Billion</dd>
-                <dt className='stat__attribute'>Years until breaking even</dt>
-                <dd className='stat__value stat__value--last stat__value--positive'>101</dd>
+                <dt className='stat__attribute'>GDP</dt>
+                <dd className='stat__value'>Unimplemented</dd>
+                <dt className='stat__attribute'>Building Stock Exposure</dt>
+                <dd className='stat__value'>Unimplemented</dd>
               </dl>
-            </article>
-          </div>
-      </section>
+
+              <div className='results__divider results__divider--first'></div>
+
+              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+              <dl className='stats'>
+                <dt className='stat__attribute'>Average Annual Loss</dt>
+                <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
+                <dt className='stat__attribute'>Probable loss over time</dt>
+                <dd className='stat__value'>Unimplemented</dd>
+                <dd className='stat__value stat__value--chart stat__value--last'>
+                  <BarChart
+                    data={data}
+                    margin={margin}
+                    yTitle='Millions (US$)'
+                    xTitle='Return Period'
+                  />
+                </dd>
+              </dl>
+
+              <div className='results__divider results__divider--second'></div>
+
+              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
+              <article className='calculator__link-container'>
+                <a href='#' onClick={this.toggleCalculator}>Building Stock Conversion Calculator</a>
+              </article>
+
+            </div>
+        </section>
+      </div>
     )
   }
 })
