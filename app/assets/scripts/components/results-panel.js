@@ -17,7 +17,8 @@ const Results = React.createClass({
     sliderValue: React.PropTypes.number
   },
 
-  toggleCalculator: function () {
+  toggleCalculator: function (e) {
+    e.preventDefault()
     const visibility = !this.props.calculatorOpen
     this.props.dispatch(toggleCalculator(visibility))
   },
