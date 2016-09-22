@@ -1,4 +1,4 @@
-// IE < 10
+ // IE < 10
 // Don't delete.
 .lt-ie10 {
   #site-canvas {
@@ -15,4 +15,9 @@
       margin-bottom: 32px;
     }
   }
+}
+
+body{
+  font-family: $base-font-family;
+  line-height: 2;
 }

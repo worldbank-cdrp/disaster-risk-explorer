@@ -1,5 +1,6 @@
 'use strict'
-var defaultsDeep = require('lodash.defaultsdeep')
+import { defaultsDeep } from 'lodash'
+
 /*
  * App configuration.
  *
