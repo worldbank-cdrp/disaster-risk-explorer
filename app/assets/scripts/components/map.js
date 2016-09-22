@@ -1,6 +1,7 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import { render } from 'react-dom'
+import chroma from 'chroma-js'
 import _ from 'lodash'
 
 import { updateSelected } from '../actions'
@@ -85,9 +86,11 @@ export const Map = React.createClass({
         url: source.url
       })
 
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), this.getLegendStops(risk))
-      this._addLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, this.getColorProperty(risk), hoverLegend)
-      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility)
+      const colorScale = this.getLegendStops(risk)
+      const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), colorScale)
+      this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, '#fff')
+      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility, outlineColor)
     })
 
     this._adjustOpacity(this.props.opacity)
@@ -187,14 +190,8 @@ export const Map = React.createClass({
   _adjustOpacity: function (opacity) {
     const maps = ['admin0', 'admin1', 'km10']
     maps.forEach((map) => {
-      this._map.setPaintProperty(map + '-inactive', 'fill-opacity',
-        (opacity / 100))
-      this._map.setPaintProperty(map + '-hover', 'fill-opacity',
-        (opacity / 100))
-      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color',
-        `rgba(50, 50, 90, ${opacity / 100})`)
-      this._map.setPaintProperty(map + '-hover', 'fill-outline-color',
-        `rgba(50, 50, 90, ${opacity / 100})`)
+      this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity / 100))
+      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity / 100})`)
     })
   },
 
@@ -288,7 +285,7 @@ export const Map = React.createClass({
     })
   },
 
-  _addOutlineLayer: function (id, layer, source, filter, visibility) {
+  _addOutlineLayer: function (id, layer, source, filter, visibility, outlineColor) {
     this._map.addLayer({
       'id': id,
       'type': 'line',
@@ -296,7 +293,7 @@ export const Map = React.createClass({
       'source-layer': layer,
       'filter': filter,
       'paint': {
-        'line-color': 'rgb(50, 50, 90)',
+        'line-color': outlineColor,
         'line-width': 2
       }
     })
