@@ -188,10 +188,11 @@ export const Map = React.createClass({
   },
 
   _adjustOpacity: function (opacity) {
+    opacity = opacity === 100 ? 99 / 100 : opacity / 100
     const maps = ['admin0', 'admin1', 'km10']
     maps.forEach((map) => {
-      this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity / 100))
-      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity / 100})`)
+      this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
+      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)
     })
   },
 
