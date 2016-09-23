@@ -2,12 +2,13 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import { render } from 'react-dom'
 import chroma from 'chroma-js'
+import centerpoint from 'turf-center'
 import _ from 'lodash'
 
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
+import { mapSources, mapSettings, columnMap, inactiveLegends, hoverLegend } from '../constants'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -39,12 +40,13 @@ export const Map = React.createClass({
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
     const basemap = 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv'
 
-    const mapCenter = [-86, 13]
+    this.mapCenter = [-86, 13]
+    this.zoom = 5.75
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
       style: basemap,
-      center: mapCenter,
-      zoom: 5.75,
+      center: this.mapCenter,
+      zoom: this.zoom,
       minZoom: 2,
       attributionControl: {
         position: 'bottom-left'
@@ -100,6 +102,7 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
+
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
@@ -198,10 +201,14 @@ export const Map = React.createClass({
 
   _mapClick: function (e) {
     let sourceId = this.activeSource.id
-    const features = this._map.queryRenderedFeatures(e.point, {
+    let features = this._map.queryRenderedFeatures(e.point, {
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
+      this._map.flyTo({
+        center: centerpoint(features[0]).geometry.coordinates,
+        zoom: mapSettings.zoomLevel[this.props.dataSelection.admin.getActive().key]
+      })
       this.props.dispatch(updateSelected(features[0].properties))
     } else {
       this.props.dispatch(updateSelected(null))
@@ -213,6 +220,10 @@ export const Map = React.createClass({
   },
 
   _deselectFeature: function () {
+    this._map.flyTo({
+      center: mapSettings.centerpoint,
+      zoom: mapSettings.zoom
+    })
     this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
   },
 
