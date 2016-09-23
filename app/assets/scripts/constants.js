@@ -29,7 +29,6 @@ const makeLegend = (scale, steps) => {
 
 const inactiveScale = chroma.scale(['rgb(200, 200, 255)', 'rgb(40, 40, 80)'])
 const hoverScale = chroma.scale(['rgb(200, 240, 240)', 'rgb(40, 80, 80)'])
-const pinkScale = chroma.scale(['rgb(255, 100, 200)', 'rgb(255, 40, 80)'])
 
 export const inactiveLegends = {
   hurricane: makeLegend(inactiveScale,
