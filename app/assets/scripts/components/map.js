@@ -38,15 +38,11 @@ export const Map = React.createClass({
 
   componentDidMount: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    const basemap = 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv'
-
-    this.mapCenter = [-86, 13]
-    this.zoom = 5.75
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: basemap,
-      center: this.mapCenter,
-      zoom: this.zoom,
+      style: mapSettings.basemap.basic.url,
+      center: mapSettings.centerpoint,
+      zoom: mapSettings.zoom,
       minZoom: 2,
       attributionControl: {
         position: 'bottom-left'
@@ -54,26 +50,10 @@ export const Map = React.createClass({
     })
 
     map.on('load', () => {
-      if (this.props.dataSelection.basemap.getActive().key === 'special') this._loadSatellite()
+      const basemap = this.props.dataSelection.basemap.getActive().key
+      if (basemap === 'special') this._addBasemap(basemap)
       this._loadLayers()
     })
-  },
-
-  _loadSatellite: function () {
-    this._map.addSource('satellite', {
-      type: 'raster',
-      url: 'mapbox://mapbox.satellite'
-    })
-    this._map.addLayer({
-      id: 'satellite',
-      type: 'raster',
-      source: 'satellite'
-    }, 'road-pedestrian-case')
-  },
-
-  _removeSatellite: function () {
-    this._map.removeSource('satellite')
-    this._map.removeLayer('satellite')
   },
 
   _loadLayers: function () {
@@ -102,13 +82,12 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
-      this._loadSatellite()
+      this._loadBasemap(nextBasemap)
     } else if (prevBasemap !== nextBasemap && nextBasemap === 'basic') {
-      this._removeSatellite()
+      this._removeBasemap(prevBasemap)
     }
 
     const prevSourceName = this.props.dataSelection.admin.getActive().key
@@ -168,35 +147,78 @@ export const Map = React.createClass({
     this._popup !== null && this._popup.remove()
   },
 
-  _addData: function (id, source, property, scale, filter) {
-    this._map.addSource(id, {
-      type: 'vector',
-      url: this.mapData
+  _addBasemap: function (basemapId) {
+    this._map.addSource(basemapId, {
+      type: 'raster',
+      url: mapSettings.basemap[basemapId].url
     })
+    this._map.addLayer({
+      id: basemapId,
+      type: 'raster',
+      source: basemapId
+    }, 'road-pedestrian-case')
+  },
+
+  _removeBasemap: function (basemapId) {
+    this._map.removeSource(basemapId)
+    this._map.removeLayer(basemapId)
+  },
+
+  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale) {
     this._map.addLayer({
       'id': id,
       'type': 'fill',
-      'source': id,
-      'source-layer': source,
+      'source': source,
+      'source-layer': layer,
       'filter': filter,
+      'layout': {
+        'visibility': visibility
+      },
       'paint': {
         'fill-color': {
-          property: property,
-          stops: scale
+          property: colorProperty,
+          stops: colorScale
         },
         'fill-opacity': 1,
-        'fill-outline-color': 'white'
+        'fill-outline-color': 'rgb(140, 140, 160)'
       }
     })
   },
 
-  _adjustOpacity: function (opacity) {
-    opacity = opacity === 100 ? 99 / 100 : opacity / 100
-    const maps = ['admin0', 'admin1', 'km10']
-    maps.forEach((map) => {
-      this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
-      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)
+  _addOutlineLayer: function (id, layer, source, filter, visibility, outlineColor) {
+    console.log(outlineColor)
+    this._map.addLayer({
+      'id': id,
+      'type': 'line',
+      'source': source,
+      'source-layer': layer,
+      'filter': filter,
+      'paint': {
+        'line-color': outlineColor,
+        'line-width': 2
+      }
     })
+  },
+
+  _toggleSource: function (prevSource, nextSource) {
+    ['-inactive', '-hover', '-active'].forEach((type) => {
+      this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
+      this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
+    })
+  },
+
+  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName) {
+    // Remove old layers
+    ['-inactive', '-hover', '-active'].forEach((type) => {
+      this._map.removeLayer(prevSourceName + type)
+    })
+
+    const nextSource = mapSources[nextSourceName]
+    let id = nextSource.id
+
+    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp))
+    this._addLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', this.getColorProperty(nextColorProp), hoverLegend)
+    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible')
   },
 
   _mapClick: function (e) {
@@ -252,62 +274,17 @@ export const Map = React.createClass({
   },
 
   _unhighlightFeature: function () {
+    console.log(this.activeSource.id)
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
   },
 
-  _toggleSource: function (prevSource, nextSource) {
-    ['-inactive', '-hover', '-active'].forEach((type) => {
-      this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
-      this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
-    })
-  },
-
-  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName) {
-    // Remove old layers
-    ['-inactive', '-hover', '-active'].forEach((type) => {
-      this._map.removeLayer(prevSourceName + type)
-    })
-
-    const nextSource = mapSources[nextSourceName]
-    let id = nextSource.id
-
-    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp))
-    this._addLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', this.getColorProperty(nextColorProp), hoverLegend)
-    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible')
-  },
-
-  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale) {
-    this._map.addLayer({
-      'id': id,
-      'type': 'fill',
-      'source': source,
-      'source-layer': layer,
-      'filter': filter,
-      'layout': {
-        'visibility': visibility
-      },
-      'paint': {
-        'fill-color': {
-          property: colorProperty,
-          stops: colorScale
-        },
-        'fill-opacity': 1,
-        'fill-outline-color': 'rgb(140, 140, 160)'
-      }
-    })
-  },
-
-  _addOutlineLayer: function (id, layer, source, filter, visibility, outlineColor) {
-    this._map.addLayer({
-      'id': id,
-      'type': 'line',
-      'source': source,
-      'source-layer': layer,
-      'filter': filter,
-      'paint': {
-        'line-color': outlineColor,
-        'line-width': 2
-      }
+  _adjustOpacity: function (opacity) {
+    // Corrects Mapbox GL bug where labels float over 100% opaque features
+    opacity = opacity === 100 ? 99 / 100 : opacity / 100
+    const maps = ['admin0', 'admin1', 'km10']
+    maps.forEach((map) => {
+      this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
+      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)
     })
   },
 
