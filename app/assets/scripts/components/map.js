@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, columnMap, inactiveLegends, hoverLegend } from '../constants'
+import { mapSources, mapSettings, columnMap, inactiveLegends } from '../constants'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -186,7 +186,6 @@ export const Map = React.createClass({
   },
 
   _addOutlineLayer: function (id, layer, source, filter, visibility, outlineColor) {
-    console.log(outlineColor)
     this._map.addLayer({
       'id': id,
       'type': 'line',
@@ -216,9 +215,11 @@ export const Map = React.createClass({
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
+    const colorScale = this.getLegendStops(prevColorProp)
+    const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp))
-    this._addLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', this.getColorProperty(nextColorProp), hoverLegend)
-    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible')
+    this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', 'white')
+    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', outlineColor)
   },
 
   _mapClick: function (e) {
@@ -254,6 +255,7 @@ export const Map = React.createClass({
     const features = this._map.queryRenderedFeatures(e.point, {
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
+
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties)
@@ -274,7 +276,6 @@ export const Map = React.createClass({
   },
 
   _unhighlightFeature: function () {
-    console.log(this.activeSource.id)
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, ''])
   },
 
