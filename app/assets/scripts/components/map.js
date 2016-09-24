@@ -85,7 +85,7 @@ export const Map = React.createClass({
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
-      this._loadBasemap(nextBasemap)
+      this._addBasemap(nextBasemap)
     } else if (prevBasemap !== nextBasemap && nextBasemap === 'basic') {
       this._removeBasemap(prevBasemap)
     }
