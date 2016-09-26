@@ -2,8 +2,8 @@
   position: absolute;
   bottom: 2em;
   right: 1em;
-  width: 20em;
   background-color: #fff;
+  @include containter;
 }
 
 .opacity-panel__title {
