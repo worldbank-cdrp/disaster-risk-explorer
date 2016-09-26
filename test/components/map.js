@@ -16,6 +16,7 @@ test('map test', t => {
   t.truthy(component.hasClass('map'))
 
   // mock mount
-  const instance = component.instance()
+  let instance = component.instance()
+  instance._adjustOpacity = () => {}
   t.notThrows(() => instance.componentDidMount())
 })
