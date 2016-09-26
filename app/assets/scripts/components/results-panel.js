@@ -19,6 +19,8 @@ const Results = React.createClass({
 
   toggleCalculator: function (e) {
     e.preventDefault()
+    console.log('results', this.props.calculatorOpen)
+    console.log('results', !this.props.calculatorOpen)
     this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
   },
 

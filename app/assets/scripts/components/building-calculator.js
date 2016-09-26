@@ -18,7 +18,9 @@ const Results = outside(React.createClass({
   },
 
   handleClickOutside: function (e) {
-    this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
+    e.target.firstChild.textContent === 'Building Stock Conversion Calculator'
+    ? this.props.dispatch(toggleCalculator(this.props.calculatorOpen))
+    : this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
   },
 
   onChangeSlide: function (e) {
