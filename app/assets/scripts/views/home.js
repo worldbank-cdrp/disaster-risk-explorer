@@ -49,7 +49,9 @@ var Home = React.createClass({
           dispatch={this.props.dispatch}
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
-        <Legend dataSelection={dataSelection} />
+        <Legend
+          dataSelection={dataSelection}
+          opacity={this.props.opacity} />
         <OpacityPanel
           dispatch={this.props.dispatch}
           opacity={this.props.opacity} />

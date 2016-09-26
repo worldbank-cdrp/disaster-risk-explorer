@@ -6,7 +6,9 @@ import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
-    dataSelection: React.PropTypes.object
+    dataSelection: React.PropTypes.object,
+
+    opacity: React.PropTypes.number
   },
 
   render: function () {
@@ -17,7 +19,9 @@ const Legend = React.createClass({
       return (
         <span key={i}
           className='legend__category'
-          style={{width: 100 / legend.length + '%', backgroundColor: cat[1]}}>
+          style={{width: 100 / legend.length + '%',
+                  backgroundColor: cat[1],
+                  opacity: this.props.opacity / 100}}>
         </span>
       )
     })
