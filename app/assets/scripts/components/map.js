@@ -156,7 +156,7 @@ export const Map = React.createClass({
       id: basemapId,
       type: 'raster',
       source: basemapId
-    }, 'road-pedestrian-case')
+    }, 'waterway-label')
   },
 
   _removeBasemap: function (basemapId) {
