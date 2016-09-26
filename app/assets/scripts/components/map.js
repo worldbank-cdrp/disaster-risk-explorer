@@ -105,7 +105,7 @@ export const Map = React.createClass({
     const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
     if (prevId !== nextId && nextId !== null) {
       this._selectFeature(nextProps.selected)
-    } else {
+    } else if (nextId === null) {
       this._deselectFeature()
     }
 

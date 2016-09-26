@@ -19,8 +19,7 @@ const Results = React.createClass({
 
   toggleCalculator: function (e) {
     e.preventDefault()
-    const visibility = !this.props.calculatorOpen
-    this.props.dispatch(toggleCalculator(visibility))
+    this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
   },
 
   deleteThis: function () {
