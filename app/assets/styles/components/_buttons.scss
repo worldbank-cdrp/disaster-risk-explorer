@@ -104,9 +104,10 @@
     box-shadow: none;
     background-color: rgba(0,0,0,0);
     color: black;
+    padding: 7px 0 0 0;
     &:hover{
       box-shadow: none;
-      padding: 0;
+      padding: 7px 0 0 0;
       background-color: rgba(0,0,0,0);
     }
 }

@@ -69,9 +69,23 @@ const Selection = React.createClass({
         </dl>
 
         <dl className='selection__panel'>
+          <dt className='subtitle selection__panel--attribute'>{t('return')}</dt>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('return', dataSelection.return.getActive(), dataSelection.return.getOptions())}
+          </dd>
+        </dl>
+
+        <dl className='selection__panel selection__panel--split'>
           <dt className='subtitle selection__panel--attribute'>{t('data by')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('admin', dataSelection.admin.getActive(), dataSelection.admin.getOptions())}
+          </dd>
+        </dl>
+
+        <dl className='selection__panel'>
+          <dt className='subtitle selection__panel--attribute'>{t('opacity')}</dt>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('opacity', dataSelection.opacity.getActive(), dataSelection.opacity.getOptions())}
           </dd>
         </dl>
 
