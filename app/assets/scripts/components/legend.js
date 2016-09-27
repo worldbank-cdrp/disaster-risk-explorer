@@ -35,7 +35,7 @@ const Legend = React.createClass({
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'></figcaption>
+          <figcaption className='legend__caption'>Possible explanatory text can go here for the given selection</figcaption>
         </figure>
       </section>
     )
