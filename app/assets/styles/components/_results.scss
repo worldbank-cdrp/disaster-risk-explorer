@@ -3,6 +3,7 @@
   top: $page-header-y;
   right: 1em;
   z-index: 100;
+  line-height:1.6em;
   @include debug();
   @include containter();
 }
@@ -17,20 +18,30 @@
   clear: both;
 }
 
+.results__subtitle--secondary{
+  margin-top: 0.5em;
+}
+
 .results__container{
-  margin: 0.5em 1em 13.3em 1em;
+  padding: 0.5em 1em 0.4em 1em;
 }
 
 .results__download{
   position: absolute;
   right: 1em;
   top: 10px;
+  font-size: 1em;
+  font-weight: 300;
   i{
+    margin-top: 3px;
     margin-right: 10px;
   }
 }
 
 .stats{
+  clear: both;
+  overflow: hidden;
+  margin-bottom:4px;
 }
 
 .stat__attribute{
@@ -45,44 +56,70 @@
   float: right;
 }
 
-.stat__value--last{
+
+.stat__value--chart {
+  /*background-color: #eee;*/
+  float: none;
+  clear: left;
+}
+
+.chart-container {
+  width: 100%;
+  height: 150px;
+}
+
+.chart {
+  .zebra {
+    opacity: 0.5;
+    &--odd {
+      fill: #ddd;
+    }
+    &--even {
+      fill: none;
+    }
+  }
+}
+
+.chart__axis-title{
+  font-size: 0.9em;
+  font-weight: 300;
+}
+
+.chart__axis-ticks{
+  font-size: 0.8em;
+  font-weight: 300;
   margin-bottom: 1em;
 }
 
-.stat__value--chart {
-  width:100%;
-  height: 100px;
-  background-color: #eee;
+.chart__bar{
+  fill: #aaa;
+  stroke: #777;
 }
 
-.stat__value--chart {
-  margin-bottom:1.5em;
-}
-
-.calculator__container {
-  background-color: #eee;
-  clear: both;
-  height: 174px;
-  border-radius: 8px;
-  bottom: 8px;
-  left: 8px;
-  width: 320px;
-  padding: 8px;
-  position: absolute;
+.calculator__link-container {
+  a {
+    display: block;
+    font-size: 0.85em;
+    background-color: lighten(#aaa, 27);
+    clear: both;
+    border-radius: 3px;
+    left: 8px;
+    width: 340px;
+    padding: 4px 4px 3px 10px;
+    margin: 0 -10px;
+    color: #aaa;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      background-color: lighten(#aaa, 20);
+      color: darken(#aaa, 15)
+    }
+  }
 }
 
 .results__divider {
-  width:100%;
   background-color: lighten($secondary-color, 15);
   height: 2px;
   left:0;
-  position: absolute;
-}
-
-.results__divider--first {
-  top:120px;
-}
-
-.results__divider--second {
-  top: 350px;
+  margin: 0 -1em 0 -1em;
 }

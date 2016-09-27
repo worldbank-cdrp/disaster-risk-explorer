@@ -18,7 +18,18 @@
   margin-right: 1em;
 }
 
-.header__information{
+.button--header-info {
   float: right;
   margin-right: 1em;
+  text-align: center;
+
+  &::before {
+    @extend %collecticon-circle-information;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  span {
+    @extend .visually-hidden;
+  }
 }

@@ -2,13 +2,14 @@ import React from 'react'
 import { hashHistory } from 'react-router'
 import c from 'classnames'
 
-import { getLanguage } from '../utils/i18n'
+import { getLanguage, t } from '../utils/i18n'
 import DataSelection from '../utils/data-selection'
 import Dropdown from './dropdown'
 
 const Selection = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+
     mapSource: React.PropTypes.object,
     queryParams: React.PropTypes.object
   },
@@ -25,8 +26,8 @@ const Selection = React.createClass({
       <Dropdown
         triggerElement='button'
         triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
-        triggerTitle='Show/hide parameter options'
-        triggerText={active.value} >
+        triggerTitle={t('Show/hide parameter options')}
+        triggerText={t(active.key)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
@@ -37,7 +38,7 @@ const Selection = React.createClass({
                 title=''
                 data-hook='dropdown:close'
                 onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
-                  <span>{o.key}</span>
+                  <span>{t(o.key)}</span>
               </a>
             </li>)
           })}
@@ -51,33 +52,31 @@ const Selection = React.createClass({
 
     return (
       <section className='selection'>
+
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Risk</dt>
+          <dt className='subtitle selection__panel--attribute'>{t('metric')}</dt>
+          <dd className='selection__panel--drop'>
+            {this.renderDropdown('metric', dataSelection.metric.getActive(), dataSelection.metric.getOptions())}
+          </dd>
+        </dl>
+
+        <dl className={'selection__panel ' +
+        (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
+          <dt className='subtitle selection__panel--attribute'>{t('risk')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
+
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Year</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('year', dataSelection.year.getActive(), dataSelection.year.getOptions())}
-          </dd>
-        </dl>
-        <dl className='selection__panel selection__panel--split'>
-          <dt className='subtitle selection__panel--attribute'>Building exposure</dt>
-          <dd className='selection__panel--drop'>
-            {this.renderDropdown('building', dataSelection.building.getActive(), dataSelection.building.getOptions())}
-          </dd>
-        </dl>
-        <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Select data by</dt>
+          <dt className='subtitle selection__panel--attribute'>{t('data by')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('admin', dataSelection.admin.getActive(), dataSelection.admin.getOptions())}
           </dd>
         </dl>
 
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>Change Basemap</dt>
+          <dt className='subtitle selection__panel--attribute'>{t('basemap')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('basemap', dataSelection.basemap.getActive(), dataSelection.basemap.getOptions())}
           </dd>

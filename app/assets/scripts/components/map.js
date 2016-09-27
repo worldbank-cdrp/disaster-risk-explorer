@@ -1,8 +1,12 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
+import { render } from 'react-dom'
+import _ from 'lodash'
 
-import { mapSources, columnMap, inactiveLegends, hoverLegend } from '../constants'
 import { updateSelected } from '../actions'
+import MapPopup from './map-popup'
+
+import { mapSources, columnMap, inactiveLegends, hoverLegend, basemaps } from '../constants'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -16,47 +20,67 @@ export const Map = React.createClass({
   },
 
   getLegendStops: function (risk) {
-    return inactiveLegends[risk]
+    return inactiveLegends[risk.toLowerCase()]
   },
 
   getColorProperty: function (risk) {
-    return columnMap[risk]
+    return columnMap[risk.toLowerCase()]
   },
+
+  _popup: null,
+
+  //
+  // Start life-cycle methods
+  //
 
   componentDidMount: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
     this.mapCenter = [-86, 13]
+    this.basemap = basemaps[this.props.dataSelection.basemap.getActive().key]
 
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      style: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv',
+      style: this.basemap,
       center: this.mapCenter,
       zoom: 5.75,
-      minZoom: 2
+      minZoom: 2,
+      attributionControl: {
+        position: 'bottom-left'
+      }
     })
 
     map.on('load', () => {
-      let risk = this.props.dataSelection.risk.getActive().key
-      Object.keys(mapSources).forEach((id) => {
-        const source = mapSources[id]
-        let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
-
-        this._map.addSource(id, {
-          type: 'vector',
-          url: source.url
-        })
-
-        this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), this.getLegendStops(risk))
-        this._addLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, this.getColorProperty(risk), hoverLegend)
-        this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility)
-      })
-
-      map.on('mousemove', this._mouseMove)
-      map.on('click', this._mapClick)
+      this._loadLayers()
     })
   },
 
+  _loadLayers: function () {
+    this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+    let risk = this.props.dataSelection.risk.getActive().key
+    Object.keys(mapSources).forEach((id) => {
+      const source = mapSources[id]
+      let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
+
+      this._map.addSource(id, {
+        type: 'vector',
+        url: source.url
+      })
+
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), this.getLegendStops(risk))
+      this._addLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, this.getColorProperty(risk), hoverLegend)
+      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility)
+    })
+
+    this._map.on('mousemove', this._mouseMove)
+    this._map.on('click', this._mapClick)
+  },
+
   componentWillReceiveProps: function (nextProps) {
+    const prevBasemap = this.props.dataSelection.basemap.getActive().key
+    const nextBasemap = nextProps.dataSelection.basemap.getActive().key
+
+    if (prevBasemap !== nextBasemap) this._switchBasemap(nextBasemap)
+
     const prevSourceName = this.props.dataSelection.admin.getActive().key
     const nextSourceName = nextProps.dataSelection.admin.getActive().key
     if (nextSourceName !== prevSourceName) {
@@ -68,7 +92,6 @@ export const Map = React.createClass({
     if (nextColorProp !== prevColorProp) {
       this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName)
     }
-
     const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
     const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
     if (prevId !== nextId) {
@@ -81,6 +104,70 @@ export const Map = React.createClass({
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
+  },
+
+  //
+  // Start helper methods
+  //
+
+  // Will be created the first time is needed.
+  _showPopupThrottled: null,
+
+  _showPopup: function (lngLat, feature) {
+    let popupContent = document.createElement('div')
+    render(<MapPopup
+             country={feature.properties.NAME_0}
+             aal={feature.properties.AAL}
+           />, popupContent)
+
+    if (this._popup === null) {
+      this._popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+        offset: 8
+      })
+    }
+
+    this._popup
+      .setLngLat([lngLat.lng, lngLat.lat])
+      .setDOMContent(popupContent)
+      .addTo(this._map)
+  },
+
+  _hidePopup: function () {
+    this._popup !== null && this._popup.remove()
+  },
+
+  _switchBasemap: function (basemap) {
+    this.basemap = basemaps[basemap]
+    this._map.setStyle(this.basemap)
+    let component = this
+    // A delay between basemap and layer loading is needed to prevent race condition
+    setTimeout(function () {
+      component._loadLayers()
+    }, 150)
+  },
+
+  _addData: function (id, source, property, scale, filter) {
+    this._map.addSource(id, {
+      type: 'vector',
+      url: this.mapData
+    })
+    this._map.addLayer({
+      'id': id,
+      'type': 'fill',
+      'source': id,
+      'source-layer': source,
+      'filter': filter,
+      'paint': {
+        'fill-color': {
+          property: property,
+          stops: scale
+        },
+        'fill-opacity': 1,
+        'fill-outline-color': 'white'
+      }
+    })
   },
 
   _mapClick: function (e) {
@@ -110,15 +197,21 @@ export const Map = React.createClass({
     })
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
-      this._highlightFeature(features[0])
+      this._highlightFeature(features[0].properties)
+
+      if (this._showPopupThrottled === null) {
+        this._showPopupThrottled = _.throttle(this._showPopup, 30)
+      }
+      this._showPopupThrottled(e.lngLat, features[0])
     } else {
       this._map.getCanvas().style.cursor = ''
       this._unhighlightFeature()
+      this._hidePopup()
     }
   },
 
-  _highlightFeature: function (feature) {
-    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, feature.properties[this.activeSource.idProp]])
+  _highlightFeature: function (featureProps) {
+    this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
   _unhighlightFeature: function () {
@@ -180,6 +273,10 @@ export const Map = React.createClass({
       }
     })
   },
+
+  //
+  // Start render methods
+  //
 
   render: function () {
     return <div id='map' className='map' ref='map'/>

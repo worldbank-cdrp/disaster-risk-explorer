@@ -21,8 +21,6 @@
  */
 
 @import "bourbon";
-@import "vendor/mapboxgl";
-
 
 
 /* Reboot
@@ -39,12 +37,21 @@
 
 @import "vendor/normalize-opentype";
 
-/* Settings
+/* Fonts
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css?family=Hind");
+
+/* Libraries
    ========================================================================== */
 
 @import "settings/variables";
 @import "settings/mixins";
 @import "core/collecticons";
+@import "vendor/mapboxgl";
+@import "vendor/nouislider";
+@import "vendor/nouislider.tooltips";
+@import "vendor/nouislider.pips";
 
 /* Main
    ========================================================================== */
@@ -60,9 +67,11 @@
 @import "global/pages";
 
 @import "components/drops";
+@import "components/modals";
 
 @import "components/map";
 @import "components/legend";
 @import "components/selection";
 @import "components/header";
 @import "components/results";
+@import "components/building-calculator";

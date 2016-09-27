@@ -64,18 +64,14 @@ export function DataSelectionFactory (availableParams) {
 // Export version ready with the actual available parameters
 
 let availableParams = {
+  metric: [
+    {key: 'risk', value: 'Risk'},
+    {key: 'loss', value: 'Loss'},
+    {key: 'exposure', value: 'Exposure'}
+  ],
   risk: [
     {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'},
-    {key: 'flood', value: 'Flood'}
-  ],
-  year: [
-    {key: '2000', value: '2000'},
-    {key: '2001', value: '2001'}
-  ],
-  building: [
-    {key: 'retrofitted', value: 'Retrofitted'},
-    {key: 'opt2', value: 'Normal'}
+    {key: 'hurricane', value: 'Hurricane'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},

@@ -5,13 +5,12 @@ import { connect } from 'react-redux'
 import DataSelection from '../utils/data-selection'
 import { mapSources } from '../constants'
 
+import About from '../components/about-modal.js'
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
 import Selection from '../components/selection-panel.js'
 import Results from '../components/results-panel.js'
-
-// import { t } from '../utils/i18n'
 
 var Home = React.createClass({
   displayName: 'Home',
@@ -23,19 +22,21 @@ var Home = React.createClass({
     mapSource: React.PropTypes.object,
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.number,
-    selected: React.PropTypes.object
+    selected: React.PropTypes.object,
+    calculatorOpen: React.PropTypes.bool,
+    modalAbout: React.PropTypes.object,
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
   },
-
-  // {/* Example: remove */}
-  // <p style={{position: 'absolute', zIndex: 1000, background: 'lightgray', padding: '1rem'}}>{t('hello')}</p>
-  // {/* Example: remove */}
 
   render: function () {
     const dataSelection = DataSelection(this.props.location.query)
     const mapSource = mapSources[dataSelection.admin.getActive().key]
     return (
       <div>
-        <Header />
+        <Header
+         dispatch={this.props.dispatch}
+         queryParams={this.props.location.query} />
         <Map
           mapSource={mapSource}
           dataSelection={dataSelection}
@@ -45,9 +46,17 @@ var Home = React.createClass({
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource}
           dispatch={this.props.dispatch} />
-        <Legend dataSelection={dataSelection}/>
+        <Legend dataSelection={dataSelection} />
         <Results
-          data={this.props.selected} />
+          dispatch={this.props.dispatch}
+          dataSelection={dataSelection}
+          calculatorOpen={this.props.calculatorOpen}
+          data={this.props.selected}
+          conversion={this.props.conversion}
+          sliderValue={this.props.sliderValue} />
+        <About
+          dispatch={this.props.dispatch}
+          visible={this.props.modalAbout.visible} />
       </div>
     )
   }
@@ -60,7 +69,11 @@ function mapStateToProps (state) {
   return {
     mapSource: state.map.mapSource,
     hovered: state.map.hovered,
-    selected: state.map.selected
+    selected: state.map.selected,
+    calculatorOpen: state.resultsPanel.calculatorOpen,
+    modalAbout: state.modalAbout,
+    conversion: state.buildingCalculator.conversion,
+    sliderValue: state.buildingCalculator.sliderValue
   }
 }
 

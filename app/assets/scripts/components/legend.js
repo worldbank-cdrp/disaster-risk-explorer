@@ -1,7 +1,8 @@
 import React from 'react'
 import { inactiveLegends } from '../constants'
 
-import { capitalizeFirstLetter, shortenNumber } from '../utils/format'
+import { shortenNumber } from '../utils/format'
+import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
@@ -10,7 +11,7 @@ const Legend = React.createClass({
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
-    let legend = inactiveLegends[activeRisk]
+    let legend = inactiveLegends[activeRisk.toLowerCase()]
 
     const legendBlocks = legend.map((cat, i) => {
       return (
@@ -31,7 +32,7 @@ const Legend = React.createClass({
     })
     return (
       <section className='legend'>
-        <h2 className='legend__title'>Average Annual Loss from {capitalizeFirstLetter(activeRisk)}s</h2>
+        <h2 className='legend__title'>{t('Average Annual Loss from')} {t(activeRisk)}</h2>
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
