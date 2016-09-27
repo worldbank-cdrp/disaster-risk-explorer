@@ -50,7 +50,9 @@ export function t (string, replace = {}) {
       'km10': '0km Grids',
       'basic': 'Basic',
       'special': 'Special',
-      'Show/hide parameter options': 'Show/hide parameter options'
+      'Show/hide parameter options': 'Show/hide parameter options',
+
+      'legend-caption': 'Possible explanatory text can go here for the given selection'
     },
     es: {
       'screen small': 'screen small ES',
@@ -78,7 +80,9 @@ export function t (string, replace = {}) {
       'km10': '0km Grids ES',
       'basic': 'Basic ES',
       'special': 'Special ES',
-      'Show/hide parameter options': 'Show/hide parameter options ES'
+      'Show/hide parameter options': 'Show/hide parameter options ES',
+
+      'legend-caption': 'Possible explanatory text can go here for the given selection ES'
     }
   }
 
