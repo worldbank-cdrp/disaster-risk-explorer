@@ -68,14 +68,14 @@ export const Map = React.createClass({
         url: source.url
       })
 
+      let opacity = this.props.dataSelection.opacity.getActive().key
+      opacity = mapSettings.opacityLevels[opacity]
       const colorScale = this.getLegendStops(risk)
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), colorScale)
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), colorScale, opacity)
       this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, '#fff')
       this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility, outlineColor)
     })
-
-    this._adjustOpacity(this.props.opacity)
 
     this._map.on('mousemove', this._mouseMove)
     this._map.on('click', this._mapClick)
@@ -96,11 +96,19 @@ export const Map = React.createClass({
       this._toggleSource(prevSourceName, nextSourceName)
     }
 
+    const prevOpacity = this.props.dataSelection.opacity.getActive().key
+    let nextOpacity = nextProps.dataSelection.opacity.getActive().key
+    if (nextOpacity !== prevOpacity) {
+      nextOpacity = mapSettings.opacityLevels[nextOpacity]
+      this._adjustOpacity(nextOpacity)
+    }
+
     const prevColorProp = this.props.dataSelection.risk.getActive().key
     const nextColorProp = nextProps.dataSelection.risk.getActive().key
     if (nextColorProp !== prevColorProp) {
-      this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName)
+      this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName, nextOpacity)
     }
+
     const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
     const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
     if (prevId !== nextId && nextId !== null) {
@@ -109,7 +117,8 @@ export const Map = React.createClass({
       this._deselectFeature()
     }
 
-    this._adjustOpacity(nextProps.opacity)
+    // const opacityLevel = nextProps.dataSelection.opacity.getActive().key
+    // this._adjustOpacity(mapSettings.opacityLevels[opacityLevel])
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
@@ -164,7 +173,7 @@ export const Map = React.createClass({
     this._map.removeLayer(basemapId)
   },
 
-  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale) {
+  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale, opacity) {
     this._map.addLayer({
       'id': id,
       'type': 'fill',
@@ -179,7 +188,7 @@ export const Map = React.createClass({
           property: colorProperty,
           stops: colorScale
         },
-        'fill-opacity': 1,
+        'fill-opacity': opacity,
         'fill-outline-color': 'rgb(140, 140, 160)'
       }
     })
@@ -206,7 +215,7 @@ export const Map = React.createClass({
     })
   },
 
-  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName) {
+  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName, opacity) {
     // Remove old layers
     ['-inactive', '-hover', '-active'].forEach((type) => {
       this._map.removeLayer(prevSourceName + type)
@@ -217,7 +226,7 @@ export const Map = React.createClass({
 
     const colorScale = this.getLegendStops(prevColorProp)
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp))
+    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp), opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', 'white')
     this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', outlineColor)
   },
@@ -292,8 +301,6 @@ export const Map = React.createClass({
   },
 
   _adjustOpacity: function (opacity) {
-    // Corrects Mapbox GL bug where labels float over 100% opaque features
-    opacity = opacity === 100 ? 99 / 100 : opacity / 100
     const maps = ['admin0', 'admin1', 'km10']
     maps.forEach((map) => {
       this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
