@@ -24,7 +24,7 @@ const Calculator = React.createClass({
           <header className='modal__header'>
             <div className='modal__headline'>
               <h1 className='modal__title'>About this Tool</h1>
-              <button className='modal__button-dismiss' title='Close' onClick={() => this.props.dispatch(hideModalCalculator())}><span>Dismiss</span></button>
+              <button className='modal__button-dismiss' title='Close' onClick={() => this.props.dispatch(hideModalCalc())}><span>Dismiss</span></button>
             </div>
           </header>
           <div className='modal__body'>
