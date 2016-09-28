@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, columnMap, inactiveLegends } from '../constants'
+import { mapSources, mapSettings, columnMap, inactiveLegends, countryExtents } from '../constants'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -228,11 +228,23 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
-      this._map.flyTo({
-        center: centerpoint(features[0]).geometry.coordinates,
-        zoom: mapSettings.zoomLevel[this.props.dataSelection.admin.getActive().key]
-      })
-      this.props.dispatch(updateSelected(features[0].properties))
+      const feature = features[0]
+      const admin = this.props.dataSelection.admin.getActive().key
+      if (admin === 'admin0' || admin === 'admin1') {
+        // Temporary fix for lack of country codes in source data. In final
+        // version, ID field will be the same for each admin level.
+        const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
+        const id = feature.properties[idField]
+        this._map.fitBounds(countryExtents[admin][id], {
+          padding: 100
+        })
+      } else {
+        this._map.flyTo({
+          center: centerpoint(feature).geometry.coordinates,
+          zoom: mapSettings.zoomLevel[admin]
+        })
+      }
+      this.props.dispatch(updateSelected(feature.properties))
     } else {
       this.props.dispatch(updateSelected(null))
     }
