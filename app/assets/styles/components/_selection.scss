@@ -30,8 +30,12 @@
 
 .selection__panel--attribute {
   float: left;
-  margin-top: 0.65em;
+  margin-top: 0.55rem;
   line-height: 1.5;
+  i{
+    margin-right: 16px;
+    vertical-align: middle;
+  }
 }
 
 .selection__panel--drop {
