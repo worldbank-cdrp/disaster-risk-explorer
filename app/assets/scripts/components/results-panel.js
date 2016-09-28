@@ -102,15 +102,9 @@ const Results = React.createClass({
                     />
                   </dd>
                 </dl>
-
-                <div className='results__divider results__divider--second'></div>
-
-                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
-                <article className='calculator__link-container'>
-                </article>
               </div>
-              <button className='button button_results'><i className='collecticon collecticon-download' />View Historical Data</button>
-              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
+              <button className='button button_results button_results--half'>View Historical Data</button>
+              <button className='button button_results button_results--half button_results--right'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
           <button onClick={this.toggleCalculator} className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>

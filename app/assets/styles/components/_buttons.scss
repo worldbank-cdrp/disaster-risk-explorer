@@ -107,11 +107,12 @@
 .button_results{
   background-color: $primary-color;
   color: #eee;
-  box-shadow: inset 0 0 0 0 #5d544f, inset 0 0 0 1px #5d544f;
+  padding: 6px 0;
   &:hover{
     color: #eee;
-    background-color: darken($primary-color, 10);
-    box-shadow: inset 0 0 0 0 #5d544f;
+    background-color: darken($primary-color, 15);
+    padding: 6px 0;
+    box-shadow: none;
   }
 }
 
