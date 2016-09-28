@@ -25,11 +25,14 @@ const Results = React.createClass({
   deleteThis: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Title</h2>
+        <div className='results__space'>
+        <h2 className='results__title'>{t('default-title')}</h2>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'></h3>
             <p className='results__container--textbox'>{t('default-text')}</p>
           </div>
+        </div>
+        <button className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
       </section>
     )
   },
@@ -109,6 +112,7 @@ const Results = React.createClass({
               <button className='button button_results'><i className='collecticon collecticon-download' />View Historical Data</button>
               <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
+          <button onClick={this.toggleCalculator} className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )

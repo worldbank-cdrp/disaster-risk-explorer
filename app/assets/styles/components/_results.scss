@@ -4,8 +4,10 @@
   right: 1em;
   z-index: 100;
   line-height:1.6em;
-  @include debug();
-  @include containter();
+}
+
+.results__space{
+  @include containter();  
 }
 
 .results__title {

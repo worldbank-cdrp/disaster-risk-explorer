@@ -52,9 +52,6 @@ var Home = React.createClass({
         <Legend
           dataSelection={dataSelection}
           opacity={this.props.opacity} />
-        <OpacityPanel
-          dispatch={this.props.dispatch}
-          opacity={this.props.opacity} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
@@ -69,6 +66,10 @@ var Home = React.createClass({
     )
   }
 })
+
+//  <OpacityPanel
+//  dispatch={this.props.dispatch}
+//  opacity={this.props.opacity} />
 
 // /////////////////////////////////////////////////////////////////// //
 // Connect functions
