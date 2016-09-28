@@ -116,9 +116,6 @@ export const Map = React.createClass({
       this._deselectFeature()
     }
 
-    // const opacityLevel = nextProps.dataSelection.opacity.getActive().key
-    // this._adjustOpacity(mapSettings.opacityLevels[opacityLevel])
-
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
   },
