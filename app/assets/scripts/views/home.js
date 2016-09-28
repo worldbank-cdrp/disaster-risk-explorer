@@ -11,6 +11,7 @@ import Map from '../components/map.js'
 import Legend from '../components/legend.js'
 import Selection from '../components/selection-panel.js'
 import Results from '../components/results-panel.js'
+import OpacityPanel from '../components/opacity-panel.js'
 
 var Home = React.createClass({
   displayName: 'Home',
@@ -26,7 +27,8 @@ var Home = React.createClass({
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
+    sliderValue: React.PropTypes.number,
+    opacity: React.PropTypes.number
   },
 
   render: function () {
@@ -38,15 +40,21 @@ var Home = React.createClass({
          dispatch={this.props.dispatch}
          queryParams={this.props.location.query} />
         <Map
+          dispatch={this.props.dispatch}
           mapSource={mapSource}
           dataSelection={dataSelection}
           selected={this.props.selected}
-          dispatch={this.props.dispatch} />
+          opacity={this.props.opacity} />
         <Selection
+          dispatch={this.props.dispatch}
           queryParams={this.props.location.query}
-          mapSource={this.props.mapSource}
-          dispatch={this.props.dispatch} />
-        <Legend dataSelection={dataSelection} />
+          mapSource={this.props.mapSource} />
+        <Legend
+          dataSelection={dataSelection}
+          opacity={this.props.opacity} />
+        <OpacityPanel
+          dispatch={this.props.dispatch}
+          opacity={this.props.opacity} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
@@ -73,7 +81,8 @@ function mapStateToProps (state) {
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
     conversion: state.buildingCalculator.conversion,
-    sliderValue: state.buildingCalculator.sliderValue
+    sliderValue: state.buildingCalculator.sliderValue,
+    opacity: state.opacityPanel.opacity
   }
 }
 

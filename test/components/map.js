@@ -17,5 +17,6 @@ test('map test', t => {
 
   // mock mount
   const instance = component.instance()
+  instance._adjustOpacity = () => {}
   t.notThrows(() => instance.componentDidMount())
 })
