@@ -26,8 +26,7 @@ var Home = React.createClass({
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number,
-    opacity: React.PropTypes.number
+    sliderValue: React.PropTypes.number
   },
 
   render: function () {
@@ -42,15 +41,13 @@ var Home = React.createClass({
           dispatch={this.props.dispatch}
           mapSource={mapSource}
           dataSelection={dataSelection}
-          selected={this.props.selected}
-          opacity={this.props.opacity} />
+          selected={this.props.selected} />
         <Selection
           dispatch={this.props.dispatch}
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
         <Legend
-          dataSelection={dataSelection}
-          opacity={this.props.opacity} />
+          dataSelection={dataSelection} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
@@ -77,8 +74,7 @@ function mapStateToProps (state) {
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
     conversion: state.buildingCalculator.conversion,
-    sliderValue: state.buildingCalculator.sliderValue,
-    opacity: state.opacityPanel.opacity
+    sliderValue: state.buildingCalculator.sliderValue
   }
 }
 

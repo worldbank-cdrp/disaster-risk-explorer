@@ -18,8 +18,7 @@ export const Map = React.createClass({
     dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
-    selected: React.PropTypes.object,
-    opacity: React.PropTypes.number
+    selected: React.PropTypes.object
   },
 
   getLegendStops: function (risk) {
@@ -96,10 +95,10 @@ export const Map = React.createClass({
       this._toggleSource(prevSourceName, nextSourceName)
     }
 
-    const prevOpacity = this.props.dataSelection.opacity.getActive().key
-    let nextOpacity = nextProps.dataSelection.opacity.getActive().key
-    if (nextOpacity !== prevOpacity) {
-      nextOpacity = mapSettings.opacityLevels[nextOpacity]
+    const prevOpacityKey = this.props.dataSelection.opacity.getActive().key
+    const nextOpacityKey = nextProps.dataSelection.opacity.getActive().key
+    const nextOpacity = mapSettings.opacityLevels[nextOpacityKey]
+    if (nextOpacityKey !== prevOpacityKey) {
       this._adjustOpacity(nextOpacity)
     }
 

@@ -6,9 +6,7 @@ import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
-    dataSelection: React.PropTypes.object,
-
-    opacity: React.PropTypes.number
+    dataSelection: React.PropTypes.object
   },
 
   render: function () {
