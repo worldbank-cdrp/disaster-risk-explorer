@@ -114,9 +114,12 @@
 
 .button--active{
     color: #888;
-    background-color: lighten($secondary-color, 20);
+    background-color: lighten($secondary-color, 16);
     box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 0px 0 0 $secondary-color;
     &:hover{
-      background-color: lighten($secondary-color, 16);
+      background-color: lighten($secondary-color, 10);
+    }
+    .header__language--text{
+        transform: translate(0, 5px);
     }
 }

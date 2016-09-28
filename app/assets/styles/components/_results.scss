@@ -143,3 +143,22 @@
   left:0;
   margin: 0 -1em 0 -1em;
 }
+
+.results__calc-launcher{
+  margin-top:0.5em;
+  padding: 0.2em 0 0.35em;
+  width: 100%;
+  .results__calc-hover{
+    transform: translate(0, 4px);
+  }
+  &:hover{
+    .results__calc-hover{
+      transform: translate(0, 5px);      
+    }
+  }
+}
+
+.results__container--textbox{
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}

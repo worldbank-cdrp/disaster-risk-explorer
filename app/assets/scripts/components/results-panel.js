@@ -27,8 +27,8 @@ const Results = React.createClass({
       <section className='results'>
         <h2 className='results__title'>Title</h2>
           <div className='results__container'>
-            <h3 className='subtitle results__subtitle'>This is a dummy title</h3>
-            <p>More dummy content</p>
+            <h3 className='subtitle results__subtitle'></h3>
+            <p className='results__container--textbox'>{t('default-text')}</p>
           </div>
       </section>
     )
@@ -71,41 +71,43 @@ const Results = React.createClass({
             dispatch={this.props.dispatch} />
         : ''}
         <section className='results'>
-          <h2 className='results__title'>{title}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
-            <div className='results__container'>
-              <h3 className='subtitle results__subtitle'>Exposure</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>GDP</dt>
-                <dd className='stat__value unimplemented'>$45 Billion</dd>
-                <dt className='stat__attribute'>Building Stock Exposure</dt>
-                <dd className='stat__value unimplemented'>$34 Million</dd>
-              </dl>
+          <div className='results__space'>
+            <h2 className='results__title'>{title}</h2>
+              <div className='results__container'>
+                <h3 className='subtitle results__subtitle'>Exposure</h3>
+                <dl className='stats'>
+                  <dt className='stat__attribute'>GDP</dt>
+                  <dd className='stat__value unimplemented'>$45 Billion</dd>
+                  <dt className='stat__attribute'>Building Stock Exposure</dt>
+                  <dd className='stat__value unimplemented'>$34 Million</dd>
+                </dl>
 
-              <div className='results__divider results__divider--first'></div>
+                <div className='results__divider results__divider--first'></div>
 
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>Average Annual Loss</dt>
-                <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
-                <dt className='stat__attribute'>Probable loss over time</dt>
-                <dd className='stat__value unimplemented'>$4 Billion</dd>
-                <dd className='stat__value stat__value--chart stat__value--last'>
-                  <BarChart
-                    data={data}
-                    margin={margin}
-                    yTitle='Millions (US$)'
-                    xTitle='Return Period'
-                  />
-                </dd>
-              </dl>
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <dl className='stats'>
+                  <dt className='stat__attribute'>Average Annual Loss</dt>
+                  <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
+                  <dt className='stat__attribute'>Probable loss over time</dt>
+                  <dd className='stat__value unimplemented'>$4 Billion</dd>
+                  <dd className='stat__value stat__value--chart stat__value--last'>
+                    <BarChart
+                      data={data}
+                      margin={margin}
+                      yTitle='Millions (US$)'
+                      xTitle='Return Period'
+                    />
+                  </dd>
+                </dl>
 
-              <div className='results__divider results__divider--second'></div>
+                <div className='results__divider results__divider--second'></div>
 
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
-              <article className='calculator__link-container'>
-                <a href='#' onClick={this.toggleCalculator}>Building Stock Conversion Calculator</a>
-              </article>
-
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
+                <article className='calculator__link-container'>
+                </article>
+              </div>
+              <button className='button button_results'><i className='collecticon collecticon-download' />View Historical Data</button>
+              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
         </section>
       </div>
