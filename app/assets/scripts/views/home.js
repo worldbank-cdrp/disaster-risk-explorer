@@ -11,7 +11,6 @@ import Map from '../components/map.js'
 import Legend from '../components/legend.js'
 import Selection from '../components/selection-panel.js'
 import Results from '../components/results-panel.js'
-import OpacityPanel from '../components/opacity-panel.js'
 
 var Home = React.createClass({
   displayName: 'Home',
@@ -51,9 +50,6 @@ var Home = React.createClass({
           mapSource={this.props.mapSource} />
         <Legend
           dataSelection={dataSelection}
-          opacity={this.props.opacity} />
-        <OpacityPanel
-          dispatch={this.props.dispatch}
           opacity={this.props.opacity} />
         <Results
           dispatch={this.props.dispatch}
