@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { toggleCalculator } from '../actions'
+import { toggleCalculator, showModalCalc } from '../actions'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
@@ -106,7 +106,7 @@ const Results = React.createClass({
               <button className='button button_results button_results--half'>View Historical Data</button>
               <button className='button button_results button_results--half button_results--right'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={this.toggleCalculator} className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() => this.props.dispatch(showModalCalc())} className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )

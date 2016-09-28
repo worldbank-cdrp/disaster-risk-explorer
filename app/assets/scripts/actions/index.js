@@ -5,6 +5,9 @@ export const SHOW_MODAL_ABOUT = 'SHOW_MODAL_ABOUT'
 export const HIDE_MODAL_ABOUT = 'HIDE_MODAL_ABOUT'
 export const SELECT_CONVERSION = 'SELECT_CONVERSION'
 export const UPDATE_SLIDER_VALUE = 'UPDATE_SLIDER_VALUE'
+export const UPDATE_OPACITY = 'UPDATE_OPACITY'
+export const HIDE_MODAL_CALC = 'HIDE_MODAL_CALC'
+export const SHOW_MODAL_CALC = 'SHOW_MODAL_CALC'
 
 export function updateMapSource (mapSource) {
   return { type: UPDATE_MAP_SOURCE, data: mapSource }
@@ -22,8 +25,16 @@ export function showModalAbout () {
   return { type: SHOW_MODAL_ABOUT }
 }
 
+export function showModalCalc () {
+  return { type: SHOW_MODAL_CALC }
+}
+
 export function hideModalAbout () {
   return { type: HIDE_MODAL_ABOUT }
+}
+
+export function hideModalCalc () {
+  return { type: HIDE_MODAL_CALC }
 }
 
 export function selectConversion (conversion) {
