@@ -1,62 +1,71 @@
 .results {
-	position: absolute;
-	top: $page-header-y;
-	right: 1em;
-	z-index: 100;
-	@include debug();
-	@include containter();
+  position: absolute;
+  top: $page-header-y;
+  right: 1em;
+  z-index: 100;
+  line-height:1.6em;
+  @include debug();
+  @include containter();
 }
 
 .results__title {
-	@include section_header;
+  @include section_header;
 }
 
 .results__subtitle{
-	font-size:0.8em;
-	float: initial;
-	clear: both;
+  font-size:0.8em;
+  float: initial;
+  clear: both;
+}
+
+.results__subtitle--secondary{
+  margin-top: 0.5em;
 }
 
 .results__container{
-	margin: 0.5em 1em 13.3em 1em;
+  padding: 0.5em 1em 0.4em 1em;
 }
 
 .results__download{
-	position: absolute;
-	right: 1em;
-	top: 10px;
-	i{
-		margin-right: 10px;
-	}
+  position: absolute;
+  right: 1em;
+  top: 10px;
+  font-size: 1em;
+  font-weight: 300;
+  i{
+    margin-top: 3px;
+    margin-right: 10px;
+  }
 }
 
 .stats{
+  clear: both;
+  overflow: hidden;
+  margin-bottom:4px;
 }
 
 .stat__attribute{
-	font-size: 0.85em;
-	clear: both;
-	float: left;
+  font-size: 0.85em;
+  clear: both;
+  float: left;
 }
 
 .stat__value{
-	font-size: 0.85em;
-	font-weight: 600;
-	float: right;
+  font-size: 0.85em;
+  font-weight: 600;
+  float: right;
 }
 
-.stat__value--last{
-	margin-bottom: 1em;
-}
 
 .stat__value--chart {
-	width:100%;
-	height: 100px;
-	background-color: #eee;
+  /*background-color: #eee;*/
+  float: none;
+  clear: left;
 }
 
-.stat__value--chart {
-	margin-bottom:1.5em;
+.chart-container {
+  width: 100%;
+  height: 150px;
 }
 
 .calculator__container {
@@ -71,12 +80,21 @@
 	position: absolute;
 }
 
-.results__divider {
-	width:100%;
-	background-color: lighten($secondary-color, 15);
-	height: 2px;
-	left:0;
-	position: absolute;
+.chart {
+  .zebra {
+    opacity: 0.5;
+    &--odd {
+      fill: #ddd;
+    }
+    &--even {
+      fill: none;
+    }
+  }
+}
+
+.chart__axis-title{
+  font-size: 0.9em;
+  font-weight: 300;
 }
 
 .results__divider--first {
@@ -85,4 +103,43 @@
 
 .results__divider--second {
 	top: 350px;
+}
+
+.chart__axis-ticks{
+  font-size: 0.8em;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.chart__bar{
+  fill: #aaa;
+  stroke: #777;
+}
+
+.calculator__link-container {
+  a {
+    display: block;
+    font-size: 0.85em;
+    background-color: lighten(#aaa, 27);
+    clear: both;
+    border-radius: 3px;
+    left: 8px;
+    width: 340px;
+    padding: 4px 4px 3px 10px;
+    margin: 0 -10px;
+    color: #aaa;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      background-color: lighten(#aaa, 20);
+      color: darken(#aaa, 15)
+    }
+  }
+}
+
+.results__divider {
+  background-color: lighten($secondary-color, 15);
+  height: 2px;
+  left:0;
+  margin: 0 -1em 0 -1em;
 }

@@ -1,24 +1,35 @@
 .header {
-	position: absolute;
-	height: $page-header-y;
-	width: 100%;
-	z-index: 100;
-	padding: 0.5em 0 0 0;
+  position: absolute;
+  height: $page-header-y;
+  width: 100%;
+  z-index: 100;
+  padding: 0.5em 0 0 0;
 }
 
 .header__title{
-	float: left;
-	margin-left: 1em;
-	font-weight: 800;
-	font-family: 'Hind';
+  float: left;
+  margin-left: 1em;
+  font-weight: 800;
+  font-family: 'Hind';
 }
 
 .header__language{
-	float: right;
-	margin-right: 1em;
+  float: right;
+  margin-right: 1em;
 }
 
-.header__information{
-	float: right;
-	margin-right: 1em;
+.button--header-info {
+  float: right;
+  margin-right: 1em;
+  text-align: center;
+
+  &::before {
+    @extend %collecticon-circle-information;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  span {
+    @extend .visually-hidden;
+  }
 }

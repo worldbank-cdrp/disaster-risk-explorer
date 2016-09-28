@@ -64,6 +64,11 @@ export function DataSelectionFactory (availableParams) {
 // Export version ready with the actual available parameters
 
 let availableParams = {
+  metric: [
+    {key: 'risk', value: 'Risk'},
+    {key: 'loss', value: 'Loss'},
+    {key: 'exposure', value: 'Exposure'}
+  ],
   risk: [
     {key: 'earthquake', value: 'Earthquake'},
     {key: 'hurricane', value: 'Hurricane'},
@@ -71,12 +76,26 @@ let availableParams = {
   ],
   year: [
     {key: 'Average Annual Loss', value: 'Average Annual Loss'},
-    {key: 'RISK', value: 'Risk'}
+    {key: 'RISK', value: 'Risk'},
+    {key: 'hurricane', value: 'Hurricane'}
+  ],
+  return: [
+    {key: '10 Years', value: '10 Years'},
+    {key: '50 Years', value: '50 Years'},
+    {key: '100 Years', value: '100 Years'},
+    {key: '250 Years', value: '250 Years'},
+    {key: '500 Years', value: '500 Years'},
+    {key: '1000 Years', value: '1000 Years'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
     {key: 'admin1', value: 'Admin Level 1'},
     {key: 'km10', value: '0km Grids'}
+  ],
+  opacity: [
+    {key: 'full', value: 'Full'},
+    {key: 'half', value: 'Half'},
+    {key: 'none', value: 'None'}
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},

@@ -1,43 +1,49 @@
 .selection {
-	position: absolute;
-	margin: $page-header-y 1em;
-	z-index: 100;
-	@include containter();
-	background-color: rgba(0,0,0,0);
+  position: absolute;
+  margin: $page-header-y 1em;
+  z-index: 100;
+  @include containter();
+  background-color: rgba(0,0,0,0);
+  .disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+    .attribute {
+      color: rgba(0, 0, 0, 0.3);
+    }
+  }
 }
 
 .selection__panel {
-	padding: 0.25em 1em 1em 1em;
-	height: 3em;
-	clear: both;
-	background-color: white;
-	line-height: 2.75em;
-	border-bottom: 2px solid $secondary-color;
-	font-size: 0.9em;
+  padding: 0.25em 1em 1em 1em;
+  height: 3em;
+  clear: both;
+  background-color: white;
+  line-height: 2.75em;
+  border-bottom: 2px solid $secondary-color;
+  font-size: 0.9em;
 }
 
 .selection__panel--split {
-	margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .selection__panel--attribute {
-	float: left;
-	margin-top: 0.65em;
-	line-height: 1.5;
+  float: left;
+  margin-top: 0.65em;
+  line-height: 1.5;
 }
 
 .selection__panel--drop {
-	float: right;
-	font-weight: 700;
-	cursor: pointer;
-	transition: all 0.2s;
-	&:hover{
-		opacity: 0.4;
-	}
-	i{
-		font-size: 0.5em;
-		margin-left: 1em;
-	}
+  float: right;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover{
+    opacity: 0.4;
+  }
+  i{
+    font-size: 0.5em;
+    margin-left: 1em;
+  }
 }
-
-

@@ -5,7 +5,7 @@ import { hashHistory } from 'react-router'
 import _ from 'lodash'
 import c from 'classnames'
 
-import { isValidLanguage, setLanguage } from '../utils/i18n'
+import { isValidLanguage, setLanguage, t } from '../utils/i18n'
 
 var App = React.createClass({
   displayName: 'App',
@@ -59,7 +59,7 @@ var App = React.createClass({
 
     return this.state.vpTooSmall ? (
       <div className='nocando-viewport'>
-        <p>Screen is too small</p>
+        <p>{t('screen small')}</p>
       </div>
     ) : (
       <div className={c('page', pageClass)}>

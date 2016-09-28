@@ -203,6 +203,7 @@
   padding: ($global-spacing / 2) 0;
   max-width: 16rem;
   font-weight: $base-font-regular;
+  color: #888;
 
   &:last-child {
     margin-bottom: (-$global-spacing);
@@ -215,10 +216,11 @@
     padding: 0.25rem 1rem;
     color: inherit;
     transition: all 0.16s ease 0s;
+    text-decoration: none;
     &:hover,
     &:focus {
-      color: $primary-color;
       background-color: tint($primary-color, 92%);
+      color: #666;
       opacity: 1;
     }
   }
