@@ -1,19 +1,19 @@
 import React from 'react'
-import { inactiveLegends } from '../constants'
+import { inactiveLegends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
-    dataSelection: React.PropTypes.object,
-
-    opacity: React.PropTypes.number
+    dataSelection: React.PropTypes.object
   },
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
     let legend = inactiveLegends[activeRisk.toLowerCase()]
+    let opacity = this.props.dataSelection.opacity.getActive().key
+    opacity = mapSettings.opacityLevels[opacity]
 
     const legendBlocks = legend.map((cat, i) => {
       return (
@@ -21,7 +21,7 @@ const Legend = React.createClass({
           className='legend__category'
           style={{width: 100 / legend.length + '%',
                   backgroundColor: cat[1],
-                  opacity: this.props.opacity / 100}}>
+                  opacity: opacity}}>
         </span>
       )
     })
