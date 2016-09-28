@@ -88,8 +88,8 @@ let availableParams = {
   ],
   opacity: [
     {key: 'full', value: 'Full'},
-    {key: 'half', value: 'Half'},
-    {key: 'none', value: 'None'}
+    {key: 'medium', value: 'Medium'},
+    {key: 'low', value: 'Low'}
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},

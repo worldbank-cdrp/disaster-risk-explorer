@@ -36,6 +36,11 @@ export const mapSettings = {
     admin0: 7,
     admin1: 8,
     km10: 12
+  },
+  opacityLevels: {
+    full: 0.8,
+    medium: 0.4,
+    low: 0.15
   }
 }
 
