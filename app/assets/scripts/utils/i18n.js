@@ -61,6 +61,9 @@ export function t (string, replace = {}) {
       'special': 'Special',
       'Show/hide parameter options': 'Show/hide parameter options',
 
+      'default-title': 'World Bank Risk Tool',
+      'default-text': 'Welcome to World Bank Risk Tool. Here you can search countries in Central America and discover details of the total risk, exposure, and potential loss from Earthquakes or Hurricanes.',
+
       'legend-caption': 'Possible explanatory text can go here for the given selection'
     },
     es: {
@@ -99,6 +102,9 @@ export function t (string, replace = {}) {
       'basic': 'Basic ES',
       'special': 'Special ES',
       'Show/hide parameter options': 'Show/hide parameter options ES',
+
+      'default-title': 'World Bank Risk Tool ES',
+      'default-text': 'Welcome to World Bank Risk Tool. Here you can search countries in Central America and discover details of the total risk, exposure, and potential loss from Earthquakes or Hurricanes. ES',
 
       'legend-caption': 'Possible explanatory text can go here for the given selection ES'
     }

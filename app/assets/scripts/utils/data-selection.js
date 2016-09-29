@@ -71,6 +71,12 @@ let availableParams = {
   ],
   risk: [
     {key: 'earthquake', value: 'Earthquake'},
+    {key: 'hurricane', value: 'Hurricane'},
+    {key: 'flood', value: 'Flood'}
+  ],
+  year: [
+    {key: 'Average Annual Loss', value: 'Average Annual Loss'},
+    {key: 'RISK', value: 'Risk'},
     {key: 'hurricane', value: 'Hurricane'}
   ],
   return: [
@@ -93,7 +99,7 @@ let availableParams = {
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},
-    {key: 'special', value: 'Special'}
+    {key: 'special', value: 'Satellite'}
   ]
 }
 
