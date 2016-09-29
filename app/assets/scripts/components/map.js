@@ -40,6 +40,7 @@ export const Map = React.createClass({
     this.activeSource = mapSources[admin]
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
+      // bounds:
       style: mapSettings.basemap.basic.url,
       center: mapSettings.centerpoint,
       zoom: mapSettings.initialZoom[admin],
@@ -127,7 +128,7 @@ export const Map = React.createClass({
     if (nextSelected && prevSourceName === 'admin1' && nextSourceName === 'admin0') {
       const parent = countryExtents.admin1[prevSelected.NAME_1].parent
       this._map.fitBounds(countryExtents.admin0[parent].extent, {
-        padding: 100
+        padding: 200
       })
     }
     // Zoom to level 8 when switching to grid cells
@@ -258,7 +259,7 @@ export const Map = React.createClass({
         const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
         const id = feature.properties[idField]
         this._map.fitBounds(countryExtents[admin][id].extent, {
-          padding: 100
+          padding: 200
         })
       } else {
         this._map.flyTo({
