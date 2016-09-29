@@ -36,12 +36,14 @@ export const Map = React.createClass({
   //
 
   componentDidMount: function () {
-    this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+    const admin = this.props.dataSelection.admin.getActive().key
+    this.activeSource = mapSources[admin]
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
+      maxBounds: mapSettings.maxBounds,
       style: mapSettings.basemap.basic.url,
       center: mapSettings.centerpoint,
-      zoom: mapSettings.zoom,
+      zoom: mapSettings.initialZoom[admin],
       minZoom: 2,
       attributionControl: {
         position: 'bottom-left'
@@ -81,6 +83,9 @@ export const Map = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
+    const prevSelected = this.props.selected
+    const nextSelected = nextProps.selected
+
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
@@ -108,16 +113,30 @@ export const Map = React.createClass({
       this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName, nextOpacity)
     }
 
-    const prevId = this.props.selected ? this.props.selected[this.activeSource.idProp] : null
-    const nextId = nextProps.selected ? nextProps.selected[this.activeSource.idProp] : null
+    const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
+    const nextId = nextSelected ? nextSelected[this.activeSource.idProp] : null
     if (prevId !== nextId && nextId !== null) {
-      this._selectFeature(nextProps.selected)
+      this._selectFeature(nextProps.selected, nextSourceName)
     } else if (nextId === null) {
-      this._deselectFeature()
+      this._deselectFeature(prevSourceName)
     }
 
-    // const opacityLevel = nextProps.dataSelection.opacity.getActive().key
-    // this._adjustOpacity(mapSettings.opacityLevels[opacityLevel])
+    // Conditional zoom level logic
+    // Zoom to and select parent country when switching from admin1 to admin0
+    if (nextSelected && prevSourceName === 'admin1' && nextSourceName === 'admin0') {
+      const parent = countryExtents.admin1[prevSelected.NAME_1].parent
+      this._map.fitBounds(countryExtents.admin0[parent].extent, {
+        padding: 200
+      })
+      this._deselectFeature(prevSourceName)
+    }
+    // When switching from admin1 to admin0, simply deselect the previous source
+    if (nextSelected && prevSourceName === 'admin0' && nextSourceName === 'admin1') this._deselectFeature(prevSourceName)
+    // Zoom to level 8 when switching to grid cells
+    if (nextSourceName === 'km10' && prevSourceName !== 'km10') {
+      this._deselectFeature(prevSourceName)
+      this._map.zoomTo(8)
+    }
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
@@ -243,13 +262,13 @@ export const Map = React.createClass({
         // version, ID field will be the same for each admin level.
         const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
         const id = feature.properties[idField]
-        this._map.fitBounds(countryExtents[admin][id], {
-          padding: 100
+        this._map.fitBounds(countryExtents[admin][id].extent, {
+          padding: 200
         })
       } else {
         this._map.flyTo({
           center: centerpoint(feature).geometry.coordinates,
-          zoom: mapSettings.zoomLevel[admin]
+          zoom: mapSettings.selectedZoom[admin]
         })
       }
       this.props.dispatch(updateSelected(feature.properties))
@@ -258,16 +277,12 @@ export const Map = React.createClass({
     }
   },
 
-  _selectFeature: function (featureProps) {
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
+  _selectFeature: function (featureProps, admin) {
+    this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
-  _deselectFeature: function () {
-    this._map.flyTo({
-      center: mapSettings.centerpoint,
-      zoom: mapSettings.zoom
-    })
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
+  _deselectFeature: function (admin) {
+    this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, ''])
   },
 
   _mouseMove: function (e) {
