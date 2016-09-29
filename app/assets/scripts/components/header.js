@@ -18,8 +18,8 @@ const Header = React.createClass({
         <h1 className='header__title'>World Bank Risk Tool</h1>
         <button className='button button--header-info' onClick={() => this.props.dispatch(showModalAbout())}><span>About the project</span></button>
         <div className='header__language'>
-          <Link to={`/en?${stringify(this.props.queryParams)}`} className={c('button header__language--toggle button__leftside', {'button--active': getLanguage() === 'en'})}>EN</Link>
-          <Link to={`/es?${stringify(this.props.queryParams)}`} className={c('button header__language--toggle button__rightside', {'button--active': getLanguage() === 'es'})}>ES</Link>
+          <Link to={`/en?${stringify(this.props.queryParams)}`} className={c('button header__language--toggle button__leftside', {'button--active': getLanguage() === 'en'})}><span className='header__language--text'>EN</span></Link>
+          <Link to={`/es?${stringify(this.props.queryParams)}`} className={c('button header__language--toggle button__rightside', {'button--active': getLanguage() === 'es'})}><span className='header__language--text'>ES</span></Link>
         </div>
       </header>
     )

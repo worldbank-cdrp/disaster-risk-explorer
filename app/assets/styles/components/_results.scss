@@ -4,8 +4,10 @@
   right: 1em;
   z-index: 100;
   line-height:1.6em;
-  @include debug();
-  @include containter();
+}
+
+.results__space{
+  @include containter();  
 }
 
 .results__title {
@@ -24,18 +26,6 @@
 
 .results__container{
   padding: 0.5em 1em 0.4em 1em;
-}
-
-.results__download{
-  position: absolute;
-  right: 1em;
-  top: 10px;
-  font-size: 1em;
-  font-weight: 300;
-  i{
-    margin-top: 3px;
-    margin-right: 10px;
-  }
 }
 
 .stats{
@@ -68,6 +58,18 @@
   height: 150px;
 }
 
+.calculator__container {
+	background-color: #eee;
+	clear: both;
+	height: 174px;
+	border-radius: 8px;
+	bottom: 8px;
+	left: 8px;
+	width: 336px;
+	padding: 8px;
+	position: absolute;
+}
+
 .chart {
   .zebra {
     opacity: 0.5;
@@ -83,6 +85,14 @@
 .chart__axis-title{
   font-size: 0.9em;
   font-weight: 300;
+}
+
+.results__divider--first {
+	top:144px;
+}
+
+.results__divider--second {
+	top: 350px;
 }
 
 .chart__axis-ticks{
@@ -122,4 +132,39 @@
   height: 2px;
   left:0;
   margin: 0 -1em 0 -1em;
+}
+
+.results__calc-launcher{
+  margin-top:0.5em;
+  padding: 0.2em 0 0.35em;
+  width: 100%;
+  .results__calc-hover{
+    transform: translate(0, 4px);
+  }
+  &:hover{
+    .results__calc-hover{
+      transform: translate(0, 5px);      
+    }
+  }
+}
+
+.results__container--textbox{
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+.button_results--half{
+  width: 50%;
+  font-size: 0.8em;
+  font-weight: 300;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.button_results--right{
+  border-left: 2px solid darken($primary-color, 15);
+}
+
+.collecticon-download{
+  margin: 3px 10px 0 0;
 }

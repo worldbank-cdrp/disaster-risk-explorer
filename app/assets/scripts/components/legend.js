@@ -40,11 +40,16 @@ const Legend = React.createClass({
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'>{t('legend-caption')}</figcaption>
+          <figcaption className='legend__caption'>
+              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Absolute Risk</span></div>
+              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>Relative Risk</span></div>
+          </figcaption>
         </figure>
       </section>
     )
   }
 })
+
+// <figcaption className='legend__caption'>{t('legend-caption')}</figcaption>
 
 export default Legend

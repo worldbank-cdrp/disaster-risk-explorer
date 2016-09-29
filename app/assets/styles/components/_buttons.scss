@@ -41,7 +41,7 @@
   > * {
     vertical-align: top;
     display: inline-block;
-    line-height: 1.22em !important;
+    line-height: 1.2em !important;
   }
 
   /* Animation */
@@ -58,22 +58,37 @@
   color: #aaa;
   background-color: white;
 
+  &:before{
+  transform: translate(0, 1px);
+  }
+
   &:hover{
     color: #888;
     background-color: lighten($secondary-color, 20);
     padding-top: 3px;
     box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 0px 0 0 $secondary-color;
+    &:before{
+    transform: translate(0, 2px);
+    }
+
+    .header__language--text{
+        transform: translate(0, 5px);
+    }
   };
 
   &:active{
   };
 
   box-shadow: inset 0 -4px 0 0 $secondary-color, inset 0 0 0 1px white;
-/*  .drop--open > &,
+  /* .drop--open > &,
   &.button--active,
   &:active {
     box-shadow: inset 0 3px 0 0 green, inset 0 0 0 1px orange;
   }*/
+
+  .header__language--text{
+    transform: translate(0, 4px);
+  }
 }
 
 .collecticon{
@@ -92,11 +107,12 @@
 .button_results{
   background-color: $primary-color;
   color: #eee;
-  box-shadow: inset 0 0 0 0 #5d544f, inset 0 0 0 1px #5d544f;
+  padding: 6px 0;
   &:hover{
     color: #eee;
-    background-color: darken($primary-color, 10);
-    box-shadow: inset 0 0 0 0 #5d544f;
+    background-color: darken($primary-color, 15);
+    padding: 6px 0;
+    box-shadow: none;
   }
 }
 
@@ -114,9 +130,12 @@
 
 .button--active{
     color: #888;
-    background-color: lighten($secondary-color, 20);
+    background-color: lighten($secondary-color, 16);
     box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 0px 0 0 $secondary-color;
     &:hover{
-      background-color: lighten($secondary-color, 16);
+      background-color: lighten($secondary-color, 10);
+    }
+    .header__language--text{
+        transform: translate(0, 5px);
     }
 }

@@ -63,6 +63,10 @@ var Home = React.createClass({
   }
 })
 
+//  <OpacityPanel
+//  dispatch={this.props.dispatch}
+//  opacity={this.props.opacity} />
+
 // /////////////////////////////////////////////////////////////////// //
 // Connect functions
 
