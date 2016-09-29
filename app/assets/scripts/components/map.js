@@ -85,6 +85,8 @@ export const Map = React.createClass({
     const prevSelected = this.props.selected
     const nextSelected = nextProps.selected
 
+    console.log(nextSelected)
+
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
