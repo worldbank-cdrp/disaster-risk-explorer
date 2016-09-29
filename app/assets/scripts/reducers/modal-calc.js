@@ -1,7 +1,7 @@
 import { SHOW_MODAL_CALC, HIDE_MODAL_CALC } from '../actions'
 
 export const initialState = {
-  calcVisible: false
+  calcVisible: true
 }
 
 export default function reducer (state = initialState, action) {
