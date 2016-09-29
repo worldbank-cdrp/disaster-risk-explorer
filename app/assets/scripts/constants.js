@@ -41,6 +41,10 @@ export const mapSettings = {
     admin1: 5.75,
     km10: 12
   },
+  maxBounds: [
+    [-102.2223587036132, 2.499026775360178],
+    [-70.869861602783146, 21.525140762329187]
+  ],
   opacityLevels: {
     full: 0.8,
     medium: 0.4,

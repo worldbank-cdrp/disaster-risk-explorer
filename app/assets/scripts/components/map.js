@@ -40,7 +40,7 @@ export const Map = React.createClass({
     this.activeSource = mapSources[admin]
     const map = this._map = new mapboxgl.Map({
       container: this.refs.map,
-      // bounds:
+      maxBounds: mapSettings.maxBounds,
       style: mapSettings.basemap.basic.url,
       center: mapSettings.centerpoint,
       zoom: mapSettings.initialZoom[admin],
@@ -86,8 +86,6 @@ export const Map = React.createClass({
     const prevSelected = this.props.selected
     const nextSelected = nextProps.selected
 
-    console.log(nextSelected)
-
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
     if (prevBasemap !== nextBasemap && nextBasemap === 'special') {
@@ -118,9 +116,9 @@ export const Map = React.createClass({
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
     const nextId = nextSelected ? nextSelected[this.activeSource.idProp] : null
     if (prevId !== nextId && nextId !== null) {
-      this._selectFeature(nextProps.selected)
+      this._selectFeature(nextProps.selected, nextSourceName)
     } else if (nextId === null) {
-      this._deselectFeature()
+      this._deselectFeature(prevSourceName)
     }
 
     // Conditional zoom level logic
@@ -130,9 +128,15 @@ export const Map = React.createClass({
       this._map.fitBounds(countryExtents.admin0[parent].extent, {
         padding: 200
       })
+      this._deselectFeature(prevSourceName)
     }
+    // When switching from admin1 to admin0, simply deselect the previous source
+    if (nextSelected && prevSourceName === 'admin0' && nextSourceName === 'admin1') this._deselectFeature(prevSourceName)
     // Zoom to level 8 when switching to grid cells
-    if (nextSourceName === 'km10' && prevSourceName !== 'km10') this._map.zoomTo(8)
+    if (nextSourceName === 'km10' && prevSourceName !== 'km10') {
+      this._deselectFeature(prevSourceName)
+      this._map.zoomTo(8)
+    }
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
@@ -273,17 +277,12 @@ export const Map = React.createClass({
     }
   },
 
-  _selectFeature: function (featureProps) {
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
+  _selectFeature: function (featureProps, admin) {
+    this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
-  _deselectFeature: function () {
-    // const admin = this.props.dataSelection.admin.getActive().key
-    // this._map.flyTo({
-    //   center: mapSettings.centerpoint,
-    //   zoom: mapSettings.initialZoom[admin]
-    // })
-    this._map.setFilter(this.activeSource.id + '-active', ['==', this.activeSource.idProp, ''])
+  _deselectFeature: function (admin) {
+    this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, ''])
   },
 
   _mouseMove: function (e) {
