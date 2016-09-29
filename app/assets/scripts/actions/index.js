@@ -26,7 +26,7 @@ export function showModalAbout () {
 }
 
 export function showModalCalc () {
-  return { type: SHOW_MODAL_CALC }
+		return { type: SHOW_MODAL_CALC }
 }
 
 export function hideModalAbout () {

@@ -6,6 +6,7 @@ import DataSelection from '../utils/data-selection'
 import { mapSources } from '../constants'
 
 import About from '../components/about-modal.js'
+import Calc from '../components/calculator-modal.js'
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
@@ -25,6 +26,7 @@ var Home = React.createClass({
     selected: React.PropTypes.object,
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
+    modalCalc: React.PropTypes.object,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number
   },
@@ -58,6 +60,9 @@ var Home = React.createClass({
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
+        <Calc
+          dispatch={this.props.dispatch}
+          calcVisible={this.props.modalCalc.calcVisible} />
       </div>
     )
   }
@@ -78,7 +83,8 @@ function mapStateToProps (state) {
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
     conversion: state.buildingCalculator.conversion,
-    sliderValue: state.buildingCalculator.sliderValue
+    sliderValue: state.buildingCalculator.sliderValue,
+    modalCalc: state.modalCalc
   }
 }
 

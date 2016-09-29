@@ -10,6 +10,7 @@ const Results = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
+    queryParams: React.PropTypes.object,
 
     calculatorOpen: React.PropTypes.bool,
     data: React.PropTypes.object,
