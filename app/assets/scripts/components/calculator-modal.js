@@ -2,6 +2,8 @@ import React from 'react'
 import Slider from 'react-nouislider'
 
 import { hideModalCalc, selectConversion, updateSliderValue } from '../actions'
+import buildingData from '../../data/buildings.json'
+import { shortenNumber } from '../utils/format'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Calculator = React.createClass({
@@ -9,6 +11,7 @@ const Calculator = React.createClass({
     dispatch: React.PropTypes.func,
 
     calcVisible: React.PropTypes.bool,
+    attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number
   },
@@ -20,7 +23,6 @@ const Calculator = React.createClass({
   },
 
   onChangeSlide: function (e) {
-    console.log(e)
     this.props.dispatch(updateSliderValue(Number(e[0]) / 100))
   },
 
@@ -30,6 +32,12 @@ const Calculator = React.createClass({
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
+    const sliderValue = this.props.sliderValue
+
+    // Country codes not yet added to Mapbox data; hardcoding a country code for now
+    const countryCode = 'GT-JU' // this.props.selectedCode
+    const data = buildingData[countryCode][this.props.conversion]
+    const conversionValue = Math.round(data.conversionCost * sliderValue)
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
@@ -50,8 +58,14 @@ const Calculator = React.createClass({
                 <dt>Nicaragua</dt>
               </dl>
               <dl className='calc__selection'>
-                <button className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Retrofit</span></button>
-                <button className='button header__language--toggle button__rightside'><span className='header__language--text'>Replace</span></button>
+                <button
+                  className={'button header__language--toggle button__leftside ' + (this.props.conversion === 'retrofit' ? 'button--active' : '')}
+                  onClick={() => this.selectConversion('retrofit')}>
+                  <span className='header__language--text'>Retrofit</span></button>
+                <button
+                  className={'button header__language--toggle button__rightside ' + (this.props.conversion === 'replace' ? 'button--active' : '')}
+                  onClick={() => this.selectConversion('replacement')}>
+                  <span className='header__language--text'>Replace</span></button>
               </dl>
               <dl className='calc__selection'>
                 <dd>% of buildings converted</dd>
@@ -67,32 +81,32 @@ const Calculator = React.createClass({
               </dd>
               <dl className='calc__selection'>
                 <dd>Cost per Replacement</dd>
-                <dt>$2,500</dt>
+                <dt>$2,500 UNIMPLEMENTED</dt>
               </dl>
               <br></br>
               <h2 className='subtitle calc__subtitle'>Building Stock Converted</h2>
-              <div className='calculator__description top'>Unreinforced Concrete Block/Fire Brick Masonry</div>
+              <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
               <div className='calculator__divider-broken-label'>are replaced with</div>
               <div className='calculator__divider-broken right'></div>
-              <div className='calculator__description bottom'>Reinforced masonry bearing walls with concrete diaphragms</div>
+              <div className='calculator__description bottom'>{data.buildingTo}</div>
             </div>
 
             <div className='modal__right-side'>
               <h2 className='subtitle calc__subtitle'>Results</h2>
               <dl className='calc_selection'>
                 <dd className='stat__attribute'>Reduction of overall AAL</dd>
-                <dt className='stat__value'>$10 Million</dt>
+                <dt className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dt>
                 <dd className='stat__attribute'>Total replacement cost</dd>
-                <dt className='stat__value'>$150</dt>
+                <dt className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dt>
                 <dd className='stat__attribute'>Flat rate years to break even</dd>
-                <dt className='stat__value'>255</dt>
+                <dt className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dt>
                 <dd className='stat__attribute'>Percent of Housing Stock replaced</dd>
-                <dt className='stat__value'>1%</dt>
+                <dt className='stat__value'>1% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Percent Change in AAL for these housing units</dd>
-                <dt className='stat__value'>21%</dt>
+                <dt className='stat__value'>-{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dt>
                 <dd className='stat__attribute'>Change in overall AAL</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>-{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dt>
               </dl>
 
               <br></br>
@@ -100,15 +114,15 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>Building Stock types most at risk (absolute AAL)</h2>
               <dl className='calc_selection'>
                 <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10%</dt>
+                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
               </dl>
 
             </div>

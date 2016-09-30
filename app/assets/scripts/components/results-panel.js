@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { showModalCalc } from '../actions'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
@@ -62,9 +63,9 @@ const Results = React.createClass({
                 <h3 className='subtitle results__subtitle'>Exposure</h3>
                 <dl className='stats'>
                   <dt className='stat__attribute'>GDP</dt>
-                  <dd className='stat__value unimplemented'>$45 Billion</dd>
+                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEMENTED</dd>
                   <dt className='stat__attribute'>Building Stock Exposure</dt>
-                  <dd className='stat__value unimplemented'>$34 Million</dd>
+                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEMENTED</dd>
                 </dl>
 
                 <div className='results__divider results__divider--first'></div>
@@ -74,7 +75,7 @@ const Results = React.createClass({
                   <dt className='stat__attribute'>Average Annual Loss</dt>
                   <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
                   <dt className='stat__attribute'>Probable loss over time</dt>
-                  <dd className='stat__value unimplemented'>$4 Billion</dd>
+                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEMENTED</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
                       data={data}

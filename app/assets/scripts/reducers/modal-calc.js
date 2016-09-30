@@ -1,7 +1,7 @@
 import { SHOW_MODAL_CALC, HIDE_MODAL_CALC, SELECT_CONVERSION, UPDATE_SLIDER_VALUE } from '../actions'
 
 export const initialState = {
-  calcVisible: true,
+  calcVisible: false,
   conversion: 'retrofit',
   sliderValue: 0.50
 }

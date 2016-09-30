@@ -60,6 +60,7 @@ var Home = React.createClass({
           visible={this.props.modalAbout.visible} />
         <Calc
           dispatch={this.props.dispatch}
+          attributes={this.props.selected}
           calcVisible={this.props.calcVisible}
           conversion={this.props.conversion}
           sliderValue={this.props.sliderValue} />
