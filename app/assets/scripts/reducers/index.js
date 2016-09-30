@@ -5,14 +5,12 @@ import map from './map'
 import resultsPanel from './results-panel'
 import modalAbout from './modal-about'
 import modalCalc from './modal-calc'
-import buildingCalculator from './building-calculator'
 
 export const reducers = {
   map,
   resultsPanel,
   modalAbout,
-  modalCalc,
-  buildingCalculator
+  modalCalc
 }
 
 export default combineReducers(Object.assign({}, reducers, {
