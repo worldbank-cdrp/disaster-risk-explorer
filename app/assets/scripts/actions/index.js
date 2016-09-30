@@ -1,6 +1,5 @@
 export const UPDATE_MAP_SOURCE = 'UPDATE_MAP_SOURCE'
 export const UPDATE_SELECTED = 'UPDATE_SELECTED'
-export const TOGGLE_CALCULATOR = 'TOGGLE_CALCULATOR'
 export const SHOW_MODAL_ABOUT = 'SHOW_MODAL_ABOUT'
 export const HIDE_MODAL_ABOUT = 'HIDE_MODAL_ABOUT'
 export const SELECT_CONVERSION = 'SELECT_CONVERSION'
@@ -15,10 +14,6 @@ export function updateMapSource (mapSource) {
 
 export function updateSelected (feature) {
   return { type: UPDATE_SELECTED, data: feature }
-}
-
-export function toggleCalculator (toggle) {
-  return { type: TOGGLE_CALCULATOR, data: toggle }
 }
 
 export function showModalAbout () {
