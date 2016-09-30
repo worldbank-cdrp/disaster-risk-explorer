@@ -1,18 +1,31 @@
 import React from 'react'
+import Slider from 'react-nouislider'
 
-import { hideModalCalc } from '../actions'
+import { hideModalCalc, selectConversion, updateSliderValue } from '../actions'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Calculator = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
-    calcVisible: React.PropTypes.bool
+
+    calcVisible: React.PropTypes.bool,
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number
   },
 
   onOutClick: function (e) {
     if (e.target === e.currentTarget) {
       this.props.dispatch(hideModalCalc())
     }
+  },
+
+  onChangeSlide: function (e) {
+    console.log(e)
+    this.props.dispatch(updateSliderValue(Number(e[0]) / 100))
+  },
+
+  selectConversion: function (conversion) {
+    this.props.dispatch(selectConversion(conversion))
   },
 
   renderModal: function () {
@@ -40,6 +53,18 @@ const Calculator = React.createClass({
                 <button className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Retrofit</span></button>
                 <button className='button header__language--toggle button__rightside'><span className='header__language--text'>Replace</span></button>
               </dl>
+              <dl className='calc__selection'>
+                <dd>% of buildings converted</dd>
+              </dl>
+              <dd className='calculator__slider'>
+              <Slider
+                range={{min: 0, max: 100}}
+                start={[Math.round(this.props.sliderValue * 100)]}
+                step={5}
+                pips={{mode: 'range', density: 20}}
+                onSlide={this.onChangeSlide}
+              />
+              </dd>
               <dl className='calc__selection'>
                 <dd>Cost per Replacement</dd>
                 <dt>$2,500</dt>

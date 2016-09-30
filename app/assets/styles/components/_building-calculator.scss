@@ -104,9 +104,10 @@
 }
 
 .calculator__slider {
-  width: 10em;
-  float: right;
-  margin: 7px 10px 40px 0;
+  width: 100%;
+  float: left;
+  display: block;
+  margin: 7px 10px 10px 0;
 }
 
 .noUi-horizontal {
@@ -118,6 +119,10 @@
   height: 16px;
   left: -8px;
   top: -8px;
+}
+
+.noUi-pips-horizontal {
+  height: auto;
 }
 
 .noUi-handle:before,
@@ -205,6 +210,3 @@
   float: initial;
   clear: both;
 }
-
-
-

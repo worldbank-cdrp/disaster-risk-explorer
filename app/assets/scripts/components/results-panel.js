@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { toggleCalculator, showModalCalc } from '../actions'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
-import BuildingCalculator from './building-calculator'
 
 const Results = React.createClass({
   propTypes: {
@@ -12,15 +10,7 @@ const Results = React.createClass({
     dataSelection: React.PropTypes.object,
     queryParams: React.PropTypes.object,
 
-    calculatorOpen: React.PropTypes.bool,
-    data: React.PropTypes.object,
-    conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
-  },
-
-  toggleCalculator: function (e) {
-    e.preventDefault()
-    this.props.dispatch(toggleCalculator(!this.props.calculatorOpen))
+    data: React.PropTypes.object
   },
 
   deleteThis: function () {
@@ -65,15 +55,6 @@ const Results = React.createClass({
 
     return (
       <div>
-        {this.props.calculatorOpen
-        ? <BuildingCalculator
-            selectedCode={d.Country}
-            attributes={this.props.data}
-            conversion={this.props.conversion}
-            sliderValue={this.props.sliderValue}
-            calculatorOpen={this.props.calculatorOpen}
-            dispatch={this.props.dispatch} />
-        : ''}
         <section className='results'>
           <div className='results__space'>
             <h2 className='results__title'>{title}</h2>

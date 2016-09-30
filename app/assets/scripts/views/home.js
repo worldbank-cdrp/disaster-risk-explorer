@@ -26,7 +26,7 @@ var Home = React.createClass({
     selected: React.PropTypes.object,
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
-    modalCalc: React.PropTypes.object,
+    calcVisible: React.PropTypes.bool,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number
   },
@@ -53,24 +53,20 @@ var Home = React.createClass({
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
-          calculatorOpen={this.props.calculatorOpen}
           data={this.props.selected}
-          conversion={this.props.conversion}
-          sliderValue={this.props.sliderValue} />
+          conversion={this.props.conversion} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
         <Calc
           dispatch={this.props.dispatch}
-          calcVisible={this.props.modalCalc.calcVisible} />
+          calcVisible={this.props.calcVisible}
+          conversion={this.props.conversion}
+          sliderValue={this.props.sliderValue} />
       </div>
     )
   }
 })
-
-//  <OpacityPanel
-//  dispatch={this.props.dispatch}
-//  opacity={this.props.opacity} />
 
 // /////////////////////////////////////////////////////////////////// //
 // Connect functions
@@ -82,9 +78,9 @@ function mapStateToProps (state) {
     selected: state.map.selected,
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
-    conversion: state.buildingCalculator.conversion,
-    sliderValue: state.buildingCalculator.sliderValue,
-    modalCalc: state.modalCalc
+    calcVisible: state.modalCalc.calcVisible,
+    conversion: state.modalCalc.conversion,
+    sliderValue: state.modalCalc.sliderValue
   }
 }
 
