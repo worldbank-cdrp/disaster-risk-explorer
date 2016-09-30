@@ -49,13 +49,13 @@ const Calculator = React.createClass({
             </div>
           </header>
 
-          <div className='modal__body'>
+          <div className='modal__body calculator__container clearfix'>
 
             <div className='modal__left-side'>
               <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
               <dl className='calc__selection'>
-                <dd>Calculate for</dd>
-                <dt>Nicaragua</dt>
+                <dd className='stat__attribute'>Calculate for</dd>
+                <dt className='stat__value'>Nicaragua</dt>
               </dl>
               <dl className='calc__selection'>
                 <button
@@ -63,7 +63,7 @@ const Calculator = React.createClass({
                   onClick={() => this.selectConversion('retrofit')}>
                   <span className='header__language--text'>Retrofit</span></button>
                 <button
-                  className={'button header__language--toggle button__rightside ' + (this.props.conversion === 'replace' ? 'button--active' : '')}
+                  className={'button header__language--toggle button__rightside ' + (this.props.conversion === 'replacement' ? 'button--active' : '')}
                   onClick={() => this.selectConversion('replacement')}>
                   <span className='header__language--text'>Replace</span></button>
               </dl>
@@ -79,15 +79,17 @@ const Calculator = React.createClass({
                 onSlide={this.onChangeSlide}
               />
               </dd>
+              <dt className='stat__value'>{Math.floor(this.props.sliderValue * 100)}%</dt>
+
               <dl className='calc__selection'>
-                <dd>Cost per Replacement</dd>
-                <dt>$2,500 UNIMPLEMENTED</dt>
+                <dd className='stat__attribute'>Cost per {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
+                <dt className='stat__value'>$2,500 UNIMPLEMENTED</dt>
               </dl>
               <br></br>
               <h2 className='subtitle calc__subtitle'>Building Stock Converted</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
-              <div className='calculator__divider-broken-label'>are replaced with</div>
+              <div className='calculator__divider-broken-label'>are {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} with</div>
               <div className='calculator__divider-broken right'></div>
               <div className='calculator__description bottom'>{data.buildingTo}</div>
             </div>
@@ -97,11 +99,11 @@ const Calculator = React.createClass({
               <dl className='calc_selection'>
                 <dd className='stat__attribute'>Reduction of overall AAL</dd>
                 <dt className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dt>
-                <dd className='stat__attribute'>Total replacement cost</dd>
+                <dd className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dd>
                 <dt className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dt>
                 <dd className='stat__attribute'>Flat rate years to break even</dd>
                 <dt className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dt>
-                <dd className='stat__attribute'>Percent of Housing Stock replaced</dd>
+                <dd className='stat__attribute'>Percent of Housing Stock {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dd>
                 <dt className='stat__value'>1% UNIMPLEMENTED</dt>
                 <dd className='stat__attribute'>Percent Change in AAL for these housing units</dd>
                 <dt className='stat__value'>-{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dt>

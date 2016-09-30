@@ -27,14 +27,14 @@
   @include section_header;
 }
 
+.calculator__container{
+  padding: 1rem 1rem 2rem 1rem;
+}
+
 .calculator__subtitle {
   font-size: 0.8em;
   float: initial;
   clear: both;
-}
-
-.calculator__container {
-  padding: 0.5em 1em 0.4em 1em;
 }
 
 .calculator__widget-container {
@@ -104,7 +104,7 @@
 }
 
 .calculator__slider {
-  width: 100%;
+  width: 88%;
   float: left;
   display: block;
   margin: 7px 10px 10px 0;
@@ -198,15 +198,22 @@
 .modal__left-side{
   float: left;
   min-width: 400px;
+  padding-right: 1rem;
 }
 
 .modal__right-side{
   float: right;
   min-width: 550px;
+  padding-left: 1rem;
+  border-left: solid #ddd 1px;
 }
 
 .calc__subtitle{
   font-size:1em;
   float: initial;
+  clear: both;
+}
+
+.calc__selection{
   clear: both;
 }
