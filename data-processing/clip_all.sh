@@ -6,7 +6,7 @@ for country in ../countries/[A-Z][A-Z].geojson; do
   echo -----
   ## clip-by-country takes 2 arguments (3th is optional)
   ## clip file, read file, write file, country name to add
-  #node ./clip-by-country.js $country ../raw/Base\ layer\ Grid/clipped-grid.geojson ${country:r}_grid.geojson ${country:t:r}
+  node ./clip-by-country.js $country ../raw/Base\ layer\ Grid/clipped-grid.geojson ${country:r}_grid.geojson ${country:t:r}
   echo clipping gdp
   echo -----
   node ./clip-by-country.js $country ../raw/gdp/gdp.geojson ../raw/gdp/${country:t:r}_gdp.geojson

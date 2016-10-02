@@ -4,12 +4,12 @@ for country in ../countries/[A-Z][A-Z].geojson; do
   for geo in ../raw/earthquake_hazard_probabilistic/${country:t:r}*_clipped.geojson; do
        ./agg.js $geo ../countries/${country:t:r}_grid.geojson
   done
-  # for geo in ../raw/windstorm_hazard_probabilistic/${country:t:r}*_clipped.geojson; do
-  #      ./agg.js $geo ../countries/${country:t:r}_grid.geojson
-  # done
-  # for geo in ../raw/flood_hazard_probabilistic/${country:t:r}*_clipped.geojson; do
-  #      ./agg.js $geo ../countries/${country:t:r}_grid.geojson
-  # done
+  for geo in ../raw/windstorm_hazard_probabilistic/${country:t:r}*_clipped.geojson; do
+       ./agg.js $geo ../countries/${country:t:r}_grid.geojson
+  done
+  for geo in ../raw/flood_hazard_probabilistic/${country:t:r}*_clipped.geojson; do
+       ./agg.js $geo ../countries/${country:t:r}_grid.geojson
+  done
   for geo in ../raw/gdp/${country:t:r}_gdp.geojson; do
        ./agg.js $geo ../countries/${country:t:r}_grid.geojson
   done

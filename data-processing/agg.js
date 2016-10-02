@@ -21,7 +21,7 @@ function pathArrayElementToKeyInfo (el) {
         return 'HZ_EQ_'
       case 'windstorm_hazard_probabilistic':
         return 'HZ_WS_'
-      case 'flood_hazard_probabilisitc':
+      case 'flood_hazard_probabilistic':
         return 'HZ_FL_'
       case 'building_stock':
         return 'EX_BS'
@@ -39,7 +39,7 @@ function folderToTifProperty (folder) {
   switch (folder) {
     case 'earthquake_hazard_probabilistic':
     case 'windstorm_hazard_probabilistic':
-    case 'flood_hazard_probabilisitc':
+    case 'flood_hazard_probabilistic':
       return 'risk'
     case 'building_stock':
       return 'assetval'

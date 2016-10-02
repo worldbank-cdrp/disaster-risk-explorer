@@ -11,6 +11,8 @@ The `buildings.json` file in the `data` folder is created by the following proce
 ### Spatial Data
 
 *Still in progress*
+*Requires [zsh](http://www.zsh.org/) for globbing/pattern replacement*
+
 Rough outline:
   - create `/countries` folder with geojson for each country as helper
   - download data from WB box (need to standardize format)
