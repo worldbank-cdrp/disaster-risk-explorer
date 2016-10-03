@@ -52,6 +52,7 @@ const Selection = React.createClass({
 
     return (
       <section className='selection'>
+        <h2 className='legend__title'>Selection Options</h2>
 
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'>{t('metric')}</dt>
@@ -88,7 +89,7 @@ const Selection = React.createClass({
             {this.renderDropdown('opacity', dataSelection.opacity.getActive(), dataSelection.opacity.getOptions())}
           </dd>
         </dl>
-        <dl className='selection__panel'>
+        <dl className='selection__panel selection__panel--split'>
           <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-map' />{t('basemap')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('basemap', dataSelection.basemap.getActive(), dataSelection.basemap.getOptions())}

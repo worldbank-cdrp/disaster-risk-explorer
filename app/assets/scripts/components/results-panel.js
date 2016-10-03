@@ -18,7 +18,7 @@ const Results = React.createClass({
     return (
       <section className='results'>
         <div className='results__space'>
-        <h2 className='results__title'>{t('default-title')}</h2>
+        <h2 className='results__title'>Disaster Risk Explorer</h2>
           <div className='results__container'>
             <h3 className='subtitle results__subtitle'></h3>
             <p className='results__container--textbox'>{t('default-text')}</p>
@@ -63,9 +63,9 @@ const Results = React.createClass({
                 <h3 className='subtitle results__subtitle'>Exposure</h3>
                 <dl className='stats'>
                   <dt className='stat__attribute'>GDP</dt>
-                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEMENTED</dd>
+                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEM</dd>
                   <dt className='stat__attribute'>Building Stock Exposure</dt>
-                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEMENTED</dd>
+                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEM</dd>
                 </dl>
 
                 <div className='results__divider results__divider--first'></div>
@@ -75,7 +75,7 @@ const Results = React.createClass({
                   <dt className='stat__attribute'>Average Annual Loss</dt>
                   <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
                   <dt className='stat__attribute'>Probable loss over time</dt>
-                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEMENTED</dd>
+                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
                       data={data}
