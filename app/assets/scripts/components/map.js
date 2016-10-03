@@ -207,7 +207,7 @@ export const Map = React.createClass({
           stops: colorScale
         },
         'fill-opacity': opacity,
-        'fill-outline-color': 'rgb(140, 140, 160)'
+        'fill-outline-color': '#333'
       }
     })
   },
