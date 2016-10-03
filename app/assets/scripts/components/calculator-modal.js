@@ -54,38 +54,40 @@ const Calculator = React.createClass({
             <div className='modal__left-side'>
               <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
               <dl className='calc__selection'>
-                <dd className='stat__attribute'>Calculate for</dd>
-                <dt className='stat__value'>Nicaragua</dt>
+                <dd className='stat__attribute stat__attribute--main'>Calculate for</dd>
+                <dt className='selection__panel--drop stat__value--large'>Nicaragua</dt>
+                <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
+                <dd className='stat__value'>
+                  <button
+                    className={'button header__language--toggle button__leftside ' + (this.props.conversion === 'retrofit' ? 'button--active' : '')}
+                    onClick={() => this.selectConversion('retrofit')}>
+                    <span className='header__language--text'>Retrofit</span></button>
+                  <button
+                    className={'button header__language--toggle button__rightside ' + (this.props.conversion === 'replacement' ? 'button--active' : '')}
+                    onClick={() => this.selectConversion('replacement')}>
+                    <span className='header__language--text'>Replace</span></button>
+                  </dd>
               </dl>
               <dl className='calc__selection'>
-                <button
-                  className={'button header__language--toggle button__leftside ' + (this.props.conversion === 'retrofit' ? 'button--active' : '')}
-                  onClick={() => this.selectConversion('retrofit')}>
-                  <span className='header__language--text'>Retrofit</span></button>
-                <button
-                  className={'button header__language--toggle button__rightside ' + (this.props.conversion === 'replacement' ? 'button--active' : '')}
-                  onClick={() => this.selectConversion('replacement')}>
-                  <span className='header__language--text'>Replace</span></button>
+                <dd className='stat__attribute stat__attribute--main'>Cost per {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
+                <dt className='stat__value stat__value--large stat__value--large'>$2,500 UNIMPLEMENTED</dt>
               </dl>
-              <dl className='calc__selection'>
-                <dd>% of buildings converted</dd>
+              <dl className='calc__selection calc__selection--slider'>
+                <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(this.props.conversion === 'retrofit' ? 'retrofitted'  : 'replaced')}</dt>
+                <dd className='stat__value stat__value--large'>{Math.floor(this.props.sliderValue * 100)}%</dd>
+                <dt className='calculator__slider'>
+                <Slider
+                  range={{min: 0, max: 100}}
+                  start={[Math.round(this.props.sliderValue * 100)]}
+                  step={5}
+                  pips={{mode: 'range', density: 20}}
+                  onSlide={this.onChangeSlide}
+                />
+                </dt>
               </dl>
-              <dd className='calculator__slider'>
-              <Slider
-                range={{min: 0, max: 100}}
-                start={[Math.round(this.props.sliderValue * 100)]}
-                step={5}
-                pips={{mode: 'range', density: 20}}
-                onSlide={this.onChangeSlide}
-              />
-              </dd>
-              <dt className='stat__value'>{Math.floor(this.props.sliderValue * 100)}%</dt>
 
-              <dl className='calc__selection'>
-                <dd className='stat__attribute'>Cost per {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
-                <dt className='stat__value'>$2,500 UNIMPLEMENTED</dt>
-              </dl>
-              <br></br>
+              <div className='calc__split'></div>
+
               <h2 className='subtitle calc__subtitle'>Building Stock Converted</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
@@ -96,35 +98,35 @@ const Calculator = React.createClass({
 
             <div className='modal__right-side'>
               <h2 className='subtitle calc__subtitle'>Results</h2>
-              <dl className='calc_selection'>
-                <dd className='stat__attribute'>Reduction of overall AAL</dd>
-                <dt className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dt>
-                <dd className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dd>
-                <dt className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dt>
-                <dd className='stat__attribute'>Flat rate years to break even</dd>
-                <dt className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dt>
-                <dd className='stat__attribute'>Percent of Housing Stock {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dd>
-                <dt className='stat__value'>1% UNIMPLEMENTED</dt>
-                <dd className='stat__attribute'>Percent Change in AAL for these housing units</dd>
-                <dt className='stat__value'>-{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dt>
-                <dd className='stat__attribute'>Change in overall AAL</dd>
-                <dt className='stat__value'>-{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dt>
+              <dl className='calc__selection'>
+                <dt className='stat__attribute'>Reduction of overall AAL</dt>
+                <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * /*this.props.attributes.AAL */ sliderValue, 0, false)}</dd>
+                <dt className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
+                <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
+                <dt className='stat__attribute'>Flat rate years to break even</dt>
+                <dd className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dd>
+                <dt className='stat__attribute'>Percent of Housing Stock {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
+                <dd className='stat__value'>1% UNIMPLEMENTED</dd>
+                <dt className='stat__attribute'>Percent Change in AAL for these housing units</dt>
+                <dd className='stat__value'>-{Math.round(data.buildingChangeAAL * sliderValue * 100)}%</dd>
+                <dt className='stat__attribute stat__attribute--second'>Change in overall AAL</dt>
+                <dd className='stat__value'>-{Math.round(data.overallChangeAAL * sliderValue * 100)}%</dd>
               </dl>
 
-              <br></br>
+              <div className='calc__split'></div>
 
-              <h2 className='subtitle calc__subtitle'>Building Stock types most at risk (absolute AAL)</h2>
-              <dl className='calc_selection'>
-                <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
-                <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
-                <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
-                <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
-                <dd className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dd>
-                <dt className='stat__value'>10% UNIMPLEMENTED</dt>
+              <h2 className='subtitle calc__subtitle'>Building Stock types most at risk ({(this.props.conversion === 'retrofit' ? 'absolute' : 'relative')} AAL)</h2>
+              <dl className='calc__selection'>
+                <dt className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dt>
+                <dd className='stat__value'>10% UNIMPLEMENTED</dd>
+                <dt className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dt>
+                <dd className='stat__value'>10% UNIMPLEMENTED</dd>
+                <dt className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dt>
+                <dd className='stat__value'>10% UNIMPLEMENTED</dd>
+                <dt className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dt>
+                <dd className='stat__value'>10% UNIMPLEMENTED</dd>
+                <dt className='stat__attribute'>Unreinforced Concrete Block/Fire Brick Masonry</dt>
+                <dd className='stat__value'>10% UNIMPLEMENTED</dd>
               </dl>
 
             </div>

@@ -7,7 +7,9 @@
 }
 
 .results__space{
-  @include containter();  
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  @include containter();
 }
 
 .results__title {
@@ -38,6 +40,9 @@
   font-size: 0.85em;
   clear: both;
   float: left;
+  &--button{
+    line-height: 2.5rem;
+  }
 }
 
 .stat__value{
@@ -90,8 +95,8 @@
 }
 
 .chart__bar{
-  fill: #aaa;
-  stroke: #777;
+  fill: $tiertiary-color;
+  stroke: darken($tiertiary-color, 25);
 }
 
 .calculator__link-container {
@@ -124,7 +129,7 @@
 
 .results__calc-launcher{
   margin-top:0.5em;
-  padding: 0.2em 0 0.35em;
+  padding: 0.25em 0 0.35em;
   width: 100%;
   .results__calc-hover{
     transform: translate(0, 4px);
@@ -147,6 +152,7 @@
   font-weight: 300;
   border-radius: 0;
   box-shadow: none;
+  border: 0;
 }
 
 .button_results--right{

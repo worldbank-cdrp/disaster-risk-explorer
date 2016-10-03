@@ -4,14 +4,18 @@
 
 /* Colors
    ========================================================================== */
-$base-color: #E19B5F;                                   // Color name (Dark blue)
-$primary-color: #928577;                                // Color name (Brown)
+$base-color: #000;                                   // Color name (Dark blue)
+$primary-color: #307a8c;                                // Color name (Brown)
 $secondary-color: #b3c7ca;                              // Color name (Blue)
+$tiertiary-color: #e06c63;
 
 /* Helper colors */
 
 $base-alpha-color: rgba($base-color, 0.12);
 $base-semi-alpha-color: rgba($base-color, 0.08);
+
+/* Text Colors */
+
 
 /* Typography
    ========================================================================== */

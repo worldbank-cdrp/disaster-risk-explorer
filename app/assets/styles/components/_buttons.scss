@@ -5,13 +5,13 @@
   vertical-align: middle;
   line-height: 1.6rem;
   font-size: 0.9rem;
-  padding: 0.2rem 0.65rem;
+  padding: 0.2rem 0.65rem 0.1rem;
   min-width: 2rem;
   background: none; 
   text-shadow: none;
-  border: 0;
+  border: 1px solid #999;
   border-radius: $base-border-radius;
-  font-weight: $base-font-bold;
+/*  font-weight: $base-font-bold; */  
   cursor: pointer;
   text-decoration: none;
 
@@ -79,7 +79,7 @@
   &:active{
   };
 
-  box-shadow: inset 0 -4px 0 0 $secondary-color, inset 0 0 0 1px white;
+  box-shadow: inset 0 -3px 0 0 $secondary-color, inset 0 0 0 1px white;
   /* .drop--open > &,
   &.button--active,
   &:active {
@@ -121,6 +121,7 @@
     background-color: rgba(0,0,0,0);
     color: black;
     padding: 7px 0 0 0;
+    border: 0;
     &:hover{
       box-shadow: none;
       padding: 7px 0 0 0;

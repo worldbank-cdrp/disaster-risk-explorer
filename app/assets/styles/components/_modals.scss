@@ -43,6 +43,8 @@
   max-width: 48rem;
   min-width: 32rem;
   background: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   > *:last-child {
     margin-bottom: 0;
@@ -128,7 +130,8 @@
 
   &__header {
     background-color: $primary-color;
-    padding: 1em 1.25em;
+    @include section_header;
+    font-size: 1rem;
     border-bottom: 3px solid $secondary-color;
   }
 
@@ -172,12 +175,13 @@
 
 .modal__button-dismiss {
   position: absolute;
-  top: 1em;
+  top: 0.4rem;
   right: 1em;
   z-index: 10;
-  opacity: 0.48;
+  opacity: 0.8;
   background: none;
   border: none;
+  color: white;
 
   span {
     @extend .visually-hidden;

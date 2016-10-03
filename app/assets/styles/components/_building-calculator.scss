@@ -28,7 +28,7 @@
 }
 
 .calculator__container{
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 0.5rem 1rem 1.5rem 1rem;
 }
 
 .calculator__subtitle {
@@ -104,10 +104,10 @@
 }
 
 .calculator__slider {
-  width: 88%;
+  width: 100%;
   float: left;
   display: block;
-  margin: 7px 10px 10px 0;
+  margin: 7px 10px 1rem 0;
 }
 
 .noUi-horizontal {
@@ -151,10 +151,9 @@
 .calculator__description {
   width: 90%;
   margin: 1em auto 1.5em auto;
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: 500;
   line-height: 1.5em;
-  color: #aaa;
   &.top {
 
   }
@@ -176,19 +175,17 @@
   width: 33%;
   background-color: lighten($secondary-color, 15);
   &.left {
-    margin-left: -1em;
     float: left;
   }
   &.right {
-    margin-right: -1em;
     float: right;
   }
 }
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(34% + 3em);
-  font-size: .8em;
+  width: calc(34%);
+  font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
   text-align: center;
@@ -199,21 +196,72 @@
   float: left;
   min-width: 400px;
   padding-right: 1rem;
+  position: relative;
+  border-right: solid #ddd 1px;
+  padding-right: 1rem;
+  @media screen and (max-width: 1000px) {
+    float: none;
+  }
 }
 
 .modal__right-side{
   float: right;
   min-width: 550px;
   padding-left: 1rem;
-  border-left: solid #ddd 1px;
+  @media screen and (max-width: 1000px) {
+    border-left: 0;
+    float: none;
+  }
 }
 
 .calc__subtitle{
   font-size:1em;
   float: initial;
   clear: both;
+  margin-bottom: 0.25rem;
 }
 
 .calc__selection{
   clear: both;
+  .stat__attribute{
+    font-size: 0.9rem;
+  }
+  .stat__value{
+    font-size: 0.85rem;
+  }
+  .stat__attribute--main{
+    margin-bottom: 0.5rem;
+  }
+  .stat__attribute--second{
+    margin-bottom: 1rem;
+  }
+  .stat__value--large{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.calc__selection--slider{
+  background-color: darken(#fff, 5);
+  overflow: auto;
+  margin: 0 -0.5rem 0.5rem;
+  padding: 0.75rem 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.calc__selection--percents{
+  display: inline;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.calc__selection--percent{
+}
+
+.calc__split{
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+  margin: 0.5rem 0 1rem 0;
+  overflow: auto;
 }
