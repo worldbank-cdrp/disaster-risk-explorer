@@ -70,9 +70,9 @@ let availableParams = {
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
-    {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'},
-    {key: 'flood', value: 'Flood'}
+    {key: 'earthquake', value: 'EQ'},
+    {key: 'hurricane', value: 'HC'},
+    {key: 'flood', value: 'FL'}
   ],
   year: [
     {key: 'Average Annual Loss', value: 'Average Annual Loss'},
@@ -80,12 +80,10 @@ let availableParams = {
     {key: 'hurricane', value: 'Hurricane'}
   ],
   return: [
-    {key: '10 Years', value: '10 Years'},
-    {key: '50 Years', value: '50 Years'},
-    {key: '100 Years', value: '100 Years'},
-    {key: '250 Years', value: '250 Years'},
-    {key: '500 Years', value: '500 Years'},
-    {key: '1000 Years', value: '1000 Years'}
+    {key: '100 Years', value: '100'},
+    {key: '250 Years', value: '250'},
+    {key: '500 Years', value: '500'},
+    {key: '1000 Years', value: '1000'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},

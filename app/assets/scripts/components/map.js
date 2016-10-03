@@ -8,7 +8,8 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, columnMap, inactiveLegends, countryExtents } from '../constants'
+import { mapSources, mapSettings, inactiveLegends, legends, countryExtents } from '../constants'
+import { getMapId } from '../utils/map-id'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -25,8 +26,13 @@ export const Map = React.createClass({
     return inactiveLegends[risk.toLowerCase()]
   },
 
-  getColorProperty: function (risk) {
-    return columnMap[risk.toLowerCase()]
+  getColorProperty: function (riskCode, metric, rp) {
+    let mapId = ''
+    if (metric === 'risk') mapId += `HZ_${riskCode}_${rp}`
+    if (metric === 'loss') mapId += 'EX_BS'
+    if (metric === 'exposure') mapId = 'EX_IN'
+
+    return mapId
   },
 
   _popup: null,
@@ -107,10 +113,12 @@ export const Map = React.createClass({
       this._adjustOpacity(nextOpacity)
     }
 
-    const prevColorProp = this.props.dataSelection.risk.getActive().key
-    const nextColorProp = nextProps.dataSelection.risk.getActive().key
-    if (nextColorProp !== prevColorProp) {
-      this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName, nextOpacity)
+    const nextMapId = getMapId(nextProps.dataSelection)
+    const prevMapId = getMapId(this.props.dataSelection)
+    const nextRisk = nextProps.dataSelection.risk.getActive().key
+    const prevRisk = this.props.dataSelection.risk.getActive().key
+    if (nextMapId !== prevMapId) {
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
@@ -132,10 +140,10 @@ export const Map = React.createClass({
     }
     // When switching from admin1 to admin0, simply deselect the previous source
     if (nextSelected && prevSourceName === 'admin0' && nextSourceName === 'admin1') this._deselectFeature(prevSourceName)
-    // Zoom to level 8 when switching to grid cells
+    // Zoom to grid view when switching to grid cells
     if (nextSourceName === 'km10' && prevSourceName !== 'km10') {
       this._deselectFeature(prevSourceName)
-      this._map.zoomTo(8)
+      this._map.zoomTo(mapSettings.initialZoom[nextSourceName])
     }
 
     // Done with switching. Update the active source
@@ -233,18 +241,25 @@ export const Map = React.createClass({
     })
   },
 
-  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName, opacity) {
+  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
     // Remove old layers
-    ['-inactive', '-hover', '-active'].forEach((type) => {
+    const states = ['-inactive', '-hover', '-active']
+    states.forEach((type) => {
       this._map.removeLayer(prevSourceName + type)
     })
 
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
-    const colorScale = this.getLegendStops(prevColorProp)
+    const colorScale = legends[nextMapId]
+    console.log(legends)
+    console.log(nextMapId)
+    console.log(colorScale)
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp), opacity)
+    // console.log(this.getColorProperty(nextRisk))
+    // console.log(this.getLegendStops(nextRisk))
+    // console.log(nextRisk)
+    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', 'white')
     this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', outlineColor)
   },
@@ -256,6 +271,7 @@ export const Map = React.createClass({
     })
     if (features.length) {
       const feature = features[0]
+      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final

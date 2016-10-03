@@ -1,7 +1,8 @@
 import React from 'react'
-import { inactiveLegends, mapSettings } from '../constants'
+import { legends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
+import { getMapId } from '../utils/map-id'
 import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
@@ -11,7 +12,10 @@ const Legend = React.createClass({
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
-    let legend = inactiveLegends[activeRisk.toLowerCase()]
+
+    const mapId = getMapId(this.props.dataSelection)
+    let legend = legends[mapId]
+
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
 
@@ -49,7 +53,5 @@ const Legend = React.createClass({
     )
   }
 })
-
-// <figcaption className='legend__caption'>{t('legend-caption')}</figcaption>
 
 export default Legend
