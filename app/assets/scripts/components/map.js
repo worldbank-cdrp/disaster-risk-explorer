@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, inactiveLegends, legends, countryExtents } from '../constants'
+import { mapSources, mapSettings, legends, countryExtents } from '../constants'
 import { getMapId } from '../utils/map-id'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
@@ -20,19 +20,6 @@ export const Map = React.createClass({
 
     mapSource: React.PropTypes.object,
     selected: React.PropTypes.object
-  },
-
-  getLegendStops: function (risk) {
-    return inactiveLegends[risk.toLowerCase()]
-  },
-
-  getColorProperty: function (riskCode, metric, rp) {
-    let mapId = ''
-    if (metric === 'risk') mapId += `HZ_${riskCode}_${rp}`
-    if (metric === 'loss') mapId += 'EX_BS'
-    if (metric === 'exposure') mapId = 'EX_IN'
-
-    return mapId
   },
 
   _popup: null,
@@ -65,7 +52,6 @@ export const Map = React.createClass({
 
   _loadLayers: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    let risk = this.props.dataSelection.risk.getActive().key
     Object.keys(mapSources).forEach((id) => {
       const source = mapSources[id]
       let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
@@ -75,11 +61,13 @@ export const Map = React.createClass({
         url: source.url
       })
 
+      const mapId = getMapId(this.props.dataSelection)
+      console.log('map: ', mapId)
+      const colorScale = legends[mapId]
+      const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
-      const colorScale = this.getLegendStops(risk)
-      const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), colorScale, opacity)
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, mapId, colorScale, opacity)
       this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, '#fff')
       this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility, outlineColor)
     })
@@ -115,6 +103,7 @@ export const Map = React.createClass({
 
     const nextMapId = getMapId(nextProps.dataSelection)
     const prevMapId = getMapId(this.props.dataSelection)
+
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
@@ -252,13 +241,7 @@ export const Map = React.createClass({
     let id = nextSource.id
 
     const colorScale = legends[nextMapId]
-    console.log(legends)
-    console.log(nextMapId)
-    console.log(colorScale)
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    // console.log(this.getColorProperty(nextRisk))
-    // console.log(this.getLegendStops(nextRisk))
-    // console.log(nextRisk)
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', 'white')
     this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', outlineColor)
@@ -271,7 +254,6 @@ export const Map = React.createClass({
     })
     if (features.length) {
       const feature = features[0]
-      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final

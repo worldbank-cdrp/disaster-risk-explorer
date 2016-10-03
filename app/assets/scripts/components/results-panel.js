@@ -36,14 +36,14 @@ const Results = React.createClass({
     }
 
     // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
     let risk = this.props.dataSelection.risk.getActive().value
-    const data = [
-      {value: d[`HZ_${risk}_100`], name: 'RP 100'},
-      {value: d[`HZ_${risk}_100`], name: 'RP 500'},
-      {value: d[`HZ_${risk}_100`], name: 'RP 1000'},
-      {value: d[`HZ_${risk}_100`], name: 'RP 2500'}
-    ]
+
+    let rps = ['100', '250', '500', '1000', '2500', '5000']
+    const data = rps.map((rp) => {
+      const value = d[`HZ_${risk}_${rp}`] ? d[`HZ_${risk}_${rp}`] : 0
+      return {value: value, name: 'RP ' + rp}
+    })
 
     let margin = {
       top: 16,
@@ -53,9 +53,12 @@ const Results = React.createClass({
     }
 
     const aal = d.AAL
-    ? <dd className='stat__value'>
-      ${Number(d.AAL.toFixed(2)).toLocaleString()}
-    </dd>
+    ? <div>
+        <dt className='stat__attribute'>Average Annual Loss</dt>
+        <dd className='stat__value'>
+          ${Number(d.AAL.toFixed(2)).toLocaleString()}
+        </dd>
+      </div>
     : ''
 
     return (
@@ -76,7 +79,6 @@ const Results = React.createClass({
 
                 <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>Average Annual Loss</dt>
                   {aal}
                   <dt className='stat__attribute'>Probable loss over time</dt>
                   <dd className='stat__value unimplemented'>$4 Billion UNIMPLEMENTED</dd>

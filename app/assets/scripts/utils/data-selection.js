@@ -71,13 +71,7 @@ let availableParams = {
   ],
   risk: [
     {key: 'earthquake', value: 'EQ'},
-    {key: 'hurricane', value: 'HC'},
     {key: 'flood', value: 'FL'}
-  ],
-  year: [
-    {key: 'Average Annual Loss', value: 'Average Annual Loss'},
-    {key: 'RISK', value: 'Risk'},
-    {key: 'hurricane', value: 'Hurricane'}
   ],
   return: [
     {key: '100 Years', value: '100'},
