@@ -4,6 +4,7 @@
   z-index: 100;
   @include containter();
   background-color: rgba(0,0,0,0);
+  border-bottom: 0;
   .disabled {
     opacity: 0.6;
     pointer-events: none;
@@ -26,6 +27,7 @@
 
 .selection__panel--split {
   margin-bottom: 0.5em;
+  border-bottom: 3px solid $secondary-color;
 }
 
 .selection__panel--attribute {
