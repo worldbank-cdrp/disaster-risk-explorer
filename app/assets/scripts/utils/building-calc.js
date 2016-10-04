@@ -38,10 +38,10 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
   ucc = ucc || newCost + demolitionCost - (conversion === 'retrofit' ? oldCost : 0) // 4
 
   const ratioNewToOld = ucc / oldCost // 5
-  const totalBuiltCost = ratioNewToOld * sumBuildingValue / 1000 // 6
-  const totalBuiltValue = newCost / oldCost * sumBuildingValue / 1000 // 6a
-  const oldAAL = startBuildingMatch.reduce((a, b) => a + Number(b['AAL in USD T']), 0) / 1000 // 7
-  const newAAL = totalBuiltValue * getAALWeight(endBuildingMatch) // 8
+  const totalBuiltCost = ratioNewToOld * sumBuildingValue / 1000 * sliderValue // 6
+  const totalBuiltValue = newCost / oldCost * sumBuildingValue / 1000 * sliderValue// 6a
+  const oldAAL = startBuildingMatch.reduce((a, b) => a + Number(b['AAL in USD T']), 0) / 1000 * sliderValue// 7
+  const newAAL = totalBuiltValue * getAALWeight(endBuildingMatch)// 8
   const diffAAL = oldAAL - newAAL // 9
 
   const totalBuildingAAL = Object.keys(buildingData[regionCode]).filter(building => {

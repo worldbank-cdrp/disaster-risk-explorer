@@ -36,7 +36,7 @@ const Calculator = React.createClass({
     const { sliderValue, conversion } = this.props
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
-    const countryCode = 'GT-JU' // this.props.selectedCode
+    const countryCode = 'GT' // this.props.selectedCode
     const data = getBuildingData(countryCode, conversion, sliderValue)
 
     // A little nonsense to create single roots for react
@@ -109,7 +109,7 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>Results</h2>
               <dl className='calc__selection'>
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
-                <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL, 0, false)}</dd>
+                <dd className='stat__value'>${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}</dd>
                 <dt className='stat__attribute'>Total {(conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
                 <dt className='stat__attribute'>Flat rate years to break even</dt>
