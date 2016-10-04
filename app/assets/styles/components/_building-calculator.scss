@@ -27,14 +27,14 @@
   @include section_header;
 }
 
+.calculator__container{
+  padding: 0.5rem 2rem 1.5rem 2rem;
+}
+
 .calculator__subtitle {
   font-size: 0.8em;
   float: initial;
   clear: both;
-}
-
-.calculator__container {
-  padding: 0.5em 1em 0.4em 1em;
 }
 
 .calculator__widget-container {
@@ -104,9 +104,10 @@
 }
 
 .calculator__slider {
-  width: 10em;
-  float: right;
-  margin: 7px 10px 40px 0;
+  width: 100%;
+  float: left;
+  display: block;
+  margin: 7px 10px 1rem 0;
 }
 
 .noUi-horizontal {
@@ -118,6 +119,10 @@
   height: 16px;
   left: -8px;
   top: -8px;
+}
+
+.noUi-pips-horizontal {
+  height: auto;
 }
 
 .noUi-handle:before,
@@ -146,10 +151,9 @@
 .calculator__description {
   width: 90%;
   margin: 1em auto 1.5em auto;
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: 500;
   line-height: 1.5em;
-  color: #aaa;
   &.top {
 
   }
@@ -171,20 +175,95 @@
   width: 33%;
   background-color: lighten($secondary-color, 15);
   &.left {
-    margin-left: -1em;
     float: left;
   }
   &.right {
-    margin-right: -1em;
     float: right;
   }
 }
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(34% + 3em);
-  font-size: .8em;
+  width: calc(34%);
+  font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
   text-align: center;
+}
+
+
+.modal__left-side{
+  float: left;
+  min-width: 400px;
+  padding-right: 1rem;
+  position: relative;
+  border-right: solid #ddd 1px;
+  padding-right: 2rem;
+  @media screen and (max-width: 1010px) {
+    padding-right: 0;
+    border-right: 0;
+    float: none;
+  }
+}
+
+.modal__right-side{
+  float: right;
+  min-width: 520px;
+  padding-left: 1.5rem;
+  @media screen and (max-width: 1010px) {
+    padding-left: 0;
+    float: none;
+  }
+}
+
+.calc__subtitle{
+  font-size:1em;
+  float: initial;
+  clear: both;
+  margin-bottom: 0.25rem;
+}
+
+.calc__selection{
+  clear: both;
+  .stat__attribute{
+    font-size: 0.9rem;
+  }
+  .stat__value{
+    font-size: 0.85rem;
+  }
+  .stat__attribute--main{
+    margin-bottom: 0.5rem;
+  }
+  .stat__attribute--second{
+    margin-bottom: 1rem;
+  }
+  .stat__value--large{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.calc__selection--slider{
+  background-color: darken(#fff, 5);
+  overflow: auto;
+  margin: 0 -0.5rem 0.5rem;
+  padding: 0.75rem 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.calc__selection--percents{
+  display: inline;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.calc__selection--percent{
+}
+
+.calc__split{
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+  margin: 0.5rem 0 1rem 0;
+  overflow: auto;
 }

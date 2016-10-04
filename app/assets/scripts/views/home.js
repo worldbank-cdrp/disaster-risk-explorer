@@ -6,6 +6,7 @@ import DataSelection from '../utils/data-selection'
 import { mapSources } from '../constants'
 
 import About from '../components/about-modal.js'
+import Calc from '../components/calculator-modal.js'
 import Header from '../components/header.js'
 import Map from '../components/map.js'
 import Legend from '../components/legend.js'
@@ -25,6 +26,7 @@ var Home = React.createClass({
     selected: React.PropTypes.object,
     calculatorOpen: React.PropTypes.bool,
     modalAbout: React.PropTypes.object,
+    calcVisible: React.PropTypes.bool,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number
   },
@@ -51,21 +53,21 @@ var Home = React.createClass({
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
-          calculatorOpen={this.props.calculatorOpen}
           data={this.props.selected}
-          conversion={this.props.conversion}
-          sliderValue={this.props.sliderValue} />
+          conversion={this.props.conversion} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
+        <Calc
+          dispatch={this.props.dispatch}
+          attributes={this.props.selected}
+          calcVisible={this.props.calcVisible}
+          conversion={this.props.conversion}
+          sliderValue={this.props.sliderValue} />
       </div>
     )
   }
 })
-
-//  <OpacityPanel
-//  dispatch={this.props.dispatch}
-//  opacity={this.props.opacity} />
 
 // /////////////////////////////////////////////////////////////////// //
 // Connect functions
@@ -77,8 +79,9 @@ function mapStateToProps (state) {
     selected: state.map.selected,
     calculatorOpen: state.resultsPanel.calculatorOpen,
     modalAbout: state.modalAbout,
-    conversion: state.buildingCalculator.conversion,
-    sliderValue: state.buildingCalculator.sliderValue
+    calcVisible: state.modalCalc.calcVisible,
+    conversion: state.modalCalc.conversion,
+    sliderValue: state.modalCalc.sliderValue
   }
 }
 
