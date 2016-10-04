@@ -1,0 +1,92 @@
+{
+  "BZ": {
+    "Distribution – Metro": "0.1741",
+    "Distribution - Urban": "0.2741",
+    "Distribution – Rural": "0.5518",
+    "Retrofit – Start": "W3",
+    "Retrofit – End": "W1",
+    "Replacement – Start": "UCB, UCBs",
+    "Replacement – End": "RM2"
+  },
+  "GD": {
+    "Distribution – Metro": "1",
+    "Distribution - Urban": "0",
+    "Distribution – Rural": "0",
+    "Retrofit – Start": "UCB, CM, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "UCB, CM",
+    "Replacement – End": "C6"
+  },
+  "JM": {
+    "Distribution – Metro": "0.2168",
+    "Distribution - Urban": "0.3222",
+    "Distribution – Rural": "0.461",
+    "Retrofit – Start": "RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "W7",
+    "Replacement – End": "RM2"
+  },
+  "SL": {
+    "Distribution – Metro": "1",
+    "Distribution - Urban": "0",
+    "Distribution – Rural": "0",
+    "Retrofit – Start": "UCB, CM, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "UCB, CM",
+    "Replacement – End": "C6"
+  },
+  "PA": {
+    "Distribution – Metro": "0.3387",
+    "Distribution - Urban": "0.3121",
+    "Distribution – Rural": "0.3492",
+    "Retrofit – Start": "UFB, UCB",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "UFB, UCB",
+    "Replacement – End": "C3"
+  },
+  "NI": {
+    "Distribution – Metro": "0.175",
+    "Distribution - Urban": "0.397",
+    "Distribution – Rural": "0.428",
+    "Retrofit – Start": "UCB, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "M1, A1",
+    "Replacement – End": "RM2"
+  },
+  "CR": {
+    "Distribution – Metro": "0.4952",
+    "Distribution - Urban": "0.2364",
+    "Distribution – Rural": "0.2684",
+    "Retrofit – Start": "UCB, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "W1",
+    "Replacement – End": "S3"
+  },
+  "HN": {
+    "Distribution – Metro": "0.1469",
+    "Distribution - Urban": "0.3454",
+    "Distribution – Rural": "0.5077",
+    "Retrofit – Start": "UCB, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "A1",
+    "Replacement – End": "RM2"
+  },
+  "GT": {
+    "Distribution – Metro": "0.2056",
+    "Distribution - Urban": "0.2844",
+    "Distribution – Rural": "0.51",
+    "Retrofit – Start": "UCB, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "A1",
+    "Replacement – End": "RM2"
+  },
+  "SV": {
+    "Distribution – Metro": "0.35",
+    "Distribution - Urban": "0.37",
+    "Distribution – Rural": "0.33",
+    "Retrofit – Start": "UCB, RM2",
+    "Retrofit – End": "C3",
+    "Replacement – Start": "A1",
+    "Replacement – End": "RM2"
+  }
+}
