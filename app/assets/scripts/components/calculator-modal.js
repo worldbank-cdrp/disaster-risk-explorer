@@ -2,8 +2,9 @@ import React from 'react'
 import Slider from 'react-nouislider'
 
 import { hideModalCalc, selectConversion, updateSliderValue } from '../actions'
-import buildingData from '../../data/buildings.json'
 import { shortenNumber } from '../utils/format'
+import { getBuildingData } from '../utils/building-calc'
+
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Calculator = React.createClass({
@@ -36,8 +37,7 @@ const Calculator = React.createClass({
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
-    const data = buildingData[countryCode][this.props.conversion]
-    const conversionValue = Math.round(data.conversionCost * sliderValue)
+    const data = getBuildingData(countryCode, this.props.conversion, sliderValue, 'UCC')
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
@@ -102,7 +102,7 @@ const Calculator = React.createClass({
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
                 <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
                 <dt className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
-                <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
+                <dd className='stat__value'>${data.conversionValue + (data.conversionValue > 0 ? ' Million' : '')}</dd>
                 <dt className='stat__attribute'>Flat rate years to break even</dt>
                 <dd className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dd>
                 <dt className='stat__attribute'>Percent of Housing Stock {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
