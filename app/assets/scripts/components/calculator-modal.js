@@ -37,7 +37,7 @@ const Calculator = React.createClass({
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
-    const data = getBuildingData(countryCode, this.props.conversion, sliderValue, 'UCC')
+    const data = getBuildingData(countryCode, this.props.conversion, sliderValue)
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>

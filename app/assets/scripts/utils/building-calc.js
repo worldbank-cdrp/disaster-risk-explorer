@@ -7,16 +7,24 @@ import buildingData from '../../data/buildings.json'
  */
 
 export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
-  const startBuildingSel = buildingData[regionCode][`${conversion}Start`].split(', ')
-  const endBuildingSel = buildingData[regionCode][`${conversion}End`].split(', ')
+  // get building selection from the country level
+  const startBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}Start`].split(', ')
+  const endBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}End`].split(', ')
 
-  // from all the keys, filter on the buildings that match our selection
+  // from all the region keys, filter on the buildings that match our selection
   const startBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
     return startBuildingSel.some(sb => building.match(sb))
   }).map(b => buildingData[regionCode][b])
-  const endBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
+  let endBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
     return endBuildingSel.some(eb => building.match(eb))
   }).map(b => buildingData[regionCode][b])
+
+  // check for later null conditions and overwrite if necessary with country level
+  if (endBuildingMatch.some(a => a['Value in USD T'] === '0')) {
+    endBuildingMatch = Object.keys(buildingData[regionCode.slice(0, 2)]).filter(building => {
+      return endBuildingSel.some(eb => building.match(eb))
+    }).map(b => buildingData[regionCode.slice(0, 2)][b])
+  }
 
   // used in multiple calculations
   const sumBuildingValue = startBuildingMatch.reduce((a, b) => a + Number(b['Value in USD T']), 0)
