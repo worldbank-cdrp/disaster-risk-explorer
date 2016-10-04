@@ -46,15 +46,10 @@ export const mapSettings = {
     [-70.869861602783146, 21.525140762329187]
   ],
   opacityLevels: {
-    full: 1,
+    full: 0.8,
     medium: 0.4,
     low: 0.15
   }
-  // opacityLevels: {
-  //   full: 0.8,
-  //   medium: 0.4,
-  //   low: 0.15
-  // }
 }
 
 const makeLegend = (scale, steps) => {

@@ -253,7 +253,6 @@ export const Map = React.createClass({
     })
     if (features.length) {
       const feature = features[0]
-      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final
