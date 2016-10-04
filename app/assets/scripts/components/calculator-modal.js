@@ -73,7 +73,7 @@ const Calculator = React.createClass({
                 <dt className='stat__value stat__value--large stat__value--large'>$2,500,000</dt>
               </dl>
               <dl className='calc__selection calc__selection--slider'>
-                <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(this.props.conversion === 'retrofit' ? 'retrofitted'  : 'replaced')}</dt>
+                <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
                 <dd className='stat__value stat__value--large'>{Math.floor(this.props.sliderValue * 100)}%</dd>
                 <dt className='calculator__slider'>
                 <Slider
@@ -100,7 +100,7 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>Results</h2>
               <dl className='calc__selection'>
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
-                <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * /*this.props.attributes.AAL */ sliderValue, 0, false)}</dd>
+                <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
                 <dt className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
                 <dt className='stat__attribute'>Flat rate years to break even</dt>
