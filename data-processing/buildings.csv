@@ -1,4 +1,4 @@
-Code,Class,Description,Value in USD T,AAL in USD T,AAL as % of Total AAL,AAL as % of Value,Risk Rank,Cost – Metro,Cost – Urban,Cost – Rural
+Code,Class,Description,Value in USD T,AAL in USD T,AAL as % of Total AAL,AAL as % of Value,Risk Rank,costMetro,costUrban,costRural
 BZ,avmUCBs,Unreinforced Concrete Block masonry with lime or mortar multi family - on stilts,1289.10882,5.5302908,0.006264196,0.004290011,1,385,385,345
 BZ,avsUCBs,Unreinforced Concrete Block masonry with lime or mortar single family - on stilts,63795.26005,262.4905675,0.297324768,0.004114578,2,350,350,315
 BZ,avmC3s,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise - on stilts,463.41365,1.3706379,0.00155253,0.002957699,3,,,
