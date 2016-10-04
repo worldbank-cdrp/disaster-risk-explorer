@@ -4,12 +4,13 @@
   left: 1em;
   z-index: 100;
   padding: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   @include containter;
 }
 
 .legend__title {
   @include section_header;
-  padding: 0.75rem 1rem 0.5rem;
 }
 
 .legend__scale {
@@ -37,8 +38,12 @@
 .legend__caption{
   float: left;
   font-family: 'Hind';
-  font-size: 0.3em;
-  color: #aaa;
+  font-size: 0.8em;
+  color: #999;
   line-height: 1.25em;
   padding: 0.25rem 1rem 0.75rem 0;
+  p{
+    margin-right: 0.5rem;
+    display: inline-block;
+  }
 }

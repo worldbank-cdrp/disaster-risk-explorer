@@ -126,7 +126,7 @@ export const Map = React.createClass({
     if (nextSelected && prevSourceName === 'admin1' && nextSourceName === 'admin0') {
       const parent = countryExtents.admin1[prevSelected.NAME_1].parent
       this._map.fitBounds(countryExtents.admin0[parent].extent, {
-        padding: 200
+        padding: 150
       })
       this._deselectFeature(prevSourceName)
     }
@@ -207,7 +207,7 @@ export const Map = React.createClass({
           stops: colorScale
         },
         'fill-opacity': opacity,
-        'fill-outline-color': 'rgb(140, 140, 160)'
+        'fill-outline-color': '#333'
       }
     })
   },
@@ -263,7 +263,7 @@ export const Map = React.createClass({
         const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
         const id = feature.properties[idField]
         this._map.fitBounds(countryExtents[admin][id].extent, {
-          padding: 200
+          padding: 150
         })
       } else {
         this._map.flyTo({
