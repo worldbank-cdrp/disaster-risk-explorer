@@ -1520,7 +1520,7 @@ GT,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,1
 GT,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,14804.94595,77.44853776,0.238059759,0.005231261,7,365,325,255
 GT,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,473.8952636,2.434734005,0.007483836,0.005137705,8,320,285,235
 GT,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,25441.82234,124.3990528,0.382375309,0.00488955,9,320,285,235
-GT,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1975.695792,3.284638842,0.010096257,0.001662523,10,,,
+GT,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1975.695792,3.284638842,0.010096257,0.001662523,10,485,450,400
 GT,avcomret,Commercial retail,3338.237831,5.104279963,0.015689433,0.001529034,11,,,
 GT,avcomoff,Commercial offices,1875.126317,2.794827075,0.008590683,0.001490474,12,,,
 GT,avcritica,"Critical buildings - schools, hospitals, medical centers",7919.420971,11.69194245,0.035938458,0.001476363,13,,,
@@ -1537,7 +1537,7 @@ GT-AV,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-AV,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,274,0.53,0.1282,0.00192,7,365,325,255
 GT-AV,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,11,0.02,0.005,0.00189,8,320,285,235
 GT-AV,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,839,1.58,0.3845,0.00188,9,320,285,235
-GT-AV,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-AV,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-AV,avcomret,Commercial retail,78,0.05,0.0127,0.00066,11,,,
 GT-AV,avcomoff,Commercial offices,48,0.03,0.0077,0.00066,12,,,
 GT-AV,avcritica,"Critical buildings - schools, hospitals, medical centers",227,0.15,0.036,0.00065,13,,,
@@ -1554,7 +1554,7 @@ GT-BV,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-BV,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,79,0.22,0.1274,0.00284,7,365,325,255
 GT-BV,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,3,0.01,0.0049,0.00286,8,320,285,235
 GT-BV,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,229,0.66,0.3755,0.00287,9,320,285,235
-GT-BV,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-BV,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-BV,avcomret,Commercial retail,27,0.03,0.0149,0.00095,11,,,
 GT-BV,avcomoff,Commercial offices,17,0.02,0.0092,0.00094,12,,,
 GT-BV,avcritica,"Critical buildings - schools, hospitals, medical centers",81,0.08,0.0436,0.00094,13,,,
@@ -1571,7 +1571,7 @@ GT-CM,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-CM,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,432,2.72,0.1763,0.00629,7,365,325,255
 GT-CM,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,14,0.09,0.0058,0.00628,8,320,285,235
 GT-CM,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1017,6.38,0.4133,0.00627,9,320,285,235
-GT-CM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,0.00183,10,,,
+GT-CM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,0.00183,10,485,450,400
 GT-CM,avcomret,Commercial retail,105,0.19,0.0123,0.00181,11,,,
 GT-CM,avcomoff,Commercial offices,63,0.11,0.0073,0.00177,12,,,
 GT-CM,avcritica,"Critical buildings - schools, hospitals, medical centers",275,0.49,0.0316,0.00177,13,,,
@@ -1588,7 +1588,7 @@ GT-CQ,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-CQ,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,206,0.45,0.145,0.00219,7,365,325,255
 GT-CQ,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,7,0.02,0.0051,0.00221,8,320,285,235
 GT-CQ,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,542,1.2,0.3855,0.00221,9,320,285,235
-GT-CQ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-CQ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-CQ,avcomret,Commercial retail,53,0.04,0.0136,0.0008,11,,,
 GT-CQ,avcomoff,Commercial offices,32,0.03,0.0083,0.0008,12,,,
 GT-CQ,avcritica,"Critical buildings - schools, hospitals, medical centers",145,0.12,0.0373,0.0008,13,,,
@@ -1605,7 +1605,7 @@ GT-PR,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-PR,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,95,0.28,0.1159,0.00292,7,365,325,255
 GT-PR,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,4,0.01,0.0048,0.00289,8,320,285,235
 GT-PR,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,314,0.9,0.378,0.00288,9,320,285,235
-GT-PR,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-PR,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-PR,avcomret,Commercial retail,25,0.03,0.0106,0.00102,11,,,
 GT-PR,avcomoff,Commercial offices,16,0.02,0.0066,0.00101,12,,,
 GT-PR,avcritica,"Critical buildings - schools, hospitals, medical centers",77,0.08,0.0324,0.001,13,,,
@@ -1622,7 +1622,7 @@ GT-ES,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-ES,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,658,5.29,0.1483,0.00804,7,365,325,255
 GT-ES,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,23,0.19,0.0053,0.00813,8,320,285,235
 GT-ES,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1745,14.25,0.3993,0.00817,9,320,285,235
-GT-ES,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-ES,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-ES,avcomret,Commercial retail,136,0.31,0.0087,0.00229,11,,,
 GT-ES,avcomoff,Commercial offices,82,0.18,0.0052,0.00225,12,,,
 GT-ES,avcritica,"Critical buildings - schools, hospitals, medical centers",358,0.81,0.0227,0.00226,13,,,
@@ -1639,7 +1639,7 @@ GT-GU,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-GU,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,7577,42.47,0.3371,0.0056,7,365,325,255
 GT-GU,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,227,1.27,0.0101,0.0056,8,320,285,235
 GT-GU,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,7824,43.72,0.347,0.00559,9,320,285,235
-GT-GU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1836,3.02,0.024,0.00165,10,,,
+GT-GU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1836,3.02,0.024,0.00165,10,485,450,400
 GT-GU,avcomret,Commercial retail,1836,3.01,0.0239,0.00164,11,,,
 GT-GU,avcomoff,Commercial offices,961,1.55,0.0123,0.00161,12,,,
 GT-GU,avcritica,"Critical buildings - schools, hospitals, medical centers",3856,6.21,0.0493,0.00161,13,,,
@@ -1656,7 +1656,7 @@ GT-HU,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-HU,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,498,1.27,0.1409,0.00254,7,365,325,255
 GT-HU,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,19,0.05,0.0052,0.0025,8,320,285,235
 GT-HU,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1436,3.56,0.3966,0.00248,9,320,285,235
-GT-HU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-HU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-HU,avcomret,Commercial retail,111,0.1,0.0106,0.00086,11,,,
 GT-HU,avcomoff,Commercial offices,69,0.06,0.0064,0.00084,12,,,
 GT-HU,avcritica,"Critical buildings - schools, hospitals, medical centers",324,0.27,0.03,0.00083,13,,,
@@ -1673,7 +1673,7 @@ GT-IZ,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-IZ,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,359,0.5,0.1426,0.0014,7,365,325,255
 GT-IZ,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,13,0.02,0.0054,0.0014,8,320,285,235
 GT-IZ,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1033,1.44,0.4107,0.0014,9,320,285,235
-GT-IZ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-IZ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-IZ,avcomret,Commercial retail,64,0.02,0.0063,0.00034,11,,,
 GT-IZ,avcomoff,Commercial offices,39,0.01,0.0038,0.00034,12,,,
 GT-IZ,avcritica,"Critical buildings - schools, hospitals, medical centers",176,0.06,0.0174,0.00035,13,,,
@@ -1690,7 +1690,7 @@ GT-JA,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-JA,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,134,0.44,0.1382,0.00332,7,365,325,255
 GT-JA,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,5,0.02,0.0051,0.00332,8,320,285,235
 GT-JA,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,372,1.24,0.3841,0.00332,9,320,285,235
-GT-JA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-JA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-JA,avcomret,Commercial retail,39,0.04,0.0135,0.00112,11,,,
 GT-JA,avcomoff,Commercial offices,24,0.03,0.0082,0.00111,12,,,
 GT-JA,avcritica,"Critical buildings - schools, hospitals, medical centers",110,0.12,0.0378,0.0011,13,,,
@@ -1707,7 +1707,7 @@ GT-JU,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-JU,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,212,1.04,0.1205,0.00487,7,365,325,255
 GT-JU,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,9,0.04,0.0049,0.0049,8,320,285,235
 GT-JU,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,669,3.29,0.3826,0.00491,9,320,285,235
-GT-JU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-JU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-JU,avcomret,Commercial retail,60,0.09,0.0104,0.00148,11,,,
 GT-JU,avcomoff,Commercial offices,38,0.05,0.0064,0.00146,12,,,
 GT-JU,avcritica,"Critical buildings - schools, hospitals, medical centers",182,0.27,0.031,0.00146,13,,,
@@ -1724,7 +1724,7 @@ GT-PE,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-PE,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,280,0.1,0.121,0.00034,7,365,325,255
 GT-PE,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,11,0,0.005,0.00035,8,320,285,235
 GT-PE,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,899,0.31,0.393,0.00035,9,320,285,235
-GT-PE,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-PE,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-PE,avcomret,Commercial retail,50,0.01,0.0063,0.0001,11,,,
 GT-PE,avcomoff,Commercial offices,31,0,0.0039,0.0001,12,,,
 GT-PE,avcritica,"Critical buildings - schools, hospitals, medical centers",143,0.01,0.018,0.0001,13,,,
@@ -1741,7 +1741,7 @@ GT-QZ,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-QZ,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,761,4.25,0.2052,0.00558,7,365,325,255
 GT-QZ,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,23,0.13,0.0061,0.00558,8,320,285,235
 GT-QZ,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1556,8.69,0.4199,0.00559,9,320,285,235
-GT-QZ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-QZ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-QZ,avcomret,Commercial retail,184,0.3,0.0145,0.00163,11,,,
 GT-QZ,avcomoff,Commercial offices,110,0.18,0.0085,0.00159,12,,,
 GT-QZ,avcritica,"Critical buildings - schools, hospitals, medical centers",457,0.73,0.0352,0.00159,13,,,
@@ -1758,7 +1758,7 @@ GT-QC,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-QC,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,346,1.31,0.1441,0.00379,7,365,325,255
 GT-QC,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,13,0.05,0.0052,0.00358,8,320,285,235
 GT-QC,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1034,3.61,0.3972,0.0035,9,320,285,235
-GT-QC,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-QC,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-QC,avcomret,Commercial retail,83,0.1,0.0112,0.00123,11,,,
 GT-QC,avcomoff,Commercial offices,51,0.06,0.0067,0.0012,12,,,
 GT-QC,avcritica,"Critical buildings - schools, hospitals, medical centers",238,0.28,0.0308,0.00118,13,,,
@@ -1775,7 +1775,7 @@ GT-RE,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-RE,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,238,1.63,0.1721,0.00684,7,365,325,255
 GT-RE,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,8,0.05,0.0056,0.00693,8,320,285,235
 GT-RE,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,548,3.83,0.4048,0.00698,9,320,285,235
-GT-RE,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-RE,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-RE,avcomret,Commercial retail,55,0.11,0.0117,0.00199,11,,,
 GT-RE,avcomoff,Commercial offices,33,0.06,0.0068,0.00194,12,,,
 GT-RE,avcritica,"Critical buildings - schools, hospitals, medical centers",141,0.27,0.029,0.00194,13,,,
@@ -1792,7 +1792,7 @@ GT-SA,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-SA,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,592,4.05,0.3558,0.00683,7,365,325,255
 GT-SA,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,18,0.12,0.0107,0.00684,8,320,285,235
 GT-SA,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,644,4.43,0.3894,0.00688,9,320,285,235
-GT-SA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,139,0.26,0.0231,0.00188,10,,,
+GT-SA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,139,0.26,0.0231,0.00188,10,485,450,400
 GT-SA,avcomret,Commercial retail,14,0.03,0.0024,0.00198,11,,,
 GT-SA,avcomoff,Commercial offices,8,0.02,0.0014,0.00194,12,,,
 GT-SA,avcritica,"Critical buildings - schools, hospitals, medical centers",36,0.07,0.0062,0.00195,13,,,
@@ -1809,7 +1809,7 @@ GT-SM,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-SM,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,673,3.02,0.2002,0.00448,7,365,325,255
 GT-SM,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,21,0.09,0.0062,0.00446,8,320,285,235
 GT-SM,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,1453,6.46,0.4288,0.00445,9,320,285,235
-GT-SM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-SM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-SM,avcomret,Commercial retail,96,0.13,0.0085,0.00134,11,,,
 GT-SM,avcomoff,Commercial offices,58,0.08,0.005,0.00131,12,,,
 GT-SM,avcritica,"Critical buildings - schools, hospitals, medical centers",248,0.32,0.0215,0.00131,13,,,
@@ -1826,7 +1826,7 @@ GT-SR,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-SR,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,165,1.21,0.1339,0.00736,7,365,325,255
 GT-SR,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,6,0.05,0.0051,0.00732,8,320,285,235
 GT-SR,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,492,3.6,0.3974,0.00731,9,320,285,235
-GT-SR,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-SR,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-SR,avcomret,Commercial retail,38,0.08,0.0087,0.00206,11,,,
 GT-SR,avcomoff,Commercial offices,24,0.05,0.0052,0.00201,12,,,
 GT-SR,avcritica,"Critical buildings - schools, hospitals, medical centers",109,0.22,0.0242,0.00201,13,,,
@@ -1843,7 +1843,7 @@ GT-SO,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-SO,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,289,1.93,0.1829,0.00667,7,365,325,255
 GT-SO,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,9,0.06,0.0059,0.0067,8,320,285,235
 GT-SO,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,662,4.44,0.4218,0.00671,9,320,285,235
-GT-SO,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-SO,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-SO,avcomret,Commercial retail,58,0.11,0.0101,0.00182,11,,,
 GT-SO,avcomoff,Commercial offices,35,0.06,0.0059,0.00178,12,,,
 GT-SO,avcritica,"Critical buildings - schools, hospitals, medical centers",148,0.26,0.0251,0.00178,13,,,
@@ -1860,7 +1860,7 @@ GT-SU,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-SU,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,370,2.66,0.1706,0.00718,7,365,325,255
 GT-SU,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,12,0.09,0.0056,0.00723,8,320,285,235
 GT-SU,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,874,6.35,0.4069,0.00726,9,320,285,235
-GT-SU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-SU,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-SU,avcomret,Commercial retail,78,0.16,0.0105,0.00211,11,,,
 GT-SU,avcomoff,Commercial offices,47,0.1,0.0063,0.00206,12,,,
 GT-SU,avcritica,"Critical buildings - schools, hospitals, medical centers",210,0.43,0.0278,0.00207,13,,,
@@ -1877,7 +1877,7 @@ GT-TO,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-TO,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,329,1.61,0.2081,0.00489,7,365,325,255
 GT-TO,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,10,0.05,0.0061,0.00487,8,320,285,235
 GT-TO,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,657,3.19,0.4135,0.00486,9,320,285,235
-GT-TO,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-TO,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-TO,avcomret,Commercial retail,97,0.14,0.0186,0.00148,11,,,
 GT-TO,avcomoff,Commercial offices,58,0.08,0.0109,0.00145,12,,,
 GT-TO,avcritica,"Critical buildings - schools, hospitals, medical centers",241,0.35,0.0451,0.00145,13,,,
@@ -1894,7 +1894,7 @@ GT-ZA,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi famil
 GT-ZA,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,237,0.49,0.156,0.00208,7,365,325,255
 GT-ZA,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,8,0.02,0.0054,0.00209,8,320,285,235
 GT-ZA,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,601,1.26,0.3995,0.00209,9,320,285,235
-GT-ZA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,,,
+GT-ZA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,10,485,450,400
 GT-ZA,avcomret,Commercial retail,50,0.03,0.0111,0.00069,11,,,
 GT-ZA,avcomoff,Commercial offices,31,0.02,0.0067,0.00069,12,,,
 GT-ZA,avcritica,"Critical buildings - schools, hospitals, medical centers",136,0.09,0.0297,0.00069,13,,,

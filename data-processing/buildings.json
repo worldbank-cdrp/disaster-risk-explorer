@@ -2733,9 +2733,9 @@
       "AAL as % of Total AAL": "0.010096257",
       "AAL as % of Value": "0.001662523",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -2933,9 +2933,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomoff": {
       "Description": "Commercial offices",
@@ -3001,9 +3001,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsRM2": {
       "Description": "Reinforced masonry bearing walls with concrete diaphragms single family",
@@ -3179,9 +3179,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "0.00183",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsRM2": {
       "Description": "Reinforced masonry bearing walls with concrete diaphragms single family",
@@ -3467,9 +3467,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -3634,9 +3634,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -3713,9 +3713,9 @@
       "AAL as % of Total AAL": "0.024",
       "AAL as % of Value": "0.00165",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsUCB": {
       "Description": "Unreinforced Concrete Block masonry with lime or mortar single family",
@@ -3990,9 +3990,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -4168,9 +4168,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -4346,9 +4346,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -4524,9 +4524,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -4702,9 +4702,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -4803,9 +4803,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsUCB": {
       "Description": "Unreinforced Concrete Block masonry with lime or mortar single family",
@@ -5047,9 +5047,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avmA1": {
       "Description": "Adobe block, mud mortar, wood roof and floors multi family",
@@ -5291,9 +5291,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -5381,9 +5381,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avmINF": {
       "Description": "Informal constructions multi family",
@@ -5493,9 +5493,9 @@
       "AAL as % of Total AAL": "0.0231",
       "AAL as % of Value": "0.00188",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avmA1": {
       "Description": "Adobe block, mud mortar, wood roof and floors multi family",
@@ -5682,9 +5682,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avindustr": {
       "Description": "General industrial",
@@ -5860,9 +5860,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avindustr": {
       "Description": "General industrial",
@@ -6104,9 +6104,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avindustr": {
       "Description": "General industrial",
@@ -6238,9 +6238,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsUCB": {
       "Description": "Unreinforced Concrete Block masonry with lime or mortar single family",
@@ -6482,9 +6482,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avcomret": {
       "Description": "Commercial retail",
@@ -6638,9 +6638,9 @@
       "AAL as % of Total AAL": "0",
       "AAL as % of Value": "#DIV/0!",
       "Risk Rank": "10",
-      "costMetro": "",
-      "costUrban": "",
-      "costRural": ""
+      "costMetro": "485",
+      "costUrban": "450",
+      "costRural": "400"
     },
     "avsUCB": {
       "Description": "Unreinforced Concrete Block masonry with lime or mortar single family",
