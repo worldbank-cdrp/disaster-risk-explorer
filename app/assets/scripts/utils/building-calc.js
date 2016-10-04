@@ -47,16 +47,31 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
   const totalBuildingAAL = Object.keys(buildingData[regionCode]).filter(building => {
     // only want building types, not other keys
     return typeof buildingData[regionCode][building] === 'object'
-  }).map(a => {
-    return a
   }).reduce((a, b) => a + Number(buildingData[regionCode][b]['AAL in USD T']), 0)
 
   // METRICS & Descriptions (everything for calculator)
+
+  const topFiveAAL = Object.keys(buildingData[regionCode]).filter(building => {
+    // only want building types, not other keys
+    return typeof buildingData[regionCode][building] === 'object'
+  }).map(a => buildingData[regionCode][a]).sort((a, b) => {
+    // sort by relative/absolute depending upon conversion type
+    if (conversion === 'retrofit') {
+      return Number(b['AAL as % of Value']) - Number(a['AAL as % of Value'])
+    } else {
+      return Number(b['AAL in USD T']) - Number(a['AAL in USD T'])
+    }
+  }).slice(0, 5)
+
   return {
     unitCostOfConstruction: ucc,
     buildingChangeAAL: (1 - newAAL / oldAAL),
     overallChangeAAL: diffAAL / totalBuildingAAL * 1000,
-    breakEven: totalBuiltCost / diffAAL
+    breakEven: totalBuiltCost / diffAAL,
+    buildingFrom: getDescription(startBuildingMatch),
+    buildingTo: getDescription(endBuildingMatch),
+    conversionValue: totalBuiltCost * 1000000,
+    topFiveAAL
   }
 }
 window.getBuildingData = getBuildingData
@@ -78,4 +93,8 @@ function getAALWeight (buildingArray) {
   }).reduce((a, b) => {
     return a + b
   }, 0) / buildingArray.reduce((a, b) => a + Number(b['Value in USD T']), 0)
+}
+
+function getDescription (buildingArray) {
+  return buildingArray[0]['Description'] + (buildingArray.length > 1 ? ' + others ' : '')
 }
