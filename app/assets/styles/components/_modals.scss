@@ -136,6 +136,7 @@
   }
 
   &__title {
+    padding-left: 1rem;
     font-size: 1em;
     letter-spacing: 0.4px;
     font-weight: 500;
@@ -176,7 +177,7 @@
 .modal__button-dismiss {
   position: absolute;
   top: 0.4rem;
-  right: 1em;
+  right: 0.75em;
   z-index: 10;
   opacity: 0.8;
   background: none;

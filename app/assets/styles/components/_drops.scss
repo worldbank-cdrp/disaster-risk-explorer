@@ -235,7 +235,7 @@
     padding-right: $global-spacing * 2.5;
   }
   .drop__menu-item--active {
-    color: inherit;
+    color: black;
     outline: 0;
     font-weight: $base-font-bold;
     &:after {
@@ -249,6 +249,9 @@
       opacity: 0.32;
       width: 1.5rem;
       text-align: center;
+    }
+    &:hover {
+      color: black;
     }
   }
 }
