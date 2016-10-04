@@ -24,7 +24,9 @@ const Results = React.createClass({
             <p className='results__container--textbox'>{t('default-text')}</p>
           </div>
         </div>
-        <button className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+        <button className='results__calc-launcher button'>
+          <span className='results__calc-hover'>Launch Building Stock Calculator</span>
+        </button>
       </section>
     )
   },

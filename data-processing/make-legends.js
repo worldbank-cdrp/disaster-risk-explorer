@@ -32,7 +32,7 @@ const makeLegends = (data, targetCols, numSteps, gradient) => {
 
 // ==========================
 // ----- inputs
-const input = JSON.parse(fs.readFileSync('../merged-grid.geojson'))
+const input = JSON.parse(fs.readFileSync('../../data/merged-grid.geojson'))
 const targetCols = ['HZ_EQ_1000', 'HZ_EQ_100', 'HZ_EQ_2500', 'HZ_EQ_5000', 'HZ_EQ_500', 'HZ_EQ_250', 'EX_GD', 'EX_IN', 'EX_BS', 'HZ_FL_1000', 'HZ_FL_1000_R', 'HZ_FL_100', 'HZ_FL_100_R', 'HZ_FL_10', 'HZ_FL_10_R', 'HZ_FL_250', 'HZ_FL_250_R', 'HZ_FL_25', 'HZ_FL_25_R', 'HZ_FL_500', 'HZ_FL_500_R', 'HZ_FL_50', 'HZ_FL_50_R', 'HZ_FL_5', 'HZ_FL_5_R']
 const numSteps = 6
 const gradient = chroma.scale(['rgb(200, 200, 255)', 'rgb(40, 40, 80)'])
