@@ -55,6 +55,8 @@ export const Map = React.createClass({
       if (basemap === 'special') this._addBasemap(basemap)
       this._loadLayers()
     })
+
+    map.addControl(new mapboxgl.Navigation({position: 'top-left'}))
   },
 
   _loadLayers: function () {

@@ -22,3 +22,16 @@
 .mapboxgl-popup-content{
 	padding: 8px 12px 10px;
 }
+
+.mapboxgl-ctrl-top-left .mapboxgl-ctrl{
+	margin: 3rem 0 0 24rem;
+	box-shadow: none;
+	border: 1px solid #bbb;
+	background-color: #eee;
+	button{
+		transition: all 0.2s;
+		&:active{
+			background-color: #ccc;
+		}
+	}
+}
