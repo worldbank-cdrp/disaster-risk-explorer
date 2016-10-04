@@ -62,7 +62,7 @@ export const Map = React.createClass({
       })
 
       const mapId = getMapId(this.props.dataSelection)
-      const colorScale = legends[mapId]
+      const colorScale = legends[mapId.slice(0, 5)]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
@@ -203,7 +203,7 @@ export const Map = React.createClass({
           stops: colorScale
         },
         'fill-opacity': opacity,
-        'fill-outline-color': '#333'
+        'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
       }
     })
   },
@@ -239,7 +239,7 @@ export const Map = React.createClass({
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
-    const colorScale = legends[nextMapId]
+    const colorScale = legends[nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
@@ -252,8 +252,8 @@ export const Map = React.createClass({
       layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
     })
     if (features.length) {
-      console.log(features)
       const feature = features[0]
+      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final
