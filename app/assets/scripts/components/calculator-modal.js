@@ -104,7 +104,7 @@ const Calculator = React.createClass({
                 <dt className='stat__attribute'>Total {(this.props.conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${data.conversionValue + (data.conversionValue > 0 ? ' Million' : '')}</dd>
                 <dt className='stat__attribute'>Flat rate years to break even</dt>
-                <dd className='stat__value'>{Math.round(data.breakEven)} Years NON-INTERACTIVE</dd>
+                <dd className='stat__value'>{Math.round(data.breakEven)} Years</dd>
                 <dt className='stat__attribute'>Percent of Housing Stock {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
                 <dd className='stat__value'>1% UNIMPLEMENTED</dd>
                 <dt className='stat__attribute'>Percent Change in AAL for these housing units</dt>
