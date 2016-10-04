@@ -28,7 +28,7 @@
 }
 
 .calculator__container{
-  padding: 0.5rem 1rem 1.5rem 1rem;
+  padding: 0.5rem 2rem 1.5rem 2rem;
 }
 
 .calculator__subtitle {
@@ -198,18 +198,20 @@
   padding-right: 1rem;
   position: relative;
   border-right: solid #ddd 1px;
-  padding-right: 1rem;
-  @media screen and (max-width: 1000px) {
+  padding-right: 2rem;
+  @media screen and (max-width: 1010px) {
+    padding-right: 0;
+    border-right: 0;
     float: none;
   }
 }
 
 .modal__right-side{
   float: right;
-  min-width: 550px;
-  padding-left: 1rem;
-  @media screen and (max-width: 1000px) {
-    border-left: 0;
+  min-width: 520px;
+  padding-left: 1.5rem;
+  @media screen and (max-width: 1010px) {
+    padding-left: 0;
     float: none;
   }
 }

@@ -69,8 +69,8 @@ const Calculator = React.createClass({
                   </dd>
               </dl>
               <dl className='calc__selection'>
-                <dd className='stat__attribute stat__attribute--main'>Cost per {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
-                <dt className='stat__value stat__value--large stat__value--large'>$2,500 UNIMPLEMENTED</dt>
+                <dd className='stat__attribute stat__attribute--main'>Unit cost per {(this.props.conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
+                <dt className='stat__value stat__value--large stat__value--large'>$2,500,000</dt>
               </dl>
               <dl className='calc__selection calc__selection--slider'>
                 <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(this.props.conversion === 'retrofit' ? 'retrofitted'  : 'replaced')}</dt>
