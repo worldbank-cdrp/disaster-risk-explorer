@@ -17,10 +17,12 @@ const makeLegends = (data, targetCols, numSteps, gradients) => {
   targetCols.forEach((col) => {
     let values = input.features.map((feat) => {
       return feat.properties[col]
-    }).filter((value) => {
-      return typeof value !== 'undefined'
+    }).filter(function (value) {
+      if (typeof value === 'undefined' || value === 0) {
+        return false
+      }
+      return true
     })
-
     const gradient = gradients[col.slice(0, 5)]
     let legend = new Geostats(values)
     legend = legend.getClassQuantile(numSteps).map((step, i) => {
