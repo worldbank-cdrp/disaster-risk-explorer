@@ -17,14 +17,6 @@ const Results = React.createClass({
   deleteThis: function () {
     return (
       <section className='results'>
-        <div className='results__space'>
-        <h2 className='results__title'>Disaster Risk Explorer</h2>
-          <div className='results__container'>
-            <h3 className='subtitle results__subtitle'></h3>
-            <p className='results__container--textbox'>{t('default-text')}</p>
-          </div>
-        </div>
-        <button className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
       </section>
     )
   },
@@ -86,14 +78,15 @@ const Results = React.createClass({
                   </dd>
                 </dl>
               </div>
-              <button className='button button_results button_results--half'>View Historical Data</button>
-              <button className='button button_results button_results--half button_results--right'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
+              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={() => this.props.dispatch(showModalCalc())} className='results__calc-launcher button'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )
   }
 })
+
+// <button className='button button_results button_results--half'>View Historical Data</button>
 
 export default Results
