@@ -3,23 +3,28 @@ import Slider from 'react-nouislider'
 import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { hideModalCalc, selectConversion, updateSliderValue } from '../actions'
+import { hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
 import { getBuildingData } from '../utils/building-calc'
 
 const Calculator = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
-
     calcVisible: React.PropTypes.bool,
     attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
+    sliderValue: React.PropTypes.number,
+    unitCostOfConstruction: React.PropTypes.number
+  },
+
+  hideModal: function () {
+    this.props.dispatch(updateUCC(null))
+    this.props.dispatch(hideModalCalc())
   },
 
   onOutClick: function (e) {
     if (e.target === e.currentTarget) {
-      this.props.dispatch(hideModalCalc())
+      this.hideModal()
     }
   },
 
@@ -31,13 +36,18 @@ const Calculator = React.createClass({
     this.props.dispatch(selectConversion(conversion))
   },
 
+  handleUCC: function (e) {
+    this.props.dispatch(updateUCC(Number(e.target.value)))
+  },
+
   renderModal: function () {
     if (!this.props.calcVisible) return null
     const { sliderValue, conversion } = this.props
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT' // this.props.selectedCode
-    const data = getBuildingData(countryCode, conversion, sliderValue)
+    const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
+    let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
     // A little nonsense to create single roots for react
     const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
@@ -54,7 +64,7 @@ const Calculator = React.createClass({
           <header className='modal__header'>
             <div className='modal__headline'>
               <h1 className='modal__title'>Risk mitigation cost and benefit calculation</h1>
-              <button className='modal__button-dismiss' title='Close' onClick={() => this.props.dispatch(hideModalCalc())}><span>Dismiss</span></button>
+              <button className='modal__button-dismiss' title='Close' onClick={this.hideModel}><span>Dismiss</span></button>
             </div>
           </header>
 
@@ -79,7 +89,7 @@ const Calculator = React.createClass({
               </dl>
               <dl className='calc__selection'>
                 <dd className='stat__attribute stat__attribute--main'>Unit cost per {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
-                <dt className='stat__value stat__value--large stat__value--large'>{`$${data.unitCostOfConstruction.toFixed(2)}`}</dt>
+                <dt className='stat__value stat__value--large stat__value--large'><input type='number' value={Math.round(ucc)} onChange={this.handleUCC} /></dt>
               </dl>
               <dl className='calc__selection calc__selection--slider'>
                 <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>

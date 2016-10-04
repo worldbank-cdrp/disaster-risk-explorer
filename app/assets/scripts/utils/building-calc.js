@@ -31,11 +31,16 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
 
   // get distribution data from the country level
   const oldCost = getBuildingCost(startBuildingMatch, buildingData[regionCode.slice(0, 2)]) // 1
-  const newCost = getBuildingCost(endBuildingMatch, buildingData[regionCode.slice(0, 2)]) // 2
+  let newCost = getBuildingCost(endBuildingMatch, buildingData[regionCode.slice(0, 2)]) // 2
 
   const demolitionCost = oldCost * (conversion === 'retrofit' ? 0.05 : 0.10) // 3
   // accept user input value if it is provided
-  ucc = ucc || newCost + demolitionCost - (conversion === 'retrofit' ? oldCost : 0) // 4
+  if (ucc) {
+    // "back into" newCost based on user input ucc
+    newCost = ucc - demolitionCost + (conversion === 'retrofit' ? oldCost : 0)
+  } else {
+    ucc = newCost + demolitionCost - (conversion === 'retrofit' ? oldCost : 0) // 4
+  }
 
   const ratioNewToOld = ucc / oldCost // 5
   const totalBuiltCost = ratioNewToOld * sumBuildingValue / 1000 * sliderValue // 6
