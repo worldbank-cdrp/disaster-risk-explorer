@@ -2,14 +2,13 @@ import React from 'react'
 import Nouislider from 'react-nouislider'
 import outside from 'react-onclickoutside'
 
-import buildingData from '../../data/buildings.json'
 import { selectConversion, updateSliderValue, toggleCalculator } from '../actions'
 import { shortenNumber } from '../utils/format'
+import { getBuildingData } from '../utils/building-calc'
 
 const Results = outside(React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
-
     attributes: React.PropTypes.object,
     selectedCode: React.PropTypes.object,
     conversion: React.PropTypes.string,
@@ -36,8 +35,7 @@ const Results = outside(React.createClass({
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT-JU' // this.props.selectedCode
-    const data = buildingData[countryCode][this.props.conversion]
-    const conversionValue = Math.round(data.conversionCost * sliderValue)
+    const data = getBuildingData(countryCode, this.props.conversion, sliderValue, 'UCC')
 
     return (
       <section className='calculator'>
@@ -80,7 +78,7 @@ const Results = outside(React.createClass({
           <div className='calculator__divider'></div>
           <dl className='stats'>
             <dt className='stat__attribute'>Conversion Cost</dt>
-            <dd className='stat__value'>${conversionValue + (conversionValue > 0 ? ' Million' : '')}</dd>
+            <dd className='stat__value'>${data.conversionValue + (data.conversionValue > 0 ? ' Million' : '')}</dd>
             <dt className='stat__attribute'>Reduction of AAL</dt>
             <dd className='stat__value'>${shortenNumber((1 - data.overallChangeAAL) * this.props.attributes.AAL * sliderValue, 0, false)}</dd>
             <dt className='stat__attribute'>Change in AAL for these buildings</dt>
