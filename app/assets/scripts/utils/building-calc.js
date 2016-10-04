@@ -65,9 +65,9 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
 
   return {
     unitCostOfConstruction: ucc,
-    buildingChangeAAL: (1 - newAAL / oldAAL),
+    buildingChangeAAL: (1 - newAAL / oldAAL) || 0,
     overallChangeAAL: diffAAL / totalBuildingAAL * 1000,
-    breakEven: totalBuiltCost / diffAAL,
+    breakEven: totalBuiltCost / diffAAL || 0,
     buildingFrom: getDescription(startBuildingMatch),
     buildingTo: getDescription(endBuildingMatch),
     conversionValue: totalBuiltCost * 1000000,
