@@ -1,0 +1,16 @@
+{
+  "name": "data-processing",
+  "version": "1.0.0",
+  "description": "The `buildings.json` file in the `data` folder is created by the following process",
+  "main": "get-extents.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chroma-js": "^1.2.1",
+    "geostats": "^1.5.0",
+    "turf-bbox": "^3.0.12"
+  }
+}
