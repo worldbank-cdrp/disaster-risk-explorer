@@ -1,4 +1,5 @@
 import React from 'react'
+import multiDownload from 'multi-download'
 
 import { showModalCalc } from '../actions'
 import { t } from '../utils/i18n'
@@ -84,12 +85,16 @@ const Results = React.createClass({
                   </dd>
                 </dl>
               </div>
-              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
+              <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
           <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )
+  },
+
+  handleDownload: function () {
+    multiDownload([`assets/data/pdfs/${this.props.data.id}.pdf`])
   }
 })
 
