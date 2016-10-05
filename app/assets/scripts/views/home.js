@@ -19,7 +19,6 @@ var Home = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
     location: React.PropTypes.object,
-
     mapSource: React.PropTypes.object,
     mapData: React.PropTypes.string,
     hovered: React.PropTypes.number,
@@ -28,7 +27,8 @@ var Home = React.createClass({
     modalAbout: React.PropTypes.object,
     calcVisible: React.PropTypes.bool,
     conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
+    sliderValue: React.PropTypes.number,
+    unitCostOfConstruction: React.PropTypes.number
   },
 
   render: function () {
@@ -63,7 +63,8 @@ var Home = React.createClass({
           attributes={this.props.selected}
           calcVisible={this.props.calcVisible}
           conversion={this.props.conversion}
-          sliderValue={this.props.sliderValue} />
+          sliderValue={this.props.sliderValue}
+          unitCostOfConstruction={this.props.unitCostOfConstruction} />
       </div>
     )
   }
@@ -81,7 +82,8 @@ function mapStateToProps (state) {
     modalAbout: state.modalAbout,
     calcVisible: state.modalCalc.calcVisible,
     conversion: state.modalCalc.conversion,
-    sliderValue: state.modalCalc.sliderValue
+    sliderValue: state.modalCalc.sliderValue,
+    unitCostOfConstruction: state.modalCalc.unitCostOfConstruction
   }
 }
 

@@ -7,6 +7,7 @@ export const UPDATE_SLIDER_VALUE = 'UPDATE_SLIDER_VALUE'
 export const UPDATE_OPACITY = 'UPDATE_OPACITY'
 export const HIDE_MODAL_CALC = 'HIDE_MODAL_CALC'
 export const SHOW_MODAL_CALC = 'SHOW_MODAL_CALC'
+export const UPDATE_UCC = 'UPDATE_UCC'
 
 export function updateMapSource (mapSource) {
   return { type: UPDATE_MAP_SOURCE, data: mapSource }
@@ -38,4 +39,8 @@ export function selectConversion (conversion) {
 
 export function updateSliderValue (sliderValue) {
   return { type: UPDATE_SLIDER_VALUE, data: sliderValue }
+}
+
+export function updateUCC (cost) {
+  return { type: UPDATE_UCC, data: cost }
 }
