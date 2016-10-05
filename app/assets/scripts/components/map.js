@@ -240,6 +240,7 @@ export const Map = React.createClass({
     let id = nextSource.id
 
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
+
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
