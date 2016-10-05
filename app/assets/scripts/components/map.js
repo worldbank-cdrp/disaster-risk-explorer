@@ -102,7 +102,6 @@ export const Map = React.createClass({
 
     const nextMapId = getMapId(nextProps.dataSelection)
     const prevMapId = getMapId(this.props.dataSelection)
-
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
@@ -239,10 +238,7 @@ export const Map = React.createClass({
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
-    console.log(nextSourceName, nextMapId.slice(0, 5))
-
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
-
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
@@ -256,15 +252,12 @@ export const Map = React.createClass({
     })
     if (features.length) {
       const feature = features[0]
-      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final
         // version, ID field will be the same for each admin level.
         const idField = 'id'
         const id = feature.properties[idField]
-        console.log(id)
-        console.log(countryExtents, admin, id)
         this._map.fitBounds(countryExtents[admin][id].extent, {
           padding: 150
         })
