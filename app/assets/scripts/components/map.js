@@ -57,8 +57,8 @@ export const Map = React.createClass({
     })
 
     map.addControl(new mapboxgl.Navigation({position: 'bottom-right'}))
-    map.dragRotate.disable();
-    map.touchZoomRotate.disableRotation();
+    map.dragRotate.disable()
+    map.touchZoomRotate.disableRotation()
   },
 
   _loadLayers: function () {
