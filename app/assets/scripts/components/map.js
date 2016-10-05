@@ -239,6 +239,8 @@ export const Map = React.createClass({
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
+    console.log(nextSourceName, nextMapId.slice(0, 5))
+
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
 
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()

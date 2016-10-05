@@ -69,7 +69,8 @@ const Selection = React.createClass({
           </dd>
         </dl>
 
-        <dl className='selection__panel'>
+        <dl className={'selection__panel ' +
+        (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
           <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-calendar' />{t('return')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('return', dataSelection.return.getActive(), dataSelection.return.getOptions())}
