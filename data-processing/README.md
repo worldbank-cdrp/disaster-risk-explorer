@@ -10,8 +10,14 @@ The `buildings.json` file in the `data` folder is created by the following proce
 
 ### Spatial Data
 
-*Still in progress*
-*Requires [zsh](http://www.zsh.org/) for globbing/pattern replacement*
+Requires:
+  - [zsh](http://www.zsh.org/) for globbing/pattern replacement
+  - [gdal](http://www.gdal.org/) for polygonizing and conversion to GeoJSON
+  - [geojson-merge](https://github.com/mapbox/geojson-merge) as a global package for merging geojson
+
+Process:
+  - Download all required data from [Box](https://app.box.com/files) and place the base folder (`CDRP Platform Development Seed`) in the root of this repo
+  - Run `process.sh`
 
 Rough outline:
   - create `/countries` folder with geojson for each country as helper
