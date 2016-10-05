@@ -47,7 +47,6 @@ export const Map = React.createClass({
       minZoom: 2,
       dragRotate: false,
       touchZoomRotate: false,
-      position: 'bottom-right',
       attributionControl: {
         position: 'bottom-left'
       }
