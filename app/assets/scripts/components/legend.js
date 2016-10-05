@@ -1,7 +1,8 @@
 import React from 'react'
-import { inactiveLegends } from '../constants'
+import { legends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
+import { getMapId } from '../utils/map-id'
 import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
@@ -11,13 +12,23 @@ const Legend = React.createClass({
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
-    let legend = inactiveLegends[activeRisk.toLowerCase()]
+    const activeSource = this.props.dataSelection.admin.getActive().key
+
+    const mapId = getMapId(this.props.dataSelection)
+    // Slice removes the years from disaster and loss columns, since legends
+    // statistics are currently derived from all years' data.
+    let legend = legends[activeSource][mapId.slice(0, 5)]
+
+    let opacity = this.props.dataSelection.opacity.getActive().key
+    opacity = mapSettings.opacityLevels[opacity]
 
     const legendBlocks = legend.map((cat, i) => {
       return (
         <span key={i}
           className='legend__category'
-          style={{width: 100 / legend.length + '%', backgroundColor: cat[1]}}>
+          style={{width: 100 / legend.length + '%',
+                  backgroundColor: cat[1],
+                  opacity: opacity}}>
         </span>
       )
     })
@@ -36,7 +47,11 @@ const Legend = React.createClass({
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'>{t('legend description')}</figcaption>
+          <figcaption className='legend__caption'>
+              <p>View AAL by:</p>
+              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Absolute Risk</span></div>
+              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>Relative Risk</span></div>
+          </figcaption>
         </figure>
       </section>
     )

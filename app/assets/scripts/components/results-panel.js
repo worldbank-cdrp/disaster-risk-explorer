@@ -1,36 +1,21 @@
 import React from 'react'
 
-import { toggleCalculator } from '../actions'
+import { showModalCalc } from '../actions'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
-import BuildingCalculator from './building-calculator'
 
 const Results = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
-
-    calculatorOpen: React.PropTypes.bool,
-    data: React.PropTypes.object,
-    conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
-  },
-
-  toggleCalculator: function (e) {
-    e.preventDefault()
-    const visibility = !this.props.calculatorOpen
-    this.props.dispatch(toggleCalculator(visibility))
+    queryParams: React.PropTypes.object,
+    data: React.PropTypes.object
   },
 
   deleteThis: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Title</h2>
-          <div className='results__container'>
-            <h3 className='subtitle results__subtitle'>This is a dummy title</h3>
-            <p>More dummy content</p>
-          </div>
       </section>
     )
   },
@@ -42,16 +27,15 @@ const Results = React.createClass({
     }
 
     // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+    console.log(d)
+    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
+    let risk = this.props.dataSelection.risk.getActive().value
 
-    const data = [
-      {value: Math.round(d.RP_10 / 1000000), name: 'RP 10'},
-      {value: Math.round(d.RP_50 / 1000000), name: 'RP 50'},
-      {value: Math.round(d.RP_100 / 1000000), name: 'RP 100'},
-      {value: Math.round(d.RP_250 / 1000000), name: 'RP 250'},
-      {value: Math.round(d.RP_500 / 1000000), name: 'RP 500'},
-      {value: Math.round(d.RP_1000 / 1000000), name: 'RP 1000'}
-    ]
+    let rps = ['100', '250', '500', '1000']
+    const data = rps.map((rp) => {
+      const value = d[`HZ_${risk}_${rp}`] ? d[`HZ_${risk}_${rp}`] : 0
+      return {value: value, name: 'RP ' + rp}
+    })
 
     let margin = {
       top: 16,
@@ -60,54 +44,49 @@ const Results = React.createClass({
       bottom: 56
     }
 
+    const aal = d.AAL
+    ? <div>
+        <dt className='stat__attribute'>Average Annual Loss</dt>
+        <dd className='stat__value'>
+          ${Number(d.AAL.toFixed(2)).toLocaleString()}
+        </dd>
+      </div>
+    : ''
+
     return (
       <div>
-        {this.props.calculatorOpen
-        ? <BuildingCalculator
-            selectedCode={d.Country}
-            attributes={this.props.data}
-            conversion={this.props.conversion}
-            sliderValue={this.props.sliderValue}
-            calculatorOpen={this.props.calculatorOpen}
-            dispatch={this.props.dispatch} />
-        : ''}
         <section className='results'>
-          <h2 className='results__title'>{title}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
-            <div className='results__container'>
-              <h3 className='subtitle results__subtitle'>Exposure</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>GDP</dt>
-                <dd className='stat__value unimplemented'>$45 Billion</dd>
-                <dt className='stat__attribute'>Building Stock Exposure</dt>
-                <dd className='stat__value unimplemented'>$34 Million</dd>
-              </dl>
+          <div className='results__space'>
+            <h2 className='results__title'>{title}</h2>
+              <div className='results__container'>
+                <h3 className='subtitle results__subtitle'>Exposure</h3>
+                <dl className='stats'>
+                  <dt className='stat__attribute'>GDP</dt>
+                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEM</dd>
+                  <dt className='stat__attribute'>Building Stock Exposure</dt>
+                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEM</dd>
+                </dl>
 
-              <div className='results__divider results__divider--first'></div>
+                <div className='results__divider results__divider--first'></div>
 
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>Average Annual Loss</dt>
-                <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
-                <dt className='stat__attribute'>Probable loss over time</dt>
-                <dd className='stat__value unimplemented'>$4 Billion</dd>
-                <dd className='stat__value stat__value--chart stat__value--last'>
-                  <BarChart
-                    data={data}
-                    margin={margin}
-                    yTitle='Millions (US$)'
-                    xTitle='Return Period'
-                  />
-                </dd>
-              </dl>
-
-              <div className='results__divider results__divider--second'></div>
-
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
-              <article className='calculator__link-container'>
-                <a href='#' onClick={this.toggleCalculator}>Building Stock Conversion Calculator</a>
-              </article>
-
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <dl className='stats'>
+                  {aal}
+                  <dt className='stat__attribute'>Probable loss over time</dt>
+                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
+                  <dd className='stat__value stat__value--chart stat__value--last'>
+                    <BarChart
+                      data={data}
+                      margin={margin}
+                      yTitle='Millions (US$)'
+                      xTitle='Return Period'
+                    />
+                  </dd>
+                </dl>
+              </div>
+              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
+          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )

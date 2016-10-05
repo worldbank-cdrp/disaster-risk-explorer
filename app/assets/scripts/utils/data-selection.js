@@ -70,17 +70,29 @@ let availableParams = {
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
-    {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'}
+    {key: 'earthquake', value: 'EQ'},
+    {key: 'flood', value: 'FL'},
+    {key: 'windstorm', value: 'WS'}
+  ],
+  return: [
+    {key: '100 Years', value: '100'},
+    {key: '250 Years', value: '250'},
+    {key: '500 Years', value: '500'},
+    {key: '1000 Years', value: '1000'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
     {key: 'admin1', value: 'Admin Level 1'},
     {key: 'km10', value: '0km Grids'}
   ],
+  opacity: [
+    {key: 'full', value: 'Full'},
+    {key: 'medium', value: 'Medium'},
+    {key: 'low', value: 'Low'}
+  ],
   basemap: [
     {key: 'basic', value: 'Basic'},
-    {key: 'special', value: 'Special'}
+    {key: 'special', value: 'Satellite'}
   ]
 }
 

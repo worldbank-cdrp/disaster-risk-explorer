@@ -5,13 +5,13 @@
   vertical-align: middle;
   line-height: 1.6rem;
   font-size: 0.9rem;
-  padding: 0.2rem 0.65rem;
+  padding: 0.2rem 0.65rem 0.2rem;
   min-width: 2rem;
   background: none; 
   text-shadow: none;
-  border: 0;
+  border: 1px solid #bbb;
   border-radius: $base-border-radius;
-  font-weight: $base-font-bold;
+/*  font-weight: $base-font-bold; */  
   cursor: pointer;
   text-decoration: none;
 
@@ -41,7 +41,7 @@
   > * {
     vertical-align: top;
     display: inline-block;
-    line-height: 1.22em !important;
+    line-height: 1.4em !important;
   }
 
   /* Animation */
@@ -55,25 +55,42 @@
 /* Base */
 
 .button{
-  color: #aaa;
-  background-color: white;
+  color: #000;
+  background-color: $button-color;
+
+  &:before{
+  transform: translate(0, 1px);
+  }
 
   &:hover{
-    color: #888;
-    background-color: lighten($secondary-color, 20);
+    background-color: darken($button-color, 4);
     padding-top: 3px;
-    box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 0px 0 0 $secondary-color;
+    &:before{
+/*    transform: translate(0, 2px);
+*/    }
+
+    .header__language--text{
+/*        transform: translate(0, 5px);
+*/    }
   };
 
   &:active{
   };
 
-  box-shadow: inset 0 -4px 0 0 $secondary-color, inset 0 0 0 1px white;
-/*  .drop--open > &,
+  /* .drop--open > &,
   &.button--active,
   &:active {
     box-shadow: inset 0 3px 0 0 green, inset 0 0 0 1px orange;
   }*/
+
+  .header__language--text{
+    transform: translate(0, 4px);
+  }
+}
+
+.button__map{
+/*  box-shadow: 0 2px 10px transparentize($primary-color, 0.8);
+*/  border: 1px solid #bbb;
 }
 
 .collecticon{
@@ -82,40 +99,67 @@
 
 .button__leftside{
   border-radius: 0.3rem 0 0 0.3rem;
+  font-weight: 300;
 }
 
 .button__rightside{
-  border-left: 2px solid $secondary-color;
+  border-left: 1px solid darken($button-color,30);
   border-radius: 0 0.3rem 0.3rem 0;
-}
-
-.button_results{
-  background-color: $primary-color;
-  color: #eee;
-  box-shadow: inset 0 0 0 0 #5d544f, inset 0 0 0 1px #5d544f;
-  &:hover{
-    color: #eee;
-    background-color: darken($primary-color, 10);
-    box-shadow: inset 0 0 0 0 #5d544f;
-  }
+  font-weight: 300;
 }
 
 .button__drop{
     box-shadow: none;
     background-color: rgba(0,0,0,0);
     color: black;
+    padding: 3px 0 0 0;
+    border: 0;
     &:hover{
       box-shadow: none;
-      padding: 0;
+      padding: 3px 0 0 0;
       background-color: rgba(0,0,0,0);
     }
 }
 
 .button--active{
-    color: #888;
-    background-color: lighten($secondary-color, 20);
-    box-shadow: inset 0 -2px 0 0 $secondary-color, inset 0 0px 0 0 $secondary-color;
+    background-color: darken($button-color, 10);
     &:hover{
-      background-color: lighten($secondary-color, 16);
+      background-color: darken($button-color, 14);
+    }
+    .header__language--text{
     }
 }
+
+.button--full{
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 0.65rem;
+  &:hover{
+    padding-top: 0.65rem;
+  }
+}
+
+.button_results{
+  width: 100%;
+  font-size: 0.8em;
+  font-weight: 300;
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  background-color: $button-color;
+  padding: 6px 0;
+  &:hover{
+    background-color: darken($button-color, 5);
+    padding: 6px 0;
+    box-shadow: none;
+  }
+}
+
+.button_results--half{
+  width: 50%;
+}
+
+.button_results--right{
+  border-left: 2px solid darken($primary-color, 15);
+}
+
