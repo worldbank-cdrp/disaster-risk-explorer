@@ -45,16 +45,24 @@ export const Map = React.createClass({
       center: mapSettings.centerpoint,
       zoom: mapSettings.initialZoom[admin],
       minZoom: 2,
+      dragRotate: false,
+      touchZoomRotate: false,
       attributionControl: {
         position: 'bottom-left'
       }
     })
+
+    this._addZoomControls()
 
     map.on('load', () => {
       const basemap = this.props.dataSelection.basemap.getActive().key
       if (basemap === 'special') this._addBasemap(basemap)
       this._loadLayers()
     })
+  },
+
+  _addZoomControls: function () {
+    this._map.addControl(new mapboxgl.Navigation({position: 'bottom-right'}))
   },
 
   _loadLayers: function () {
