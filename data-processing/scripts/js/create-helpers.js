@@ -8,9 +8,10 @@ var selectedFeatures = geo.features.filter(feature => {
   // we only want these ten countries
   return ['PA', 'NI', 'HN', 'GT', 'SV', 'CR', 'BZ', 'JM', 'GD', 'LC'].indexOf(feature.properties.iso_a2) > -1
 }).map(feature => {
-  // we only need the id property
+  // we only need the id and name properties
   var id = feature.properties.iso_a2
-  return Object.assign({}, feature, { properties: { id } })
+  var name = feature.properties.name
+  return Object.assign({}, feature, { properties: { id, name } })
 })
 
 selectedFeatures.forEach(feature => {
