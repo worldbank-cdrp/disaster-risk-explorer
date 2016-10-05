@@ -411,7 +411,7 @@ export const legends = {
 
 export const countryExtents = {
   'admin0': {
-    'Belize': {
+    'BZ': {
       'extent': [
         [
           -89.22417449951172,
@@ -423,7 +423,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Costa Rica': {
+    'CR': {
       'extent': [
         [
           -87.09486389160142,
@@ -435,7 +435,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'El Salvador': {
+    'SV': {
       'extent': [
         [
           -90.12486267089838,
@@ -447,7 +447,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Grenada': {
+    'GD': {
       'extent': [
         [
           -61.802082061767436,
@@ -459,7 +459,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Guatemala': {
+    'GT': {
       'extent': [
         [
           -92.2223587036132,
@@ -471,7 +471,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Honduras': {
+    'HN': {
       'extent': [
         [
           -89.35079193115232,
@@ -483,7 +483,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Jamaica': {
+    'JM': {
       'extent': [
         [
           -78.36902618408197,
@@ -495,7 +495,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Nicaragua': {
+    'NI': {
       'extent': [
         [
           -87.69097137451163,
@@ -507,7 +507,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Panama': {
+    'PA': {
       'extent': [
         [
           -83.05017852783203,
@@ -519,7 +519,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Saint Lucia': {
+    'LC': {
       'extent': [
         [
           -61.08013916015619,

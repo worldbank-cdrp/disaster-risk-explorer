@@ -62,7 +62,7 @@ export const Map = React.createClass({
       })
 
       const mapId = getMapId(this.props.dataSelection)
-      const colorScale = legends[mapId.slice(0, 5)]
+      const colorScale = legends[this.activeSource.id][mapId.slice(0, 5)]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
@@ -239,7 +239,7 @@ export const Map = React.createClass({
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
 
-    const colorScale = legends[nextMapId.slice(0, 5)]
+    const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
     this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')

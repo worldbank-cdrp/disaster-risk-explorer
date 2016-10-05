@@ -12,9 +12,10 @@ const Legend = React.createClass({
 
   render: function () {
     const activeRisk = this.props.dataSelection.risk.getActive().key
+    const activeSource = this.props.dataSelection.admin.getActive().key
 
     const mapId = getMapId(this.props.dataSelection)
-    let legend = legends[mapId]
+    let legend = legends[activeSource][mapId.slice(0, 5)]
 
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
