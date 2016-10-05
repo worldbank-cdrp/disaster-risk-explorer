@@ -62,6 +62,8 @@ export const Map = React.createClass({
       })
 
       const mapId = getMapId(this.props.dataSelection)
+      // Slice removes the years from disaster and loss columns, since legends
+      // statistics are currently derived from all years' data.
       const colorScale = legends[this.activeSource.id][mapId.slice(0, 5)]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
@@ -237,7 +239,6 @@ export const Map = React.createClass({
 
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
-
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
@@ -254,9 +255,7 @@ export const Map = React.createClass({
       const feature = features[0]
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
-        // Temporary fix for lack of country codes in source data. In final
-        // version, ID field will be the same for each admin level.
-        const idField = 'id'
+        const idField = this.activeSource.idProp
         const id = feature.properties[idField]
         this._map.fitBounds(countryExtents[admin][id].extent, {
           padding: 150
