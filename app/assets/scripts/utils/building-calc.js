@@ -35,7 +35,7 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
 
   const demolitionCost = oldCost * (conversion === 'retrofit' ? 0.05 : 0.10) // 3
   // accept user input value if it is provided
-  if (ucc) {
+  if (ucc !== null) {
     // "back into" newCost based on user input ucc
     newCost = ucc - demolitionCost + (conversion === 'retrofit' ? oldCost : 0)
   } else {
