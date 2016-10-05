@@ -36,15 +36,8 @@ const makeLegends = (data, targets, numSteps, gradients) => {
     legend = legend.getClassQuantile(numSteps).map((step, i) => {
       return [step, gradient(i / (numSteps - 1)).hex()]
     })
-    let catLegend = []
-    legend.forEach((step, i) => {
-      catLegend.push(step)
-      if (i < legend.length - 1) {
-        catLegend.push([legend[i + 1][0] - 1, step[1]])
-      }
-    })
-    catLegend.splice(-2, 2)
-    legends[target] = catLegend
+    legend.splice(-1, 1)
+    legends[target] = legend
   })
   return legends
 }
@@ -54,17 +47,22 @@ const makeLegends = (data, targets, numSteps, gradients) => {
 const input = JSON.parse(fs.readFileSync('../../data/merged-grid.geojson'))
 const targets = {
   HZ_EQ: ['HZ_EQ_1000', 'HZ_EQ_100', 'HZ_EQ_2500', 'HZ_EQ_5000', 'HZ_EQ_500', 'HZ_EQ_250'],
-  HZ_FL: ['HZ_FL_1000', 'HZ_FL_1000_R', 'HZ_FL_100', 'HZ_FL_100_R', 'HZ_FL_10', 'HZ_FL_10_R', 'HZ_FL_250', 'HZ_FL_250_R', 'HZ_FL_25', 'HZ_FL_25_R', 'HZ_FL_500', 'HZ_FL_500_R', 'HZ_FL_50', 'HZ_FL_50_R', 'HZ_FL_5', 'HZ_FL_5_R']
-  // , 'EX_GD', 'EX_IN', 'EX_BS']
+  HZ_FL: ['HZ_FL_1000', 'HZ_FL_1000_R', 'HZ_FL_100', 'HZ_FL_100_R', 'HZ_FL_10', 'HZ_FL_10_R', 'HZ_FL_250', 'HZ_FL_250_R', 'HZ_FL_25', 'HZ_FL_25_R', 'HZ_FL_500', 'HZ_FL_500_R', 'HZ_FL_50', 'HZ_FL_50_R', 'HZ_FL_5', 'HZ_FL_5_R'],
+  // HZ_WS: [],
+
+  EX_GD: ['EX_GD'],
+  EX_IN: ['EX_IN'],
+  EX_BS: ['EX_BS']
 }
 const numSteps = 6
 const gradients = {
   HZ_EQ: chroma.scale(['rgb(253, 226, 145)', 'rgb(139, 48, 28)']),
-  HZ_FL: chroma.scale(['rgb(224, 239, 218)', 'rgb(60, 96, 91)']) /* ,
-  HZ_WS: chroma.scale(['rgb(224, 239, 218)', 'rgb(29, 48, 91)']),
+  HZ_FL: chroma.scale(['rgb(224, 239, 218)', 'rgb(60, 96, 91)']),
+  // HZ_WS: chroma.scale(['rgb(224, 239, 218)', 'rgb(29, 48, 91)']),
+
   EX_GD: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)']),
   EX_IN: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)']),
-  EX_BS: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)']) */
+  EX_BS: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)'])
 }
 
 const legends = makeLegends(input, targets, numSteps, gradients)

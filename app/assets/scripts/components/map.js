@@ -253,12 +253,15 @@ export const Map = React.createClass({
     })
     if (features.length) {
       const feature = features[0]
+      console.log(feature.properties)
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
         // Temporary fix for lack of country codes in source data. In final
         // version, ID field will be the same for each admin level.
-        const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
+        const idField = 'id'
         const id = feature.properties[idField]
+        console.log(id)
+        console.log(countryExtents, admin, id)
         this._map.fitBounds(countryExtents[admin][id].extent, {
           padding: 150
         })
