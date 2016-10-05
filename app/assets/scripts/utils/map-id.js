@@ -7,8 +7,8 @@ export function getMapId (dataSelection) {
 
   let mapId = ''
   if (metric === 'risk') mapId += `HZ_${riskCode}_${rp}`
-  if (metric === 'loss') mapId += 'EX_BS'
-  if (metric === 'exposure') mapId = 'EX_IN'
+  if (metric === 'loss') mapId += `LS_${riskCode}_${rp}`
+  if (metric === 'exposure') mapId = 'EX_BS'
 
   return mapId
 }

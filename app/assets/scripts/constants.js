@@ -138,6 +138,17 @@ export const legends = {
       [1731530000, '#445674'],
       [2660390000, '#1d305b']
     ],
+// !!!!!!!!!!!!
+// Fake HZ values, true values not yet attached
+// !!!!!!!!!!!!
+    HZ_WS: [
+      [8200000, '#e0efda'],
+      [9500000, '#b9c8c0'],
+      [417700000, '#92a2a7'],
+      [556930000, '#6b7c8d'],
+      [1731530000, '#445674'],
+      [2660390000, '#1d305b']
+    ],
     EX_GD: [
       [1423520743, '#c8c8c8'],
       [8244117094, '#a8a8a8'],
@@ -179,6 +190,14 @@ export const legends = {
       [11, '#7d998d'],
       [17, '#5c7c74'],
       [27, '#3c605b']
+    ],
+    EX_BS: [
+      [1205, '#c8c8c8'],
+      [218510, '#a8a8a8'],
+      [408217, '#888888'],
+      [652777, '#686868'],
+      [1229397, '#484848'],
+      [2832190, '#282828']
     ] // ,
     // HZ_EQ: [
     //   [29, '#fde291'],
@@ -411,7 +430,7 @@ export const legends = {
 
 export const countryExtents = {
   'admin0': {
-    'Belize': {
+    'BZ': {
       'extent': [
         [
           -89.22417449951172,
@@ -423,7 +442,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Costa Rica': {
+    'CR': {
       'extent': [
         [
           -87.09486389160142,
@@ -435,7 +454,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'El Salvador': {
+    'SV': {
       'extent': [
         [
           -90.12486267089838,
@@ -447,7 +466,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Grenada': {
+    'GD': {
       'extent': [
         [
           -61.802082061767436,
@@ -459,7 +478,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Guatemala': {
+    'GT': {
       'extent': [
         [
           -92.2223587036132,
@@ -471,7 +490,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Honduras': {
+    'HN': {
       'extent': [
         [
           -89.35079193115232,
@@ -483,7 +502,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Jamaica': {
+    'JM': {
       'extent': [
         [
           -78.36902618408197,
@@ -495,7 +514,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Nicaragua': {
+    'NI': {
       'extent': [
         [
           -87.69097137451163,
@@ -507,7 +526,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Panama': {
+    'PA': {
       'extent': [
         [
           -83.05017852783203,
@@ -519,7 +538,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Saint Lucia': {
+    'LC': {
       'extent': [
         [
           -61.08013916015619,
