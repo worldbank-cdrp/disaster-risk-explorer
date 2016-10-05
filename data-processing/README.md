@@ -1,6 +1,6 @@
 ### Building Retrofit/Replacement Data
 
-The `buildings.json` file in the `data` folder is created by the following process
+The `buildings.json` file in the `data` folder is created by the following process. Requires [jq](https://stedolan.github.io/jq/) and [csv2json](https://www.npmjs.com/package/csv2json)
 
 - Extract information from Excel files and save into csvs matching the format of `buildings.csv` and `building-info.csv`
 - Run `process_buildings.sh`
