@@ -13,11 +13,11 @@ export function shortenNumber (number, decimals, abbreviate) {
     m = 'Million'
     b = 'Billion'
   }
-  if (number >= 1000000000) {
+  if (Math.abs(number) >= 1000000000) {
     return `${Number((number / 1000000000).toFixed(decimals))} ${b}`
-  } else if (number >= 1000000) {
+  } else if (Math.abs(number) >= 1000000) {
     return `${Number((number / 1000000).toFixed(decimals))} ${m}`
-  } else if (number >= 1000) {
+  } else if (Math.abs(number) >= 1000) {
     return `${Number((number / 1000).toFixed(decimals))} ${k}`
   } else {
     return number

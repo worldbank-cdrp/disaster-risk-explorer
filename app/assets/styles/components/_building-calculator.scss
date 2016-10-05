@@ -28,7 +28,7 @@
 }
 
 .calculator__container{
-  padding: 0.5rem 2rem 1.5rem 2rem;
+  padding: 0.5rem 2rem 1rem 2rem;
 }
 
 .calculator__subtitle {
@@ -115,10 +115,10 @@
 }
 
 .noUi-horizontal .noUi-handle {
-  width: 16px;
-  height: 16px;
-  left: -8px;
-  top: -8px;
+  width: 12px;
+  height: 18px;
+  left: -6px;
+  top: -10px;
 }
 
 .noUi-pips-horizontal {
@@ -131,21 +131,29 @@
 }
 
 .noUi-value-large {
-  font-size: 10px;
+  font-size: 0.75rem;
   margin-top: 0;
   padding-top: 0;
   line-height: 16px;
+  margin-top: 6px;
 }
 
 .noUi-marker-horizontal.noUi-marker-large {
   height: 12px;
 }
 .noUi-marker-horizontal.noUi-marker {
-  height: 10px;
+  top: 8px;
+  height: 14px;
 }
 
 .noUi-pips-horizontal {
   margin-top: -15px;
+}
+
+.noUi-handle {
+  cursor: pointer;
+  border: 1px solid #bbb;
+  box-shadow: 0 3px 6px -3px #aaa;  
 }
 
 .calculator__description {
@@ -194,12 +202,13 @@
 
 .modal__left-side{
   float: left;
-  min-width: 400px;
+  max-width: 400px;
   padding-right: 1rem;
   position: relative;
   border-right: solid #ddd 1px;
   padding-right: 2rem;
   @media screen and (max-width: 1010px) {
+    max-width: initial;
     padding-right: 0;
     border-right: 0;
     float: none;
@@ -229,7 +238,7 @@
     font-size: 0.9rem;
   }
   .stat__value{
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   .stat__attribute--main{
     margin-bottom: 0.5rem;
@@ -243,11 +252,29 @@
   }
 }
 
+.stat__value--cost{
+  &:after{
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    color: #999;
+    content: '$USD';
+  }
+}
+
+.stat__value--positive{
+  color: $positive-color;
+}
+
+.stat__value--negative{
+  color: $tiertiary-color;
+}
+
 .calc__selection--slider{
   background-color: darken(#fff, 5);
   overflow: auto;
-  margin: 0 -0.5rem 0.5rem;
-  padding: 0.75rem 0.5rem 1rem;
+  margin: 0 -1rem 1rem;
+  padding: 0.75rem 1rem 1rem;
   border-radius: 5px;
 }
 
@@ -266,4 +293,42 @@
   background-color: #ddd;
   margin: 0.5rem 0 1rem 0;
   overflow: auto;
+}
+
+.calculator__input{
+  max-width: 100px;
+  text-align: right;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.2s;
+  &:hover{
+    background-color: #f9f9f9;
+  }
+}
+
+.calculator__selection{
+  background-color: #eee;
+  margin: 0 -1rem;
+  padding: 0.5rem 1rem 0;
+  border-radius: 10px;
+  .button{
+    &__rightside{
+      background-color: white;
+      &:hover{
+        background-color: #f9f9f9;
+      }
+    }
+    &__leftside{
+      background-color: white;
+      &:hover{
+        background-color: #f9f9f9;
+      }
+    }
+    &--active{
+      background-color: #ddd;
+      &:hover{
+        background-color: #dadada;
+      } 
+    }
+  }
 }

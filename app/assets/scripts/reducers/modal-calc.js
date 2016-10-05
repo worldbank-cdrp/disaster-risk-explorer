@@ -1,9 +1,11 @@
-import { SHOW_MODAL_CALC, HIDE_MODAL_CALC, SELECT_CONVERSION, UPDATE_SLIDER_VALUE } from '../actions'
+import { SHOW_MODAL_CALC, HIDE_MODAL_CALC, SELECT_CONVERSION, UPDATE_UCC,
+  UPDATE_SLIDER_VALUE } from '../actions'
 
 export const initialState = {
   calcVisible: false,
   conversion: 'retrofit',
-  sliderValue: 0.50
+  sliderValue: 0.50,
+  unitCostOfConstruction: null
 }
 
 export default function reducer (state = initialState, action) {
@@ -16,6 +18,8 @@ export default function reducer (state = initialState, action) {
       return Object.assign({}, state, { conversion: action.data })
     case UPDATE_SLIDER_VALUE:
       return Object.assign({}, state, { sliderValue: action.data })
+    case UPDATE_UCC:
+      return Object.assign({}, state, { unitCostOfConstruction: action.data })
     default:
       return state
   }

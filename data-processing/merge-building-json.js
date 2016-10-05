@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-var replacement = JSON.parse(fs.readFileSync('replacement.json'))
-var retrofit = JSON.parse(fs.readFileSync('retrofit.json'))
+var buildings = JSON.parse(fs.readFileSync('buildings.json'))
+var buildingsInfo = JSON.parse(fs.readFileSync('buildings-info.json'))
 
-// replacement has more options, iterate over that
 // this mutates the object in place
-Object.keys(replacement).forEach(k => {
-  if (retrofit[k]) {
-    replacement[k].retrofit = retrofit[k].retrofit
+Object.keys(buildings).forEach(k => {
+  if (buildingsInfo[k.slice(0, 2)]) {
+    buildings[k] = Object.assign(buildings[k], buildingsInfo[k.slice(0, 2)])
   }
 })
 
-fs.writeFileSync('buildings.json', JSON.stringify(replacement))
+fs.writeFileSync('building-data.json', JSON.stringify(buildings))
