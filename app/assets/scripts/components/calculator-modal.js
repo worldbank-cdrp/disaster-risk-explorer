@@ -1,40 +1,162 @@
 import React from 'react'
-
-import { hideModalCalc } from '../actions'
+import Slider from 'react-nouislider'
+import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import c from 'classnames'
+
+import { hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
+import { shortenNumber } from '../utils/format'
+import { getBuildingData } from '../utils/building-calc'
 
 const Calculator = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
-    visible: React.PropTypes.bool
+    calcVisible: React.PropTypes.bool,
+    attributes: React.PropTypes.object,
+    conversion: React.PropTypes.string,
+    sliderValue: React.PropTypes.number,
+    unitCostOfConstruction: React.PropTypes.number
+  },
+
+  hideModal: function () {
+    this.props.dispatch(updateUCC(null))
+    this.props.dispatch(hideModalCalc())
   },
 
   onOutClick: function (e) {
     if (e.target === e.currentTarget) {
-      this.props.dispatch(hideModalCalc())
+      this.hideModal()
     }
   },
 
+  onChangeSlide: function (e) {
+    this.props.dispatch(updateSliderValue(Number(e[0]) / 100))
+  },
+
+  selectConversion: function (conversion) {
+    this.props.dispatch(selectConversion(conversion))
+  },
+
+  handleUCC: function (e) {
+    this.props.dispatch(updateUCC(Number(e.target.value)))
+  },
+
   renderModal: function () {
-    if (!this.props.visible) return null
+    if (!this.props.calcVisible) return null
+    const { sliderValue, conversion } = this.props
+
+    // Country codes not yet added to Mapbox data; hardcoding a country code for now
+    const countryCode = 'GT' // this.props.selectedCode
+    const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
+    let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
+
+    // A little nonsense to create single roots for react
+    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
+    const TopFive = data.topFiveAAL.map(building => {
+      return [
+        (<dt key={building['Risk Rank'] + 'dt'} className='stat__attribute'>{building['Description'].replace(/single|multi family/, '')}</dt>),
+        (<dd key={building['Risk Rank'] + 'dd'} className='stat__value'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>)
+      ]
+    })
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
         <div className='modal__inner'>
           <header className='modal__header'>
             <div className='modal__headline'>
-              <h1 className='modal__title'>About this Tool</h1>
-              <button className='modal__button-dismiss' title='Close' onClick={() => this.props.dispatch(hideModalCalc())}><span>Dismiss</span></button>
+              <h1 className='modal__title'>Risk mitigation cost and benefit calculation</h1>
+              <button className='modal__button-dismiss' title='Close' onClick={this.hideModel}><span>Dismiss</span></button>
             </div>
           </header>
-          <div className='modal__body'>
-            <h3>Section Header</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3>Section Header</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-            </p>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-            </p>
+
+          <div className='modal__body calculator__container clearfix'>
+
+            <div className='modal__left-side'>
+              <section className='calculator__selection'>
+                <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
+                <dl className='calc__selection'>
+                  <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
+                  <dt className='selection__panel--drop stat__value--large'>Nicaragua</dt>
+                  <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
+                  <dd className='stat__value'>
+                    <button
+                      className={'button header__language--toggle button__leftside ' + (conversion === 'retrofit' ? 'button--active' : '')}
+                      onClick={() => this.selectConversion('retrofit')}>
+                      <span className='header__language--text'>Retrofit</span></button>
+                    <button
+                      className={'button header__language--toggle button__rightside ' + (conversion === 'replacement' ? 'button--active' : '')}
+                      onClick={() => this.selectConversion('replacement')}>
+                      <span className='header__language--text'>Replace</span></button>
+                    </dd>
+                </dl>
+                <dl className='calc__selection'>
+                  <dd className='stat__attribute stat__attribute--main'>Unit cost per {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
+                  <dt className='stat__value stat__value--large stat__value--large'><input type='number' className='calculator__input' value={Math.round(ucc)} onChange={this.handleUCC} /><span className='stat__value--cost'></span></dt>
+                </dl>
+                <dl className='calc__selection calc__selection--slider'>
+                  <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
+                  <dd className='stat__value stat__value--large'>{Math.floor(sliderValue * 100)}%</dd>
+                  <dt className='calculator__slider'>
+                  <Slider
+                    range={{min: 0, max: 100}}
+                    start={[Math.round(sliderValue * 100)]}
+                    step={5}
+                    pips={{mode: 'range', density: 20}}
+                    onSlide={this.onChangeSlide}
+                  />
+                  </dt>
+                </dl>
+              </section>
+
+              <div className='calc__split'></div>
+
+              <h2 className='subtitle calc__subtitle'>Building Stocks Converted</h2>
+              <div className='calculator__description top'>{data.buildingFrom}</div>
+              <div className='calculator__divider-broken left'></div>
+              <div className='calculator__divider-broken-label'>are {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} with</div>
+              <div className='calculator__divider-broken right'></div>
+              <div className='calculator__description bottom'>{data.buildingTo}</div>
+            </div>
+
+            <div className='modal__right-side'>
+              <h2 className='subtitle calc__subtitle'>Results</h2>
+              <dl className='calc__selection'>
+
+                <dt className='stat__attribute'>Reduction of overall AAL</dt>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.overallChangeAAL * this.props.attributes.AAL) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * this.props.attributes.AAL) < 0 }
+                     )}>
+                  ${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}
+                </dd>
+                <dt className='stat__attribute'>Total {(conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
+                <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
+                <dt className='stat__attribute'>Flat rate years to break even</dt>
+                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' Years' : 'Never')}</dd>
+                <dt className='stat__attribute'>Percent Change in AAL for these housing units</dt>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.buildingChangeAAL * 100) > 0 },
+                    { 'stat__value--negative': (data.buildingChangeAAL * 100) < 0 }
+                    )}>
+                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
+                <dt className='stat__attribute stat__attribute--second'>Change in overall AAL</dt>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.overallChangeAAL * 100) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * 100) < 0 }
+                    )}>
+                  {((data.overallChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
+                </dl>
+
+              <div className='calc__split'></div>
+
+              <h2 className='subtitle calc__subtitle'>Building Stock types most at risk ({listKey})</h2>
+              <dl className='calc__selection'>
+                {_.flatten(TopFive)}
+              </dl>
+            </div>
           </div>
         </div>
       </section>

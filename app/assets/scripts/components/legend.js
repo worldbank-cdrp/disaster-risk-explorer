@@ -41,6 +41,7 @@ const Legend = React.createClass({
           {legendBlocks}
           {legendLabels}
           <figcaption className='legend__caption'>
+              <p>View AAL by:</p>
               <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Absolute Risk</span></div>
               <div className='button header__language--toggle button__rightside'><span className='header__language--text'>Relative Risk</span></div>
           </figcaption>

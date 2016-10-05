@@ -27,14 +27,14 @@
   @include section_header;
 }
 
+.calculator__container{
+  padding: 0.5rem 2rem 1rem 2rem;
+}
+
 .calculator__subtitle {
   font-size: 0.8em;
   float: initial;
   clear: both;
-}
-
-.calculator__container {
-  padding: 0.5em 1em 0.4em 1em;
 }
 
 .calculator__widget-container {
@@ -104,9 +104,10 @@
 }
 
 .calculator__slider {
-  width: 10em;
-  float: right;
-  margin: 7px 10px 40px 0;
+  width: 100%;
+  float: left;
+  display: block;
+  margin: 7px 10px 1rem 0;
 }
 
 .noUi-horizontal {
@@ -114,10 +115,14 @@
 }
 
 .noUi-horizontal .noUi-handle {
-  width: 16px;
-  height: 16px;
-  left: -8px;
-  top: -8px;
+  width: 12px;
+  height: 18px;
+  left: -6px;
+  top: -10px;
+}
+
+.noUi-pips-horizontal {
+  height: auto;
 }
 
 .noUi-handle:before,
@@ -126,30 +131,37 @@
 }
 
 .noUi-value-large {
-  font-size: 10px;
+  font-size: 0.75rem;
   margin-top: 0;
   padding-top: 0;
   line-height: 16px;
+  margin-top: 6px;
 }
 
 .noUi-marker-horizontal.noUi-marker-large {
   height: 12px;
 }
 .noUi-marker-horizontal.noUi-marker {
-  height: 10px;
+  top: 8px;
+  height: 14px;
 }
 
 .noUi-pips-horizontal {
   margin-top: -15px;
 }
 
+.noUi-handle {
+  cursor: pointer;
+  border: 1px solid #bbb;
+  box-shadow: 0 3px 6px -3px #aaa;  
+}
+
 .calculator__description {
   width: 90%;
   margin: 1em auto 1.5em auto;
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: 500;
   line-height: 1.5em;
-  color: #aaa;
   &.top {
 
   }
@@ -171,20 +183,152 @@
   width: 33%;
   background-color: lighten($secondary-color, 15);
   &.left {
-    margin-left: -1em;
     float: left;
   }
   &.right {
-    margin-right: -1em;
     float: right;
   }
 }
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(34% + 3em);
-  font-size: .8em;
+  width: calc(34%);
+  font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
   text-align: center;
+}
+
+
+.modal__left-side{
+  float: left;
+  max-width: 400px;
+  padding-right: 1rem;
+  position: relative;
+  border-right: solid #ddd 1px;
+  padding-right: 2rem;
+  @media screen and (max-width: 1010px) {
+    max-width: initial;
+    padding-right: 0;
+    border-right: 0;
+    float: none;
+  }
+}
+
+.modal__right-side{
+  float: right;
+  min-width: 520px;
+  padding-left: 1.5rem;
+  @media screen and (max-width: 1010px) {
+    padding-left: 0;
+    float: none;
+  }
+}
+
+.calc__subtitle{
+  font-size:1em;
+  float: initial;
+  clear: both;
+  margin-bottom: 0.25rem;
+}
+
+.calc__selection{
+  clear: both;
+  .stat__attribute{
+    font-size: 0.9rem;
+  }
+  .stat__value{
+    font-size: 0.9rem;
+  }
+  .stat__attribute--main{
+    margin-bottom: 0.5rem;
+  }
+  .stat__attribute--second{
+    margin-bottom: 1rem;
+  }
+  .stat__value--large{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.stat__value--cost{
+  &:after{
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    color: #999;
+    content: '$USD';
+  }
+}
+
+.stat__value--positive{
+  color: $positive-color;
+}
+
+.stat__value--negative{
+  color: $tiertiary-color;
+}
+
+.calc__selection--slider{
+  background-color: darken(#fff, 5);
+  overflow: auto;
+  margin: 0 -1rem 1rem;
+  padding: 0.75rem 1rem 1rem;
+  border-radius: 5px;
+}
+
+.calc__selection--percents{
+  display: inline;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.calc__selection--percent{
+}
+
+.calc__split{
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+  margin: 0.5rem 0 1rem 0;
+  overflow: auto;
+}
+
+.calculator__input{
+  max-width: 100px;
+  text-align: right;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.2s;
+  &:hover{
+    background-color: #f9f9f9;
+  }
+}
+
+.calculator__selection{
+  background-color: #eee;
+  margin: 0 -1rem;
+  padding: 0.5rem 1rem 0;
+  border-radius: 10px;
+  .button{
+    &__rightside{
+      background-color: white;
+      &:hover{
+        background-color: #f9f9f9;
+      }
+    }
+    &__leftside{
+      background-color: white;
+      &:hover{
+        background-color: #f9f9f9;
+      }
+    }
+    &--active{
+      background-color: #ddd;
+      &:hover{
+        background-color: #dadada;
+      } 
+    }
+  }
 }
