@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-var buildings = JSON.parse(fs.readFileSync('buildings.json'))
-var buildingsInfo = JSON.parse(fs.readFileSync('buildings-info.json'))
+var buildings = JSON.parse(fs.readFileSync('building/buildings.json'))
+var buildingsInfo = JSON.parse(fs.readFileSync('building/buildings-info.json'))
 
 // this mutates the object in place
 Object.keys(buildings).forEach(k => {
@@ -11,4 +11,4 @@ Object.keys(buildings).forEach(k => {
   }
 })
 
-fs.writeFileSync('building-data.json', JSON.stringify(buildings))
+fs.writeFileSync('building/building-data.json', JSON.stringify(buildings))
