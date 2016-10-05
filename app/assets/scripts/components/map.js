@@ -8,7 +8,8 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, columnMap, inactiveLegends, countryExtents } from '../constants'
+import { mapSources, mapSettings, legends, countryExtents } from '../constants'
+import { getMapId } from '../utils/map-id'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -19,14 +20,6 @@ export const Map = React.createClass({
 
     mapSource: React.PropTypes.object,
     selected: React.PropTypes.object
-  },
-
-  getLegendStops: function (risk) {
-    return inactiveLegends[risk.toLowerCase()]
-  },
-
-  getColorProperty: function (risk) {
-    return columnMap[risk.toLowerCase()]
   },
 
   _popup: null,
@@ -67,7 +60,6 @@ export const Map = React.createClass({
 
   _loadLayers: function () {
     this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
-    let risk = this.props.dataSelection.risk.getActive().key
     Object.keys(mapSources).forEach((id) => {
       const source = mapSources[id]
       let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
@@ -77,13 +69,16 @@ export const Map = React.createClass({
         url: source.url
       })
 
+      const mapId = getMapId(this.props.dataSelection)
+      // Slice removes the years from disaster and loss columns, since legends
+      // statistics are currently derived from all years' data.
+      const colorScale = legends[this.activeSource.id][mapId.slice(0, 5)]
+      const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
-      const colorScale = this.getLegendStops(risk)
-      const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['!=', id, ''], visibility, this.getColorProperty(risk), colorScale, opacity)
-      this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', id, ''], visibility, '#fff')
-      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', id, ''], visibility, outlineColor)
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['all', ['has', mapId], ['!=', mapId, 0]], visibility, mapId, colorScale, opacity)
+      this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', mapId, ''], visibility, '#fff')
+      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', mapId, ''], visibility, outlineColor)
     })
 
     this._map.on('mousemove', this._mouseMove)
@@ -115,10 +110,12 @@ export const Map = React.createClass({
       this._adjustOpacity(nextOpacity)
     }
 
-    const prevColorProp = this.props.dataSelection.risk.getActive().key
-    const nextColorProp = nextProps.dataSelection.risk.getActive().key
-    if (nextColorProp !== prevColorProp) {
-      this._toggleLayerProperties(prevColorProp, nextColorProp, prevSourceName, nextSourceName, nextOpacity)
+    const nextMapId = getMapId(nextProps.dataSelection)
+    const prevMapId = getMapId(this.props.dataSelection)
+    const nextRisk = nextProps.dataSelection.risk.getActive().key
+    const prevRisk = this.props.dataSelection.risk.getActive().key
+    if (nextMapId !== prevMapId) {
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
@@ -140,10 +137,10 @@ export const Map = React.createClass({
     }
     // When switching from admin1 to admin0, simply deselect the previous source
     if (nextSelected && prevSourceName === 'admin0' && nextSourceName === 'admin1') this._deselectFeature(prevSourceName)
-    // Zoom to level 8 when switching to grid cells
+    // Zoom to grid view when switching to grid cells
     if (nextSourceName === 'km10' && prevSourceName !== 'km10') {
       this._deselectFeature(prevSourceName)
-      this._map.zoomTo(8)
+      this._map.zoomTo(mapSettings.initialZoom[nextSourceName])
     }
 
     // Done with switching. Update the active source
@@ -215,7 +212,7 @@ export const Map = React.createClass({
           stops: colorScale
         },
         'fill-opacity': opacity,
-        'fill-outline-color': '#333'
+        'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
       }
     })
   },
@@ -241,20 +238,20 @@ export const Map = React.createClass({
     })
   },
 
-  _toggleLayerProperties: function (prevColorProp, nextColorProp, prevSourceName, nextSourceName, opacity) {
+  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
     // Remove old layers
-    ['-inactive', '-hover', '-active'].forEach((type) => {
+    const states = ['-inactive', '-hover', '-active']
+    states.forEach((type) => {
       this._map.removeLayer(prevSourceName + type)
     })
 
     const nextSource = mapSources[nextSourceName]
     let id = nextSource.id
-
-    const colorScale = this.getLegendStops(prevColorProp)
+    const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['!=', id, ''], 'visible', this.getColorProperty(nextColorProp), this.getLegendStops(nextColorProp), opacity)
-    this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', 'white')
-    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', id, ''], 'visible', outlineColor)
+    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
+    this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
+    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', outlineColor)
   },
 
   _mapClick: function (e) {
@@ -266,9 +263,7 @@ export const Map = React.createClass({
       const feature = features[0]
       const admin = this.props.dataSelection.admin.getActive().key
       if (admin === 'admin0' || admin === 'admin1') {
-        // Temporary fix for lack of country codes in source data. In final
-        // version, ID field will be the same for each admin level.
-        const idField = admin === 'admin1' ? 'NAME_1' : 'NAME_0'
+        const idField = this.activeSource.idProp
         const id = feature.properties[idField]
         this._map.fitBounds(countryExtents[admin][id].extent, {
           padding: 150

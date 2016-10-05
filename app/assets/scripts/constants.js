@@ -3,9 +3,9 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'CA_Earthquake_Admin_0-3k2o2l',
-    idProp: 'UNIQUE_ID',
-    url: 'mapbox://devseed.8r149eiv'
+    sourceLayer: 'countries-c6tk1r',
+    idProp: 'id',
+    url: 'mapbox://devseed.cagvriqi'
   },
   admin1: {
     id: 'admin1',
@@ -15,9 +15,9 @@ export const mapSources = {
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'grid-10s7dj',
-    idProp: 'UNIQUE_ID',
-    url: 'mapbox://nbumbarg.9p1j2upq'
+    sourceLayer: 'merged-grid-8m14pc',
+    idProp: 'code',
+    url: 'mapbox://devseed.1r0ke7hy'
   }
 }
 
@@ -34,12 +34,12 @@ export const mapSettings = {
   initialZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 8
+    km10: 10
   },
   selectedZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 12
+    km10: 13
   },
   maxBounds: [
     [-112.2223587036132, 2.499026775360178],
@@ -72,9 +72,365 @@ export const hoverLegend = makeLegend(hoverScale,
 // Used in beta to map disasters to different RP columns
 export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
 
+export const legends = {
+  admin0: {
+    LS_EQ: [
+      [351733.748, '#fde291'],
+      [158507777.5, '#e6be79'],
+      [4036633701.600001, '#cf9a62'],
+      [11574824302.32, '#b8774a'],
+      [21651967240.2, '#a15333'],
+      [62084892860, '#8b301c']
+    ],
+    LS_EQ_AAL: [
+      [1752269.29, '#fde291'],
+      [2564578.752, '#e6be79'],
+      [335926428.06127995, '#cf9a62'],
+      [527610320.623406, '#b8774a'],
+      [1348522516.632502, '#a15333'],
+      [2637887479.683406, '#8b301c']
+    ],
+    HZ_EQ: [
+      [38824, '#fde291'],
+      [224810, '#e6be79'],
+      [2977296, '#cf9a62'],
+      [13830322, '#b8774a'],
+      [24862003, '#a15333'],
+      [47397560, '#8b301c']
+    ],
+    LS_FL: [
+      [1558458, '#e0efda'],
+      [36168377, '#bfd2c0'],
+      [101195508, '#9eb5a7'],
+      [164380629, '#7d998d'],
+      [220058932, '#5c7c74'],
+      [325581708, '#3c605b']
+    ],
+    LS_FL_AAL: [
+      [48814136.22028, '#e0efda'],
+      [74455954.916855, '#bfd2c0'],
+      [121067492.145191, '#9eb5a7'],
+      [136342933.514531, '#7d998d'],
+      [375781981.0340609, '#5c7c74'],
+      [461055796.425975, '#3c605b']
+    ],
+    HZ_FL: [
+      [6097, '#e0efda'],
+      [23232, '#bfd2c0'],
+      [39695, '#9eb5a7'],
+      [65073, '#7d998d'],
+      [112274, '#5c7c74'],
+      [190032, '#3c605b']
+    ],
+    LS_WS: [
+      [32236269, '#e0efda'],
+      [386835228, '#b9c8c0'],
+      [1107910757, '#92a2a7'],
+      [2820340967, '#6b7c8d'],
+      [5980389237, '#445674'],
+      [11368933343, '#1d305b']
+    ],
+    LS_WS_AAL: [
+      [8200000, '#e0efda'],
+      [9500000, '#b9c8c0'],
+      [417700000, '#92a2a7'],
+      [556930000, '#6b7c8d'],
+      [1731530000, '#445674'],
+      [2660390000, '#1d305b']
+    ],
+// !!!!!!!!!!!!
+// Fake HZ values, true values not yet attached
+// !!!!!!!!!!!!
+    HZ_WS: [
+      [8200000, '#e0efda'],
+      [9500000, '#b9c8c0'],
+      [417700000, '#92a2a7'],
+      [556930000, '#6b7c8d'],
+      [1731530000, '#445674'],
+      [2660390000, '#1d305b']
+    ],
+    EX_GD: [
+      [1423520743, '#c8c8c8'],
+      [8244117094, '#a8a8a8'],
+      [12864715229, '#888888'],
+      [19276984249, '#686868'],
+      [27678973816, '#484848'],
+      [30309291773, '#282828']
+    ],
+    EX_IN: [
+      [958321965, '#c8c8c8'],
+      [8423904431, '#a8a8a8'],
+      [10732815434, '#888888'],
+      [13909778677, '#686868'],
+      [15908561224, '#484848'],
+      [31057247818, '#282828']
+    ],
+    EX_BS: [
+      [1826419386, '#c8c8c8'],
+      [2033345192, '#a8a8a8'],
+      [30725918382, '#888888'],
+      [37867998025, '#686868'],
+      [40129868850, '#484848'],
+      [73818356551, '#282828']
+    ]
+  },
+  km10: {
+    HZ_EQ: [
+      [29, '#fde291'],
+      [155, '#e6be79'],
+      [245, '#cf9a62'],
+      [346, '#b8774a'],
+      [475, '#a15333'],
+      [654, '#8b301c']
+    ],
+    HZ_FL: [
+      [1, '#e0efda'],
+      [4, '#bfd2c0'],
+      [7, '#9eb5a7'],
+      [11, '#7d998d'],
+      [17, '#5c7c74'],
+      [27, '#3c605b']
+    ],
+    EX_BS: [
+      [1205, '#c8c8c8'],
+      [218510, '#a8a8a8'],
+      [408217, '#888888'],
+      [652777, '#686868'],
+      [1229397, '#484848'],
+      [2832190, '#282828']
+    ] // ,
+    // HZ_EQ: [
+    //   [29, '#fde291'],
+    //   [154, '#fde291'],
+    //   [155, '#e6be79'],
+    //   [244, '#e6be79'],
+    //   [245, '#cf9a62'],
+    //   [345, '#cf9a62'],
+    //   [346, '#b8774a'],
+    //   [474, '#b8774a'],
+    //   [475, '#a15333'],
+    //   [653, '#a15333'],
+    //   [654, '#8b301c']
+    // ],
+    // HZ_FL: [
+    //   [1, '#e0efda'],
+    //   [3, '#e0efda'],
+    //   [4, '#bfd2c0'],
+    //   [6, '#bfd2c0'],
+    //   [7, '#9eb5a7'],
+    //   [10, '#9eb5a7'],
+    //   [11, '#7d998d'],
+    //   [16, '#7d998d'],
+    //   [17, '#5c7c74'],
+    //   [26, '#5c7c74'],
+    //   [27, '#3c605b']
+    // ],
+    // HZ_EQ_1000: [
+    //   [72, '#fde291'],
+    //   [203, '#e6be79'],
+    //   [285, '#cf9a62'],
+    //   [384, '#b8774a'],
+    //   [468, '#a15333'],
+    //   [605, '#8b301c']
+    // ],
+    // HZ_EQ_100: [
+    //   [29, '#fde291'],
+    //   [68, '#e6be79'],
+    //   [122, '#cf9a62'],
+    //   [164, '#b8774a'],
+    //   [199, '#a15333'],
+    //   [284, '#8b301c']
+    // ],
+    // HZ_EQ_2500: [
+    //   [98, '#fde291'],
+    //   [279, '#e6be79'],
+    //   [375, '#cf9a62'],
+    //   [512, '#b8774a'],
+    //   [623, '#a15333'],
+    //   [784, '#8b301c']
+    // ],
+    // HZ_EQ_5000: [
+    //   [121, '#fde291'],
+    //   [355, '#e6be79'],
+    //   [455, '#cf9a62'],
+    //   [621, '#b8774a'],
+    //   [766, '#a15333'],
+    //   [936, '#8b301c']
+    // ],
+    // HZ_EQ_500: [
+    //   [56, '#fde291'],
+    //   [150, '#e6be79'],
+    //   [225, '#cf9a62'],
+    //   [301, '#b8774a'],
+    //   [368, '#a15333'],
+    //   [493, '#8b301c']
+    // ],
+    // HZ_EQ_250: [
+    //   [43, '#fde291'],
+    //   [69, '#e6be79'],
+    //   [99, '#cf9a62'],
+    //   [110, '#b8774a'],
+    //   [123, '#a15333'],
+    //   [164, '#8b301c']
+    // ],
+    // EX_GD: [
+    //   [94, '#c8c8c8'],
+    //   [3842, '#a8a8a8'],
+    //   [13587, '#888888'],
+    //   [28180, '#686868'],
+    //   [54079, '#484848'],
+    //   [108663, '#282828']
+    // ],
+    // EX_IN: [
+    //   [8, '#c8c8c8'],
+    //   [39150, '#a8a8a8'],
+    //   [73110, '#888888'],
+    //   [136173, '#686868'],
+    //   [199851, '#484848'],
+    //   [361490, '#282828']
+    // ],
+    // EX_BS: [
+    //   [1205, '#c8c8c8'],
+    //   [218510, '#a8a8a8'],
+    //   [408217, '#888888'],
+    //   [652777, '#686868'],
+    //   [1229397, '#484848'],
+    //   [2832190, '#282828']
+    // ],
+    // HZ_FL_1000: [
+    //   [1, '#e0efda'],
+    //   [7, '#bfd2c0'],
+    //   [12, '#9eb5a7'],
+    //   [18, '#7d998d'],
+    //   [27, '#5c7c74'],
+    //   [38, '#3c605b']
+    // ],
+    // HZ_FL_1000_R: [
+    //   [1, '#e0efda'],
+    //   [7, '#bfd2c0'],
+    //   [12, '#9eb5a7'],
+    //   [18, '#7d998d'],
+    //   [27, '#5c7c74'],
+    //   [38, '#3c605b']
+    // ],
+    // HZ_FL_100: [
+    //   [1, '#e0efda'],
+    //   [5, '#bfd2c0'],
+    //   [8, '#9eb5a7'],
+    //   [12, '#7d998d'],
+    //   [18, '#5c7c74'],
+    //   [26, '#3c605b']
+    // ],
+    // HZ_FL_100_R: [
+    //   [1, '#e0efda'],
+    //   [5, '#bfd2c0'],
+    //   [8, '#9eb5a7'],
+    //   [12, '#7d998d'],
+    //   [18, '#5c7c74'],
+    //   [26, '#3c605b']
+    // ],
+    // HZ_FL_10: [
+    //   [1, '#e0efda'],
+    //   [2, '#bfd2c0'],
+    //   [4, '#9eb5a7'],
+    //   [6, '#7d998d'],
+    //   [9, '#5c7c74'],
+    //   [13, '#3c605b']
+    // ],
+    // HZ_FL_10_R: [
+    //   [1, '#e0efda'],
+    //   [2, '#bfd2c0'],
+    //   [4, '#9eb5a7'],
+    //   [6, '#7d998d'],
+    //   [9, '#5c7c74'],
+    //   [13, '#3c605b']
+    // ],
+    // HZ_FL_250: [
+    //   [1, '#e0efda'],
+    //   [6, '#bfd2c0'],
+    //   [10, '#9eb5a7'],
+    //   [15, '#7d998d'],
+    //   [22, '#5c7c74'],
+    //   [31, '#3c605b']
+    // ],
+    // HZ_FL_250_R: [
+    //   [1, '#e0efda'],
+    //   [6, '#bfd2c0'],
+    //   [10, '#9eb5a7'],
+    //   [15, '#7d998d'],
+    //   [22, '#5c7c74'],
+    //   [31, '#3c605b']
+    // ],
+    // HZ_FL_25: [
+    //   [1, '#e0efda'],
+    //   [3, '#bfd2c0'],
+    //   [6, '#9eb5a7'],
+    //   [8, '#7d998d'],
+    //   [13, '#5c7c74'],
+    //   [19, '#3c605b']
+    // ],
+    // HZ_FL_25_R: [
+    //   [1, '#e0efda'],
+    //   [3, '#bfd2c0'],
+    //   [6, '#9eb5a7'],
+    //   [8, '#7d998d'],
+    //   [13, '#5c7c74'],
+    //   [19, '#3c605b']
+    // ],
+    // HZ_FL_500: [
+    //   [1, '#e0efda'],
+    //   [7, '#bfd2c0'],
+    //   [11, '#9eb5a7'],
+    //   [17, '#7d998d'],
+    //   [24, '#5c7c74'],
+    //   [34, '#3c605b']
+    // ],
+    // HZ_FL_500_R: [
+    //   [1, '#e0efda'],
+    //   [7, '#bfd2c0'],
+    //   [11, '#9eb5a7'],
+    //   [17, '#7d998d'],
+    //   [24, '#5c7c74'],
+    //   [34, '#3c605b']
+    // ],
+    // HZ_FL_50: [
+    //   [1, '#e0efda'],
+    //   [4, '#bfd2c0'],
+    //   [7, '#9eb5a7'],
+    //   [10, '#7d998d'],
+    //   [15, '#5c7c74'],
+    //   [23, '#3c605b']
+    // ],
+    // HZ_FL_50_R: [
+    //   [1, '#e0efda'],
+    //   [4, '#bfd2c0'],
+    //   [7, '#9eb5a7'],
+    //   [10, '#7d998d'],
+    //   [15, '#5c7c74'],
+    //   [23, '#3c605b']
+    // ],
+    // HZ_FL_5: [
+    //   [1, '#e0efda'],
+    //   [2, '#bfd2c0'],
+    //   [2, '#9eb5a7'],
+    //   [3, '#7d998d'],
+    //   [5, '#5c7c74'],
+    //   [8, '#3c605b']
+    // ],
+    // HZ_FL_5_R: [
+    //   [1, '#e0efda'],
+    //   [2, '#bfd2c0'],
+    //   [2, '#9eb5a7'],
+    //   [3, '#7d998d'],
+    //   [5, '#5c7c74'],
+    //   [8, '#3c605b']
+    // ]
+  }
+}
+
 export const countryExtents = {
   'admin0': {
-    'Belize': {
+    'BZ': {
       'extent': [
         [
           -89.22417449951172,
@@ -86,19 +442,19 @@ export const countryExtents = {
         ]
       ]
     },
-    'Costa Rica': {
+    'CR': {
       'extent': [
         [
-          -85.59486389160142,
-          8.099026775360178
+          -87.09486389160142,
+          5.499026775360178
         ],
         [
-          -83.05322265625,
+          -82.55322265625,
           11.216917991638311
         ]
       ]
     },
-    'El Salvador': {
+    'SV': {
       'extent': [
         [
           -90.12486267089838,
@@ -110,7 +466,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Grenada': {
+    'GD': {
       'extent': [
         [
           -61.802082061767436,
@@ -122,7 +478,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Guatemala': {
+    'GT': {
       'extent': [
         [
           -92.2223587036132,
@@ -134,7 +490,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Honduras': {
+    'HN': {
       'extent': [
         [
           -89.35079193115232,
@@ -146,7 +502,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Jamaica': {
+    'JM': {
       'extent': [
         [
           -78.36902618408197,
@@ -158,7 +514,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Nicaragua': {
+    'NI': {
       'extent': [
         [
           -87.69097137451163,
@@ -170,7 +526,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Panama': {
+    'PA': {
       'extent': [
         [
           -83.05017852783203,
@@ -182,7 +538,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'Saint Lucia': {
+    'LC': {
       'extent': [
         [
           -61.08013916015619,
@@ -196,7 +552,8 @@ export const countryExtents = {
     }
   },
   'admin1': {
-    'Alajuela': {
+    'CR-A': {
+      'parent': 'CR',
       'extent': [
         [
           -85.4320220947265,
@@ -206,10 +563,10 @@ export const countryExtents = {
           -84.15571594238276,
           11.079315185546903
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Cartago': {
+    'CR-C': {
+      'parent': 'CR',
       'extent': [
         [
           -84.08480072021482,
@@ -219,10 +576,10 @@ export const countryExtents = {
           -83.311653137207,
           10.149781227111916
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Guanacaste': {
+    'CR-G': {
+      'parent': 'CR',
       'extent': [
         [
           -85.96069335937497,
@@ -232,10 +589,10 @@ export const countryExtents = {
           -84.77084350585932,
           11.216917991638311
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Heredia': {
+    'CR-H': {
+      'parent': 'CR',
       'extent': [
         [
           -84.19553375244138,
@@ -245,10 +602,10 @@ export const countryExtents = {
           -83.7065734863281,
           10.789644241333036
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Limón': {
+    'CR-L': {
+      'parent': 'CR',
       'extent': [
         [
           -83.94243621826172,
@@ -258,23 +615,23 @@ export const countryExtents = {
           -82.55322265625,
           10.93890380859375
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Puntarenas': {
+    'CR-P': {
+      'parent': 'CR',
       'extent': [
         [
-          -85.59486389160142,
-          8.099026775360178
+          -87.09486389160142,
+          5.499026775360178
         ],
         [
-          -83.05322265625,
-          11.216917991638311
+          -82.71180725097653,
+          10.336079597473116
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'San José': {
+    'CR-SJ': {
+      'parent': 'CR',
       'extent': [
         [
           -84.59282684326169,
@@ -284,10 +641,10 @@ export const countryExtents = {
           -83.4251708984375,
           10.191658020019574
         ]
-      ],
-      'parent': 'Costa Rica'
+      ]
     },
-    'Ahuachapán': {
+    'SV-AH': {
+      'parent': 'SV',
       'extent': [
         [
           -90.12486267089838,
@@ -297,10 +654,10 @@ export const countryExtents = {
           -89.69065856933588,
           14.06437397003171
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Cabañas': {
+    'SV-CA': {
+      'parent': 'SV',
       'extent': [
         [
           -88.98835754394526,
@@ -310,10 +667,10 @@ export const countryExtents = {
           -88.48744201660153,
           14.01908588409431
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Chalatenango': {
+    'SV-CH': {
+      'parent': 'SV',
       'extent': [
         [
           -89.42715454101557,
@@ -323,10 +680,10 @@ export const countryExtents = {
           -88.68115997314453,
           14.422704696655344
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Cuscatlán': {
+    'SV-CU': {
+      'parent': 'SV',
       'extent': [
         [
           -89.16763305664062,
@@ -336,10 +693,10 @@ export const countryExtents = {
           -88.85851287841794,
           14.057420730590948
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'La Libertad': {
+    'SV-LI': {
+      'parent': 'SV',
       'extent': [
         [
           -89.62041473388669,
@@ -349,10 +706,10 @@ export const countryExtents = {
           -89.1323623657226,
           14.062418937683077
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'La Paz': {
+    'SV-PA': {
+      'parent': 'SV',
       'extent': [
         [
           -88.23260498046872,
@@ -362,10 +719,10 @@ export const countryExtents = {
           -87.60243225097653,
           14.415310859680304
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'La Unión': {
+    'SV-UN': {
+      'parent': 'SV',
       'extent': [
         [
           -88.09271240234372,
@@ -375,10 +732,10 @@ export const countryExtents = {
           -87.68374633789057,
           13.899357795715446
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Morazán': {
+    'SV-MO': {
+      'parent': 'SV',
       'extent': [
         [
           -88.27196502685541,
@@ -388,10 +745,10 @@ export const countryExtents = {
           -87.93933868408197,
           13.986461639404382
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'San Miguel': {
+    'SV-SM': {
+      'parent': 'SV',
       'extent': [
         [
           -88.52739715576169,
@@ -401,10 +758,10 @@ export const countryExtents = {
           -88.01883697509766,
           13.895735740661692
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'San Salvador': {
+    'SV-SS': {
+      'parent': 'SV',
       'extent': [
         [
           -89.28889465332028,
@@ -414,10 +771,10 @@ export const countryExtents = {
           -88.98754882812497,
           14.05667114257814
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'San Vicente': {
+    'SV-SV': {
+      'parent': 'SV',
       'extent': [
         [
           -88.89415740966791,
@@ -427,10 +784,10 @@ export const countryExtents = {
           -88.4848480224608,
           13.793494224548411
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Santa Ana': {
+    'SV-SA': {
+      'parent': 'SV',
       'extent': [
         [
           -89.74167633056635,
@@ -440,10 +797,10 @@ export const countryExtents = {
           -89.2479629516601,
           14.450551033020105
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Sonsonate': {
+    'SV-SO': {
+      'parent': 'SV',
       'extent': [
         [
           -89.95124816894531,
@@ -453,10 +810,10 @@ export const countryExtents = {
           -89.4387817382812,
           13.906028747558636
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Usulután': {
+    'SV-US': {
+      'parent': 'SV',
       'extent': [
         [
           -88.80343627929679,
@@ -466,10 +823,10 @@ export const countryExtents = {
           -88.12069702148429,
           13.692082405090318
         ]
-      ],
-      'parent': 'El Salvador'
+      ]
     },
-    'Alta Verapaz': {
+    'GT-AV': {
+      'parent': 'GT',
       'extent': [
         [
           -90.81743621826158,
@@ -479,10 +836,10 @@ export const countryExtents = {
           -89.40629577636716,
           16.074132919311637
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Baja Verapaz': {
+    'GT-BV': {
+      'parent': 'GT',
       'extent': [
         [
           -90.8090438842772,
@@ -492,10 +849,10 @@ export const countryExtents = {
           -89.90198516845697,
           15.294076919555735
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Chimaltenango': {
+    'GT-CM': {
+      'parent': 'GT',
       'extent': [
         [
           -91.13054656982419,
@@ -505,10 +862,10 @@ export const countryExtents = {
           -90.61563110351557,
           14.93870258331296
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Chiquimula': {
+    'GT-CQ': {
+      'parent': 'GT',
       'extent': [
         [
           -89.73220825195312,
@@ -518,10 +875,10 @@ export const countryExtents = {
           -89.12673950195307,
           14.952419281005831
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'El Progreso': {
+    'GT-PR': {
+      'parent': 'GT',
       'extent': [
         [
           -90.40343475341791,
@@ -531,10 +888,10 @@ export const countryExtents = {
           -89.7806015014647,
           15.140331268310561
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Escuintla': {
+    'GT-ES': {
+      'parent': 'GT',
       'extent': [
         [
           -91.53889465332017,
@@ -544,10 +901,10 @@ export const countryExtents = {
           -90.50906372070312,
           14.476391792297363
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Guatemala': {
+    'GT-GU': {
+      'parent': 'GT',
       'extent': [
         [
           -90.75956726074216,
@@ -557,10 +914,10 @@ export const countryExtents = {
           -90.20348358154294,
           14.918847084045453
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Huehuetenango': {
+    'GT-HU': {
+      'parent': 'GT',
       'extent': [
         [
           -92.11925506591797,
@@ -570,10 +927,10 @@ export const countryExtents = {
           -90.9573974609375,
           16.081890106201257
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Izabal': {
+    'GT-IZ': {
+      'parent': 'GT',
       'extent': [
         [
           -89.66154479980469,
@@ -583,10 +940,10 @@ export const countryExtents = {
           -88.22566986083984,
           15.966528892517147
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Jalapa': {
+    'GT-JA': {
+      'parent': 'GT',
       'extent': [
         [
           -90.27775573730455,
@@ -596,10 +953,10 @@ export const countryExtents = {
           -89.6483459472656,
           14.871861457824778
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Jutiapa': {
+    'GT-JU': {
+      'parent': 'GT',
       'extent': [
         [
           -90.29877471923828,
@@ -609,10 +966,10 @@ export const countryExtents = {
           -89.49375152587888,
           14.563303947448716
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Petén': {
+    'GT-PE': {
+      'parent': 'GT',
       'extent': [
         [
           -91.43796539306635,
@@ -622,10 +979,10 @@ export const countryExtents = {
           -89.14615631103516,
           17.81871414184579
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Quetzaltenango': {
+    'GT-QZ': {
+      'parent': 'GT',
       'extent': [
         [
           -92.14001464843747,
@@ -635,10 +992,10 @@ export const countryExtents = {
           -91.40355682373041,
           15.224425315857033
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Quiché': {
+    'GT-QC': {
+      'parent': 'GT',
       'extent': [
         [
           -91.32616424560547,
@@ -648,10 +1005,10 @@ export const countryExtents = {
           -90.41609191894531,
           16.073883056640625
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Retalhuleu': {
+    'GT-RE': {
+      'parent': 'GT',
       'extent': [
         [
           -92.16429138183588,
@@ -661,10 +1018,10 @@ export const countryExtents = {
           -91.51741790771479,
           14.715660095214858
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Sacatepéquez': {
+    'GT-SA': {
+      'parent': 'GT',
       'extent': [
         [
           -90.87999725341783,
@@ -674,10 +1031,10 @@ export const countryExtents = {
           -90.60292816162104,
           14.72191238403326
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'San Marcos': {
+    'GT-SM': {
+      'parent': 'GT',
       'extent': [
         [
           -92.2223587036132,
@@ -687,10 +1044,10 @@ export const countryExtents = {
           -91.56922149658189,
           15.41991996765148
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Santa Rosa': {
+    'GT-SR': {
+      'parent': 'GT',
       'extent': [
         [
           -90.62419891357416,
@@ -700,10 +1057,10 @@ export const countryExtents = {
           -90.04692077636719,
           14.521224975586051
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Sololá': {
+    'GT-SO': {
+      'parent': 'GT',
       'extent': [
         [
           -91.50664520263666,
@@ -713,10 +1070,10 @@ export const countryExtents = {
           -91.06850433349601,
           14.893421173095803
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Suchitepéquez': {
+    'GT-SU': {
+      'parent': 'GT',
       'extent': [
         [
           -91.66778564453125,
@@ -726,10 +1083,10 @@ export const countryExtents = {
           -91.09429168701158,
           14.710862159728961
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Totonicapán': {
+    'GT-TO': {
+      'parent': 'GT',
       'extent': [
         [
           -91.55734252929688,
@@ -739,10 +1096,10 @@ export const countryExtents = {
           -91.17531585693351,
           15.249397277832102
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Zacapa': {
+    'GT-ZA': {
+      'parent': 'GT',
       'extent': [
         [
           -89.89299774169922,
@@ -752,10 +1109,10 @@ export const countryExtents = {
           -89.14773559570307,
           15.299084663391156
         ]
-      ],
-      'parent': 'Guatemala'
+      ]
     },
-    'Atlántida': {
+    'HN-AT': {
+      'parent': 'HN',
       'extent': [
         [
           -87.80868530273432,
@@ -765,10 +1122,10 @@ export const countryExtents = {
           -86.39098358154294,
           15.927638053894043
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Choluteca': {
+    'HN-CH': {
+      'parent': 'HN',
       'extent': [
         [
           -87.51430511474607,
@@ -778,10 +1135,10 @@ export const countryExtents = {
           -86.7025451660156,
           13.763493537902889
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Colón': {
+    'PA-3': {
+      'parent': 'PA',
       'extent': [
         [
           -80.87657165527344,
@@ -791,10 +1148,10 @@ export const countryExtents = {
           -79.08027648925776,
           9.647360801696905
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Comayagua': {
+    'HN-CM': {
+      'parent': 'HN',
       'extent': [
         [
           -88.08045196533195,
@@ -804,10 +1161,10 @@ export const countryExtents = {
           -87.23373413085935,
           15.049070358276424
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Copán': {
+    'HN-CP': {
+      'parent': 'HN',
       'extent': [
         [
           -89.22222137451166,
@@ -817,10 +1174,10 @@ export const countryExtents = {
           -88.63047790527341,
           15.289088249206557
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Cortés': {
+    'HN-CR': {
+      'parent': 'HN',
       'extent': [
         [
           -88.43440246582028,
@@ -830,10 +1187,10 @@ export const countryExtents = {
           -87.7306518554687,
           16.000139236450224
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'El Paraíso': {
+    'HN-EP': {
+      'parent': 'HN',
       'extent': [
         [
           -87.22519683837882,
@@ -843,10 +1200,10 @@ export const countryExtents = {
           -85.57481384277341,
           14.411850929260268
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Francisco Morazán': {
+    'HN-FM': {
+      'parent': 'HN',
       'extent': [
         [
           -87.65587615966788,
@@ -856,23 +1213,23 @@ export const countryExtents = {
           -86.72419738769528,
           15.020076751709084
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Gracias a Dios': {
+    'HN-GD': {
+      'parent': 'HN',
       'extent': [
         [
           -84.99811553955064,
           14.614527702331628
         ],
         [
-          -83.10569305419922,
-          16.318472290039347
+          -82.40569305419922,
+          17.418472290039347
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Intibucá': {
+    'HN-IN': {
+      'parent': 'HN',
       'extent': [
         [
           -88.51215362548828,
@@ -882,10 +1239,10 @@ export const countryExtents = {
           -87.83977508544916,
           14.647224426269574
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Islas de la Bahía': {
+    'HN-IB': {
+      'parent': 'HN',
       'extent': [
         [
           -87.00013732910148,
@@ -895,10 +1252,10 @@ export const countryExtents = {
           -85.81569671630845,
           16.517084121704187
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Lempira': {
+    'HN-LE': {
+      'parent': 'HN',
       'extent': [
         [
           -88.97695159912107,
@@ -908,10 +1265,10 @@ export const countryExtents = {
           -88.30945587158197,
           14.929738998413214
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Ocotepeque': {
+    'HN-OC': {
+      'parent': 'HN',
       'extent': [
         [
           -89.35079193115232,
@@ -921,10 +1278,10 @@ export const countryExtents = {
           -88.70933532714838,
           14.713985443115192
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Olancho': {
+    'HN-OL': {
+      'parent': 'HN',
       'extent': [
         [
           -87.01361083984361,
@@ -934,10 +1291,10 @@ export const countryExtents = {
           -84.99401855468736,
           15.579616546630888
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Santa Bárbara': {
+    'HN-SB': {
+      'parent': 'HN',
       'extent': [
         [
           -88.7609252929687,
@@ -947,10 +1304,10 @@ export const countryExtents = {
           -87.98922729492185,
           15.541818618774471
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Valle': {
+    'HN-VA': {
+      'parent': 'HN',
       'extent': [
         [
           -87.81185913085935,
@@ -960,10 +1317,10 @@ export const countryExtents = {
           -87.341567993164,
           13.843179702758874
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Yoro': {
+    'HN-YO': {
+      'parent': 'HN',
       'extent': [
         [
           -87.93667602539048,
@@ -973,10 +1330,10 @@ export const countryExtents = {
           -86.22396087646479,
           15.721937179565458
         ]
-      ],
-      'parent': 'Honduras'
+      ]
     },
-    'Atlántico Norte': {
+    'NI-AN': {
+      'parent': 'NI',
       'extent': [
         [
           -85.5135269165039,
@@ -986,10 +1343,10 @@ export const countryExtents = {
           -81.9998626708983,
           15.02591037750254
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Atlántico Sur': {
+    'NI-AS': {
+      'parent': 'NI',
       'extent': [
         [
           -85.22826385498044,
@@ -999,10 +1356,10 @@ export const countryExtents = {
           -82.97013854980466,
           13.293742179870733
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Boaco': {
+    'NI-BO': {
+      'parent': 'NI',
       'extent': [
         [
           -85.98599243164054,
@@ -1012,10 +1369,10 @@ export const countryExtents = {
           -84.96810913085935,
           12.783634185791044
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Carazo': {
+    'NI-CA': {
+      'parent': 'NI',
       'extent': [
         [
           -86.44052886962885,
@@ -1025,10 +1382,10 @@ export const countryExtents = {
           -86.08541870117185,
           11.951141357421875
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Chinandega': {
+    'NI-CI': {
+      'parent': 'NI',
       'extent': [
         [
           -87.69097137451163,
@@ -1038,10 +1395,10 @@ export const countryExtents = {
           -86.65708923339844,
           13.306297302246264
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Chontales': {
+    'NI-CO': {
+      'parent': 'NI',
       'extent': [
         [
           -85.67638397216794,
@@ -1051,10 +1408,10 @@ export const countryExtents = {
           -84.57212066650388,
           12.64479446411137
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Estelí': {
+    'NI-ES': {
+      'parent': 'NI',
       'extent': [
         [
           -86.74762725830072,
@@ -1064,10 +1421,10 @@ export const countryExtents = {
           -86.10913848876947,
           13.43193531036377
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Granada': {
+    'NI-GR': {
+      'parent': 'NI',
       'extent': [
         [
           -86.13493347167969,
@@ -1077,10 +1434,10 @@ export const countryExtents = {
           -85.78551483154297,
           12.190209388732967
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Jinotega': {
+    'NI-JI': {
+      'parent': 'NI',
       'extent': [
         [
           -86.26229095458979,
@@ -1090,10 +1447,10 @@ export const countryExtents = {
           -84.82464599609361,
           14.607236862182589
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'León': {
+    'NI-LE': {
+      'parent': 'NI',
       'extent': [
         [
           -87.11765289306626,
@@ -1103,10 +1460,10 @@ export const countryExtents = {
           -86.26959228515625,
           13.115758895874066
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Madriz': {
+    'NI-MD': {
+      'parent': 'NI',
       'extent': [
         [
           -86.76827239990234,
@@ -1116,10 +1473,10 @@ export const countryExtents = {
           -86.06245422363281,
           13.65665721893319
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Managua': {
+    'NI-MN': {
+      'parent': 'NI',
       'extent': [
         [
           -86.68344879150376,
@@ -1129,10 +1486,10 @@ export const countryExtents = {
           -85.82778167724601,
           12.63101005554212
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Masaya': {
+    'NI-MS': {
+      'parent': 'NI',
       'extent': [
         [
           -86.28395843505845,
@@ -1142,10 +1499,10 @@ export const countryExtents = {
           -85.9643325805664,
           12.140574455261202
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Matagalpa': {
+    'NI-MT': {
+      'parent': 'NI',
       'extent': [
         [
           -86.28414916992173,
@@ -1155,10 +1512,10 @@ export const countryExtents = {
           -84.717170715332,
           13.37409496307373
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Nueva Segovia': {
+    'NI-NS': {
+      'parent': 'NI',
       'extent': [
         [
           -86.7851943969726,
@@ -1168,10 +1525,10 @@ export const countryExtents = {
           -85.82478332519528,
           14.077059745788674
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Río San Juan': {
+    'NI-SJ': {
+      'parent': 'NI',
       'extent': [
         [
           -85.1929931640625,
@@ -1181,10 +1538,10 @@ export const countryExtents = {
           -83.66461181640622,
           11.858178138732995
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Rivas': {
+    'NI-RI': {
+      'parent': 'NI',
       'extent': [
         [
           -86.1739883422851,
@@ -1194,10 +1551,10 @@ export const countryExtents = {
           -85.18658447265622,
           11.684892654418917
         ]
-      ],
-      'parent': 'Nicaragua'
+      ]
     },
-    'Bocas del Toro': {
+    'PA-1': {
+      'parent': 'PA',
       'extent': [
         [
           -82.93872070312491,
@@ -1207,10 +1564,10 @@ export const countryExtents = {
           -81.91570281982422,
           9.616516113281222
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Chiriquí': {
+    'PA-4': {
+      'parent': 'PA',
       'extent': [
         [
           -83.05017852783203,
@@ -1220,10 +1577,10 @@ export const countryExtents = {
           -81.50739288330075,
           8.919561386108413
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Coclé': {
+    'PA-2': {
+      'parent': 'PA',
       'extent': [
         [
           -80.82299804687491,
@@ -1233,10 +1590,10 @@ export const countryExtents = {
           -80.05252075195304,
           9.063968658447337
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Darién': {
+    'PA-5': {
+      'parent': 'PA',
       'extent': [
         [
           -78.51251220703125,
@@ -1246,10 +1603,10 @@ export const countryExtents = {
           -77.17324066162107,
           9.092749595642076
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Emberá': {
+    'PA-EM': {
+      'parent': 'PA',
       'extent': [
         [
           -78.3374404907226,
@@ -1259,10 +1616,10 @@ export const countryExtents = {
           -77.23912811279294,
           8.777939796447782
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Herrera': {
+    'PA-6': {
+      'parent': 'PA',
       'extent': [
         [
           -80.96334838867188,
@@ -1272,10 +1629,10 @@ export const countryExtents = {
           -80.36624908447263,
           8.13173866271974
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Kuna Yala': {
+    'PA-KY': {
+      'parent': 'PA',
       'extent': [
         [
           -79.28295135498044,
@@ -1285,10 +1642,10 @@ export const countryExtents = {
           -77.3573608398437,
           9.600419998169158
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Los Santos': {
+    'PA-7': {
+      'parent': 'PA',
       'extent': [
         [
           -80.73850250244132,
@@ -1298,10 +1655,10 @@ export const countryExtents = {
           -79.99124908447263,
           8.00402927398693
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Ngöbe-Buglé': {
+    'PA-NB': {
+      'parent': 'PA',
       'extent': [
         [
           -82.44554138183591,
@@ -1311,10 +1668,10 @@ export const countryExtents = {
           -81.13265991210932,
           9.186529159546026
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Panamá': {
+    'PA-8': {
+      'parent': 'PA',
       'extent': [
         [
           -80.17037200927734,
@@ -1324,10 +1681,10 @@ export const countryExtents = {
           -78.04879760742185,
           9.52334022521974
         ]
-      ],
-      'parent': 'Panama'
+      ]
     },
-    'Veraguas': {
+    'PA-9': {
+      'parent': 'PA',
       'extent': [
         [
           -82.26403045654283,
@@ -1337,8 +1694,7 @@ export const countryExtents = {
           -80.61429595947263,
           9.000139236450195
         ]
-      ],
-      'parent': 'Panama'
+      ]
     }
   }
 }

@@ -27,16 +27,15 @@ const Results = React.createClass({
     }
 
     // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+    console.log(d)
+    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
+    let risk = this.props.dataSelection.risk.getActive().value
 
-    const data = [
-      {value: Math.round(d.RP_10 / 1000000), name: 'RP 10'},
-      {value: Math.round(d.RP_50 / 1000000), name: 'RP 50'},
-      {value: Math.round(d.RP_100 / 1000000), name: 'RP 100'},
-      {value: Math.round(d.RP_250 / 1000000), name: 'RP 250'},
-      {value: Math.round(d.RP_500 / 1000000), name: 'RP 500'},
-      {value: Math.round(d.RP_1000 / 1000000), name: 'RP 1000'}
-    ]
+    let rps = ['100', '250', '500', '1000']
+    const data = rps.map((rp) => {
+      const value = d[`HZ_${risk}_${rp}`] ? d[`HZ_${risk}_${rp}`] : 0
+      return {value: value, name: 'RP ' + rp}
+    })
 
     let margin = {
       top: 16,
@@ -44,6 +43,15 @@ const Results = React.createClass({
       right: 16,
       bottom: 56
     }
+
+    const aal = d.AAL
+    ? <div>
+        <dt className='stat__attribute'>Average Annual Loss</dt>
+        <dd className='stat__value'>
+          ${Number(d.AAL.toFixed(2)).toLocaleString()}
+        </dd>
+      </div>
+    : ''
 
     return (
       <div>
@@ -63,8 +71,7 @@ const Results = React.createClass({
 
                 <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>Average Annual Loss</dt>
-                  <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
+                  {aal}
                   <dt className='stat__attribute'>Probable loss over time</dt>
                   <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
@@ -85,7 +92,5 @@ const Results = React.createClass({
     )
   }
 })
-
-// <button className='button button_results button_results--half'>View Historical Data</button>
 
 export default Results
