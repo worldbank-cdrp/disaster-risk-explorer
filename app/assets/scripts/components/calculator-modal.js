@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from 'react-nouislider'
 import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import c from 'classnames'
 
 import { hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
@@ -71,43 +72,45 @@ const Calculator = React.createClass({
           <div className='modal__body calculator__container clearfix'>
 
             <div className='modal__left-side'>
-              <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
-              <dl className='calc__selection'>
-                <dd className='stat__attribute stat__attribute--main'>Calculate for</dd>
-                <dt className='selection__panel--drop stat__value--large'>Nicaragua</dt>
-                <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
-                <dd className='stat__value'>
-                  <button
-                    className={'button header__language--toggle button__leftside ' + (conversion === 'retrofit' ? 'button--active' : '')}
-                    onClick={() => this.selectConversion('retrofit')}>
-                    <span className='header__language--text'>Retrofit</span></button>
-                  <button
-                    className={'button header__language--toggle button__rightside ' + (conversion === 'replacement' ? 'button--active' : '')}
-                    onClick={() => this.selectConversion('replacement')}>
-                    <span className='header__language--text'>Replace</span></button>
-                  </dd>
-              </dl>
-              <dl className='calc__selection'>
-                <dd className='stat__attribute stat__attribute--main'>Unit cost per {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
-                <dt className='stat__value stat__value--large stat__value--large'><input type='number' value={Math.round(ucc)} onChange={this.handleUCC} /></dt>
-              </dl>
-              <dl className='calc__selection calc__selection--slider'>
-                <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
-                <dd className='stat__value stat__value--large'>{Math.floor(sliderValue * 100)}%</dd>
-                <dt className='calculator__slider'>
-                <Slider
-                  range={{min: 0, max: 100}}
-                  start={[Math.round(sliderValue * 100)]}
-                  step={5}
-                  pips={{mode: 'range', density: 20}}
-                  onSlide={this.onChangeSlide}
-                />
-                </dt>
-              </dl>
+              <section className='calculator__selection'>
+                <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
+                <dl className='calc__selection'>
+                  <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
+                  <dt className='selection__panel--drop stat__value--large'>Nicaragua</dt>
+                  <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
+                  <dd className='stat__value'>
+                    <button
+                      className={'button header__language--toggle button__leftside ' + (conversion === 'retrofit' ? 'button--active' : '')}
+                      onClick={() => this.selectConversion('retrofit')}>
+                      <span className='header__language--text'>Retrofit</span></button>
+                    <button
+                      className={'button header__language--toggle button__rightside ' + (conversion === 'replacement' ? 'button--active' : '')}
+                      onClick={() => this.selectConversion('replacement')}>
+                      <span className='header__language--text'>Replace</span></button>
+                    </dd>
+                </dl>
+                <dl className='calc__selection'>
+                  <dd className='stat__attribute stat__attribute--main'>Unit cost per {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
+                  <dt className='stat__value stat__value--large stat__value--large'><input type='number' className='calculator__input' value={Math.round(ucc)} onChange={this.handleUCC} /><span className='stat__value--cost'></span></dt>
+                </dl>
+                <dl className='calc__selection calc__selection--slider'>
+                  <dt className='stat__attribute stat__attribute--main'>Percent of buildings {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')}</dt>
+                  <dd className='stat__value stat__value--large'>{Math.floor(sliderValue * 100)}%</dd>
+                  <dt className='calculator__slider'>
+                  <Slider
+                    range={{min: 0, max: 100}}
+                    start={[Math.round(sliderValue * 100)]}
+                    step={5}
+                    pips={{mode: 'range', density: 20}}
+                    onSlide={this.onChangeSlide}
+                  />
+                  </dt>
+                </dl>
+              </section>
 
               <div className='calc__split'></div>
 
-              <h2 className='subtitle calc__subtitle'>Building Stock Converted</h2>
+              <h2 className='subtitle calc__subtitle'>Building Stocks Converted</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
               <div className='calculator__divider-broken-label'>are {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} with</div>
@@ -118,17 +121,34 @@ const Calculator = React.createClass({
             <div className='modal__right-side'>
               <h2 className='subtitle calc__subtitle'>Results</h2>
               <dl className='calc__selection'>
+
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
-                <dd className='stat__value'>${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}</dd>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.overallChangeAAL * this.props.attributes.AAL) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * this.props.attributes.AAL) < 0 }
+                     )}>
+                  ${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}
+                </dd>
                 <dt className='stat__attribute'>Total {(conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
                 <dt className='stat__attribute'>Flat rate years to break even</dt>
-                <dd className='stat__value'>{Math.round(data.breakEven)} Years</dd>
+                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' Years' : 'Never')}</dd>
                 <dt className='stat__attribute'>Percent Change in AAL for these housing units</dt>
-                <dd className='stat__value'>-{Math.round(data.buildingChangeAAL * 100)}%</dd>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.buildingChangeAAL * 100) > 0 },
+                    { 'stat__value--negative': (data.buildingChangeAAL * 100) < 0 }
+                    )}>
+                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
                 <dt className='stat__attribute stat__attribute--second'>Change in overall AAL</dt>
-                <dd className='stat__value'>-{Math.round(data.overallChangeAAL * 100)}%</dd>
-              </dl>
+                <dd className=
+                  {c('stat__value',
+                    { 'stat__value--positive': (data.overallChangeAAL * 100) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * 100) < 0 }
+                    )}>
+                  {((data.overallChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
+                </dl>
 
               <div className='calc__split'></div>
 
