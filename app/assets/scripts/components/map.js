@@ -56,7 +56,7 @@ export const Map = React.createClass({
       this._loadLayers()
     })
 
-    map.addControl(new mapboxgl.Navigation({position: 'top-left'}))
+    map.addControl(new mapboxgl.Navigation({position: 'bottom-right'}))
   },
 
   _loadLayers: function () {

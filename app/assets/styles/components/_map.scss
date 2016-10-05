@@ -23,9 +23,9 @@
 	padding: 8px 12px 10px;
 }
 
-.mapboxgl-ctrl-top-left .mapboxgl-ctrl{
-	margin: 3rem 0 0 24rem;
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl{
 	box-shadow: none;
+	margin: 0 1rem 2rem 0;
 	border: 1px solid #bbb;
 	background-color: #eee;
 	button{
