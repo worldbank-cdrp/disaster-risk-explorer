@@ -17,18 +17,26 @@ function pathArrayElementToKeyInfo (el) {
   } else {
     // from folders we shorten the name
     switch (el) {
-      case 'earthquake_hazard_probabilistic':
-        return 'HZ_EQ_'
-      case 'windstorm_hazard_probabilistic':
-        return 'HZ_WS_'
-      case 'flood_hazard_probabilistic':
-        return 'HZ_FL_'
-      case 'building_stock':
-        return 'EX_BS'
-      case 'gdp':
-        return 'EX_GD'
-      case 'infrastructure':
-        return 'EX_IN'
+      case 'Hazard':
+        return 'HZ_'
+      case 'Loss':
+        return 'LS_'
+      case 'Exposure':
+        return 'EX_'
+      case 'Earthquake':
+        return 'EQ_'
+      case 'Windstorm':
+        return 'WS_'
+      case 'Flood':
+        return 'FL_'
+      case 'GDP':
+        return 'GD'
+      case 'Infrastructure':
+        return 'IN'
+      case 'Building Stock':
+        return 'BS'
+      case 'probabilistic':
+        return ''
       default:
         return 'Unknownkey'
     }
@@ -37,16 +45,16 @@ function pathArrayElementToKeyInfo (el) {
 
 function folderToTifProperty (folder) {
   switch (folder) {
-    case 'earthquake_hazard_probabilistic':
-    case 'windstorm_hazard_probabilistic':
-    case 'flood_hazard_probabilistic':
+    case 'Earthquake':
+    case 'Windstorm':
+    case 'Flood':
       return 'risk'
-    case 'building_stock':
-      return 'assetval'
-    case 'gdp':
+    case 'GDP':
       return 'gdp'
-    case 'infrastructure':
+    case 'Infrastructure':
       return 'inf'
+    case 'Building Stock':
+      return 'assetval'
     default:
       return 'Unknownkey'
   }
@@ -59,7 +67,7 @@ const propertyName = process.argv[2] // full path
   .join('')
 console.log('Adding property: ' + propertyName)
 
-const tifProperty = folderToTifProperty(process.argv[2].split('/')[2])
+const tifProperty = folderToTifProperty(process.argv[2].split('/')[3])
 
 var aggregatedGrid = aggregate.groups(gridLayer, dataLayer, {
   [propertyName]: function (s, feature) {
