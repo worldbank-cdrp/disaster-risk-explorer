@@ -59,10 +59,12 @@ export const Map = React.createClass({
   },
 
   _loadLayers: function () {
-    this.activeSource = mapSources[this.props.dataSelection.admin.getActive().key]
+    const admin = this.props.dataSelection.admin.getActive().key
+    this.activeSource = mapSources[admin]
     Object.keys(mapSources).forEach((id) => {
       const source = mapSources[id]
       let visibility = this.activeSource.sourceLayer === source.sourceLayer ? 'visible' : 'none'
+      if (admin === 'km10' && id === 'km10Circles') visibility = 'visible'
 
       this._map.addSource(id, {
         type: 'vector',
@@ -76,9 +78,11 @@ export const Map = React.createClass({
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['all', ['has', mapId], ['!=', mapId, 0]], visibility, mapId, colorScale, opacity)
-      this._addOutlineLayer(`${id}-hover`, source.sourceLayer, id, ['==', mapId, ''], visibility, '#fff')
-      this._addOutlineLayer(`${id}-active`, source.sourceLayer, id, ['==', mapId, ''], visibility, outlineColor)
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['all', ['has', mapId], ['!=', mapId, 0]], visibility, mapId, colorScale, opacity, id)
+      if (id !== 'km10Circles') {
+        this._addActionLayer(`${id}-hover`, source.sourceLayer, id, ['==', mapId, ''], visibility, '#fff')
+        this._addActionLayer(`${id}-active`, source.sourceLayer, id, ['==', mapId, ''], visibility, outlineColor)
+      }
     })
 
     this._map.on('mousemove', this._mouseMove)
@@ -196,28 +200,52 @@ export const Map = React.createClass({
     this._map.removeLayer(basemapId)
   },
 
-  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale, opacity) {
-    this._map.addLayer({
-      'id': id,
-      'type': 'fill',
-      'source': source,
-      'source-layer': layer,
-      'filter': filter,
-      'layout': {
-        'visibility': visibility
+  _addLayer: function (id, layer, source, filter, visibility, colorProperty, colorScale, opacity, mapId) {
+    let type = 'fill'
+    let minZoom = 0
+    let maxZoom = 22
+    let paintProperties = {
+      'fill-color': {
+        property: colorProperty,
+        stops: colorScale
       },
-      'paint': {
-        'fill-color': {
+      'fill-opacity': opacity,
+      'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
+    }
+    if (mapId === 'km10') minZoom = 10
+    if (mapId === 'km10Circles') {
+      type = 'circle'
+      minZoom = 0
+      maxZoom = 10.5
+      paintProperties = {
+        'circle-color': {
           property: colorProperty,
           stops: colorScale
         },
-        'fill-opacity': opacity,
-        'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
+        'circle-radius': {
+          'stops': [
+            [5, 5],
+            [12, 30]
+          ]
+        }
       }
+    }
+    this._map.addLayer({
+      'id': id,
+      'type': type,
+      'source': source,
+      'source-layer': layer,
+      'filter': filter,
+      'minzoom': minZoom,
+      'maxzoom': maxZoom,
+      'layout': {
+        'visibility': visibility
+      },
+      'paint': paintProperties
     })
   },
 
-  _addOutlineLayer: function (id, layer, source, filter, visibility, outlineColor) {
+  _addActionLayer: function (id, layer, source, filter, visibility, outlineColor) {
     this._map.addLayer({
       'id': id,
       'type': 'line',
@@ -235,6 +263,12 @@ export const Map = React.createClass({
     ['-inactive', '-hover', '-active'].forEach((type) => {
       this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
       this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
+      if (nextSource === 'km10') {
+        this._map.setLayoutProperty('km10Circles' + type, 'visibility', 'visible')
+      }
+      if (prevSource === 'km10' && prevSource !== nextSource) {
+        this._map.setLayoutProperty('km10Circles' + type, 'visibility', 'none')
+      }
     })
   },
 
@@ -250,8 +284,8 @@ export const Map = React.createClass({
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
     this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
-    this._addOutlineLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
-    this._addOutlineLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', outlineColor)
+    this._addActionLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
+    this._addActionLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', outlineColor)
   },
 
   _mapClick: function (e) {
@@ -318,7 +352,7 @@ export const Map = React.createClass({
   },
 
   _adjustOpacity: function (opacity) {
-    const maps = ['admin0', 'admin1', 'km10']
+    const maps = ['admin0', 'admin1', 'km10', 'km10Circles']
     maps.forEach((map) => {
       this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
       this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)

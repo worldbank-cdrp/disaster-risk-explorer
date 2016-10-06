@@ -8,7 +8,7 @@ const fs = require('fs')
 const centerpoint = require('turf-center')
 
 const inPath = '../../data/merged-grid.geojson'
-const outPath = '../../data/points.geojson'
+const outPath = '../../data/grid-points2.geojson'
 
 let gridFc = JSON.parse(fs.readFileSync(inPath))
 
@@ -16,7 +16,7 @@ const pointFc = {
   'type': 'FeatureCollection',
   'features': gridFc.features.map((feat) => {
     const props = feat.properties
-    delete props.id
+    delete props.Id
     return {
       type: 'Feature',
       properties: props,

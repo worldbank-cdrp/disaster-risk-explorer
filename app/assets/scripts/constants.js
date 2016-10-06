@@ -18,6 +18,12 @@ export const mapSources = {
     sourceLayer: 'merged-grid-8m14pc',
     idProp: 'code',
     url: 'mapbox://devseed.1r0ke7hy'
+  },
+  km10Circles: {
+    id: 'km10',
+    sourceLayer: 'grid-points',
+    idProp: 'code',
+    url: 'mapbox://devseed.4warr6p4'
   }
 }
 
@@ -34,12 +40,12 @@ export const mapSettings = {
   initialZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 10
+    km10: 5.75
   },
   selectedZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 13
+    km10: 5.75
   },
   maxBounds: [
     [-112.2223587036132, 2.499026775360178],
