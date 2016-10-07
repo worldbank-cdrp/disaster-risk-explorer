@@ -4,7 +4,7 @@ import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import c from 'classnames'
 
-import { hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
+import { newCalcId, hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
 import { getBuildingData } from '../utils/building-calc'
 
@@ -15,7 +15,12 @@ const Calculator = React.createClass({
     attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
-    unitCostOfConstruction: React.PropTypes.number
+    unitCostOfConstruction: React.PropTypes.number,
+    newCalcId: React.PropTypes.string
+  },
+
+  changeCountry: function (id) {
+    this.props.dispatch(newCalcId(id))
   },
 
   hideModal: function () {
@@ -42,11 +47,25 @@ const Calculator = React.createClass({
   },
 
   renderModal: function () {
+    // Dropdown plan:
+    // 1. Create state element for the current selected Country
+    // 2. When you open the modal, set selected Country to this.props.attributes.id
+    // 3. In this script create script that also changes it based on dropdown selection.
+
+    console.log(newCalcId)
+
     if (!this.props.calcVisible) return null
     const { sliderValue, conversion } = this.props
 
+    var countryCode = 'BZ'
+
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
-    const countryCode = 'GT' // this.props.selectedCode
+    if (this.props.attributes.id) {
+      countryCode = this.props.attributes.id
+    } else {
+      countryCode = 'BZ' // this.props.selectedCode
+    }
+
     const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
@@ -161,6 +180,10 @@ const Calculator = React.createClass({
         </div>
       </section>
     )
+  },
+
+  refill: function () {
+
   },
 
   render: function () {

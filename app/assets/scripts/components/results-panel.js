@@ -28,7 +28,6 @@ const Results = React.createClass({
     }
 
     // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    console.log(d)
     const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
     let risk = this.props.dataSelection.risk.getActive().value
 
