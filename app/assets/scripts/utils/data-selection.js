@@ -20,6 +20,7 @@ const paramFactory = function (options, active = null) {
 
   param.setActive = (key) => {
     let val = param.getOptions().find(o => o.key === key)
+
     active = val ? key : param.getDefault().key
   }
 

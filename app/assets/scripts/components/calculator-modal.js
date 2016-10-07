@@ -85,10 +85,11 @@ const Calculator = React.createClass({
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
-    const { sliderValue, conversion, newCalcId, queryParams} = this.props
+    const {sliderValue, conversion, newCalcId, queryParams} = this.props
 
     var countryCode = newCalcId
-    console.log(countryCode)
+
+    // dataSelection['countryName'].setActive(countryCode)
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     // if (this.props.attributes.id) {
@@ -131,7 +132,6 @@ const Calculator = React.createClass({
                   <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
                     <dd className='selection__panel--drop'>
                       {this.renderDropdown('countryName', dataSelection.countryName.getActive(), dataSelection.countryName.getOptions())}
-                      }
                     </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>

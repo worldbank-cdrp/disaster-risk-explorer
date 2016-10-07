@@ -101,6 +101,5 @@ function getAALWeight (buildingArray) {
 }
 
 function getDescription (buildingArray) {
-  console.log(buildingArray)
   return buildingArray[0]['Description'] + (buildingArray.length > 1 ? ' + others ' : '')
 }
