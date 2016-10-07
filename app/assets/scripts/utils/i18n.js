@@ -65,7 +65,17 @@ export function t (string, replace = {}) {
       'default-title': 'World Bank Risk Tool',
       'default-text': 'Welcome to World Bank Risk Tool. Here you can search countries in Central America and discover details of the total risk, exposure, and potential loss from Earthquakes or Hurricanes.',
 
-      'legend-caption': 'Possible explanatory text can go here for the given selection'
+      'legend-caption': 'Possible explanatory text can go here for the given selection',
+      'BZ': 'Belize',
+      'CR': 'Costa Rica',
+      'SV': 'El Salvadaor',
+      'GD': 'Guadaalama',
+      'GT': 'Gaunatanmo',
+      'HN': 'Hondouras',
+      'JM': 'Jamacia',
+      'NI': 'Nicaragua',
+      'PA': 'Pennslyvania',
+      'LC': 'Los Carolinas'
     },
     es: {
       'screen small': 'screen small ES',

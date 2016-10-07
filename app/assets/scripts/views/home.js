@@ -66,7 +66,8 @@ var Home = React.createClass({
           conversion={this.props.conversion}
           sliderValue={this.props.sliderValue}
           unitCostOfConstruction={this.props.unitCostOfConstruction}
-          newCalcId={this.props.newCalcId} />
+          newCalcId={this.props.newCalcId}
+          queryParams={this.props.location.query} />
       </div>
     )
   }

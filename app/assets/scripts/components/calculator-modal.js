@@ -3,6 +3,9 @@ import Slider from 'react-nouislider'
 import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import c from 'classnames'
+import { t } from '../utils/i18n'
+import DataSelection from '../utils/data-selection'
+import CalcDrop from './calc-dropdown'
 
 import { newCalcId, hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
@@ -16,7 +19,9 @@ const Calculator = React.createClass({
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
     unitCostOfConstruction: React.PropTypes.number,
-    newCalcId: React.PropTypes.string
+    newCalcId: React.PropTypes.string,
+    queryParams: React.PropTypes.object,
+    mapSource: React.PropTypes.object
   },
 
   changeCountry: function (id) {
@@ -46,9 +51,41 @@ const Calculator = React.createClass({
     this.props.dispatch(updateUCC(Number(e.target.value)))
   },
 
+  onOptSelect: function (key, value, e) {
+    e.preventDefault()
+    const dataSelection = DataSelection(this.props.queryParams)
+    dataSelection[key].setActive(value)
+  },
+
+  renderDropdown: function (paramKey, active, dropOpts) {
+    return (
+      <CalcDrop
+        triggerElement='button'
+        triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
+        triggerTitle={t('Show/hide parameter options')}
+        triggerText={t(active.key)} >
+
+        <ul role='menu' className='drop__menu drop__menu--select'>
+          {dropOpts.map(o => {
+            return (<li key={o.key}>
+              <a
+                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})}
+                href='#'
+                title=''
+                data-hook='dropdown:close'
+                onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
+                  <span>{t(o.key)}</span>
+              </a>
+            </li>)
+          })}
+        </ul>
+      </CalcDrop>
+    )
+  },
+
   renderModal: function () {
     if (!this.props.calcVisible) return null
-    const { sliderValue, conversion, newCalcId } = this.props
+    const { sliderValue, conversion, newCalcId, queryParams} = this.props
 
     var countryCode = newCalcId
     console.log(countryCode)
@@ -73,6 +110,8 @@ const Calculator = React.createClass({
       ]
     })
 
+    const dataSelection = new DataSelection(queryParams)
+
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
         <div className='modal__inner'>
@@ -90,7 +129,10 @@ const Calculator = React.createClass({
                 <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
                 <dl className='calc__selection'>
                   <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
-                  <dt className='selection__panel--drop stat__value--large' onClick={this.refill}>{countryCode}</dt>
+                    <dd className='selection__panel--drop'>
+                      {this.renderDropdown('countryName', dataSelection.countryName.getActive(), dataSelection.countryName.getOptions())}
+                      }
+                    </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>
                     <button
