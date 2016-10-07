@@ -20,7 +20,7 @@ export const mapSources = {
     url: 'mapbox://devseed.1r0ke7hy'
   },
   km10Circles: {
-    id: 'km10',
+    id: 'km10Circles',
     sourceLayer: 'grid-points',
     idProp: 'code',
     url: 'mapbox://devseed.4warr6p4'

@@ -225,7 +225,7 @@ export const Map = React.createClass({
         'circle-radius': {
           'stops': [
             [5, 5],
-            [12, 30]
+            [10, 10]
           ]
         }
       }
@@ -280,10 +280,16 @@ export const Map = React.createClass({
     })
 
     const nextSource = mapSources[nextSourceName]
-    let id = nextSource.id
+    const id = nextSource.id
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
     const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    this._addLayer(`${id}-inactive`, nextSource.sourceLayer, id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity)
+    let sources = [{id: id, layerData: nextSource}]
+    if (nextSourceName === 'km10') {
+      sources.push({id: 'km10Circles', layerData: mapSources['km10Circles']})
+    }
+    sources.forEach((source) => {
+      this._addLayer(`${source.id}-inactive`, source.layerData.sourceLayer, source.id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity, source.id)
+    })
     this._addActionLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
     this._addActionLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', outlineColor)
   },
@@ -352,11 +358,12 @@ export const Map = React.createClass({
   },
 
   _adjustOpacity: function (opacity) {
-    const maps = ['admin0', 'admin1', 'km10', 'km10Circles']
+    const maps = ['admin0', 'admin1', 'km10']
     maps.forEach((map) => {
       this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
       this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)
     })
+    this._map.setPaintProperty('km10Circles-inactive', 'circle-opacity', (opacity))
   },
 
   //
