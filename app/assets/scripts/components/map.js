@@ -260,16 +260,18 @@ export const Map = React.createClass({
   },
 
   _toggleSource: function (prevSource, nextSource) {
-    ['-inactive', '-hover', '-active'].forEach((type) => {
-      this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
-      this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
-      if (nextSource === 'km10') {
-        this._map.setLayoutProperty('km10Circles' + type, 'visibility', 'visible')
-      }
-      if (prevSource === 'km10' && prevSource !== nextSource) {
-        this._map.setLayoutProperty('km10Circles' + type, 'visibility', 'none')
-      }
-    })
+    if (nextSource !== prevSource) {
+      ['-inactive', '-hover', '-active'].forEach((type) => {
+        this._map.setLayoutProperty(nextSource + type, 'visibility', 'visible')
+        this._map.setLayoutProperty(prevSource + type, 'visibility', 'none')
+        if (nextSource === 'km10') {
+          this._map.setLayoutProperty('km10Circles-inactive', 'visibility', 'visible')
+        }
+        if (prevSource === 'km10') {
+          this._map.setLayoutProperty('km10Circles-inactive', 'visibility', 'none')
+        }
+      })
+    }
   },
 
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
