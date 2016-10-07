@@ -1,7 +1,7 @@
 import React from 'react'
 import multiDownload from 'multi-download'
 
-import { showModalCalc } from '../actions'
+import { showModalCalc, newCalcId } from '../actions'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
@@ -86,7 +86,10 @@ const Results = React.createClass({
               </div>
               <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() =>
+            this.props.dispatch(showModalCalc()) &&
+            this.props.dispatch(newCalcId(d.id))
+          } className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )

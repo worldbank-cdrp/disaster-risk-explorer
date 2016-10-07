@@ -47,24 +47,19 @@ const Calculator = React.createClass({
   },
 
   renderModal: function () {
-    // Dropdown plan:
-    // 1. Create state element for the current selected Country
-    // 2. When you open the modal, set selected Country to this.props.attributes.id
-    // 3. In this script create script that also changes it based on dropdown selection.
-
-    console.log(newCalcId)
-
     if (!this.props.calcVisible) return null
-    const { sliderValue, conversion } = this.props
+    const { sliderValue, conversion, newCalcId } = this.props
 
-    var countryCode = 'BZ'
+    var countryCode = newCalcId
+    console.log(countryCode)
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
-    if (this.props.attributes.id) {
-      countryCode = this.props.attributes.id
-    } else {
-      countryCode = 'BZ' // this.props.selectedCode
-    }
+    // if (this.props.attributes.id) {
+    //   countryCode = this.props.attributes.id
+    //   newCalcId(countryCode)
+    // } else {
+    //   countryCode = 'BZ' // this.props.selectedCode
+    // }
 
     const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -95,7 +90,7 @@ const Calculator = React.createClass({
                 <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
                 <dl className='calc__selection'>
                   <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
-                  <dt className='selection__panel--drop stat__value--large'>Nicaragua</dt>
+                  <dt className='selection__panel--drop stat__value--large' onClick={this.refill}>{countryCode}</dt>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>
                     <button
@@ -183,7 +178,7 @@ const Calculator = React.createClass({
   },
 
   refill: function () {
-
+    this.props.dispatch(newCalcId('BZ'))
   },
 
   render: function () {

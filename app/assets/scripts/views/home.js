@@ -28,7 +28,8 @@ var Home = React.createClass({
     calcVisible: React.PropTypes.bool,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
-    unitCostOfConstruction: React.PropTypes.number
+    unitCostOfConstruction: React.PropTypes.number,
+    newCalcId: React.PropTypes.string
   },
 
   render: function () {
@@ -64,7 +65,8 @@ var Home = React.createClass({
           calcVisible={this.props.calcVisible}
           conversion={this.props.conversion}
           sliderValue={this.props.sliderValue}
-          unitCostOfConstruction={this.props.unitCostOfConstruction} />
+          unitCostOfConstruction={this.props.unitCostOfConstruction}
+          newCalcId={this.props.newCalcId} />
       </div>
     )
   }
@@ -83,7 +85,8 @@ function mapStateToProps (state) {
     calcVisible: state.modalCalc.calcVisible,
     conversion: state.modalCalc.conversion,
     sliderValue: state.modalCalc.sliderValue,
-    unitCostOfConstruction: state.modalCalc.unitCostOfConstruction
+    unitCostOfConstruction: state.modalCalc.unitCostOfConstruction,
+    newCalcId: state.modalCalc.newCalcId
   }
 }
 
