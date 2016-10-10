@@ -54,7 +54,7 @@ export const mapSettings = {
   opacityLevels: {
     full: 0.8,
     medium: 0.4,
-    low: 0.15
+    low: 0.25
   }
 }
 

@@ -92,6 +92,8 @@ export const Map = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     const prevSelected = this.props.selected
     const nextSelected = nextProps.selected
+    const prevSourceName = this.props.dataSelection.admin.getActive().key
+    const nextSourceName = nextProps.dataSelection.admin.getActive().key
 
     const prevBasemap = this.props.dataSelection.basemap.getActive().key
     const nextBasemap = nextProps.dataSelection.basemap.getActive().key
@@ -99,12 +101,6 @@ export const Map = React.createClass({
       this._addBasemap(nextBasemap)
     } else if (prevBasemap !== nextBasemap && nextBasemap === 'basic') {
       this._removeBasemap(prevBasemap)
-    }
-
-    const prevSourceName = this.props.dataSelection.admin.getActive().key
-    const nextSourceName = nextProps.dataSelection.admin.getActive().key
-    if (nextSourceName !== prevSourceName) {
-      this._toggleSource(prevSourceName, nextSourceName)
     }
 
     const prevOpacityKey = this.props.dataSelection.opacity.getActive().key
@@ -122,11 +118,16 @@ export const Map = React.createClass({
       this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
     }
 
+    if (nextSourceName !== prevSourceName) {
+      this._toggleSource(prevSourceName, nextSourceName)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
+    }
+
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
     const nextId = nextSelected ? nextSelected[this.activeSource.idProp] : null
     if (prevId !== nextId && nextId !== null) {
       this._selectFeature(nextProps.selected, nextSourceName)
-    } else if (nextId === null) {
+    } else if (nextId === null && nextSourceName !== prevSourceName) {
       this._deselectFeature(prevSourceName)
     }
 
@@ -212,11 +213,11 @@ export const Map = React.createClass({
       'fill-opacity': opacity,
       'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
     }
-    if (mapId === 'km10') minZoom = 10
+    if (mapId === 'km10') minZoom = 8
     if (mapId === 'km10Circles') {
       type = 'circle'
       minZoom = 0
-      maxZoom = 10.5
+      maxZoom = 8.5
       paintProperties = {
         'circle-color': {
           property: colorProperty,
@@ -224,10 +225,11 @@ export const Map = React.createClass({
         },
         'circle-radius': {
           'stops': [
-            [5, 5],
-            [10, 10]
+            [1, 1],
+            [8, 8]
           ]
-        }
+        },
+        'circle-opacity': opacity - 0.2
       }
     }
     this._map.addLayer({
@@ -278,6 +280,7 @@ export const Map = React.createClass({
     // Remove old layers
     const states = ['-inactive', '-hover', '-active']
     states.forEach((type) => {
+      console.log(prevSourceName + type)
       this._map.removeLayer(prevSourceName + type)
     })
 
@@ -297,28 +300,30 @@ export const Map = React.createClass({
   },
 
   _mapClick: function (e) {
-    let sourceId = this.activeSource.id
-    let features = this._map.queryRenderedFeatures(e.point, {
-      layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
-    })
-    if (features.length) {
-      const feature = features[0]
-      const admin = this.props.dataSelection.admin.getActive().key
-      if (admin === 'admin0' || admin === 'admin1') {
-        const idField = this.activeSource.idProp
-        const id = feature.properties[idField]
-        this._map.fitBounds(countryExtents[admin][id].extent, {
-          padding: 150
-        })
+    if (this.props.dataSelection.admin.getActive().key !== 'km10') {
+      let sourceId = this.activeSource.id
+      let features = this._map.queryRenderedFeatures(e.point, {
+        layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
+      })
+      if (features.length) {
+        const feature = features[0]
+        const admin = this.props.dataSelection.admin.getActive().key
+        if (admin === 'admin0' || admin === 'admin1') {
+          const idField = this.activeSource.idProp
+          const id = feature.properties[idField]
+          this._map.fitBounds(countryExtents[admin][id].extent, {
+            padding: 150
+          })
+        } else {
+          this._map.flyTo({
+            center: centerpoint(feature).geometry.coordinates,
+            zoom: mapSettings.selectedZoom[admin]
+          })
+        }
+        this.props.dispatch(updateSelected(feature.properties))
       } else {
-        this._map.flyTo({
-          center: centerpoint(feature).geometry.coordinates,
-          zoom: mapSettings.selectedZoom[admin]
-        })
+        this.props.dispatch(updateSelected(null))
       }
-      this.props.dispatch(updateSelected(feature.properties))
-    } else {
-      this.props.dispatch(updateSelected(null))
     }
   },
 
@@ -327,14 +332,18 @@ export const Map = React.createClass({
   },
 
   _deselectFeature: function (admin) {
+    console.log(this.activeSource.idProp)
     this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, ''])
   },
 
   _mouseMove: function (e) {
     let sourceId = this.activeSource.id
+    console.log(this.activeSource.id)
     const features = this._map.queryRenderedFeatures(e.point, {
-      layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
+      layers: [`${sourceId}-inactive`]
     })
+
+    console.log(features)
 
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
