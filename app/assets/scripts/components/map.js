@@ -345,8 +345,10 @@ export const Map = React.createClass({
 
   _mouseMove: function (e) {
     let sourceId = this.activeSource.id
+    const admin = this.props.dataSelection.admin.getActive().key
+    const layer = (admin === 'km10' && this._map.getZoom() > 8.5) ? `${sourceId}-inactive` : 'km10Circles-inactive'
     const features = this._map.queryRenderedFeatures(e.point, {
-      layers: [`${sourceId}-inactive`]
+      layers: [layer]
     })
 
     if (features.length) {
