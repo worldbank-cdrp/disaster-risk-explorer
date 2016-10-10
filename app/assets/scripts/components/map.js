@@ -119,6 +119,7 @@ export const Map = React.createClass({
     }
 
     if (nextSourceName !== prevSourceName) {
+      this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
       this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
     }
@@ -277,13 +278,6 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
-    // Remove old layers
-    const states = ['-inactive', '-hover', '-active']
-    states.forEach((type) => {
-      console.log(prevSourceName + type)
-      this._map.removeLayer(prevSourceName + type)
-    })
-
     const nextSource = mapSources[nextSourceName]
     const id = nextSource.id
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
@@ -305,9 +299,9 @@ export const Map = React.createClass({
       let features = this._map.queryRenderedFeatures(e.point, {
         layers: [`${sourceId}-inactive`, `${sourceId}-hover`]
       })
+      const admin = this.props.dataSelection.admin.getActive().key
       if (features.length) {
         const feature = features[0]
-        const admin = this.props.dataSelection.admin.getActive().key
         if (admin === 'admin0' || admin === 'admin1') {
           const idField = this.activeSource.idProp
           const id = feature.properties[idField]
@@ -322,6 +316,7 @@ export const Map = React.createClass({
         }
         this.props.dispatch(updateSelected(feature.properties))
       } else {
+        this._deselectFeature(admin)
         this.props.dispatch(updateSelected(null))
       }
     }
@@ -332,18 +327,14 @@ export const Map = React.createClass({
   },
 
   _deselectFeature: function (admin) {
-    console.log(this.activeSource.idProp)
     this._map.setFilter(admin + '-active', ['==', this.activeSource.idProp, ''])
   },
 
   _mouseMove: function (e) {
     let sourceId = this.activeSource.id
-    console.log(this.activeSource.id)
     const features = this._map.queryRenderedFeatures(e.point, {
       layers: [`${sourceId}-inactive`]
     })
-
-    console.log(features)
 
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
