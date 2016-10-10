@@ -84,10 +84,10 @@ const Results = React.createClass({
                     />
                   </dd>
                 </dl>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
               </div>
-              <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><i className='collecticon collecticon-expand-top-left' /><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )
