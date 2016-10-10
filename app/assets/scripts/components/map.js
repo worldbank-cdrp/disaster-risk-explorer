@@ -240,7 +240,7 @@ export const Map = React.createClass({
         'circle-radius': {
           'stops': [
             [1, 1],
-            [8, 8]
+            [8, 7]
           ]
         },
         'circle-opacity': opacity - 0.2
@@ -346,7 +346,7 @@ export const Map = React.createClass({
   _mouseMove: function (e) {
     let sourceId = this.activeSource.id
     const admin = this.props.dataSelection.admin.getActive().key
-    const layer = (admin === 'km10' && this._map.getZoom() > 8.5) ? `${sourceId}-inactive` : 'km10Circles-inactive'
+    const layer = (admin === 'km10' && this._map.getZoom() < 8.5) ? 'km10Circles-inactive' : `${sourceId}-inactive`
     const features = this._map.queryRenderedFeatures(e.point, {
       layers: [layer]
     })
