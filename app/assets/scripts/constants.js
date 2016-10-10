@@ -58,26 +58,6 @@ export const mapSettings = {
   }
 }
 
-const makeLegend = (scale, steps) => {
-  return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
-}
-
-const earthquakeScale = chroma.scale(['rgb(253, 226, 145)', 'rgb(139, 48, 28)'])
-const windstormScale = chroma.scale(['#e0efda', '#1d305b'])
-const hoverScale = chroma.scale(['rgb(200, 240, 240)', 'rgb(40, 80, 80)'])
-
-export const inactiveLegends = {
-  hurricane: makeLegend(windstormScale,
-    [450000, 1500000, 4500000, 13500000, 26000000, 250000000]),
-  earthquake: makeLegend(earthquakeScale,
-    [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
-}
-export const hoverLegend = makeLegend(hoverScale,
-  [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
-
-// Used in beta to map disasters to different RP columns
-export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
-
 export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',

@@ -2,8 +2,8 @@ import React from 'react'
 import { legends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
-import { getMapId } from '../utils/map-id'
-import { t } from '../utils/i18n'
+import { getMapId, getMapDescrip } from '../utils/map-id'
+// import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
@@ -11,10 +11,10 @@ const Legend = React.createClass({
   },
 
   render: function () {
-    const activeRisk = this.props.dataSelection.risk.getActive().key
+    const dataSelection = this.props.dataSelection
     const activeSource = this.props.dataSelection.admin.getActive().key
-
-    const mapId = getMapId(this.props.dataSelection)
+    const mapId = getMapId(dataSelection)
+    const title = getMapDescrip(dataSelection)
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
     let legend = legends[activeSource][mapId.slice(0, 5)]
@@ -43,7 +43,7 @@ const Legend = React.createClass({
     })
     return (
       <section className='legend'>
-        <h2 className='legend__title'>{t('Average Annual Loss from')} {t(activeRisk)}</h2>
+        <h2 className='legend__title'>{title}</h2>
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
