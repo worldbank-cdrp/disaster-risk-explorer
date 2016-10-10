@@ -143,11 +143,6 @@ export const Map = React.createClass({
     }
     // When switching from admin1 to admin0, simply deselect the previous source
     if (nextSelected && prevSourceName === 'admin0' && nextSourceName === 'admin1') this._deselectFeature(prevSourceName)
-    // Zoom to grid view when switching to grid cells
-    if (nextSourceName === 'km10' && prevSourceName !== 'km10') {
-      this._deselectFeature(prevSourceName)
-      this._map.zoomTo(mapSettings.initialZoom[nextSourceName])
-    }
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
