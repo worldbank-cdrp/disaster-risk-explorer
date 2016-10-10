@@ -132,7 +132,7 @@
   padding: 0.4rem 0;
   color: #eee;
   background-color: $full-button-color;
-  border-color: darken($full-button-color, 15);
+  border-color: darken($full-button-color, 20);
   border-bottom: 3px solid darken($full-button-color, 15);
   i{
     opacity: 0.9;
@@ -143,6 +143,7 @@
   }
   &:hover{
     background-color: darken($full-button-color, 8);
+    border-color: darken($full-button-color, 22);
     border-bottom: 3px solid darken($full-button-color, 20);
     color: #e9e9e9;
   }

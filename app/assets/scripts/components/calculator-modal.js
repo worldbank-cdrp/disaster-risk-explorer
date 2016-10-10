@@ -65,7 +65,7 @@ const Calculator = React.createClass({
           <header className='modal__header'>
             <div className='modal__headline'>
               <h1 className='modal__title'>Risk mitigation cost and benefit calculation</h1>
-              <button className='modal__button-dismiss' title='Close' onClick={this.hideModel}><span>Dismiss</span></button>
+              <button className='modal__button-dismiss' title='Close' onClick={this.hideModal}><span>Dismiss</span></button>
             </div>
           </header>
 
@@ -140,14 +140,14 @@ const Calculator = React.createClass({
                     { 'stat__value--positive': (data.buildingChangeAAL * 100) > 0 },
                     { 'stat__value--negative': (data.buildingChangeAAL * 100) < 0 }
                     )}>
-                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
+                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '+')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
                 <dt className='stat__attribute stat__attribute--second'>Change in overall AAL</dt>
                 <dd className=
                   {c('stat__value',
                     { 'stat__value--positive': (data.overallChangeAAL * 100) > 0 },
                     { 'stat__value--negative': (data.overallChangeAAL * 100) < 0 }
                     )}>
-                  {((data.overallChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
+                  {((data.overallChangeAAL * 100) > 0 ? '-' : '+')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
                 </dl>
 
               <div className='calc__split'></div>
