@@ -8,8 +8,8 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, legends, countryExtents } from '../constants'
-import { getMapId } from '../utils/map-id'
+import { mapSources, mapSettings, legends, countryExtents, adminNames } from '../constants'
+import { getMapId, getMapDescrip } from '../utils/map-id'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -162,9 +162,17 @@ export const Map = React.createClass({
 
   _showPopup: function (lngLat, feature) {
     let popupContent = document.createElement('div')
+    const dataSelection = this.props.dataSelection
+    const mapId = getMapId(dataSelection)
+    const mapDescrip = getMapDescrip(dataSelection)
+    let adminName = feature.properties.id
+    adminName.length === 2
+      ? adminName = adminNames[adminName]
+      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
     render(<MapPopup
-             country={feature.properties.NAME_0}
-             aal={feature.properties.AAL}
+             adminName={adminName}
+             mapDescrip={mapDescrip}
+             data={feature.properties[mapId]}
            />, popupContent)
 
     if (this._popup === null) {
