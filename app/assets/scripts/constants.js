@@ -1,5 +1,3 @@
-import chroma from 'chroma-js'
-
 export const mapSources = {
   admin0: {
     id: 'admin0',
@@ -48,8 +46,8 @@ export const mapSettings = {
     km10: 5.75
   },
   maxBounds: [
-    [-112.2223587036132, 0.499026775360178],
-    [-50.869861602783146, 23.525140762329187]
+    [-112, 0],
+    [-51, 23]
   ],
   opacityLevels: {
     full: 0.8,
