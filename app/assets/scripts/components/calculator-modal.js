@@ -53,11 +53,15 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
+    this.props.dispatch(newCalcId(value))
+
+    // These functions don't seem to be updating the Data...
     const dataSelection = DataSelection(this.props.queryParams)
     dataSelection[key].setActive(value)
   },
 
-  renderDropdown: function (paramKey, active, dropOpts) {
+  renderDropdown: function (active, dropOpts) {
+
     return (
       <CalcDrop
         triggerElement='button'
@@ -73,7 +77,7 @@ const Calculator = React.createClass({
                 href='#'
                 title=''
                 data-hook='dropdown:close'
-                onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
+                onClick={this.onOptSelect.bind(null, 'countryName', o.key)}>
                   <span>{t(o.key)}</span>
               </a>
             </li>)
@@ -88,16 +92,6 @@ const Calculator = React.createClass({
     const {sliderValue, conversion, newCalcId, queryParams} = this.props
 
     var countryCode = newCalcId
-
-    // dataSelection['countryName'].setActive(countryCode)
-
-    // Country codes not yet added to Mapbox data; hardcoding a country code for now
-    // if (this.props.attributes.id) {
-    //   countryCode = this.props.attributes.id
-    //   newCalcId(countryCode)
-    // } else {
-    //   countryCode = 'BZ' // this.props.selectedCode
-    // }
 
     const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -131,7 +125,7 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
                     <dd className='selection__panel--drop'>
-                      {this.renderDropdown('countryName', dataSelection.countryName.getActive(), dataSelection.countryName.getOptions())}
+                      {this.renderDropdown(dataSelection.countryName.getActive(), dataSelection.countryName.getOptions())}
                     </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>
