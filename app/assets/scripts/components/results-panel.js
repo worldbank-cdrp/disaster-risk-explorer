@@ -35,9 +35,14 @@ const Results = React.createClass({
       : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
 
     const risk = this.props.dataSelection.risk.getActive().value
-    const admin = this.props.dataSelection.admin.getActive().value
+    const admin = this.props.dataSelection.admin.getActive().key
 
-    const valDenominator = admin === 'admin0' ? 1000000000 : 1000000
+    let yTitle = 'Billions (US$)'
+    let valDenominator = 1000000000
+    if (admin === 'admin1') {
+      yTitle = 'Millions (US$)'
+      valDenominator = 1000000
+    }
 
     let rps = ['100', '250', '500', '1000']
     const data = rps.map((rp) => {
@@ -82,7 +87,7 @@ const Results = React.createClass({
                     <BarChart
                       data={data}
                       margin={margin}
-                      yTitle='Millions (US$)'
+                      yTitle={yTitle}
                       xTitle='Return Period'
                     />
                   </dd>
