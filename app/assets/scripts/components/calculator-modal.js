@@ -11,6 +11,7 @@ import { getBuildingData } from '../utils/building-calc'
 const Calculator = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
     calcVisible: React.PropTypes.bool,
     attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
@@ -44,6 +45,8 @@ const Calculator = React.createClass({
   renderModal: function () {
     if (!this.props.calcVisible) return null
     const { sliderValue, conversion } = this.props
+
+    const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
 
     // Country codes not yet added to Mapbox data; hardcoding a country code for now
     const countryCode = 'GT' // this.props.selectedCode
@@ -125,10 +128,10 @@ const Calculator = React.createClass({
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
                 <dd className=
                   {c('stat__value',
-                    { 'stat__value--positive': (data.overallChangeAAL * this.props.attributes.AAL) > 0 },
-                    { 'stat__value--negative': (data.overallChangeAAL * this.props.attributes.AAL) < 0 }
+                    { 'stat__value--positive': (data.overallChangeAAL * aal) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * aal) < 0 }
                      )}>
-                  ${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}
+                  ${shortenNumber(data.overallChangeAAL * aal, 0, false)}
                 </dd>
                 <dt className='stat__attribute'>Total {(conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
