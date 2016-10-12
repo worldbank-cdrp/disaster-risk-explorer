@@ -55,7 +55,7 @@ const Selection = React.createClass({
         <h2 className='legend__title'>Selection Options</h2>
 
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>{t('metric')}</dt>
+          <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-chart-line' />{t('metric')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('metric', dataSelection.metric.getActive(), dataSelection.metric.getOptions())}
           </dd>
@@ -63,7 +63,7 @@ const Selection = React.createClass({
 
         <dl className={'selection__panel ' +
         (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
-          <dt className='subtitle selection__panel--attribute'>{t('risk')}</dt>
+          <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-circle-exclamation' />{t('risk')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>

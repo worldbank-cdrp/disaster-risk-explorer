@@ -31,7 +31,7 @@ export function t (string, replace = {}) {
       'earthquake': 'Earthquake',
       'windstorm': 'Windstorm',
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.',
-      'Download Profile': 'Download Profile',
+      'Download Profile': 'Download Country Profile PDF',
       'risk': 'Risk',
 
       'metric': 'Metric',
@@ -96,7 +96,7 @@ export function t (string, replace = {}) {
       'earthquake': 'Earthquake ES',
       'windstorm': 'Windstorm ES',
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes. ES',
-      'Download Profile': 'Download Profile ES',
+      'Download Profile': 'Download Country Profile PDF ES',
       'risk': 'Risk ES',
 
       'metric': 'Metric ES',

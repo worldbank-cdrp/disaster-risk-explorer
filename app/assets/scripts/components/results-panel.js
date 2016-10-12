@@ -83,8 +83,8 @@ const Results = React.createClass({
                     />
                   </dd>
                 </dl>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
               </div>
-              <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
           <button onClick={() =>
             this.props.dispatch(showModalCalc()) &&

@@ -58,56 +58,57 @@ const Calculator = React.createClass({
     // These functions don't seem to be updating the Data...
   },
 
-  renderDropdown: function (active, dropOpts, area) {
-    if (area === 'country') {
-      return (
-        <Dropdown
-          triggerElement='button'
-          triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
-          triggerTitle={t('Show/hide parameter options')}
-          triggerText={t(active)} >
+  renderCountryDropdown: function (active, dropOpts, area) {
+    return (
+      <Dropdown
+        triggerElement='button'
+        triggerClassName={c('button button--base-unbounded', 'button__drop', 'drop__toggle--caret', {'drop__menu-disable': area === 'district'})}
+        triggerTitle={t('Show/hide parameter options')}
+        triggerText={t(active)} >
 
-          <ul role='menu' className='drop__menu drop__menu--select'>
-            {dropOpts.countryName.map(o => {
-              return (<li key={o.key}>
-                <a
-                  className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
-                  href='#'
-                  title=''
-                  data-hook='dropdown:close'
-                  onClick={this.onOptSelect.bind(null, 'countryName', o.key)}>
-                    <span>{t(o.key)}</span>
-                </a>
-              </li>)
-            })}
-          </ul>
-        </Dropdown>
-      )
-    } else {
-      return (
-        <Dropdown
-          triggerElement='button'
-          triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
-          triggerTitle={t('Show/hide parameter options')}
-          triggerText={t(active)} >
+        <ul role='menu' className='drop__menu drop__menu--select'>
+          {dropOpts.countryName.map(o => {
+            return (<li key={o.key}>
+              <a
+                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
+                href='#'
+                title=''
+                data-hook='dropdown:close'
+                onClick={this.onOptSelect.bind(null, 'countryName', o.key)}>
+                  <span>{t(o.key)}</span>
+              </a>
+            </li>)
+          })}
+        </ul>
+      </Dropdown>
+    )
+  },
 
-          <ul role='menu' className='drop__menu drop__menu--select'>
-            {dropOpts.districtName.map(o => {
-              return (<li key={o.key}>
-                <a
-                  className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
-                  href='#'
-                  title=''
-                  data-hook='dropdown:close'
-                  onClick={this.onOptSelect.bind(null, 'districtName', o.key)}>
-                    <span>{t(o.key)}</span>
-                </a>
-              </li>)
-            })}
-          </ul>
-        </Dropdown>
-      )
-    }
+  renderDistrictDropdown: function (active, dropOpts, area) {
+    console.log(area)
+    return (
+      <Dropdown
+        triggerElement='button'
+        triggerClassName={c('button button--base-unbounded', 'button__drop', 'drop__toggle--caret', {'drop__menu-disable': area === 'country'})}
+        triggerTitle={t('Show/hide parameter options')}
+        triggerText={t(active)} >
+
+        <ul role='menu' className='drop__menu drop__menu--select'>
+          {dropOpts.districtName.map(o => {
+            return (<li key={o.key}>
+              <a
+                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
+                href='#'
+                title=''
+                data-hook='dropdown:close'
+                onClick={this.onOptSelect.bind(null, 'districtName', o.key)}>
+                  <span>{t(o.key)}</span>
+              </a>
+            </li>)
+          })}
+        </ul>
+      </Dropdown>
+    )
   },
 
   renderModal: function () {
@@ -132,11 +133,9 @@ const Calculator = React.createClass({
     })
 
     if (adminActive === 'country') {
-      console.log('country')
       countryActive = activeId
       districtActive = '-'
     } else if (adminActive === 'district') {
-      console.log('district')
       countryActive = activeId.substring(0, 2)
       districtActive = activeId
     }
@@ -167,7 +166,7 @@ const Calculator = React.createClass({
           <header className='modal__header'>
             <div className='modal__headline'>
               <h1 className='modal__title'>Risk mitigation cost and benefit calculation</h1>
-              <button className='modal__button-dismiss' title='Close' onClick={this.hideModel}><span>Dismiss</span></button>
+              <button className='modal__button-dismiss' title='Close' onClick={this.hideModal}><span>Dismiss</span></button>
             </div>
           </header>
 
@@ -177,14 +176,14 @@ const Calculator = React.createClass({
               <section className='calculator__selection'>
                 <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
                 <dl className='calc__selection'>
-                  <dt className='stat__attribute stat__attribute--main'>Selected Country</dt>
+                  <dt className='stat__attribute stat__attribute--main'>Country Selected</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderDropdown(countryActive, calcDropItems, 'country')}
+                      {this.renderCountryDropdown(countryActive, calcDropItems, adminActive)}
                     </dd>
 
-                  <dt className='stat__attribute stat__attribute--main'>Selected District</dt>
+                  <dt className='stat__attribute stat__attribute--main'>Subregion Selected</dt>
                   <dd className='selection__panel--drop'>
-                    {this.renderDropdown(districtActive, calcDropItems, 'district')}
+                    {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
                   </dd>
 
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
@@ -250,14 +249,14 @@ const Calculator = React.createClass({
                     { 'stat__value--positive': (data.buildingChangeAAL * 100) > 0 },
                     { 'stat__value--negative': (data.buildingChangeAAL * 100) < 0 }
                     )}>
-                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
+                  {((data.buildingChangeAAL * 100) > 0 ? '-' : '+')}{Math.abs(Math.round(data.buildingChangeAAL * 100))}%</dd>
                 <dt className='stat__attribute stat__attribute--second'>Change in overall AAL</dt>
                 <dd className=
                   {c('stat__value',
                     { 'stat__value--positive': (data.overallChangeAAL * 100) > 0 },
                     { 'stat__value--negative': (data.overallChangeAAL * 100) < 0 }
                     )}>
-                  {((data.overallChangeAAL * 100) > 0 ? '-' : '')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
+                  {((data.overallChangeAAL * 100) > 0 ? '-' : '+')}{Math.abs(Math.round(data.overallChangeAAL * 100))}%</dd>
                 </dl>
 
               <div className='calc__split'></div>
