@@ -1711,6 +1711,20 @@ export let calcDropItems = {
     {key: 'NI', value: 'NI'},
     {key: 'PA', value: 'PA'},
     {key: 'LC', value: 'LC'}
+  ],
+  districtName: [
+    {key: '-', value: '-'},
+    {key: 'GT-AV', value: 'GT-AV'},
+    {key: 'GT-AV', value: 'GT-AV'},
+    {key: 'GT-BV', value: 'GT-BV'},
+    {key: 'GT-CM', value: 'GT-CM'},
+    {key: 'GT-CQ', value: 'GT-CQ'},
+    {key: 'GT-ES', value: 'GT-ES'},
+    {key: 'GT-GU', value: 'GT-GU'},
+    {key: 'HN-AT', value: 'HN-AT'},
+    {key: 'PA-1', value: 'PA-1'},
+    {key: 'PA-2', value: 'PA-2'},
+    {key: 'SV-SV', value: 'SV-SV'}
   ]
 }
 

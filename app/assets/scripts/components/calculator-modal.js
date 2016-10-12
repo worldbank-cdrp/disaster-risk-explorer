@@ -58,39 +58,98 @@ const Calculator = React.createClass({
     // These functions don't seem to be updating the Data...
   },
 
-  renderDropdown: function (active, dropOpts) {
-    return (
-      <Dropdown
-        triggerElement='button'
-        triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
-        triggerTitle={t('Show/hide parameter options')}
-        triggerText={t(active)} >
+  renderDropdown: function (active, dropOpts, area) {
+    if (area === 'country') {
+      return (
+        <Dropdown
+          triggerElement='button'
+          triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
+          triggerTitle={t('Show/hide parameter options')}
+          triggerText={t(active)} >
 
-        <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.countryName.map(o => {
-            return (<li key={o.key}>
-              <a
-                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
-                href='#'
-                title=''
-                data-hook='dropdown:close'
-                onClick={this.onOptSelect.bind(null, 'countryName', o.key)}>
-                  <span>{t(o.key)}</span>
-              </a>
-            </li>)
-          })}
-        </ul>
-      </Dropdown>
-    )
+          <ul role='menu' className='drop__menu drop__menu--select'>
+            {dropOpts.countryName.map(o => {
+              return (<li key={o.key}>
+                <a
+                  className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
+                  href='#'
+                  title=''
+                  data-hook='dropdown:close'
+                  onClick={this.onOptSelect.bind(null, 'countryName', o.key)}>
+                    <span>{t(o.key)}</span>
+                </a>
+              </li>)
+            })}
+          </ul>
+        </Dropdown>
+      )
+    } else {
+      return (
+        <Dropdown
+          triggerElement='button'
+          triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
+          triggerTitle={t('Show/hide parameter options')}
+          triggerText={t(active)} >
+
+          <ul role='menu' className='drop__menu drop__menu--select'>
+            {dropOpts.districtName.map(o => {
+              return (<li key={o.key}>
+                <a
+                  className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
+                  href='#'
+                  title=''
+                  data-hook='dropdown:close'
+                  onClick={this.onOptSelect.bind(null, 'districtName', o.key)}>
+                    <span>{t(o.key)}</span>
+                </a>
+              </li>)
+            })}
+          </ul>
+        </Dropdown>
+      )
+    }
   },
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
     const {sliderValue, conversion, newCalcId} = this.props
 
-    var countryCode = newCalcId
+    const activeId = newCalcId
+    var countryActive = activeId
+    var districtActive = '-'
+    var adminActive = ''
 
-    const data = getBuildingData(countryCode, conversion, sliderValue, this.props.unitCostOfConstruction)
+    calcDropItems.countryName.map(o => {
+      if (o.key === activeId) {
+        adminActive = 'country'
+      }
+    })
+
+    calcDropItems.districtName.map(o => {
+      if (o.key === activeId) {
+        adminActive = 'district'
+      }
+    })
+
+    if (adminActive === 'country') {
+      console.log('country')
+      countryActive = activeId
+      districtActive = '-'
+    } else if (adminActive === 'district') {
+      console.log('district')
+      countryActive = activeId.substring(0, 2)
+      districtActive = activeId
+    }
+
+    // if (activeId) {
+    //   then countryActive = SELECTEDID
+    //   var districtActive = '-'
+    // }else if SELECTID matches DistrictCode{
+    //   then countryActive = SELECTID string first two letters
+    //   var districtActive = SELECTID
+    // }
+
+    const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
     // A little nonsense to create single roots for react
@@ -118,10 +177,16 @@ const Calculator = React.createClass({
               <section className='calculator__selection'>
                 <h2 className='subtitle calc__subtitle'>Conversion Settings</h2>
                 <dl className='calc__selection'>
-                  <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
+                  <dt className='stat__attribute stat__attribute--main'>Selected Country</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderDropdown(countryCode, calcDropItems)}
+                      {this.renderDropdown(countryActive, calcDropItems, 'country')}
                     </dd>
+
+                  <dt className='stat__attribute stat__attribute--main'>Selected District</dt>
+                  <dd className='selection__panel--drop'>
+                    {this.renderDropdown(districtActive, calcDropItems, 'district')}
+                  </dd>
+
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>
                     <button
