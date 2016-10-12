@@ -31,7 +31,7 @@ export function t (string, replace = {}) {
       'earthquake': 'Earthquake',
       'windstorm': 'Windstorm',
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes.',
-      'Download Profile': 'Download Profile',
+      'Download Profile': 'Download Country Profile PDF',
       'risk': 'Risk',
 
       'metric': 'Metric',
@@ -65,7 +65,28 @@ export function t (string, replace = {}) {
       'default-title': 'World Bank Risk Tool',
       'default-text': 'Welcome to World Bank Risk Tool. Here you can search countries in Central America and discover details of the total risk, exposure, and potential loss from Earthquakes or Hurricanes.',
 
-      'legend-caption': 'Possible explanatory text can go here for the given selection'
+      'legend-caption': 'Possible explanatory text can go here for the given selection',
+      'BZ': 'Belize',
+      'CR': 'Costa Rica',
+      'SV': 'El Salvadaor',
+      'GD': 'Grenada',
+      'GT': 'Guatemala',
+      'HN': 'Hondouras',
+      'JM': 'Jamacia',
+      'NI': 'Nicaragua',
+      'PA': 'Panama',
+      'LC': 'Saint Lucia',
+      '-': '-',
+      'PA-1': 'PA-1',
+      'PA-2': 'PA-2',
+      'GT-AV': 'GT-AV',
+      'GT-BV': 'GT-BV',
+      'GT-CM': 'GT-CM',
+      'GT-CQ': 'GT-CQ',
+      'GT-ES': 'GT-ES',
+      'GT-GU': 'GT-GU',
+      'HN-AT': 'HN-AT',
+      'SV-SV': 'SV-SV'
     },
     es: {
       'screen small': 'screen small ES',
@@ -75,7 +96,7 @@ export function t (string, replace = {}) {
       'earthquake': 'Earthquake ES',
       'windstorm': 'Windstorm ES',
       'legend description': 'The Average Annual Loss is not weighted by population. Therefore areas with greater AAL may not necessarily be more at risk for earthquakes. ES',
-      'Download Profile': 'Download Profile ES',
+      'Download Profile': 'Download Country Profile PDF ES',
       'risk': 'Risk ES',
 
       'metric': 'Metric ES',

@@ -1,7 +1,7 @@
 import React from 'react'
 import multiDownload from 'multi-download'
 
-import { showModalCalc } from '../actions'
+import { showModalCalc, newCalcId } from '../actions'
 import { adminNames } from '../constants'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
@@ -28,6 +28,9 @@ const Results = React.createClass({
     if (d === null) {
       return this.deleteThis()
     }
+
+    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
+    // const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
 
     let adminName = d.id
     adminName.length === 2
@@ -92,10 +95,13 @@ const Results = React.createClass({
                     />
                   </dd>
                 </dl>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
               </div>
-              <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() =>
+            this.props.dispatch(showModalCalc()) &&
+            this.props.dispatch(newCalcId(d.id))
+          } className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
         </section>
       </div>
     )
