@@ -286,19 +286,21 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
-    const nextSource = mapSources[nextSourceName]
-    const id = nextSource.id
     const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
-    const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
-    let sources = [{id: id, layerData: nextSource}]
     if (nextSourceName === 'km10') {
-      sources.push({id: 'km10Circles', layerData: mapSources['km10Circles']})
+      this._map.setPaintProperty('km10Circles-inactive',
+        'circle-color', {
+          property: nextMapId,
+          stops: colorScale
+        })
+      this._map.setFilter('km10Circles-inactive', ['all', ['has', nextMapId], ['!=', nextMapId, 0]])
     }
-    sources.forEach((source) => {
-      this._addLayer(`${source.id}-inactive`, source.layerData.sourceLayer, source.id, ['all', ['has', nextMapId], ['!=', nextMapId, 0]], 'visible', nextMapId, colorScale, opacity, source.id)
-    })
-    this._addActionLayer(`${id}-hover`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', 'white')
-    this._addActionLayer(`${id}-active`, nextSource.sourceLayer, id, ['==', nextMapId, ''], 'visible', outlineColor)
+    this._map.setPaintProperty(`${nextSourceName}-inactive`,
+      'fill-color', {
+        property: nextMapId,
+        stops: colorScale
+      })
+    this._map.setFilter(`${nextSourceName}-inactive`, ['all', ['has', nextMapId], ['!=', nextMapId, 0]])
   },
 
   _mapClick: function (e) {
