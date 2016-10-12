@@ -84,7 +84,7 @@ let availableParams = {
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
     {key: 'admin1', value: 'Admin Level 1'},
-    {key: 'km10', value: '0km Grids'}
+    {key: 'km10', value: '10km Grids'}
   ],
   opacity: [
     {key: 'full', value: 'Full'},

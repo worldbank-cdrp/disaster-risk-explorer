@@ -2,6 +2,7 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
+import { adminNames } from '../constants'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
@@ -28,7 +29,13 @@ const Results = React.createClass({
     }
 
     // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
+    // const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
+
+    let adminName = d.id
+    adminName.length === 2
+      ? adminName = adminNames[adminName]
+      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
+
     let risk = this.props.dataSelection.risk.getActive().value
 
     let rps = ['100', '250', '500', '1000']
@@ -57,7 +64,7 @@ const Results = React.createClass({
       <div>
         <section className='results'>
           <div className='results__space'>
-            <h2 className='results__title'>{title}</h2>
+            <h2 className='results__title'>{adminName}</h2>
               <div className='results__container'>
                 <h3 className='subtitle results__subtitle'>Exposure</h3>
                 <dl className='stats'>
