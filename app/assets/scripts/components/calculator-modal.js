@@ -163,8 +163,6 @@ const Calculator = React.createClass({
       ]
     })
 
-    console.log(TopFive)
-
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
         <div className='modal__inner'>
