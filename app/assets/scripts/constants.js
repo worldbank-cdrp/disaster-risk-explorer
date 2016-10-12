@@ -1699,6 +1699,21 @@ export const countryExtents = {
   }
 }
 
+export let calcDropItems = {
+  countryName: [
+    {key: 'BZ', value: 'BZ'},
+    {key: 'CR', value: 'CR'},
+    {key: 'SV', value: 'SV'},
+    {key: 'GD', value: 'GD'},
+    {key: 'GT', value: 'GT'},
+    {key: 'HN', value: 'HN'},
+    {key: 'JM', value: 'JM'},
+    {key: 'NI', value: 'NI'},
+    {key: 'PA', value: 'PA'},
+    {key: 'LC', value: 'LC'}
+  ]
+}
+
 export const countryAAL = {
   'type': 'FeatureCollection',
   'features': [

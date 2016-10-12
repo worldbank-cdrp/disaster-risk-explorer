@@ -4,8 +4,8 @@ import _ from 'lodash'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import c from 'classnames'
 import { t } from '../utils/i18n'
-import DataSelection from '../utils/data-selection'
-import CalcDrop from './calc-dropdown'
+import Dropdown from './dropdown'
+import { calcDropItems } from '../constants'
 
 import { newCalcId, hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
@@ -56,24 +56,21 @@ const Calculator = React.createClass({
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
-    const dataSelection = DataSelection(this.props.queryParams)
-    dataSelection[key].setActive(value)
   },
 
   renderDropdown: function (active, dropOpts) {
-
     return (
-      <CalcDrop
+      <Dropdown
         triggerElement='button'
         triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
         triggerTitle={t('Show/hide parameter options')}
-        triggerText={t(active.key)} >
+        triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.map(o => {
+          {dropOpts.countryName.map(o => {
             return (<li key={o.key}>
               <a
-                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})}
+                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
                 title=''
                 data-hook='dropdown:close'
@@ -83,13 +80,13 @@ const Calculator = React.createClass({
             </li>)
           })}
         </ul>
-      </CalcDrop>
+      </Dropdown>
     )
   },
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
-    const {sliderValue, conversion, newCalcId, queryParams} = this.props
+    const {sliderValue, conversion, newCalcId} = this.props
 
     var countryCode = newCalcId
 
@@ -104,8 +101,6 @@ const Calculator = React.createClass({
         (<dd key={building['Risk Rank'] + 'dd'} className='stat__value'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>)
       ]
     })
-
-    const dataSelection = new DataSelection(queryParams)
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
@@ -125,7 +120,7 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dd className='stat__attribute stat__attribute--main'>Area calculated for</dd>
                     <dd className='selection__panel--drop'>
-                      {this.renderDropdown(dataSelection.countryName.getActive(), dataSelection.countryName.getOptions())}
+                      {this.renderDropdown(countryCode, calcDropItems)}
                     </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>

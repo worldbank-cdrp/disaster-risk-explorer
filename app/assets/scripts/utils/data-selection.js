@@ -94,18 +94,6 @@ let availableParams = {
   basemap: [
     {key: 'basic', value: 'Basic'},
     {key: 'special', value: 'Satellite'}
-  ],
-  countryName: [
-    {key: 'BZ', value: 'BZ'},
-    {key: 'CR', value: 'CR'},
-    {key: 'SV', value: 'SV'},
-    {key: 'GD', value: 'GD'},
-    {key: 'GT', value: 'GT'},
-    {key: 'HN', value: 'HN'},
-    {key: 'JM', value: 'JM'},
-    {key: 'NI', value: 'NI'},
-    {key: 'PA', value: 'PA'},
-    {key: 'LC', value: 'LC'}
   ]
 }
 
