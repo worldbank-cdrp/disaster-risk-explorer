@@ -154,14 +154,16 @@ const Calculator = React.createClass({
 
     // A little nonsense to create single roots for react
     const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
-    const TopFive = data.topFiveAAL.map(building => {
+    const TopFive = data.topFiveAAL.map((building, i) => {
       return [
-        <dl className='calc__list'>
+        <dl key={i} className='calc__list'>
           <dt key={building['Risk Rank'] + 'dt'} className='stat__attribute stat__attribute--stocks'>{building['Description'].replace(/single|multi family/, '')}</dt>
           <dd key={building['Risk Rank'] + 'dd'} className='stat__value stat__value--stocks'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>
         </dl>
       ]
     })
+
+    console.log(TopFive)
 
     return (
       <section className='modal modal--large modal--about' onClick={this.onOutClick}>
