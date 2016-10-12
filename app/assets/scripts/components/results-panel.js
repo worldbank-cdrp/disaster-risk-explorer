@@ -3,6 +3,7 @@ import multiDownload from 'multi-download'
 
 import { showModalCalc } from '../actions'
 import { adminNames } from '../constants'
+import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
@@ -33,12 +34,15 @@ const Results = React.createClass({
       ? adminName = adminNames[adminName]
       : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
 
-    let risk = this.props.dataSelection.risk.getActive().value
+    const risk = this.props.dataSelection.risk.getActive().value
+    const admin = this.props.dataSelection.admin.getActive().value
+
+    const valDenominator = admin === 'admin0' ? 1000000000 : 1000000
 
     let rps = ['100', '250', '500', '1000']
     const data = rps.map((rp) => {
-      const value = d[`HZ_${risk}_${rp}`] ? d[`HZ_${risk}_${rp}`] : 0
-      return {value: value, name: 'RP ' + rp}
+      const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
+      return {value: value / valDenominator, name: 'RP ' + rp}
     })
 
     let margin = {
@@ -47,15 +51,6 @@ const Results = React.createClass({
       right: 16,
       bottom: 56
     }
-
-    const aal = d.AAL
-    ? <div>
-        <dt className='stat__attribute'>Average Annual Loss</dt>
-        <dd className='stat__value'>
-          ${Number(d.AAL.toFixed(2)).toLocaleString()}
-        </dd>
-      </div>
-    : ''
 
     return (
       <div>
@@ -66,16 +61,21 @@ const Results = React.createClass({
                 <h3 className='subtitle results__subtitle'>Exposure</h3>
                 <dl className='stats'>
                   <dt className='stat__attribute'>GDP</dt>
-                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEM</dd>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
                   <dt className='stat__attribute'>Building Stock Exposure</dt>
-                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEM</dd>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
                 </dl>
 
                 <div className='results__divider results__divider--first'></div>
 
                 <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
                 <dl className='stats'>
-                  {aal}
+                <div>
+                    <dt className='stat__attribute'>Average Annual Loss</dt>
+                    <dd className='stat__value'>
+                      ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
+                    </dd>
+                  </div>
                   <dt className='stat__attribute'>Probable loss over time</dt>
                   <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
