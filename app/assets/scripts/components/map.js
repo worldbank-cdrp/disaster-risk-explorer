@@ -202,7 +202,7 @@ export const Map = React.createClass({
       id: basemapId,
       type: 'raster',
       source: basemapId
-    }, 'waterway-label')
+    }, 'beneath-label-target')
   },
 
   _removeBasemap: function (basemapId) {
@@ -253,7 +253,7 @@ export const Map = React.createClass({
         'visibility': visibility
       },
       'paint': paintProperties
-    })
+    }, 'waterway-label')
   },
 
   _addActionLayer: function (id, layer, source, filter, visibility, outlineColor) {
@@ -267,7 +267,7 @@ export const Map = React.createClass({
         'line-color': outlineColor,
         'line-width': 2
       }
-    })
+    }, 'waterway-label')
   },
 
   _toggleSource: function (prevSource, nextSource) {
