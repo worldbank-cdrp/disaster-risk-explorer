@@ -1,9 +1,9 @@
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'countries-1h4fay',
+    sourceLayer: 'countries-0hf4lw',
     idProp: 'id',
-    url: 'mapbox://devseed.btobi00m'
+    url: 'mapbox://devseed.62tgf8ke'
   },
   admin1: {
     id: 'admin1',
@@ -13,15 +13,15 @@ export const mapSources = {
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'merged-grid-6bspwr',
+    sourceLayer: 'merged-grid-3-aqix2u',
     idProp: 'code',
-    url: 'mapbox://devseed.5tjsjnug'
+    url: 'mapbox://devseed.1x2qvzgw'
   },
   km10Circles: {
     id: 'km10Circles',
     sourceLayer: 'grid-points',
     idProp: 'code',
-    url: 'mapbox://devseed.1b3ygisz'
+    url: 'mapbox://devseed.4zp57gcg'
   }
 }
 
@@ -2021,4 +2021,3 @@ export const countryAAL = {
     }
   ]
 }
-
