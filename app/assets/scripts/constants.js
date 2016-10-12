@@ -1,11 +1,9 @@
-import chroma from 'chroma-js'
-
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'countries-c6tk1r',
+    sourceLayer: 'countries-1h4fay',
     idProp: 'id',
-    url: 'mapbox://devseed.cagvriqi'
+    url: 'mapbox://devseed.btobi00m'
   },
   admin1: {
     id: 'admin1',
@@ -15,9 +13,15 @@ export const mapSources = {
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'merged-grid-8m14pc',
+    sourceLayer: 'merged-grid-6bspwr',
     idProp: 'code',
-    url: 'mapbox://devseed.1r0ke7hy'
+    url: 'mapbox://devseed.5tjsjnug'
+  },
+  km10Circles: {
+    id: 'km10Circles',
+    sourceLayer: 'grid-points',
+    idProp: 'code',
+    url: 'mapbox://devseed.1b3ygisz'
   }
 }
 
@@ -34,43 +38,164 @@ export const mapSettings = {
   initialZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 10
+    km10: 5.75
   },
   selectedZoom: {
     admin0: 5.75,
     admin1: 5.75,
-    km10: 13
+    km10: 5.75
   },
   maxBounds: [
-    [-112.2223587036132, 2.499026775360178],
-    [-50.869861602783146, 21.525140762329187]
+    [-112, 0],
+    [-51, 23]
   ],
   opacityLevels: {
     full: 0.8,
     medium: 0.4,
-    low: 0.15
+    low: 0.25
   }
 }
 
-const makeLegend = (scale, steps) => {
-  return steps.map((step, i) => [step, scale(i / (steps.length - 1)).hex()])
+export const adminNames = {
+  'BZ': 'Belize',
+  'BZ-BZ': 'Belize',
+  'BZ-CY': 'Cayo',
+  'BZ-CZL': 'Corozal',
+  'BZ-OW': 'Orange Walk',
+  'BZ-SC': 'Stann Creek',
+  'BZ-TOL': 'Toledo',
+  'CR': 'Costa Rica',
+  'CR-A': 'Alajuela',
+  'CR-C': 'Cartago',
+  'CR-G': 'Guanacaste',
+  'CR-H': 'Heredia',
+  'CR-L': 'Limón',
+  'CR-P': 'Puntarenas',
+  'CR-SJ': 'San José',
+  'GD': 'Grenada',
+  'GD-01': 'Saint Andrew',
+  'GD-02': 'Saint David',
+  'GD-03': 'Saint George',
+  'GD-04': 'Saint John',
+  'GD-05': 'Saint Mark',
+  'GD-06': 'Saint Patrick',
+  'GD-10': 'Southern Grenadine Islands',
+  'GT': 'Guatemala',
+  'GT-AV': 'Alta Verapaz',
+  'GT-BV': 'Baja Verapaz',
+  'GT-CM': 'Chimaltenango',
+  'GT-CQ': 'Chiquimula',
+  'GT-ES': 'Escuintla',
+  'GT-GU': 'Guatemala',
+  'GT-HU': 'Huehuetenango',
+  'GT-IZ': 'Izabal',
+  'GT-JA': 'Jalapa',
+  'GT-JU': 'Jutiapa',
+  'GT-PE': 'Petén',
+  'GT-PR': 'El Progreso',
+  'GT-QC': 'Quiché',
+  'GT-QZ': 'Quetzaltenango',
+  'GT-RE': 'Retalhuleu',
+  'GT-SA': 'Sacatepéquez',
+  'GT-SM': 'San Marcos',
+  'GT-SO': 'Sololá',
+  'GT-SR': 'Santa Rosa',
+  'GT-SU': 'Suchitepéquez',
+  'GT-TO': 'Totonicapán',
+  'GT-ZA': 'Zacapa',
+  'HN': 'Honduras',
+  'HN-AT': 'Atlántida',
+  'HN-CH': 'Choluteca',
+  'HN-CL': 'Colón',
+  'HN-CM': 'Comayagua',
+  'HN-CP': 'Copán',
+  'HN-CR': 'Cortés',
+  'HN-EP': 'El Paraíso',
+  'HN-FM': 'Francisco Morazán',
+  'HN-GD': 'Gracias a Dios',
+  'HN-IB': 'Islas de la Bahía',
+  'HN-IN': 'Intibucá',
+  'HN-LE': 'Lempira',
+  'HN-LP': 'La Paz',
+  'HN-OC': 'Ocotepeque',
+  'HN-OL': 'Olancho',
+  'HN-SB': 'Santa Bárbara',
+  'HN-VA': 'Valle',
+  'HN-YO': 'Yoro',
+  'JM': 'Jamaica',
+  'JM-01': 'Kingston',
+  'JM-02': 'Saint Andrew',
+  'JM-03': 'Saint Thomas',
+  'JM-04': 'Portland',
+  'JM-05': 'Saint Mary',
+  'JM-06': 'Saint Ann',
+  'JM-07': 'Trelawny',
+  'JM-08': 'Saint James',
+  'JM-09': 'Hanover',
+  'JM-10': 'Westmoreland',
+  'JM-11': 'Saint Elizabeth',
+  'JM-12': 'Manchester',
+  'JM-13': 'Clarendon',
+  'JM-14': 'Saint Catherine',
+  'LC-01': 'Anse la Raye',
+  'LC-02': 'Castries',
+  'LC-03': 'Choiseul',
+  'LC-05': 'Dennery',
+  'LC-06': 'Gros Islet',
+  'LC-07': 'Laborie',
+  'LC-08': 'Micoud',
+  'LC-10': 'Soufrière',
+  'LC-11': 'Vieux Fort',
+  'LC-12': 'Canaries',
+  'LI': 'Saint Lucia',
+  'NI': 'Nicaragua',
+  'NI-AN': 'Atlántico Norte',
+  'NI-AS': 'Atlántico Sur',
+  'NI-BO': 'Boaco',
+  'NI-CA': 'Carazo',
+  'NI-CI': 'Chinandega',
+  'NI-CO': 'Chontales',
+  'NI-ES': 'Estelí',
+  'NI-GR': 'Granada',
+  'NI-JI': 'Jinotega',
+  'NI-LE': 'León',
+  'NI-MD': 'Madriz',
+  'NI-MN': 'Managua',
+  'NI-MS': 'Masaya',
+  'NI-MT': 'Matagalpa',
+  'NI-NS': 'Nueva Segovia',
+  'NI-RI': 'Rivas',
+  'NI-SJ': 'Río San Juan',
+  'PA': 'Panama',
+  'PA-1': 'Bocas del Toro',
+  'PA-10': 'Panamá Oeste',
+  'PA-2': 'Coclé',
+  'PA-3': 'Colón',
+  'PA-4': 'Chiriquí',
+  'PA-5': 'Darién',
+  'PA-6': 'Herrera',
+  'PA-7': 'Los Santos',
+  'PA-8': 'Panamá',
+  'PA-9': 'Veraguas',
+  'PA-EM': 'Emberá',
+  'PA-KY': 'Kuna Yala',
+  'PA-NB': 'Ngöbe-Buglé',
+  'SV': 'El Salvador',
+  'SV-AH': 'Ahuachapán',
+  'SV-CA': 'Cabañas',
+  'SV-CH': 'Chalatenango',
+  'SV-CU': 'Cuscatlán',
+  'SV-LI': 'La Libertad',
+  'SV-MO': 'Morazán',
+  'SV-PA': 'La Paz',
+  'SV-SA': 'Santa Ana',
+  'SV-SM': 'San Miguel',
+  'SV-SO': 'Sonsonate',
+  'SV-SS': 'San Salvador',
+  'SV-SV': 'San Vicente',
+  'SV-UN': 'La Unión',
+  'SV-US': 'Usulután'
 }
-
-const earthquakeScale = chroma.scale(['rgb(253, 226, 145)', 'rgb(139, 48, 28)'])
-const windstormScale = chroma.scale(['#e0efda', '#1d305b'])
-const hoverScale = chroma.scale(['rgb(200, 240, 240)', 'rgb(40, 80, 80)'])
-
-export const inactiveLegends = {
-  hurricane: makeLegend(windstormScale,
-    [450000, 1500000, 4500000, 13500000, 26000000, 250000000]),
-  earthquake: makeLegend(earthquakeScale,
-    [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
-}
-export const hoverLegend = makeLegend(hoverScale,
-  [20500000, 75000000, 165000000, 320000000, 620000000, 6500000000])
-
-// Used in beta to map disasters to different RP columns
-export const columnMap = {earthquake: 'RP_10', hurricane: 'RP_500', flood: 'AAL'}
 
 export const legends = {
   admin0: {
@@ -191,6 +316,38 @@ export const legends = {
       [17, '#5c7c74'],
       [27, '#3c605b']
     ],
+    HZ_WS: [
+      [20, '#e0efda'],
+      [50, '#bfd2c0'],
+      [100, '#9eb5a7'],
+      [150, '#7d998d'],
+      [200, '#5c7c74'],
+      [300, '#3c605b']
+    ],
+    LS_EQ: [
+      [29, '#fde291'],
+      [155, '#e6be79'],
+      [245, '#cf9a62'],
+      [346, '#b8774a'],
+      [475, '#a15333'],
+      [654, '#8b301c']
+    ],
+    LS_FL: [
+      [1, '#e0efda'],
+      [4, '#bfd2c0'],
+      [7, '#9eb5a7'],
+      [11, '#7d998d'],
+      [17, '#5c7c74'],
+      [27, '#3c605b']
+    ],
+    LS_WS: [
+      [0, '#e0efda'],
+      [200, '#b9c8c0'],
+      [300, '#92a2a7'],
+      [400, '#6b7c8d'],
+      [500, '#445674'],
+      [600, '#1d305b']
+    ],
     EX_BS: [
       [1205, '#c8c8c8'],
       [218510, '#a8a8a8'],
@@ -198,233 +355,7 @@ export const legends = {
       [652777, '#686868'],
       [1229397, '#484848'],
       [2832190, '#282828']
-    ] // ,
-    // HZ_EQ: [
-    //   [29, '#fde291'],
-    //   [154, '#fde291'],
-    //   [155, '#e6be79'],
-    //   [244, '#e6be79'],
-    //   [245, '#cf9a62'],
-    //   [345, '#cf9a62'],
-    //   [346, '#b8774a'],
-    //   [474, '#b8774a'],
-    //   [475, '#a15333'],
-    //   [653, '#a15333'],
-    //   [654, '#8b301c']
-    // ],
-    // HZ_FL: [
-    //   [1, '#e0efda'],
-    //   [3, '#e0efda'],
-    //   [4, '#bfd2c0'],
-    //   [6, '#bfd2c0'],
-    //   [7, '#9eb5a7'],
-    //   [10, '#9eb5a7'],
-    //   [11, '#7d998d'],
-    //   [16, '#7d998d'],
-    //   [17, '#5c7c74'],
-    //   [26, '#5c7c74'],
-    //   [27, '#3c605b']
-    // ],
-    // HZ_EQ_1000: [
-    //   [72, '#fde291'],
-    //   [203, '#e6be79'],
-    //   [285, '#cf9a62'],
-    //   [384, '#b8774a'],
-    //   [468, '#a15333'],
-    //   [605, '#8b301c']
-    // ],
-    // HZ_EQ_100: [
-    //   [29, '#fde291'],
-    //   [68, '#e6be79'],
-    //   [122, '#cf9a62'],
-    //   [164, '#b8774a'],
-    //   [199, '#a15333'],
-    //   [284, '#8b301c']
-    // ],
-    // HZ_EQ_2500: [
-    //   [98, '#fde291'],
-    //   [279, '#e6be79'],
-    //   [375, '#cf9a62'],
-    //   [512, '#b8774a'],
-    //   [623, '#a15333'],
-    //   [784, '#8b301c']
-    // ],
-    // HZ_EQ_5000: [
-    //   [121, '#fde291'],
-    //   [355, '#e6be79'],
-    //   [455, '#cf9a62'],
-    //   [621, '#b8774a'],
-    //   [766, '#a15333'],
-    //   [936, '#8b301c']
-    // ],
-    // HZ_EQ_500: [
-    //   [56, '#fde291'],
-    //   [150, '#e6be79'],
-    //   [225, '#cf9a62'],
-    //   [301, '#b8774a'],
-    //   [368, '#a15333'],
-    //   [493, '#8b301c']
-    // ],
-    // HZ_EQ_250: [
-    //   [43, '#fde291'],
-    //   [69, '#e6be79'],
-    //   [99, '#cf9a62'],
-    //   [110, '#b8774a'],
-    //   [123, '#a15333'],
-    //   [164, '#8b301c']
-    // ],
-    // EX_GD: [
-    //   [94, '#c8c8c8'],
-    //   [3842, '#a8a8a8'],
-    //   [13587, '#888888'],
-    //   [28180, '#686868'],
-    //   [54079, '#484848'],
-    //   [108663, '#282828']
-    // ],
-    // EX_IN: [
-    //   [8, '#c8c8c8'],
-    //   [39150, '#a8a8a8'],
-    //   [73110, '#888888'],
-    //   [136173, '#686868'],
-    //   [199851, '#484848'],
-    //   [361490, '#282828']
-    // ],
-    // EX_BS: [
-    //   [1205, '#c8c8c8'],
-    //   [218510, '#a8a8a8'],
-    //   [408217, '#888888'],
-    //   [652777, '#686868'],
-    //   [1229397, '#484848'],
-    //   [2832190, '#282828']
-    // ],
-    // HZ_FL_1000: [
-    //   [1, '#e0efda'],
-    //   [7, '#bfd2c0'],
-    //   [12, '#9eb5a7'],
-    //   [18, '#7d998d'],
-    //   [27, '#5c7c74'],
-    //   [38, '#3c605b']
-    // ],
-    // HZ_FL_1000_R: [
-    //   [1, '#e0efda'],
-    //   [7, '#bfd2c0'],
-    //   [12, '#9eb5a7'],
-    //   [18, '#7d998d'],
-    //   [27, '#5c7c74'],
-    //   [38, '#3c605b']
-    // ],
-    // HZ_FL_100: [
-    //   [1, '#e0efda'],
-    //   [5, '#bfd2c0'],
-    //   [8, '#9eb5a7'],
-    //   [12, '#7d998d'],
-    //   [18, '#5c7c74'],
-    //   [26, '#3c605b']
-    // ],
-    // HZ_FL_100_R: [
-    //   [1, '#e0efda'],
-    //   [5, '#bfd2c0'],
-    //   [8, '#9eb5a7'],
-    //   [12, '#7d998d'],
-    //   [18, '#5c7c74'],
-    //   [26, '#3c605b']
-    // ],
-    // HZ_FL_10: [
-    //   [1, '#e0efda'],
-    //   [2, '#bfd2c0'],
-    //   [4, '#9eb5a7'],
-    //   [6, '#7d998d'],
-    //   [9, '#5c7c74'],
-    //   [13, '#3c605b']
-    // ],
-    // HZ_FL_10_R: [
-    //   [1, '#e0efda'],
-    //   [2, '#bfd2c0'],
-    //   [4, '#9eb5a7'],
-    //   [6, '#7d998d'],
-    //   [9, '#5c7c74'],
-    //   [13, '#3c605b']
-    // ],
-    // HZ_FL_250: [
-    //   [1, '#e0efda'],
-    //   [6, '#bfd2c0'],
-    //   [10, '#9eb5a7'],
-    //   [15, '#7d998d'],
-    //   [22, '#5c7c74'],
-    //   [31, '#3c605b']
-    // ],
-    // HZ_FL_250_R: [
-    //   [1, '#e0efda'],
-    //   [6, '#bfd2c0'],
-    //   [10, '#9eb5a7'],
-    //   [15, '#7d998d'],
-    //   [22, '#5c7c74'],
-    //   [31, '#3c605b']
-    // ],
-    // HZ_FL_25: [
-    //   [1, '#e0efda'],
-    //   [3, '#bfd2c0'],
-    //   [6, '#9eb5a7'],
-    //   [8, '#7d998d'],
-    //   [13, '#5c7c74'],
-    //   [19, '#3c605b']
-    // ],
-    // HZ_FL_25_R: [
-    //   [1, '#e0efda'],
-    //   [3, '#bfd2c0'],
-    //   [6, '#9eb5a7'],
-    //   [8, '#7d998d'],
-    //   [13, '#5c7c74'],
-    //   [19, '#3c605b']
-    // ],
-    // HZ_FL_500: [
-    //   [1, '#e0efda'],
-    //   [7, '#bfd2c0'],
-    //   [11, '#9eb5a7'],
-    //   [17, '#7d998d'],
-    //   [24, '#5c7c74'],
-    //   [34, '#3c605b']
-    // ],
-    // HZ_FL_500_R: [
-    //   [1, '#e0efda'],
-    //   [7, '#bfd2c0'],
-    //   [11, '#9eb5a7'],
-    //   [17, '#7d998d'],
-    //   [24, '#5c7c74'],
-    //   [34, '#3c605b']
-    // ],
-    // HZ_FL_50: [
-    //   [1, '#e0efda'],
-    //   [4, '#bfd2c0'],
-    //   [7, '#9eb5a7'],
-    //   [10, '#7d998d'],
-    //   [15, '#5c7c74'],
-    //   [23, '#3c605b']
-    // ],
-    // HZ_FL_50_R: [
-    //   [1, '#e0efda'],
-    //   [4, '#bfd2c0'],
-    //   [7, '#9eb5a7'],
-    //   [10, '#7d998d'],
-    //   [15, '#5c7c74'],
-    //   [23, '#3c605b']
-    // ],
-    // HZ_FL_5: [
-    //   [1, '#e0efda'],
-    //   [2, '#bfd2c0'],
-    //   [2, '#9eb5a7'],
-    //   [3, '#7d998d'],
-    //   [5, '#5c7c74'],
-    //   [8, '#3c605b']
-    // ],
-    // HZ_FL_5_R: [
-    //   [1, '#e0efda'],
-    //   [2, '#bfd2c0'],
-    //   [2, '#9eb5a7'],
-    //   [3, '#7d998d'],
-    //   [5, '#5c7c74'],
-    //   [8, '#3c605b']
-    // ]
+    ]
   }
 }
 
