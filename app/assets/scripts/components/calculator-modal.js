@@ -155,8 +155,10 @@ const Calculator = React.createClass({
     const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
     const TopFive = data.topFiveAAL.map(building => {
       return [
-        (<dt key={building['Risk Rank'] + 'dt'} className='stat__attribute'>{building['Description'].replace(/single|multi family/, '')}</dt>),
-        (<dd key={building['Risk Rank'] + 'dd'} className='stat__value'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>)
+        <dl className='calc__list'>
+          <dt key={building['Risk Rank'] + 'dt'} className='stat__attribute stat__attribute--stocks'>{building['Description'].replace(/single|multi family/, '')}</dt>
+          <dd key={building['Risk Rank'] + 'dd'} className='stat__value stat__value--stocks'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>
+        </dl>
       ]
     })
 
@@ -185,7 +187,6 @@ const Calculator = React.createClass({
                   <dd className='selection__panel--drop'>
                     {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
                   </dd>
-
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>Type of Conversion</dt>
                   <dd className='stat__value'>
                     <button
@@ -197,8 +198,6 @@ const Calculator = React.createClass({
                       onClick={() => this.selectConversion('replacement')}>
                       <span className='header__language--text'>Replace</span></button>
                     </dd>
-                </dl>
-                <dl className='calc__selection'>
                   <dd className='stat__attribute stat__attribute--main'>Unit cost per {(conversion === 'retrofit' ? 'retrofitted' : 'replaced')} building</dd>
                   <dt className='stat__value stat__value--large stat__value--large'><input type='number' className='calculator__input' value={Math.round(ucc)} onChange={this.handleUCC} /><span className='stat__value--cost'></span></dt>
                 </dl>
@@ -262,7 +261,7 @@ const Calculator = React.createClass({
               <div className='calc__split'></div>
 
               <h2 className='subtitle calc__subtitle'>Building Stock types most at risk ({listKey})</h2>
-              <dl className='calc__selection'>
+              <dl className='calc__selection calc__selection--stocks'>
                 {_.flatten(TopFive)}
               </dl>
             </div>
