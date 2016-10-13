@@ -2,7 +2,8 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
-import { adminNames } from '../constants'
+import { adminNames, graphCols } from '../constants'
+import { getMapId } from '../utils/map-id'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
 
@@ -44,10 +45,10 @@ const Results = React.createClass({
       valDenominator = 1000000
     }
 
-    let rps = ['100', '250', '500', '1000']
+    const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
     const data = rps.map((rp) => {
       const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
-      return {value: value / valDenominator, name: 'RP ' + rp}
+      return {value: value / valDenominator, name: rp}
     })
 
     let margin = {

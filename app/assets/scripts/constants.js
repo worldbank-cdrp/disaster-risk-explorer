@@ -56,6 +56,35 @@ export const mapSettings = {
   }
 }
 
+export const graphCols = {
+  'LS_EQ': [
+    '10',
+    '50',
+    '100',
+    '250',
+    '500',
+    '1000'
+  ],
+  'LS_FL': [
+    '5',
+    '10',
+    '25',
+    '50',
+    '100',
+    '250',
+    '500',
+    '1000'
+  ],
+  'LS_WS': [
+    '25',
+    '50',
+    '100',
+    '250',
+    '500',
+    '1000'
+  ]
+}
+
 export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',
