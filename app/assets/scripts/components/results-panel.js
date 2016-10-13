@@ -48,7 +48,7 @@ const Results = React.createClass({
     const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
     const data = rps.map((rp) => {
       const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
-      return {value: value / valDenominator, name: rp}
+      return {value: Number((value / valDenominator).toFixed(2)), name: rp}
     })
 
     let margin = {
