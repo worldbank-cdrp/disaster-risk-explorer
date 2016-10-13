@@ -343,3 +343,17 @@
   }
 }
 
+.stat__attribute--stocks {
+  max-width: 420px;
+  line-height: 1.4rem;
+}
+
+.stat__value--stocks {
+  line-height: 1.4rem;
+}
+
+.calc__list{
+  margin-bottom: 0.5rem;
+  clear: both;
+  overflow: auto;
+}

@@ -1,6 +1,9 @@
 /* ==========================================================================
    Drops
    ========================================================================== */
+.drop__menu-disable{
+  color: #aaa;
+}
 
 .drop {
   position: relative;
@@ -16,6 +19,7 @@
       vertical-align: top;
       margin-left: 0.5rem;
       transform: translate(0, -3px);
+      color: black;
     }
   }
   &:focus {
@@ -26,7 +30,7 @@
 .drop__content {
   position: absolute;
   z-index: 1000;
-  width: 12rem;
+  width: 13.25rem;
   margin: 0;
   padding: $global-spacing;
   overflow: hidden;
@@ -35,7 +39,7 @@
   font-size: 0.8rem;
   line-height: 1.5;
   background: #fff;
-  box-shadow: 0px 4px 12px 1px transparentize(black, 0.75); 
+  box-shadow: 0px 4px 12px 1px transparentize(black, 0.75);
   border-radius: $base-border-radius;
   border: 1px solid #ccc;
 
@@ -206,6 +210,8 @@
   max-width: 16rem;
   font-weight: $base-font-regular;
   color: #888;
+  max-height: 300px;
+  overflow-y: scroll;
 
   &:last-child {
     margin-bottom: (-$global-spacing);
@@ -219,6 +225,16 @@
     color: inherit;
     transition: all 0.16s ease 0s;
     text-decoration: none;
+    &.disabled {
+      opacity: 0.6;
+      pointer-events: none;
+      cursor: not-allowed;
+      color: #aaa;
+      font-style: italic;
+      .attribute {
+        color: rgba(0, 0, 0, 0.3);
+      }
+    }
     &:hover,
     &:focus {
       background-color: tint($primary-color, 92%);

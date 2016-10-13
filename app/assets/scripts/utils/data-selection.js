@@ -20,6 +20,7 @@ const paramFactory = function (options, active = null) {
 
   param.setActive = (key) => {
     let val = param.getOptions().find(o => o.key === key)
+
     active = val ? key : param.getDefault().key
   }
 
@@ -61,18 +62,16 @@ export function DataSelectionFactory (availableParams) {
   }
 }
 
-// Export version ready with the actual available parameters
-
 let availableParams = {
   metric: [
-    {key: 'risk', value: 'Risk'},
     {key: 'loss', value: 'Loss'},
+    {key: 'risk', value: 'Risk'},
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
+    {key: 'windstorm', value: 'WS'},
     {key: 'earthquake', value: 'EQ'},
-    {key: 'flood', value: 'FL'},
-    {key: 'windstorm', value: 'WS'}
+    {key: 'flood', value: 'FL'}
   ],
   return: [
     {key: '100 Years', value: '100'},
