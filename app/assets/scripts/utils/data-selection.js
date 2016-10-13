@@ -66,8 +66,8 @@ export function DataSelectionFactory (availableParams) {
 
 let availableParams = {
   metric: [
-    {key: 'risk', value: 'Risk'},
     {key: 'loss', value: 'Loss'},
+    {key: 'hazard', value: 'Hazard'},
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
