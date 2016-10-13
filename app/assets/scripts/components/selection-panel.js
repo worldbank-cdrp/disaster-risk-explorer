@@ -17,6 +17,10 @@ const Selection = React.createClass({
   onOptSelect: function (key, value, e) {
     e.preventDefault()
     const dataSelection = DataSelection(this.props.queryParams)
+    const metric = dataSelection.metric
+    if ((value === 'admin0' || value === 'admin1') && metric.getActive().key === 'risk') {
+      metric.setActive(metric.getDefault().key)
+    }
     dataSelection[key].setActive(value)
     hashHistory.push(`/${getLanguage()}?${dataSelection.getQS()}`)
   },
