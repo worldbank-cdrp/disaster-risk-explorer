@@ -9,6 +9,7 @@ import Dropdown from './dropdown'
 const Selection = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
     queryParams: React.PropTypes.object
@@ -26,23 +27,29 @@ const Selection = React.createClass({
   },
 
   renderDropdown: function (paramKey, active, dropOpts) {
+    const admin = this.props.dataSelection.admin.getActive().key
     return (
       <Dropdown
         triggerElement='button'
         triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
         triggerTitle={t('Show/hide parameter options')}
-        triggerText={t(active.key)} >
+        triggerText={t(active.key)}
+        dataSelection={this.props.dataSelection} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
-            return (<li key={o.key}>
+            const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
+            ? 'disabled' : ''
+            const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
+            ? `(disabled at ${admin})` : ''
+            return (<li key={o.key} className={disabledClass}>
               <a
-                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})}
+                className={c('drop__menu-item', disabledClass, {'drop__menu-item--active': o.key === active.key})}
                 href='#'
                 title=''
                 data-hook='dropdown:close'
                 onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
-                  <span>{t(o.key)}</span>
+                  <span>{t(o.key)} {disabledText}</span>
               </a>
             </li>)
           })}
