@@ -10,7 +10,6 @@ var data = JSON.parse(fs.readFileSync(process.argv[3]))
 
 // Aggregate all numeric fields from the data
 var aggregator = {}
-var prependor = (process.argv.length > 5 ? process.argv[5] : '')
 data.features.map(feature => {
   Object.keys(feature.properties).forEach(key => {
     var match = key.match(/[A-Z]{2}_[A-Z]{2}(_\d+)?|(\d+)|AAL/)
@@ -19,14 +18,13 @@ data.features.map(feature => {
     }
     if (feature.properties[key] > 0 && !aggregator.hasOwnProperty(key) && match) {
       // only capture numeric keys, 'AAL', or things that already have this "style"
-      aggregator[prependor + match[0]] = function (s, feat) {
+      aggregator[match[0]] = function (s, feat) {
         return (s || 0) + (Number(feat.properties[key]) || 0)
       }
     }
   })
 })
 console.log('Capturing keys: ' + Object.keys(aggregator).join(', '))
-console.log('Prepending property names with: ' + prependor)
 
 var result = aggregate.groups(flatten(group), data, aggregator)
 fs.writeFileSync(process.argv[4], JSON.stringify(result))
