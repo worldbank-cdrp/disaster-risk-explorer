@@ -34,11 +34,11 @@ export const mapSettings = {
       id: 'satellite',
       url: 'mapbox://mapbox.satellite'}
   },
-  centerpoint: [-86, 13],
+  centerpoint: [-87, 13],
   initialZoom: {
-    admin0: 5.75,
-    admin1: 5.75,
-    km10: 5.75
+    admin0: 5,
+    admin1: 5,
+    km10: 5
   },
   selectedZoom: {
     admin0: 5.75,
@@ -47,7 +47,7 @@ export const mapSettings = {
   },
   maxBounds: [
     [-112, 0],
-    [-51, 23]
+    [-51, 28]
   ],
   opacityLevels: {
     full: 0.8,

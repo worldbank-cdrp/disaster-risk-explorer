@@ -14,6 +14,7 @@ import { getBuildingData } from '../utils/building-calc'
 const Calculator = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
     calcVisible: React.PropTypes.bool,
     attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
@@ -85,7 +86,6 @@ const Calculator = React.createClass({
   },
 
   renderDistrictDropdown: function (active, dropOpts, area) {
-    console.log(area)
     return (
       <Dropdown
         triggerElement='button'
@@ -115,6 +115,7 @@ const Calculator = React.createClass({
     if (!this.props.calcVisible) return null
     const {sliderValue, conversion, newCalcId} = this.props
 
+    const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
     var countryActive = activeId
     var districtActive = '-'
@@ -153,9 +154,9 @@ const Calculator = React.createClass({
 
     // A little nonsense to create single roots for react
     const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
-    const TopFive = data.topFiveAAL.map(building => {
+    const TopFive = data.topFiveAAL.map((building, i) => {
       return [
-        <dl className='calc__list'>
+        <dl key={i} className='calc__list'>
           <dt key={building['Risk Rank'] + 'dt'} className='stat__attribute stat__attribute--stocks'>{building['Description'].replace(/single|multi family/, '')}</dt>
           <dd key={building['Risk Rank'] + 'dd'} className='stat__value stat__value--stocks'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>
         </dl>
@@ -233,10 +234,10 @@ const Calculator = React.createClass({
                 <dt className='stat__attribute'>Reduction of overall AAL</dt>
                 <dd className=
                   {c('stat__value',
-                    { 'stat__value--positive': (data.overallChangeAAL * this.props.attributes.AAL) > 0 },
-                    { 'stat__value--negative': (data.overallChangeAAL * this.props.attributes.AAL) < 0 }
+                    { 'stat__value--positive': (data.overallChangeAAL * aal) > 0 },
+                    { 'stat__value--negative': (data.overallChangeAAL * aal) < 0 }
                      )}>
-                  ${shortenNumber(data.overallChangeAAL * this.props.attributes.AAL, 0, false)}
+                  ${shortenNumber(data.overallChangeAAL * aal, 0, false)}
                 </dd>
                 <dt className='stat__attribute'>Total {(conversion === 'retrofit' ? 'retrofit' : 'replacement')} cost</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
