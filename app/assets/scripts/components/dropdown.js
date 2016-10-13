@@ -18,9 +18,7 @@ const Dropdown = React.createClass({
     alignment: React.PropTypes.oneOf(['left', 'center', 'right']),
 
     className: React.PropTypes.string,
-    children: React.PropTypes.node,
-
-    dataSelection: React.PropTypes.object
+    children: React.PropTypes.node
   },
 
   dropId: null,

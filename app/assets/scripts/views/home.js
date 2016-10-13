@@ -47,7 +47,6 @@ var Home = React.createClass({
           selected={this.props.selected} />
         <Selection
           dispatch={this.props.dispatch}
-          dataSelection={dataSelection}
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
         <Legend

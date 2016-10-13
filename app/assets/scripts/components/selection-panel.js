@@ -9,7 +9,6 @@ import Dropdown from './dropdown'
 const Selection = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
-    dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
     queryParams: React.PropTypes.object
@@ -27,14 +26,14 @@ const Selection = React.createClass({
   },
 
   renderDropdown: function (paramKey, active, dropOpts) {
-    const admin = this.props.dataSelection.admin.getActive().key
+    const dataSelection = DataSelection(this.props.queryParams)
+    const admin = dataSelection.admin.getActive().key
     return (
       <Dropdown
         triggerElement='button'
         triggerClassName='button button--base-unbounded button__drop drop__toggle--caret'
         triggerTitle={t('Show/hide parameter options')}
-        triggerText={t(active.key)}
-        dataSelection={this.props.dataSelection} >
+        triggerText={t(active.key)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
