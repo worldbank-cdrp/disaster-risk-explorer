@@ -29,9 +29,6 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    // const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
-
     let adminName = d.id
     adminName.length === 2
       ? adminName = adminNames[adminName]
