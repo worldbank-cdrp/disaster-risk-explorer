@@ -43,6 +43,9 @@
   max-width: 48rem;
   min-width: 32rem;
   background: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 3px solid $secondary-color;
 
   > *:last-child {
     margin-bottom: 0;
@@ -128,11 +131,13 @@
 
   &__header {
     background-color: $primary-color;
-    padding: 1em 1.25em;
+    @include section_header;
+    font-size: 1rem;
     border-bottom: 3px solid $secondary-color;
   }
 
   &__title {
+    padding-left: 1rem;
     font-size: 1em;
     letter-spacing: 0.4px;
     font-weight: 500;
@@ -172,12 +177,13 @@
 
 .modal__button-dismiss {
   position: absolute;
-  top: 1em;
-  right: 1em;
+  top: 0.4rem;
+  right: 0.75em;
   z-index: 10;
-  opacity: 0.48;
+  opacity: 0.8;
   background: none;
   border: none;
+  color: white;
 
   span {
     @extend .visually-hidden;
@@ -193,14 +199,46 @@
   }
 }
 
-.modal--about {
-  .modal__body {
-    font-size: 0.9em;
+.modal__body--about{
+  font-size: 0.9rem;
+  margin: 0 1rem;
+  max-width: 740px;
+  p{
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1px;
+  }
+  h3{
+    margin-bottom: 0.5rem;
+  }
+  br{
+    padding: 0;
+  }
+  dt{
+    float: left;
+    font-weight: 800;
+    padding: 0.15rem 0;
+    min-width: 11rem;
+    clear: both;
+  }
+  dd{
+    padding-top: 0.15rem;
+    float: left;
+  }
+  dl{
     p{
-      margin-bottom: 1.5rem;
+      margin: 0.5rem 0;
+      color: #bbb;
+      font-weight: 500;
+      text-transform: uppercase;
+      border-bottom: 1px solid #ddd;
+      i{
+        margin-right: 0.5rem;
+        vertical-align: middle;
+      }
     }
-    h3{
-      margin-bottom: 0.5rem;
-    }
+    margin-bottom: 1rem;
+    @include clearfix;
   }
 }
+

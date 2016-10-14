@@ -4,7 +4,11 @@
   right: 1em;
   z-index: 100;
   line-height:1.6em;
-  @include debug();
+}
+
+.results__space{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   @include containter();
 }
 
@@ -26,18 +30,6 @@
   padding: 0.5em 1em 0.4em 1em;
 }
 
-.results__download{
-  position: absolute;
-  right: 1em;
-  top: 10px;
-  font-size: 1em;
-  font-weight: 300;
-  i{
-    margin-top: 3px;
-    margin-right: 10px;
-  }
-}
-
 .stats{
   clear: both;
   overflow: hidden;
@@ -48,6 +40,9 @@
   font-size: 0.85em;
   clear: both;
   float: left;
+  &--button{
+    line-height: 2.5rem;
+  }
 }
 
 .stat__value{
@@ -72,7 +67,7 @@
   .zebra {
     opacity: 0.5;
     &--odd {
-      fill: #ddd;
+      fill: #e9e9e9;
     }
     &--even {
       fill: none;
@@ -85,6 +80,14 @@
   font-weight: 300;
 }
 
+.results__divider--first {
+	top:144px;
+}
+
+.results__divider--second {
+	top: 350px;
+}
+
 .chart__axis-ticks{
   font-size: 0.8em;
   font-weight: 300;
@@ -92,8 +95,7 @@
 }
 
 .chart__bar{
-  fill: #aaa;
-  stroke: #777;
+  fill: $tiertiary-color;
 }
 
 .calculator__link-container {
@@ -119,7 +121,32 @@
 
 .results__divider {
   background-color: lighten($secondary-color, 15);
-  height: 2px;
+  height: 1px;
   left:0;
   margin: 0 -1em 0 -1em;
+}
+
+.results__calc-launcher{
+/*  margin-top:0.5rem;
+  line-height: 1rem;
+  width: 100%;
+  padding: 0.5rem 0 0.3rem;
+  .results__calc-hover{
+    transform: translate(0, 4px);
+  }
+  &:hover{
+    .results__calc-hover{
+      transform: translate(0, 6px);
+      padding-bottom: 6px;    
+    }
+  }
+*/}
+
+.results__container--textbox{
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+.collecticon-download{
+  margin: 3px 10px 0 0;
 }

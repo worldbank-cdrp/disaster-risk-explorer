@@ -20,6 +20,7 @@ const paramFactory = function (options, active = null) {
 
   param.setActive = (key) => {
     let val = param.getOptions().find(o => o.key === key)
+
     active = val ? key : param.getDefault().key
   }
 
@@ -61,26 +62,37 @@ export function DataSelectionFactory (availableParams) {
   }
 }
 
-// Export version ready with the actual available parameters
-
 let availableParams = {
   metric: [
-    {key: 'risk', value: 'Risk'},
     {key: 'loss', value: 'Loss'},
+    {key: 'risk', value: 'Hazard'},
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
-    {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'}
+    {key: 'windstorm', value: 'WS'},
+    {key: 'earthquake', value: 'EQ'},
+    {key: 'flood', value: 'FL'}
+  ],
+  return: [
+    {key: 'AAL', value: 'AAL'},
+    {key: '100 Years', value: '100'},
+    {key: '250 Years', value: '250'},
+    {key: '500 Years', value: '500'},
+    {key: '1000 Years', value: '1000'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
     {key: 'admin1', value: 'Admin Level 1'},
-    {key: 'km10', value: '0km Grids'}
+    {key: 'km10', value: '10km Grids'}
+  ],
+  opacity: [
+    {key: 'full', value: 'Full'},
+    {key: 'medium', value: 'Medium'},
+    {key: 'low', value: 'Low'}
   ],
   basemap: [
     {key: 'basic', value: 'Basic'},
-    {key: 'special', value: 'Special'}
+    {key: 'special', value: 'Satellite'}
   ]
 }
 

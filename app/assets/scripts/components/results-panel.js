@@ -1,36 +1,25 @@
 import React from 'react'
+import multiDownload from 'multi-download'
 
-import { toggleCalculator } from '../actions'
+import { showModalCalc, newCalcId } from '../actions'
+import { adminNames, graphCols } from '../constants'
+import { getMapId } from '../utils/map-id'
+import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
 
 import BarChart from './charts/bar-chart'
-import BuildingCalculator from './building-calculator'
 
 const Results = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
-
-    calculatorOpen: React.PropTypes.bool,
-    data: React.PropTypes.object,
-    conversion: React.PropTypes.string,
-    sliderValue: React.PropTypes.number
-  },
-
-  toggleCalculator: function (e) {
-    e.preventDefault()
-    const visibility = !this.props.calculatorOpen
-    this.props.dispatch(toggleCalculator(visibility))
+    queryParams: React.PropTypes.object,
+    data: React.PropTypes.object
   },
 
   deleteThis: function () {
     return (
       <section className='results'>
-        <h2 className='results__title'>Title</h2>
-          <div className='results__container'>
-            <h3 className='subtitle results__subtitle'>This is a dummy title</h3>
-            <p>More dummy content</p>
-          </div>
       </section>
     )
   },
@@ -41,17 +30,26 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+    let adminName = d.id
+    adminName.length === 2
+      ? adminName = adminNames[adminName]
+      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
 
-    const data = [
-      {value: Math.round(d.RP_10 / 1000000), name: 'RP 10'},
-      {value: Math.round(d.RP_50 / 1000000), name: 'RP 50'},
-      {value: Math.round(d.RP_100 / 1000000), name: 'RP 100'},
-      {value: Math.round(d.RP_250 / 1000000), name: 'RP 250'},
-      {value: Math.round(d.RP_500 / 1000000), name: 'RP 500'},
-      {value: Math.round(d.RP_1000 / 1000000), name: 'RP 1000'}
-    ]
+    const risk = this.props.dataSelection.risk.getActive().value
+    const admin = this.props.dataSelection.admin.getActive().key
+
+    let yTitle = 'Billions (US$)'
+    let valDenominator = 1000000000
+    if (admin === 'admin1') {
+      yTitle = 'Millions (US$)'
+      valDenominator = 1000000
+    }
+
+    const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
+    const data = rps.map((rp) => {
+      const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
+      return {value: Number((value / valDenominator).toFixed(2)), name: rp}
+    })
 
     let margin = {
       top: 16,
@@ -62,55 +60,53 @@ const Results = React.createClass({
 
     return (
       <div>
-        {this.props.calculatorOpen
-        ? <BuildingCalculator
-            selectedCode={d.Country}
-            attributes={this.props.data}
-            conversion={this.props.conversion}
-            sliderValue={this.props.sliderValue}
-            calculatorOpen={this.props.calculatorOpen}
-            dispatch={this.props.dispatch} />
-        : ''}
         <section className='results'>
-          <h2 className='results__title'>{title}<button className='button button_results results__download'><i className='collecticon collecticon-download' />{t('Download Profile')}</button></h2>
-            <div className='results__container'>
-              <h3 className='subtitle results__subtitle'>Exposure</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>GDP</dt>
-                <dd className='stat__value unimplemented'>$45 Billion</dd>
-                <dt className='stat__attribute'>Building Stock Exposure</dt>
-                <dd className='stat__value unimplemented'>$34 Million</dd>
-              </dl>
+          <div className='results__space'>
+            <h2 className='results__title'>{adminName}</h2>
+              <div className='results__container'>
+                <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
+                <dl className='stats'>
+                  <dt className='stat__attribute'>GDP</dt>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
+                  <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
+                </dl>
 
-              <div className='results__divider results__divider--first'></div>
+                <div className='results__divider results__divider--first'></div>
 
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
-              <dl className='stats'>
-                <dt className='stat__attribute'>Average Annual Loss</dt>
-                <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
-                <dt className='stat__attribute'>Probable loss over time</dt>
-                <dd className='stat__value unimplemented'>$4 Billion</dd>
-                <dd className='stat__value stat__value--chart stat__value--last'>
-                  <BarChart
-                    data={data}
-                    margin={margin}
-                    yTitle='Millions (US$)'
-                    xTitle='Return Period'
-                  />
-                </dd>
-              </dl>
-
-              <div className='results__divider results__divider--second'></div>
-
-              <h3 className='subtitle results__subtitle results__subtitle--secondary'>Risk</h3>
-              <article className='calculator__link-container'>
-                <a href='#' onClick={this.toggleCalculator}>Building Stock Conversion Calculator</a>
-              </article>
-
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <dl className='stats'>
+                <div>
+                    <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
+                    <dd className='stat__value'>
+                      ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
+                    </dd>
+                  </div>
+                  <dt className='stat__attribute'>{t('Probable Maximum Loss')}</dt>
+                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
+                  <dd className='stat__value stat__value--chart stat__value--last'>
+                    <BarChart
+                      data={data}
+                      margin={margin}
+                      yTitle={yTitle}
+                      xTitle='Return Period'
+                    />
+                  </dd>
+                </dl>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Country Profile PDF')}</button>
+              </div>
             </div>
+          <button onClick={() =>
+            this.props.dispatch(showModalCalc()) &&
+            this.props.dispatch(newCalcId(d.id))
+          } className='button button__map button--full'><span className='results__calc-hover'><i className='collecticon collecticon-expand-top-left' />{t('Launch cost and benefit calculator')}</span></button>
         </section>
       </div>
     )
+  },
+
+  handleDownload: function () {
+    multiDownload([`assets/data/pdfs/${this.props.data.id}.pdf`])
   }
 })
 
