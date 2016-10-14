@@ -18,10 +18,11 @@ export function getMapDescrip (dataSelection) {
   risk = risk.charAt(0).toUpperCase() + risk.slice(1)
   const metric = dataSelection.metric.getActive().value
   const rp = dataSelection.return.getActive().value
+  const mapId = getMapId(dataSelection)
 
-  let descrip = ''
-  if (metric === 'Exposure') descrip = 'Building Stock Exposure'
-  else descrip = `${risk} ${metric}, ${rp}-Year Return Period`
-
-  return descrip
+  if (mapId.substr(mapId.length - 3) === 'AAL') {
+    return `${risk} ${metric}, Average Annual Loss`
+  } else if (metric === 'Exposure') {
+    return 'Building Stock Exposure'
+  } else return `${risk} ${metric}, ${rp}-Year Return Period`
 }
