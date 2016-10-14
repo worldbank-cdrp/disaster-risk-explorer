@@ -59,7 +59,7 @@ var App = React.createClass({
 
     return this.state.vpTooSmall ? (
       <div className='nocando-viewport'>
-        <p>{t('screen small')}</p>
+        <p>{t('Screen is too small')}</p>
       </div>
     ) : (
       <div className={c('page', pageClass)}>

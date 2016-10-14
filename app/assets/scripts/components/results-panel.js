@@ -64,11 +64,11 @@ const Results = React.createClass({
           <div className='results__space'>
             <h2 className='results__title'>{adminName}</h2>
               <div className='results__container'>
-                <h3 className='subtitle results__subtitle'>Exposure</h3>
+                <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
                 <dl className='stats'>
                   <dt className='stat__attribute'>GDP</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
-                  <dt className='stat__attribute'>Building Stock Exposure</dt>
+                  <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
                 </dl>
 
@@ -77,12 +77,12 @@ const Results = React.createClass({
                 <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
                 <dl className='stats'>
                 <div>
-                    <dt className='stat__attribute'>Average Annual Loss</dt>
+                    <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
                     <dd className='stat__value'>
                       ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
                     </dd>
                   </div>
-                  <dt className='stat__attribute'>Probable loss over time</dt>
+                  <dt className='stat__attribute'>{t('Probable Maximum Loss')}</dt>
                   <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
@@ -93,13 +93,13 @@ const Results = React.createClass({
                     />
                   </dd>
                 </dl>
-                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Country Profile PDF')}</button>
               </div>
             </div>
           <button onClick={() =>
             this.props.dispatch(showModalCalc()) &&
             this.props.dispatch(newCalcId(d.id))
-          } className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          } className='button button__map button--full'><span className='results__calc-hover'><i className='collecticon collecticon-expand-top-left' />{t('Launch cost and benefit calculator')}</span></button>
         </section>
       </div>
     )

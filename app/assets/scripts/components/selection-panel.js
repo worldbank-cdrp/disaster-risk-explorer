@@ -62,7 +62,7 @@ const Selection = React.createClass({
 
     return (
       <section className='selection'>
-        <h2 className='legend__title'>Selection Options</h2>
+        <h2 className='legend__title'>{t('Selection Options')}</h2>
 
         <dl className='selection__panel'>
           <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-chart-line' />{t('metric')}</dt>

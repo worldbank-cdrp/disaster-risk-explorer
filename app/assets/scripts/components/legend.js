@@ -3,7 +3,7 @@ import { legends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
 import { getMapId, getMapDescrip } from '../utils/map-id'
-// import { t } from '../utils/i18n'
+import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
@@ -51,9 +51,9 @@ const Legend = React.createClass({
           {legendBlocks}
           {legendLabels}
           <figcaption className='legend__caption'>
-              <p>View {metric} By:</p>
-              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Absolute {metric}</span></div>
-              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>Relative {metric}</span></div>
+              <p>{t('View') + ' ' + metric + ' ' + t('by:')}</p>
+              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>{t('Absolute') + ' ' + metric}</span></div>
+              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>{t('Relative') + ' ' + metric}</span></div>
           </figcaption>
         </figure>
       </section>
