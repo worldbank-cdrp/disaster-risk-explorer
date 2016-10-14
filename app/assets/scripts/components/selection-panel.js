@@ -16,13 +16,28 @@ const Selection = React.createClass({
     queryParams: React.PropTypes.object
   },
 
-  onOptSelect: function (key, value, e) {
+  onOptSelect: function (key, value, admin, metric, hazard, currentRP, e) {
     e.preventDefault()
     const dataSelection = DataSelection(this.props.queryParams)
-    const metric = dataSelection.metric
-    if ((value === 'admin0' || value === 'admin1') && metric.getActive().key === 'risk') {
-      metric.setActive(metric.getDefault().key)
+
+    // If viewing hazard grids, switch to the default metric when switching back to admin levels
+    const dsMetric = dataSelection.metric
+    if ((value === 'admin0' || value === 'admin1') && dsMetric.getActive().key === 'risk') {
+      dsMetric.setActive(dsMetric.getDefault().key)
     }
+
+    if (key !== 'return' && key !== 'opacity' && key !== 'basemap') {
+      // Locally update existing key combination with the incoming menu change, before it reaches the state
+      if (key === 'risk') hazard = value
+      if (key === 'admin') admin = value
+      if (key === 'metric') metric = value
+      // If current RP value not in upcoming array of available RPs, switch to the first RP in the upcoming array
+      const nextRPs = availableRPs[admin][metric][hazard]
+      if (!_.contains(nextRPs, currentRP)) {
+        dataSelection.return.setActive(nextRPs[0])
+      }
+    }
+
     dataSelection[key].setActive(value)
     hashHistory.push(`/${getLanguage()}?${dataSelection.getQS()}`)
   },
@@ -31,10 +46,10 @@ const Selection = React.createClass({
     const dataSelection = DataSelection(this.props.queryParams)
     const admin = dataSelection.admin.getActive().key
     const metric = dataSelection.metric.getActive().key
+    const hazard = dataSelection.risk.getActive().key
+    const currentRP = dataSelection.return.getActive().value
     let rps = []
     if (paramKey === 'return' && metric !== 'exposure') {
-      const hazard = dataSelection.risk.getActive().value
-      // const rp = dataSelection.return.getActive().value
       rps = availableRPs[admin][metric][hazard]
     }
 
@@ -61,7 +76,7 @@ const Selection = React.createClass({
                 href='#'
                 title=''
                 data-hook='dropdown:close'
-                onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
+                onClick={this.onOptSelect.bind(null, paramKey, o.key, admin, metric, hazard, currentRP)}>
                   <span>{t(o.key)} {disabledText}</span>
               </a>
             </li>)

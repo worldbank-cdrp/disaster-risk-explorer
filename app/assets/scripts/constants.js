@@ -61,7 +61,7 @@ export const mapSettings = {
 export const availableRPs = {
   admin0: {
     loss: {
-      WS: [
+      windstorm: [
         'AAL',
         '25',
         '50',
@@ -70,7 +70,7 @@ export const availableRPs = {
         '500',
         '1000'
       ],
-      EQ: [
+      earthquake: [
         'AAL',
         '10',
         '50',
@@ -79,7 +79,7 @@ export const availableRPs = {
         '500',
         '1000'
       ],
-      FL: [
+      flood: [
         'AAL',
         '05',
         '10',
@@ -92,14 +92,14 @@ export const availableRPs = {
       ]
     },
     risk: {
-      WS: [],
-      EQ: [],
-      FL: []
+      windstorm: [],
+      earthquake: [],
+      flood: []
     }
   },
   admin1: {
     loss: {
-      WS: [
+      windstorm: [
         'AAL',
         '25',
         '50',
@@ -108,10 +108,10 @@ export const availableRPs = {
         '500',
         '1000'
       ],
-      EQ: [
+      earthquake: [
         'AAL'
       ],
-      FL: [
+      flood: [
         '05',
         '10',
         '25',
@@ -123,14 +123,14 @@ export const availableRPs = {
       ]
     },
     risk: {
-      WS: [],
-      EQ: [],
-      FL: []
+      windstorm: [],
+      earthquake: [],
+      flood: []
     }
   },
   'km10': {
     loss: {
-      WS: [
+      windstorm: [
         'AAL',
         '25',
         '50',
@@ -139,10 +139,10 @@ export const availableRPs = {
         '500',
         '1000'
       ],
-      EQ: [
+      earthquake: [
         'AAL'
       ],
-      FL: [
+      flood: [
         '05',
         '10',
         '25',
@@ -154,20 +154,20 @@ export const availableRPs = {
       ]
     },
     risk: {
-      WS: [
+      windstorm: [
         '100',
         '250',
         '500',
         '1000'
       ],
-      EQ: [
+      earthquake: [
         '100',
         '250',
         '500',
         '1000',
         '2500'
       ],
-      FL: [
+      flood: [
         '100',
         '250',
         '500',
