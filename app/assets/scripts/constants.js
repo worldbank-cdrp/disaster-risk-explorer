@@ -36,11 +36,11 @@ export const mapSettings = {
       id: 'satellite',
       url: 'mapbox://mapbox.satellite'}
   },
-  centerpoint: [-87, 13],
+  centerpoint: [-110.157227, 13.984711],
   initialZoom: {
-    admin0: 5,
-    admin1: 5,
-    km10: 5
+    admin0: 3,
+    admin1: 3,
+    km10: 3
   },
   selectedZoom: {
     admin0: 5.75,
@@ -48,8 +48,8 @@ export const mapSettings = {
     km10: 5.75
   },
   maxBounds: [
-    [-112, 0],
-    [-51, 28]
+    [-125, 0],
+    [-40, 28]
   ],
   opacityLevels: {
     full: 0.8,
@@ -231,7 +231,7 @@ export const adminNames = {
 const eqColors = chroma.scale(['#ffd671', '#7a1d0e']).colors(6)
 const wsColors = chroma.scale(['#CAF2BA', '#34413F']).colors(6)
 const flColors = chroma.scale(['#C2E8F1', '#2D3974']).colors(6)
-const exColors = chroma.scale(['white', 'black']).colors(6)
+const exColors = chroma.scale(['#ddd', '#111']).colors(6)
 
 export const legends = {
   admin0: {
