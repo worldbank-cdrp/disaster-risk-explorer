@@ -34,7 +34,9 @@ const Selection = React.createClass({
       // If current RP value not in upcoming list of available RPs, switch to the first RP in the upcoming array
       const nextRPs = availableRPs[admin][metric][hazard]
       if (!_.contains(nextRPs, currentRP)) {
-        dataSelection.return.setActive(nextRPs[0])
+        let nextRP = nextRPs[0]
+        nextRP = nextRP === 'AAL' ? 'AAL' : Number(nextRP).toString() + ' Years'
+        dataSelection.return.setActive(nextRP)
       }
     }
 
