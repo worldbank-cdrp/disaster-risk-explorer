@@ -72,9 +72,8 @@ export const Map = React.createClass({
       })
 
       const mapId = getMapId(this.props.dataSelection)
-      // Slice removes the years from disaster and loss columns, since legends
-      // statistics are currently derived from all years' data.
-      const colorScale = legends[this.activeSource.id][mapId.slice(0, 5)]
+      const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+      const colorScale = legends[this.activeSource.id][legendId]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
@@ -115,13 +114,13 @@ export const Map = React.createClass({
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
     }
 
     if (nextSourceName !== prevSourceName) {
       this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
@@ -285,8 +284,10 @@ export const Map = React.createClass({
     }
   },
 
-  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId) {
-    const colorScale = legends[nextSourceName][nextMapId.slice(0, 5)]
+  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, nextDS) {
+    const mapId = getMapId(nextDS)
+    const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+    const colorScale = legends[this.activeSource.id][legendId]
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',
         'circle-color', {
