@@ -200,14 +200,19 @@
 }
 
 .modal__body--about{
-  font-size: 0.9em;
+  font-size: 0.9rem;
   margin: 0 1rem;
-  max-width: 1000px;
+  max-width: 740px;
   p{
-    margin-bottom: 1rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1px;
   }
   h3{
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  br{
+    padding: 0;
   }
   dt{
     float: left;

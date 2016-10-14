@@ -31,35 +31,17 @@ const About = React.createClass({
             <div className='modal__body--about'>
               <h3>What is this?</h3>
               <p>
-                This tool allows you to explore and visualize Earthquake, Windstorm, & Flood data provided by the World Bank.
+                This tool allows you to explore and visualize Earthquake, Windstorm, & Flood data provided by the World Bank. The data presented as been recieved by The World Bank. Datasets included here showcase data for earthquake, windstorms, and flood hazards for Central American Countries. From there you can filter out the results by metric, return period, and depth.
               </p>
-              <h3>What Can I Explore?</h3>
               <p>
-                These Risks can be viewed and assessed by the following metrics:
+                For more details on a partical area, you can click on an area to view the area's GDP, exposure, AAL, and PML. To view how overall losses can be reduced, we include a Calculator you can launch at the bottom of the results.
               </p>
-              <dl>
-                <p><i className='collecticon collecticon-chart-line' /> Metrics</p>
-                <dt>Risk</dt>
-                <dd>The probability of the risk occuring.</dd>
-                <dt>Loss</dt>
-                <dd>The potential cost of disasters.</dd>
-                <dt>Exposure</dt>
-                <dd>The potential amount of infastructure affected.</dd>
-              </dl>
-              <dl>
-                <p><i className='collecticon collecticon-calendar' />Return Period</p>
-                <dt>Return Periods</dt>
-                <dd>The forecasted accumulated potential risk for a given amount of years.</dd>
-              </dl>
-              <dl>
-                <p><i className='collecticon-select-by' />Select Data By</p>
-                <dt>Country</dt>
-                <dd>View the data by Central American countries.</dd>
-                <dt>Admin One</dt>
-                <dd>View the data by Central American districts and states.</dd>
-                <dt>10km Grids</dt>
-                <dd>View the data by a 10km grid that covers the Central American area.</dd>
-              </dl>
+              <br></br>
+              <h3>Who can I contact for further information?</h3>
+              <p>
+                If you encounter any issues using the tool or would like further explanations on the data shown, please contact exampleJohn@example.com.
+              </p>
+              <br></br>
             </div>
           </section>
         </div>
