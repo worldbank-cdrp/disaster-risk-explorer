@@ -63,7 +63,7 @@ export function t (string, replace = {}) {
       'opacity': 'Data Visibility',
       'full': 'Full',
       'medium': 'Medium',
-      'low': 'None',
+      'low': 'Low',
 
       'basemap': 'Change Basemap',
       'basic': 'Light',
@@ -296,7 +296,7 @@ export function t (string, replace = {}) {
       'opacity': 'Visibilidad de los datos',
       'full': 'Full ES',
       'medium': 'Medium ES',
-      'low': 'None ES',
+      'low': 'Low ES',
 
       'basemap': 'Cambiar la mapa de base',
       'basic': 'Light ES',
