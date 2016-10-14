@@ -58,7 +58,7 @@ export const mapSettings = {
   }
 }
 
-export const rpCategories = {
+export const availableRPs = {
   admin0: {
     loss: {
       WS: [

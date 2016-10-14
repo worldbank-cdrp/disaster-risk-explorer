@@ -1,8 +1,10 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
 import c from 'classnames'
+import _ from 'underscore'
 
 import { getLanguage, t } from '../utils/i18n'
+import { availableRPs } from '../constants'
 import DataSelection from '../utils/data-selection'
 import Dropdown from './dropdown'
 
@@ -28,6 +30,12 @@ const Selection = React.createClass({
   renderDropdown: function (paramKey, active, dropOpts) {
     const dataSelection = DataSelection(this.props.queryParams)
     const admin = dataSelection.admin.getActive().key
+    const metric = dataSelection.metric.getActive().key
+    const hazard = dataSelection.risk.getActive().value
+    const rp = dataSelection.return.getActive().value
+
+    const rps = availableRPs[admin][metric][hazard]
+
     return (
       <Dropdown
         triggerElement='button'
@@ -37,18 +45,17 @@ const Selection = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
-            console.log(o)
-
             const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? 'disabled' : ''
             const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? `(disabled at ${admin})` : ''
 
-            const hiddenClass = ''
-            
+            const hiddenClass = (paramKey === 'return' && !_.contains(rps, o.value))
+            ? 'hidden' : ''
+
             return (<li key={o.key} className={disabledClass}>
               <a
-                className={c('drop__menu-item', disabledClass, {'drop__menu-item--active': o.key === active.key})}
+                className={c('drop__menu-item', disabledClass, hiddenClass, {'drop__menu-item--active': o.key === active.key})}
                 href='#'
                 title=''
                 data-hook='dropdown:close'
