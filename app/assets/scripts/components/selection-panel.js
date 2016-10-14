@@ -31,10 +31,12 @@ const Selection = React.createClass({
     const dataSelection = DataSelection(this.props.queryParams)
     const admin = dataSelection.admin.getActive().key
     const metric = dataSelection.metric.getActive().key
-    const hazard = dataSelection.risk.getActive().value
-    const rp = dataSelection.return.getActive().value
-
-    const rps = availableRPs[admin][metric][hazard]
+    let rps = []
+    if (paramKey === 'return' && metric !== 'exposure') {
+      const hazard = dataSelection.risk.getActive().value
+      // const rp = dataSelection.return.getActive().value
+      rps = availableRPs[admin][metric][hazard]
+    }
 
     return (
       <Dropdown

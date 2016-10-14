@@ -75,10 +75,15 @@ let availableParams = {
   ],
   return: [
     {key: 'AAL', value: 'AAL'},
+    {key: '5 Years', value: '05'},
+    {key: '10 Years', value: '10'},
+    {key: '25 Years', value: '25'},
+    {key: '50 Years', value: '50'},
     {key: '100 Years', value: '100'},
     {key: '250 Years', value: '250'},
     {key: '500 Years', value: '500'},
-    {key: '1000 Years', value: '1000'}
+    {key: '1000 Years', value: '1000'},
+    {key: '2500 Years', value: '2500'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
