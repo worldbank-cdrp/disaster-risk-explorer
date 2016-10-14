@@ -51,11 +51,11 @@ export function t (string, replace = {}) {
       '250 Years': '250 Years',
       '500 Years': '500 Years',
       '1000 Years': '1000 Years',
-
       'data by': 'Select data by',
       'admin0': 'Admin Level 0',
       'admin1': 'Admin Level 1',
       'km10': '10km Grids',
+      'AAL': 'AAL',
 
       'opacity': 'Data Visibility',
       'full': 'Full',
@@ -164,12 +164,11 @@ export function t (string, replace = {}) {
       '250 Years': '250 Years ES',
       '500 Years': '500 Years ES',
       '1000 Years': '1000 Years ES',
-
       'data by': 'Select data by ES',
       'admin0': 'Admin Level 0 ES',
       'admin1': 'Admin Level 1 ES',
       'km10': '10km Grids ES',
-
+      'AAL': 'AAL ES',
       'opacity': 'Data Visibility ES',
       'full': 'Full ES',
       'medium': 'Medium ES',

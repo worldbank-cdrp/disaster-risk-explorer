@@ -17,11 +17,17 @@ const Selection = React.createClass({
   onOptSelect: function (key, value, e) {
     e.preventDefault()
     const dataSelection = DataSelection(this.props.queryParams)
+    const metric = dataSelection.metric
+    if ((value === 'admin0' || value === 'admin1') && metric.getActive().key === 'risk') {
+      metric.setActive(metric.getDefault().key)
+    }
     dataSelection[key].setActive(value)
     hashHistory.push(`/${getLanguage()}?${dataSelection.getQS()}`)
   },
 
   renderDropdown: function (paramKey, active, dropOpts) {
+    const dataSelection = DataSelection(this.props.queryParams)
+    const admin = dataSelection.admin.getActive().key
     return (
       <Dropdown
         triggerElement='button'
@@ -31,14 +37,18 @@ const Selection = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
-            return (<li key={o.key}>
+            const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
+            ? 'disabled' : ''
+            const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
+            ? `(disabled at ${admin})` : ''
+            return (<li key={o.key} className={disabledClass}>
               <a
-                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})}
+                className={c('drop__menu-item', disabledClass, {'drop__menu-item--active': o.key === active.key})}
                 href='#'
                 title=''
                 data-hook='dropdown:close'
                 onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
-                  <span>{t(o.key)}</span>
+                  <span>{t(o.key)} {disabledText}</span>
               </a>
             </li>)
           })}

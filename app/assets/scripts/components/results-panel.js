@@ -2,7 +2,8 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
-import { adminNames } from '../constants'
+import { adminNames, graphCols } from '../constants'
+import { getMapId } from '../utils/map-id'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
 
@@ -29,9 +30,6 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    // const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell ' + d.code
-
     let adminName = d.id
     adminName.length === 2
       ? adminName = adminNames[adminName]
@@ -47,10 +45,10 @@ const Results = React.createClass({
       valDenominator = 1000000
     }
 
-    let rps = ['100', '250', '500', '1000']
+    const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
     const data = rps.map((rp) => {
       const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
-      return {value: value / valDenominator, name: 'RP ' + rp}
+      return {value: Number((value / valDenominator).toFixed(2)), name: rp}
     })
 
     let margin = {
