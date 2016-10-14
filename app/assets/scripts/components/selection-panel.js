@@ -31,7 +31,7 @@ const Selection = React.createClass({
       if (key === 'risk') hazard = value
       if (key === 'admin') admin = value
       if (key === 'metric') metric = value
-      // If current RP value not in upcoming array of available RPs, switch to the first RP in the upcoming array
+      // If current RP value not in upcoming list of available RPs, switch to the first RP in the upcoming array
       const nextRPs = availableRPs[admin][metric][hazard]
       if (!_.contains(nextRPs, currentRP)) {
         dataSelection.return.setActive(nextRPs[0])

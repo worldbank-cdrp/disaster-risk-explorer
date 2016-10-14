@@ -539,6 +539,17 @@ export const legends = {
       [475, eqColors[4]],
       [654, eqColors[5]]
     ],
+
+    // not calculated
+    LS_EQ_AAL: [
+      [29, eqColors[0]],
+      [155, eqColors[1]],
+      [245, eqColors[2]],
+      [346, eqColors[3]],
+      [475, eqColors[4]],
+      [654, eqColors[5]]
+    ],
+
     LS_FL: [
       [1, flColors[0]],
       [4, flColors[1]],
@@ -547,6 +558,17 @@ export const legends = {
       [17, flColors[4]],
       [27, flColors[5]]
     ],
+
+    // not calculated
+    LS_FL_AAL: [
+      [1, flColors[0]],
+      [4, flColors[1]],
+      [7, flColors[2]],
+      [11, flColors[3]],
+      [17, flColors[4]],
+      [27, flColors[5]]
+    ],
+
     LS_WS: [
       [0, wsColors[0]],
       [200, wsColors[1]],
@@ -555,6 +577,17 @@ export const legends = {
       [500, wsColors[4]],
       [600, wsColors[5]]
     ],
+
+    // not calculated
+    LS_WS_AAL: [
+      [0, wsColors[0]],
+      [200, wsColors[1]],
+      [300, wsColors[2]],
+      [400, wsColors[3]],
+      [500, wsColors[4]],
+      [600, wsColors[5]]
+    ],
+
     EX_BS: [
       [1205, exColors[0]],
       [218510, exColors[0]],
