@@ -37,10 +37,15 @@ const Selection = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
+            console.log(o)
+
             const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? 'disabled' : ''
             const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? `(disabled at ${admin})` : ''
+
+            const hiddenClass = ''
+            
             return (<li key={o.key} className={disabledClass}>
               <a
                 className={c('drop__menu-item', disabledClass, {'drop__menu-item--active': o.key === active.key})}
