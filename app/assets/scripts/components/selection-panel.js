@@ -1,7 +1,7 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
 import c from 'classnames'
-import _ from 'underscore'
+import _ from 'lodash'
 
 import { getLanguage, t } from '../utils/i18n'
 import { availableRPs } from '../constants'
@@ -33,7 +33,7 @@ const Selection = React.createClass({
       if (key === 'metric') metric = value
       // If current RP value not in upcoming list of available RPs, switch to the first RP in the upcoming array
       const nextRPs = availableRPs[admin][metric][hazard]
-      if (!_.contains(nextRPs, currentRP)) {
+      if (!_.includes(nextRPs, currentRP)) {
         let nextRP = nextRPs[0]
         nextRP = nextRP === 'AAL' ? 'AAL' : Number(nextRP).toString() + ' Years'
         dataSelection.return.setActive(nextRP)
@@ -69,7 +69,7 @@ const Selection = React.createClass({
             const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? `(disabled at ${admin})` : ''
 
-            const hiddenClass = (paramKey === 'return' && !_.contains(rps, o.value))
+            const hiddenClass = (paramKey === 'return' && !_.includes(rps, o.value))
             ? 'hidden' : ''
 
             return (<li key={o.key} className={disabledClass}>
