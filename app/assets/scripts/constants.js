@@ -58,6 +58,125 @@ export const mapSettings = {
   }
 }
 
+export const availableRPs = {
+  admin0: {
+    loss: {
+      windstorm: [
+        'AAL',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ],
+      earthquake: [
+        'AAL',
+        '10',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ],
+      flood: [
+        'AAL',
+        '05',
+        '10',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ]
+    },
+    risk: {
+      windstorm: [],
+      earthquake: [],
+      flood: []
+    }
+  },
+  admin1: {
+    loss: {
+      windstorm: [
+        'AAL',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ],
+      earthquake: [
+        'AAL'
+      ],
+      flood: [
+        '05',
+        '10',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ]
+    },
+    risk: {
+      windstorm: [],
+      earthquake: [],
+      flood: []
+    }
+  },
+  'km10': {
+    loss: {
+      windstorm: [
+        'AAL',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ],
+      earthquake: [
+        'AAL'
+      ],
+      flood: [
+        '05',
+        '10',
+        '25',
+        '50',
+        '100',
+        '250',
+        '500',
+        '1000'
+      ]
+    },
+    risk: {
+      windstorm: [
+        '100',
+        '250',
+        '500',
+        '1000'
+      ],
+      earthquake: [
+        '100',
+        '250',
+        '500',
+        '1000',
+        '2500'
+      ],
+      flood: [
+        '100',
+        '250',
+        '500',
+        '1000'
+      ]
+    }
+  }
+}
+
 export const graphCols = {
   'LS_EQ': [
     '10',
@@ -299,9 +418,6 @@ export const legends = {
       [1731530000, wsColors[4]],
       [2660390000, wsColors[5]]
     ],
-// !!!!!!!!!!!!
-// Fake HZ values, true values not yet attached
-// !!!!!!!!!!!!
     HZ_WS: [
       [8200000, wsColors[0]],
       [9500000, wsColors[1]],
@@ -327,65 +443,66 @@ export const legends = {
       [31057247818, exColors[5]]
     ],
     EX_BS: [
-      [1826419386, exColors[0]],
-      [2033345192, exColors[1]],
-      [30725918382, exColors[2]],
-      [37867998025, exColors[3]],
-      [40129868850, exColors[4]],
-      [73818356551, exColors[5]]
+      [40001548704, exColors[0]],
+      [70338592797, exColors[1]],
+      [86627446369, exColors[2]],
+      [90627446369, exColors[3]],
+      [108627446369, exColors[4]],
+      [199627446369, exColors[5]]
     ]
   },
   admin1: {
-    LS_EQ_AAL:
-     [ [ 1950.5664000000002, eqColors[0] ],
-       [ 6317435.384015991, eqColors[1] ],
-       [ 20942344.070599984, eqColors[2] ],
-       [ 41999629.08319992, eqColors[3] ],
-       [ 75439284.54280002, eqColors[4] ],
-       [ 125255440.56730002, eqColors[5] ] ],
-    LS_FL:
-     [ [ 28859, flColors[0] ],
-       [ 9539755, flColors[1] ],
-       [ 24298022, flColors[2] ],
-       [ 46824678, flColors[3] ],
-       [ 79036174, flColors[4] ],
-       [ 126559055, flColors[5] ] ],
-    LS_WS:
-     [ [ 0.110604, wsColors[0] ],
-       [ 53327461.49975797, wsColors[1] ],
-       [ 162470640.04151404, wsColors[2] ],
-       [ 297403995.764447, wsColors[3] ],
-       [ 462105082.90579414, wsColors[4] ],
-       [ 798351795.7017964, wsColors[5] ] ],
-    LS_WS_AAL:
-     [ [ 1399.0569020000005, wsColors[0] ],
-       [ 862825.0090050002, wsColors[1] ],
-       [ 2067265.5015009998, wsColors[2] ],
-       [ 4394840.799159001, wsColors[3] ],
-       [ 6714980.464884992, wsColors[4] ],
-       [ 8706085.689194, wsColors[5] ] ],
-    HZ_WS:
-     [ [ 0.110604, wsColors[0] ],
-       [ 53327461.49975797, wsColors[1] ],
-       [ 162470640.04151404, wsColors[2] ],
-       [ 297403995.764447, wsColors[3] ],
-       [ 462105082.90579414, wsColors[4] ],
-       [ 798351795.7017964, wsColors[5] ] ],
-    EX_GD:
-     [ [ 10722, exColors[0] ],
-       [ 421242500, exColors[1] ],
-       [ 1089652559, exColors[2] ],
-       [ 1920004466, exColors[3] ],
-       [ 3372830800, exColors[4] ],
-       [ 5865575208, exColors[5] ] ],
-    EX_BS:
-     [ [ 9281400, exColors[0] ],
-       [ 1493131974, exColors[1] ],
-       [ 4437543229, exColors[2] ],
-       [ 7435766293, exColors[3] ],
-       [ 12657014964, exColors[4] ],
-       [ 18956392798, exColors[5] ]
-     ]
+    LS_EQ_AAL: [
+      [1950.5664000000002, eqColors[0]],
+      [6317435.384015991, eqColors[1]],
+      [20942344.070599984, eqColors[2]],
+      [41999629.08319992, eqColors[3]],
+      [75439284.54280002, eqColors[4]],
+      [125255440.56730002, eqColors[5]]
+    ],
+    LS_FL: [
+      [28859, flColors[0]],
+      [9539755, flColors[1]],
+      [24298022, flColors[2]],
+      [46824678, flColors[3]],
+      [79036174, flColors[4]],
+      [126559055, flColors[5]]],
+    LS_WS: [
+      [0.110604, wsColors[0]],
+      [53327461.49975797, wsColors[1]],
+      [162470640.04151404, wsColors[2]],
+      [297403995.764447, wsColors[3]],
+      [462105082.90579414, wsColors[4]],
+      [798351795.7017964, wsColors[5]]],
+    LS_WS_AAL: [
+      [1399.0569020000005, wsColors[0]],
+      [862825.0090050002, wsColors[1]],
+      [2067265.5015009998, wsColors[2]],
+      [4394840.799159001, wsColors[3]],
+      [6714980.464884992, wsColors[4]],
+      [8706085.689194, wsColors[5]]],
+    HZ_WS: [
+      [0.110604, wsColors[0]],
+      [53327461.49975797, wsColors[1]],
+      [162470640.04151404, wsColors[2]],
+      [297403995.764447, wsColors[3]],
+      [462105082.90579414, wsColors[4]],
+      [798351795.7017964, wsColors[5]]],
+    EX_GD: [
+      [10722, exColors[0]],
+      [421242500, exColors[1]],
+      [1089652559, exColors[2]],
+      [1920004466, exColors[3]],
+      [3372830800, exColors[4]],
+      [5865575208, exColors[5]]],
+    EX_BS: [
+      [9281400, exColors[0]],
+      [1493131974, exColors[1]],
+      [4437543229, exColors[2]],
+      [7435766293, exColors[3]],
+      [12657014964, exColors[4]],
+      [18956392798, exColors[5]]
+    ]
   },
   km10: {
     HZ_EQ: [
@@ -420,6 +537,17 @@ export const legends = {
       [475, eqColors[4]],
       [654, eqColors[5]]
     ],
+
+    // not calculated
+    LS_EQ_AAL: [
+      [29, eqColors[0]],
+      [155, eqColors[1]],
+      [245, eqColors[2]],
+      [346, eqColors[3]],
+      [475, eqColors[4]],
+      [654, eqColors[5]]
+    ],
+
     LS_FL: [
       [1, flColors[0]],
       [4, flColors[1]],
@@ -428,6 +556,17 @@ export const legends = {
       [17, flColors[4]],
       [27, flColors[5]]
     ],
+
+    // not calculated
+    LS_FL_AAL: [
+      [1, flColors[0]],
+      [4, flColors[1]],
+      [7, flColors[2]],
+      [11, flColors[3]],
+      [17, flColors[4]],
+      [27, flColors[5]]
+    ],
+
     LS_WS: [
       [0, wsColors[0]],
       [200, wsColors[1]],
@@ -436,13 +575,24 @@ export const legends = {
       [500, wsColors[4]],
       [600, wsColors[5]]
     ],
+
+    // not calculated
+    LS_WS_AAL: [
+      [0, wsColors[0]],
+      [200, wsColors[1]],
+      [300, wsColors[2]],
+      [400, wsColors[3]],
+      [500, wsColors[4]],
+      [600, wsColors[5]]
+    ],
+
     EX_BS: [
-      [1205, exColors[0]],
-      [218510, exColors[0]],
-      [408217, exColors[0]],
-      [652777, exColors[0]],
-      [1229397, exColors[0]],
-      [2832190, exColors[0]]
+      [50000, exColors[0]],
+      [100000, exColors[1]],
+      [300000, exColors[2]],
+      [600000, exColors[3]],
+      [10000000, exColors[4]],
+      [100000000, exColors[5]]
     ]
   }
 }

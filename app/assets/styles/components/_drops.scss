@@ -235,6 +235,9 @@
         color: rgba(0, 0, 0, 0.3);
       }
     }
+    &.hidden {
+      display: none;
+    }
     &:hover,
     &:focus {
       background-color: tint($primary-color, 92%);
