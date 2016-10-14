@@ -26,7 +26,9 @@ const Selection = React.createClass({
       dsMetric.setActive(dsMetric.getDefault().key)
     }
 
-    if (key !== 'return' && key !== 'opacity' && key !== 'basemap') {
+    if (key !== 'return' && key !== 'opacity' && key !== 'basemap' && // ...continued:
+       // Exclusive Or: neither upcoming nor existing selection can be 'exposure'
+       ((metric !== 'exposure') && !(metric !== 'exposure')) || (!(metric !== 'exposure') && (metric !== 'exposure'))) {
       // Locally update existing key combination with the incoming menu change, before it reaches the state
       if (key === 'risk') hazard = value
       if (key === 'admin') admin = value
