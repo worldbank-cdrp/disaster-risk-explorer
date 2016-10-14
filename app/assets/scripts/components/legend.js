@@ -3,7 +3,7 @@ import { legends, mapSettings } from '../constants'
 
 import { shortenNumber } from '../utils/format'
 import { getMapId, getMapDescrip } from '../utils/map-id'
-// import { t } from '../utils/i18n'
+import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
@@ -20,7 +20,8 @@ const Legend = React.createClass({
 
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
-    let legend = legends[activeSource][mapId.slice(0, 5)]
+    const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+    const legend = legends[activeSource][legendId]
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
 
@@ -50,9 +51,9 @@ const Legend = React.createClass({
           {legendBlocks}
           {legendLabels}
           <figcaption className='legend__caption'>
-              <p>View {metric} By:</p>
-              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>Absolute {metric}</span></div>
-              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>Relative {metric}</span></div>
+              <p>{t('View') + ' ' + metric + ' ' + t('by:')}</p>
+              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>{t('Absolute') + ' ' + metric}</span></div>
+              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>{t('Relative') + ' ' + metric}</span></div>
           </figcaption>
         </figure>
       </section>
