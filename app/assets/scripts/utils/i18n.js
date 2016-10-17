@@ -103,8 +103,8 @@ export function t (string, replace = {}) {
       'Percent of buildings': 'Percent of buildings',
 
       'Building Stocks Converted': 'Building Stocks Converted',
-      'are': 'are',
-      'with': 'with',
+      'are retrofitted with': 'Are retrofitted with',
+      'are replaced with': 'Are replaced with',
 
       'Results': 'Results',
       'Reduction of overall AAL': 'Reduction of overall AAL',
@@ -337,8 +337,8 @@ export function t (string, replace = {}) {
       'Percent of buildings': 'Porcentaje de edificios',
 
       'Building Stocks Converted': 'Valor de edificios convertido',
-      'are': 'son',
-      'with': 'con',
+      'are retrofitted with': 'Reconstruido con',
+      'are replaced with': 'Reemplazado con',
 
       'Results': 'Resultados',
       'Reduction of overall AAL': 'Reducción total de la Pérdida Media Anual',

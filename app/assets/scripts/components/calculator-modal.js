@@ -222,7 +222,7 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>{t('Building Stocks Converted')}</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
-              <div className='calculator__divider-broken-label'>{t('are')} {(conversion === 'retrofit' ? t('retrofitted') : t('replaced'))} {t('with')}</div>
+              <div className='calculator__divider-broken-label'>{(conversion === 'retrofit' ? t('are retrofitted with') : t('are replaced with'))}</div>
               <div className='calculator__divider-broken right'></div>
               <div className='calculator__description bottom'>{data.buildingTo}</div>
             </div>
