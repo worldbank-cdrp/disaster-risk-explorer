@@ -70,6 +70,7 @@ export function t (string, replace = {}) {
       'special': 'Satellite Imagery',
 
       // Legend
+      'Year Return Period': 'Year Return Period',
       'View': 'View',
       'by:': 'by:',
       'Absolute': 'Absolute',
@@ -269,7 +270,7 @@ export function t (string, replace = {}) {
       'Selection Options': 'Opciones de selección',
 
       'metric': 'Métrico',
-      'loss': 'Pérdida Media Anual',
+      'loss': 'Pérdida',
       'exposure': 'Exposición',
       'hazard': 'Amenaza',
 
@@ -303,6 +304,7 @@ export function t (string, replace = {}) {
       'special': 'Imagenes Satelitales',
 
       // Legend
+      'Year Return Period': 'Year Return Period',
       'View': 'Ver',
       'by:': 'por:',
       'Absolute': 'Absoluto',
