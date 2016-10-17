@@ -134,7 +134,7 @@ export const Map = React.createClass({
     // Conditional zoom level logic
     // Zoom to and select parent country when switching from admin1 to admin0
     if (nextSelected && prevSourceName === 'admin1' && nextSourceName === 'admin0') {
-      const parent = countryExtents.admin1[prevSelected.NAME_1].parent
+      const parent = countryExtents.admin1[prevSelected.id].parent
       this._map.fitBounds(countryExtents.admin0[parent].extent, {
         padding: 150
       })
