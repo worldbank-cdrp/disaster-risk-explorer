@@ -19,7 +19,8 @@ export const Map = React.createClass({
     dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
-    selected: React.PropTypes.object
+    selected: React.PropTypes.object,
+    mapType: React.PropTypes.string
   },
 
   _popup: null,
@@ -71,8 +72,10 @@ export const Map = React.createClass({
         url: source.url
       })
 
-      const mapId = getMapId(this.props.dataSelection)
-      const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+      const metric = this.props.dataSelection.metric.getActive().key
+      const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
+      const mapId = getMapId(this.props.dataSelection) + suffix
+      const legendId = mapId.substr(mapId.length - 3) === 'AAL' || mapId.substr(mapId.length - 5) === 'AAL_R' ? mapId : mapId.slice(0, 5) + suffix
       const colorScale = legends[this.activeSource.id][legendId]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
@@ -109,18 +112,22 @@ export const Map = React.createClass({
       this._adjustOpacity(nextOpacity)
     }
 
-    const nextMapId = getMapId(nextProps.dataSelection)
-    const prevMapId = getMapId(this.props.dataSelection)
+    let nextMapId = getMapId(nextProps.dataSelection)
+    let prevMapId = getMapId(this.props.dataSelection)
+    const metric = this.props.dataSelection.metric.getActive().key
+    const suffix = (nextProps.mapType === 'relative' && metric === 'loss') ? '_R' : ''
+    nextMapId += suffix
+    prevMapId += suffix
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, suffix)
     }
 
     if (nextSourceName !== prevSourceName) {
       this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, suffix)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
@@ -284,9 +291,8 @@ export const Map = React.createClass({
     }
   },
 
-  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, nextDS) {
-    const mapId = getMapId(nextDS)
-    const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, suffix) {
+    const legendId = nextMapId.substr(nextMapId.length - 3) === 'AAL' || nextMapId.substr(nextMapId.length - 5) === 'AAL_R' ? nextMapId : nextMapId.slice(0, 5) + suffix
     const colorScale = legends[this.activeSource.id][legendId]
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',

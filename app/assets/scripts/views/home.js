@@ -44,6 +44,7 @@ var Home = React.createClass({
         <Map
           dispatch={this.props.dispatch}
           mapSource={mapSource}
+          mapType={this.props.mapType}
           dataSelection={dataSelection}
           selected={this.props.selected} />
         <Selection

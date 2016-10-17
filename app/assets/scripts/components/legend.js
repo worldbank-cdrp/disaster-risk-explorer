@@ -16,6 +16,7 @@ const Legend = React.createClass({
   },
 
   toggleMapType: function (mapType) {
+    console.log(mapType)
     this.props.dispatch(toggleMapType(mapType))
   },
 

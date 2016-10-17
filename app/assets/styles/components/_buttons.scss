@@ -7,11 +7,11 @@
   font-size: 0.9rem;
   padding: 0.2rem 0.65rem 0.2rem;
   min-width: 2rem;
-  background: none; 
+  background: none;
   text-shadow: none;
   border: 1px solid #bbb;
   border-radius: $base-border-radius;
-/*  font-weight: $base-font-bold; */  
+/*  font-weight: $base-font-bold; */
   cursor: pointer;
   text-decoration: none;
 
@@ -118,6 +118,7 @@
 }
 
 .button--active{
+    pointer-events: none;
     background-color: darken($button-color, 8);
     &:hover{
       background-color: darken($button-color, 10);
@@ -168,4 +169,3 @@
 .button_results--right{
   border-left: 2px solid darken($primary-color, 15);
 }
-
