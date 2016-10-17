@@ -14,7 +14,8 @@ const Results = React.createClass({
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
     queryParams: React.PropTypes.object,
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
+    mapType: React.PropTypes.string
   },
 
   deleteThis: function () {
@@ -36,6 +37,7 @@ const Results = React.createClass({
       : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
 
     const risk = this.props.dataSelection.risk.getActive().value
+    const metric = this.props.dataSelection.metric.getActive().key
     const admin = this.props.dataSelection.admin.getActive().key
 
     let yTitle = 'Billions (US$)'
@@ -46,8 +48,9 @@ const Results = React.createClass({
     }
 
     const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
+    const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
     const data = rps.map((rp) => {
-      const value = d[`LS_${risk}_${rp}`] ? d[`LS_${risk}_${rp}`] : 0
+      const value = d[`LS_${risk}_${rp}${suffix}`] ? d[`LS_${risk}_${rp}${suffix}`] : 0
       return {value: Number((value / valDenominator).toFixed(2)), name: rp}
     })
 
@@ -82,8 +85,6 @@ const Results = React.createClass({
                       ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
                     </dd>
                   </div>
-                  <dt className='stat__attribute'>{t('Probable Maximum Loss')}</dt>
-                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
                       data={data}
