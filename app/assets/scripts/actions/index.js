@@ -51,6 +51,6 @@ export function newCalcId (id) {
   return { type: UPDATE_NEWCALCID, data: id }
 }
 
-export function toggleMapType (type) {
-  return { type: TOGGLE_MAP_TYPE, data: type }
+export function toggleMapType (mapType) {
+  return { type: TOGGLE_MAP_TYPE, data: mapType }
 }

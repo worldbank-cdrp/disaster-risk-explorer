@@ -1,4 +1,5 @@
 import React from 'react'
+import c from 'classnames'
 import { legends, mapSettings } from '../constants'
 import { toggleMapType } from '../actions'
 
@@ -14,12 +15,8 @@ const Legend = React.createClass({
     mapType: React.PropTypes.string
   },
 
-  selectAbsolute: function () {
-    this.props.dispatch(toggleMapType('absolute'))
-  },
-
-  selectRelative: function () {
-    this.props.dispatch(toggleMapType('relative'))
+  toggleMapType: function (mapType) {
+    this.props.dispatch(toggleMapType(mapType))
   },
 
   render: function () {
@@ -64,8 +61,16 @@ const Legend = React.createClass({
           {legendLabels}
           <figcaption className='legend__caption'>
               <p>{t('View') + ' ' + metric + ' ' + t('by:')}</p>
-              <div className='button header__language--toggle button__leftside button--active'><span className='header__language--text'>{t('Absolute') + ' ' + metric}</span></div>
-              <div className='button header__language--toggle button__rightside'><span className='header__language--text'>{t('Relative') + ' ' + metric}</span></div>
+              <div
+                onClick={this.toggleMapType.bind(null, 'absolute')}
+                className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': this.props.mapType === 'absolute'})}>
+                <span className='header__language--text'>{t('Absolute') + ' ' + metric}</span>
+              </div>
+              <div
+                onClick={this.toggleMapType.bind(null, 'relative')}
+                className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': this.props.mapType === 'relative'})}>
+                <span className='header__language--text'>{t('Relative') + ' ' + metric}</span>
+              </div>
           </figcaption>
         </figure>
       </section>
