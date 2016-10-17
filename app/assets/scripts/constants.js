@@ -582,143 +582,237 @@ export const legends = {
     ]
   },
   km10: {
-    HZ_EQ: [
-      [29, eqColors[0]],
-      [155, eqColors[1]],
-      [245, eqColors[2]],
-      [346, eqColors[3]],
-      [475, eqColors[4]],
-      [654, eqColors[5]]
-    ],
-    HZ_FL: [
-      [1, flColors[0]],
-      [4, flColors[1]],
-      [7, flColors[2]],
-      [11, flColors[3]],
-      [17, flColors[4]],
-      [27, flColors[5]]
-    ],
-    HZ_WS: [
-      [20, wsColors[0]],
-      [50, wsColors[1]],
-      [100, wsColors[2]],
-      [150, wsColors[3]],
-      [200, wsColors[4]],
-      [300, wsColors[5]]
-    ],
-    LS_EQ: [
-      [29, eqColors[0]],
-      [155, eqColors[1]],
-      [245, eqColors[2]],
-      [346, eqColors[3]],
-      [475, eqColors[4]],
-      [654, eqColors[5]]
-    ],
-    LS_EQ_R: [
-      [29, eqColors[0]],
-      [155, eqColors[1]],
-      [245, eqColors[2]],
-      [346, eqColors[3]],
-      [475, eqColors[4]],
-      [654, eqColors[5]]
-    ],
+      LS_EQ_AAL:
+       [ [ 0, eqColors[0] ],
+         [ 299, eqColors[1] ],
+         [ 900, eqColors[2] ],
+         [ 2121, eqColors[3] ],
+         [ 4800, eqColors[4] ],
+         [ 13743, eqColors[5] ] ],
+       LS_EQ_AAL_R:
+        [ [ 0, eqColors[0] ],
+          [ 299, eqColors[1] ],
+          [ 900, eqColors[2] ],
+          [ 2121, eqColors[3] ],
+          [ 4800, eqColors[4] ],
+          [ 13743, eqColors[5] ] ],
+      HZ_EQ:
+       [ [ 30, eqColors[0] ],
+         [ 123, eqColors[1] ],
+         [ 184, eqColors[2] ],
+         [ 256, eqColors[3] ],
+         [ 339, eqColors[4] ],
+         [ 469, eqColors[5] ] ],
+      LS_FL:
+       [ [ 179, flColors[0] ],
+         [ 38594, flColors[1] ],
+         [ 108662, flColors[2] ],
+         [ 209804, flColors[3] ],
+         [ 396146, flColors[4] ],
+         [ 916145, flColors[5] ] ],
+       LS_FL_R:
+        [ [ 179, flColors[0] ],
+          [ 38594, flColors[1] ],
+          [ 108662, flColors[2] ],
+          [ 209804, flColors[3] ],
+          [ 396146, flColors[4] ],
+          [ 916145, flColors[5] ] ],
+      HZ_FL:
+       [ [ 1, flColors[0] ],
+         [ 6, flColors[1] ],
+         [ 10, flColors[2] ],
+         [ 16, flColors[3] ],
+         [ 23, flColors[4] ],
+         [ 34, flColors[5] ] ],
+      LS_WS:
+       [ [ 0, wsColors[0] ],
+         [ 114, wsColors[1] ],
+         [ 925, wsColors[2] ],
+         [ 5394, wsColors[3] ],
+         [ 27135, wsColors[4] ],
+         [ 146333, wsColors[5] ] ],
+       LS_WS_R:
+        [ [ 0, wsColors[0] ],
+          [ 114, wsColors[1] ],
+          [ 925, wsColors[2] ],
+          [ 5394, wsColors[3] ],
+          [ 27135, wsColors[4] ],
+          [ 146333, wsColors[5] ] ],
+      LS_WS_AAL:
+       [ [ 0, wsColors[0] ],
+         [ 10, wsColors[1] ],
+         [ 79, wsColors[2] ],
+         [ 281, wsColors[3] ],
+         [ 852, wsColors[4] ],
+         [ 2964, wsColors[5] ] ],
+       LS_WS_AAL_R:
+        [ [ 0, wsColors[0] ],
+          [ 10, wsColors[1] ],
+          [ 79, wsColors[2] ],
+          [ 281, wsColors[3] ],
+          [ 852, wsColors[4] ],
+          [ 2964, wsColors[5] ] ],
+      HZ_WS:
+       [ [ 37, wsColors[0] ],
+         [ 75, wsColors[1] ],
+         [ 91, wsColors[2] ],
+         [ 104, wsColors[3] ],
+         [ 117, wsColors[4] ],
+         [ 137, wsColors[5] ] ],
+      EX_GD:
+       [ [ 94, exColors[0] ],
+         [ 3842, exColors[1] ],
+         [ 12870, exColors[2] ],
+         [ 27682, exColors[3] ],
+         [ 53114, exColors[4] ],
+         [ 107206, exColors[5] ] ],
+      EX_BS:
+       [ [ 1426, exColors[0] ],
+         [ 218596, exColors[1] ],
+         [ 409056, exColors[2] ],
+         [ 653782, exColors[3] ],
+         [ 1232555, exColors[4] ],
+         [ 2943369, exColors[5] ] ]
 
-    // not calculated
-    LS_EQ_AAL: [
-      [29, eqColors[0]],
-      [155, eqColors[1]],
-      [245, eqColors[2]],
-      [346, eqColors[3]],
-      [475, eqColors[4]],
-      [654, eqColors[5]]
-    ],
-    LS_EQ_AAL_R: [
-      [29, eqColors[0]],
-      [155, eqColors[1]],
-      [245, eqColors[2]],
-      [346, eqColors[3]],
-      [475, eqColors[4]],
-      [654, eqColors[5]]
-    ],
 
-    LS_FL: [
-      [1, flColors[0]],
-      [4, flColors[1]],
-      [7, flColors[2]],
-      [11, flColors[3]],
-      [17, flColors[4]],
-      [27, flColors[5]]
-    ],
-    LS_FL_R: [
-      [1, flColors[0]],
-      [4, flColors[1]],
-      [7, flColors[2]],
-      [11, flColors[3]],
-      [17, flColors[4]],
-      [27, flColors[5]]
-    ],
-
-    // not calculated
-    LS_FL_AAL: [
-      [1, flColors[0]],
-      [4, flColors[1]],
-      [7, flColors[2]],
-      [11, flColors[3]],
-      [17, flColors[4]],
-      [27, flColors[5]]
-    ],
-    LS_FL_AAL_R: [
-      [1, flColors[0]],
-      [4, flColors[1]],
-      [7, flColors[2]],
-      [11, flColors[3]],
-      [17, flColors[4]],
-      [27, flColors[5]]
-    ],
-
-    LS_WS: [
-      [0, wsColors[0]],
-      [200, wsColors[1]],
-      [300, wsColors[2]],
-      [400, wsColors[3]],
-      [500, wsColors[4]],
-      [600, wsColors[5]]
-    ],
-    LS_WS_R: [
-      [0, wsColors[0]],
-      [200, wsColors[1]],
-      [300, wsColors[2]],
-      [400, wsColors[3]],
-      [500, wsColors[4]],
-      [600, wsColors[5]]
-    ],
-
-    // not calculated
-    LS_WS_AAL: [
-      [0, wsColors[0]],
-      [200, wsColors[1]],
-      [300, wsColors[2]],
-      [400, wsColors[3]],
-      [500, wsColors[4]],
-      [600, wsColors[5]]
-    ],
-    LS_WS_AAL_R: [
-      [0, wsColors[0]],
-      [200, wsColors[1]],
-      [300, wsColors[2]],
-      [400, wsColors[3]],
-      [500, wsColors[4]],
-      [600, wsColors[5]]
-    ],
-
-    EX_BS: [
-      [50000, exColors[0]],
-      [100000, exColors[1]],
-      [300000, exColors[2]],
-      [600000, exColors[3]],
-      [10000000, exColors[4]],
-      [100000000, exColors[5]]
-    ]
+    //
+    // HZ_EQ: [
+    //   [29, eqColors[0]],
+    //   [155, eqColors[1]],
+    //   [245, eqColors[2]],
+    //   [346, eqColors[3]],
+    //   [475, eqColors[4]],
+    //   [654, eqColors[5]]
+    // ],
+    // HZ_FL: [
+    //   [1, flColors[0]],
+    //   [4, flColors[1]],
+    //   [7, flColors[2]],
+    //   [11, flColors[3]],
+    //   [17, flColors[4]],
+    //   [27, flColors[5]]
+    // ],
+    // HZ_WS: [
+    //   [20, wsColors[0]],
+    //   [50, wsColors[1]],
+    //   [100, wsColors[2]],
+    //   [150, wsColors[3]],
+    //   [200, wsColors[4]],
+    //   [300, wsColors[5]]
+    // ],
+    // LS_EQ: [
+    //   [29, eqColors[0]],
+    //   [155, eqColors[1]],
+    //   [245, eqColors[2]],
+    //   [346, eqColors[3]],
+    //   [475, eqColors[4]],
+    //   [654, eqColors[5]]
+    // ],
+    // LS_EQ_R: [
+    //   [29, eqColors[0]],
+    //   [155, eqColors[1]],
+    //   [245, eqColors[2]],
+    //   [346, eqColors[3]],
+    //   [475, eqColors[4]],
+    //   [654, eqColors[5]]
+    // ],
+    //
+    // // not calculated
+    // LS_EQ_AAL: [
+    //   [29, eqColors[0]],
+    //   [155, eqColors[1]],
+    //   [245, eqColors[2]],
+    //   [346, eqColors[3]],
+    //   [475, eqColors[4]],
+    //   [654, eqColors[5]]
+    // ],
+    // LS_EQ_AAL_R: [
+    //   [29, eqColors[0]],
+    //   [155, eqColors[1]],
+    //   [245, eqColors[2]],
+    //   [346, eqColors[3]],
+    //   [475, eqColors[4]],
+    //   [654, eqColors[5]]
+    // ],
+    //
+    // LS_FL: [
+    //   [1, flColors[0]],
+    //   [4, flColors[1]],
+    //   [7, flColors[2]],
+    //   [11, flColors[3]],
+    //   [17, flColors[4]],
+    //   [27, flColors[5]]
+    // ],
+    // LS_FL_R: [
+    //   [1, flColors[0]],
+    //   [4, flColors[1]],
+    //   [7, flColors[2]],
+    //   [11, flColors[3]],
+    //   [17, flColors[4]],
+    //   [27, flColors[5]]
+    // ],
+    //
+    // // not calculated
+    // LS_FL_AAL: [
+    //   [1, flColors[0]],
+    //   [4, flColors[1]],
+    //   [7, flColors[2]],
+    //   [11, flColors[3]],
+    //   [17, flColors[4]],
+    //   [27, flColors[5]]
+    // ],
+    // LS_FL_AAL_R: [
+    //   [1, flColors[0]],
+    //   [4, flColors[1]],
+    //   [7, flColors[2]],
+    //   [11, flColors[3]],
+    //   [17, flColors[4]],
+    //   [27, flColors[5]]
+    // ],
+    //
+    // LS_WS: [
+    //   [0, wsColors[0]],
+    //   [200, wsColors[1]],
+    //   [300, wsColors[2]],
+    //   [400, wsColors[3]],
+    //   [500, wsColors[4]],
+    //   [600, wsColors[5]]
+    // ],
+    // LS_WS_R: [
+    //   [0, wsColors[0]],
+    //   [200, wsColors[1]],
+    //   [300, wsColors[2]],
+    //   [400, wsColors[3]],
+    //   [500, wsColors[4]],
+    //   [600, wsColors[5]]
+    // ],
+    //
+    // // not calculated
+    // LS_WS_AAL: [
+    //   [0, wsColors[0]],
+    //   [200, wsColors[1]],
+    //   [300, wsColors[2]],
+    //   [400, wsColors[3]],
+    //   [500, wsColors[4]],
+    //   [600, wsColors[5]]
+    // ],
+    // LS_WS_AAL_R: [
+    //   [0, wsColors[0]],
+    //   [200, wsColors[1]],
+    //   [300, wsColors[2]],
+    //   [400, wsColors[3]],
+    //   [500, wsColors[4]],
+    //   [600, wsColors[5]]
+    // ],
+    //
+    // EX_BS: [
+    //   [50000, exColors[0]],
+    //   [100000, exColors[1]],
+    //   [300000, exColors[2]],
+    //   [600000, exColors[3]],
+    //   [10000000, exColors[4]],
+    //   [100000000, exColors[5]]
+    // ]
   }
 }
 

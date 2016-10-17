@@ -16,21 +16,18 @@ const fs = require('fs')
 const log = require('single-line-log').stderr
 const through2 = require('through2')
 const Geostats = require('geostats')
-const chroma = require('chroma-js')
-
 const geoParse = geojsonStream.parse()
 
-const makeLegends = (features, targets, numSteps, gradients) => {
+const makeLegends = (features, targets, numSteps) => {
   let legends = {}
   Object.keys(targets).forEach((target) => {
     log('Processing: ' + target)
     const cols = targets[target]
     let values = []
     cols.forEach((col) => {
-      let colValues = []
-      features.forEach((feat, i) => {
-        log('Processing cell: ' + i)
-        if (i % 3 === 0) colValues.push(feat.properties[col])
+      const colValues = features.map((feat, i) => {
+        log(`Processing column ${col}; Cell #${i}`)
+        return feat.properties[col]
       }).filter(function (value) {
         if (typeof value === 'undefined' || value === 0) {
           return false
@@ -39,13 +36,14 @@ const makeLegends = (features, targets, numSteps, gradients) => {
       })
       values = values.concat(colValues)
     })
-    const gradient = gradients[target]
-    let legend = new Geostats(values)
-    legend = legend.getClassQuantile(numSteps).map((step, i) => {
-      return [step, gradient(i / (numSteps - 1)).hex()]
-    })
-    legend.splice(-1, 1)
-    legends[target] = legend
+    if (values.length) {
+      let legend = new Geostats(values)
+      legend = legend.getClassQuantile(numSteps).map((step, i) => {
+        return [Math.floor(step), `eqColors[${i}]`]
+      })
+      legend.splice(-1, 1)
+      legends[target] = legend
+    }
   })
   return legends
 }
@@ -53,40 +51,35 @@ const makeLegends = (features, targets, numSteps, gradients) => {
 // ==========================
 // ----- inputs
 const targets = {
-  HZ_EQ: ['HZ_EQ_1000', 'HZ_EQ_100', 'HZ_EQ_2500', 'HZ_EQ_5000', 'HZ_EQ_500', 'HZ_EQ_250'],
-  HZ_FL: ['HZ_FL_1000', 'HZ_FL_1000_R', 'HZ_FL_100', 'HZ_FL_100_R', 'HZ_FL_10', 'HZ_FL_10_R', 'HZ_FL_250', 'HZ_FL_250_R', 'HZ_FL_25', 'HZ_FL_25_R', 'HZ_FL_500', 'HZ_FL_500_R', 'HZ_FL_50', 'HZ_FL_50_R', 'HZ_FL_5', 'HZ_FL_5_R'],
-  // HZ_WS: [],
+  LS_EQ: [],
+  LS_EQ_AAL: ['LS_EQ_AAL'],
+  HZ_EQ: ['HZ_EQ_100', 'HZ_EQ_250', 'HZ_EQ_500', 'HZ_EQ_1000', 'HZ_EQ_2500'],
+
+  LS_FL: ['LS_FL_05', 'LS_FL_10', 'LS_FL_25', 'LS_FL_50', 'LS_FL_100', 'LS_FL_250', 'LS_FL_500', 'LS_FL_1000'],
+  LS_FL_AAL: ['LS_FL_AAL'],
+  HZ_FL: ['HZ_FL_100', 'HZ_FL_250', 'HZ_FL_500', 'HZ_FL_1000'],
+
+  LS_WS: ['LS_WS_25', 'LS_WS_50', 'LS_WS_100', 'LS_WS_250', 'LS_WS_500', 'LS_WS_1000'],
+  LS_WS_AAL: ['LS_WS_AAL'],
+  HZ_WS: ['HZ_WS_100', 'HZ_WS_250', 'HZ_WS_500', 'HZ_WS_1000'],
 
   EX_GD: ['EX_GD'],
-  EX_IN: ['EX_IN'],
   EX_BS: ['EX_BS']
 }
+
 const numSteps = 6
-const gradients = {
-  HZ_EQ: chroma.scale(['rgb(253, 226, 145)', 'rgb(139, 48, 28)']),
-  HZ_FL: chroma.scale(['rgb(224, 239, 218)', 'rgb(60, 96, 91)']),
-  // HZ_WS: chroma.scale(['rgb(224, 239, 218)', 'rgb(29, 48, 91)']),
-
-  EX_GD: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)']),
-  EX_IN: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)']),
-  EX_BS: chroma.scale(['rgb(200, 200, 200)', 'rgb(40, 40, 40)'])
-}
-
-// const geoStringify = geojsonStream.stringify()
-// const w = fs.createWriteStream('../../../data/merged-grid-processed.geojson')
-
 let features = []
 let results = 0
 var c = through2({ objectMode: true }, function (feat, enc, callback) {
   results++
-  log('Loading result: ' + results)
+  log('Loading feature: ' + results)
   // console.log(feat)
-  features.push(feat)
+  if (results % 3 === 0) features.push(feat)
   callback()
 }).on('finish', () => {
-  const legends = makeLegends(features, targets, numSteps, gradients)
+  const legends = makeLegends(features, targets, numSteps)
   console.log(legends)
 })
 
 const inPath = '../../../data/merged-grid-3.geojson'
-fs.createReadStream(inPath).pipe(geoParse).pipe(c) // .pipe(geoStringify).pipe(w)
+fs.createReadStream(inPath).pipe(geoParse).pipe(c)
