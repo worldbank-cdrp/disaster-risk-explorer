@@ -72,10 +72,8 @@ export const Map = React.createClass({
         url: source.url
       })
 
-      const metric = this.props.dataSelection.metric.getActive().key
-      const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
-      const mapId = getMapId(this.props.dataSelection) + suffix
-      const legendId = mapId.substr(mapId.length - 3) === 'AAL' || mapId.substr(mapId.length - 5) === 'AAL_R' ? mapId : mapId.slice(0, 5) + suffix
+      const mapId = getMapId(this.props.dataSelection)
+      const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
       const colorScale = legends[this.activeSource.id][legendId]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
@@ -114,20 +112,22 @@ export const Map = React.createClass({
 
     let nextMapId = getMapId(nextProps.dataSelection)
     let prevMapId = getMapId(this.props.dataSelection)
-    const metric = this.props.dataSelection.metric.getActive().key
-    const suffix = (nextProps.mapType === 'relative' && metric === 'loss') ? '_R' : ''
-    nextMapId += suffix
-    prevMapId += suffix
+    const nextMetric = nextProps.dataSelection.metric.getActive().key
+    const prevMetric = this.props.dataSelection.metric.getActive().key
+    const nextSuffix = (nextProps.mapType === 'relative' && nextMetric === 'loss') ? '_R' : ''
+    const prevSuffix = (this.props.mapType === 'relative' && prevMetric === 'loss') ? '_R' : ''
+    nextMapId += nextSuffix
+    prevMapId += prevSuffix
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, suffix)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
     }
 
     if (nextSourceName !== prevSourceName) {
       this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, suffix)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
