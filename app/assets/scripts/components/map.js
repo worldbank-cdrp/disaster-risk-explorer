@@ -292,7 +292,7 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, suffix) {
-    const legendId = nextMapId.substr(nextMapId.length - 3) === 'AAL' || nextMapId.substr(nextMapId.length - 5) === 'AAL_R' ? nextMapId : nextMapId.slice(0, 5) + suffix
+    const legendId = /AAL/.test(nextMapId) ? nextMapId : nextMapId.slice(0, 5) + suffix
     const colorScale = legends[this.activeSource.id][legendId]
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',
