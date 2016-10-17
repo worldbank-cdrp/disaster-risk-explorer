@@ -22,14 +22,15 @@ const Legend = React.createClass({
   render: function () {
     const dataSelection = this.props.dataSelection
     const activeSource = this.props.dataSelection.admin.getActive().key
-    const mapId = getMapId(dataSelection)
     const title = getMapDescrip(dataSelection)
     const metric = dataSelection.metric.getActive().key
     const capMetric = metric.charAt(0).toUpperCase() + metric.slice(1)
 
+    const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
+    const mapId = getMapId(this.props.dataSelection) + suffix
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
-    const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+    const legendId = mapId.substr(mapId.length - 3) === 'AAL' || mapId.substr(mapId.length - 5) === 'AAL_R' ? mapId : mapId.slice(0, 5) + suffix
     const legend = legends[activeSource][legendId]
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
