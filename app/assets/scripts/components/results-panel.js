@@ -82,8 +82,6 @@ const Results = React.createClass({
                       ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
                     </dd>
                   </div>
-                  <dt className='stat__attribute'>{t('Probable Maximum Loss')}</dt>
-                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
                       data={data}
