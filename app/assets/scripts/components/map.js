@@ -19,7 +19,8 @@ export const Map = React.createClass({
     dataSelection: React.PropTypes.object,
 
     mapSource: React.PropTypes.object,
-    selected: React.PropTypes.object
+    selected: React.PropTypes.object,
+    mapType: React.PropTypes.string
   },
 
   _popup: null,
@@ -109,18 +110,24 @@ export const Map = React.createClass({
       this._adjustOpacity(nextOpacity)
     }
 
-    const nextMapId = getMapId(nextProps.dataSelection)
-    const prevMapId = getMapId(this.props.dataSelection)
+    let nextMapId = getMapId(nextProps.dataSelection)
+    let prevMapId = getMapId(this.props.dataSelection)
+    const nextMetric = nextProps.dataSelection.metric.getActive().key
+    const prevMetric = this.props.dataSelection.metric.getActive().key
+    const nextSuffix = (nextProps.mapType === 'relative' && nextMetric === 'loss') ? '_R' : ''
+    const prevSuffix = (this.props.mapType === 'relative' && prevMetric === 'loss') ? '_R' : ''
+    nextMapId += nextSuffix
+    prevMapId += prevSuffix
     const nextRisk = nextProps.dataSelection.risk.getActive().key
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
     }
 
     if (nextSourceName !== prevSourceName) {
       this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
-      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextProps.dataSelection)
+      this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
@@ -284,9 +291,8 @@ export const Map = React.createClass({
     }
   },
 
-  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, nextDS) {
-    const mapId = getMapId(nextDS)
-    const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+  _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, suffix) {
+    const legendId = /AAL/.test(nextMapId) ? nextMapId : nextMapId.slice(0, 5) + suffix
     const colorScale = legends[this.activeSource.id][legendId]
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',

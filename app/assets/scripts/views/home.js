@@ -29,7 +29,8 @@ var Home = React.createClass({
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
     unitCostOfConstruction: React.PropTypes.number,
-    newCalcId: React.PropTypes.string
+    newCalcId: React.PropTypes.string,
+    mapType: React.PropTypes.string
   },
 
   render: function () {
@@ -43,6 +44,7 @@ var Home = React.createClass({
         <Map
           dispatch={this.props.dispatch}
           mapSource={mapSource}
+          mapType={this.props.mapType}
           dataSelection={dataSelection}
           selected={this.props.selected} />
         <Selection
@@ -50,12 +52,15 @@ var Home = React.createClass({
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
         <Legend
-          dataSelection={dataSelection} />
+          dispatch={this.props.dispatch}
+          dataSelection={dataSelection}
+          mapType={this.props.mapType} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
           data={this.props.selected}
-          conversion={this.props.conversion} />
+          conversion={this.props.conversion}
+          mapType={this.props.mapType} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
@@ -88,7 +93,8 @@ function mapStateToProps (state) {
     conversion: state.modalCalc.conversion,
     sliderValue: state.modalCalc.sliderValue,
     unitCostOfConstruction: state.modalCalc.unitCostOfConstruction,
-    newCalcId: state.modalCalc.newCalcId
+    newCalcId: state.modalCalc.newCalcId,
+    mapType: state.legend.mapType
   }
 }
 

@@ -370,6 +370,22 @@ export const legends = {
       [1348522516.632502, eqColors[4]],
       [2637887479.683406, eqColors[5]]
     ],
+    LS_EQ_R: [
+      [351733.748, eqColors[0]],
+      [158507777.5, eqColors[1]],
+      [4036633701.600001, eqColors[2]],
+      [11574824302.32, eqColors[3]],
+      [21651967240.2, eqColors[4]],
+      [62084892860, eqColors[5]]
+    ],
+    LS_EQ_AAL_R: [
+      [1752269.29, eqColors[0]],
+      [2564578.752, eqColors[1]],
+      [335926428.06127995, eqColors[2]],
+      [527610320.623406, eqColors[3]],
+      [1348522516.632502, eqColors[4]],
+      [2637887479.683406, eqColors[5]]
+    ],
     HZ_EQ: [
       [38824, eqColors[0]],
       [224810, eqColors[1]],
@@ -394,6 +410,22 @@ export const legends = {
       [375781981.0340609, flColors[4]],
       [461055796.425975, flColors[5]]
     ],
+    LS_FL_R: [
+      [1558458, flColors[0]],
+      [36168377, flColors[1]],
+      [101195508, flColors[2]],
+      [164380629, flColors[3]],
+      [220058932, flColors[4]],
+      [325581708, flColors[5]]
+    ],
+    LS_FL_AAL_R: [
+      [48814136.22028, flColors[0]],
+      [74455954.916855, flColors[1]],
+      [121067492.145191, flColors[2]],
+      [136342933.514531, flColors[3]],
+      [375781981.0340609, flColors[4]],
+      [461055796.425975, flColors[5]]
+    ],
     HZ_FL: [
       [6097, flColors[0]],
       [23232, flColors[1]],
@@ -411,6 +443,22 @@ export const legends = {
       [11368933343, wsColors[5]]
     ],
     LS_WS_AAL: [
+      [8200000, wsColors[0]],
+      [9500000, wsColors[1]],
+      [417700000, wsColors[2]],
+      [556930000, wsColors[3]],
+      [1731530000, wsColors[4]],
+      [2660390000, wsColors[5]]
+    ],
+    LS_WS_R: [
+      [32236269, wsColors[0]],
+      [386835228, wsColors[1]],
+      [1107910757, wsColors[2]],
+      [2820340967, wsColors[3]],
+      [5980389237, wsColors[4]],
+      [11368933343, wsColors[5]]
+    ],
+    LS_WS_AAL_R: [
       [8200000, wsColors[0]],
       [9500000, wsColors[1]],
       [417700000, wsColors[2]],
@@ -460,7 +508,22 @@ export const legends = {
       [75439284.54280002, eqColors[4]],
       [125255440.56730002, eqColors[5]]
     ],
+    LS_EQ_AAL_R: [
+      [1950.5664000000002, eqColors[0]],
+      [6317435.384015991, eqColors[1]],
+      [20942344.070599984, eqColors[2]],
+      [41999629.08319992, eqColors[3]],
+      [75439284.54280002, eqColors[4]],
+      [125255440.56730002, eqColors[5]]
+    ],
     LS_FL: [
+      [28859, flColors[0]],
+      [9539755, flColors[1]],
+      [24298022, flColors[2]],
+      [46824678, flColors[3]],
+      [79036174, flColors[4]],
+      [126559055, flColors[5]]],
+    LS_FL_R: [
       [28859, flColors[0]],
       [9539755, flColors[1]],
       [24298022, flColors[2]],
@@ -474,7 +537,21 @@ export const legends = {
       [297403995.764447, wsColors[3]],
       [462105082.90579414, wsColors[4]],
       [798351795.7017964, wsColors[5]]],
+    LS_WS_R: [
+      [0.110604, wsColors[0]],
+      [53327461.49975797, wsColors[1]],
+      [162470640.04151404, wsColors[2]],
+      [297403995.764447, wsColors[3]],
+      [462105082.90579414, wsColors[4]],
+      [798351795.7017964, wsColors[5]]],
     LS_WS_AAL: [
+      [1399.0569020000005, wsColors[0]],
+      [862825.0090050002, wsColors[1]],
+      [2067265.5015009998, wsColors[2]],
+      [4394840.799159001, wsColors[3]],
+      [6714980.464884992, wsColors[4]],
+      [8706085.689194, wsColors[5]]],
+    LS_WS_AAL_R: [
       [1399.0569020000005, wsColors[0]],
       [862825.0090050002, wsColors[1]],
       [2067265.5015009998, wsColors[2]],
@@ -537,6 +614,14 @@ export const legends = {
       [475, eqColors[4]],
       [654, eqColors[5]]
     ],
+    LS_EQ_R: [
+      [29, eqColors[0]],
+      [155, eqColors[1]],
+      [245, eqColors[2]],
+      [346, eqColors[3]],
+      [475, eqColors[4]],
+      [654, eqColors[5]]
+    ],
 
     // not calculated
     LS_EQ_AAL: [
@@ -547,8 +632,24 @@ export const legends = {
       [475, eqColors[4]],
       [654, eqColors[5]]
     ],
+    LS_EQ_AAL_R: [
+      [29, eqColors[0]],
+      [155, eqColors[1]],
+      [245, eqColors[2]],
+      [346, eqColors[3]],
+      [475, eqColors[4]],
+      [654, eqColors[5]]
+    ],
 
     LS_FL: [
+      [1, flColors[0]],
+      [4, flColors[1]],
+      [7, flColors[2]],
+      [11, flColors[3]],
+      [17, flColors[4]],
+      [27, flColors[5]]
+    ],
+    LS_FL_R: [
       [1, flColors[0]],
       [4, flColors[1]],
       [7, flColors[2]],
@@ -566,8 +667,24 @@ export const legends = {
       [17, flColors[4]],
       [27, flColors[5]]
     ],
+    LS_FL_AAL_R: [
+      [1, flColors[0]],
+      [4, flColors[1]],
+      [7, flColors[2]],
+      [11, flColors[3]],
+      [17, flColors[4]],
+      [27, flColors[5]]
+    ],
 
     LS_WS: [
+      [0, wsColors[0]],
+      [200, wsColors[1]],
+      [300, wsColors[2]],
+      [400, wsColors[3]],
+      [500, wsColors[4]],
+      [600, wsColors[5]]
+    ],
+    LS_WS_R: [
       [0, wsColors[0]],
       [200, wsColors[1]],
       [300, wsColors[2]],
@@ -578,6 +695,14 @@ export const legends = {
 
     // not calculated
     LS_WS_AAL: [
+      [0, wsColors[0]],
+      [200, wsColors[1]],
+      [300, wsColors[2]],
+      [400, wsColors[3]],
+      [500, wsColors[4]],
+      [600, wsColors[5]]
+    ],
+    LS_WS_AAL_R: [
       [0, wsColors[0]],
       [200, wsColors[1]],
       [300, wsColors[2]],
