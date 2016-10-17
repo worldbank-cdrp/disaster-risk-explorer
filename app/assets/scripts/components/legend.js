@@ -24,8 +24,8 @@ const Legend = React.createClass({
     const activeSource = this.props.dataSelection.admin.getActive().key
     const mapId = getMapId(dataSelection)
     const title = getMapDescrip(dataSelection)
-    let metric = dataSelection.metric.getActive().key
-    metric = metric.charAt(0).toUpperCase() + metric.slice(1)
+    const metric = dataSelection.metric.getActive().key
+    const capMetric = metric.charAt(0).toUpperCase() + metric.slice(1)
 
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
@@ -59,17 +59,18 @@ const Legend = React.createClass({
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
-          <figcaption className='legend__caption'>
-              <p>{t('View') + ' ' + metric + ' ' + t('by:')}</p>
+          <figcaption
+            className={c('legend__caption', {'hidden': metric !== 'loss'})}>
+              <p>{t('View') + ' ' + capMetric + ' ' + t('by:')}</p>
               <div
                 onClick={this.toggleMapType.bind(null, 'absolute')}
                 className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': this.props.mapType === 'absolute'})}>
-                <span className='header__language--text'>{t('Absolute') + ' ' + metric}</span>
+                <span className='header__language--text'>{t('Absolute') + ' ' + capMetric}</span>
               </div>
               <div
                 onClick={this.toggleMapType.bind(null, 'relative')}
                 className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': this.props.mapType === 'relative'})}>
-                <span className='header__language--text'>{t('Relative') + ' ' + metric}</span>
+                <span className='header__language--text'>{t('Relative') + ' ' + capMetric}</span>
               </div>
           </figcaption>
         </figure>
