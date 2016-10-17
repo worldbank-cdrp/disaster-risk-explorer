@@ -59,7 +59,8 @@ var Home = React.createClass({
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
           data={this.props.selected}
-          conversion={this.props.conversion} />
+          conversion={this.props.conversion}
+          mapType={this.props.mapType} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
