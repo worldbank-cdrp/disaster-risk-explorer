@@ -29,7 +29,8 @@ var Home = React.createClass({
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
     unitCostOfConstruction: React.PropTypes.number,
-    newCalcId: React.PropTypes.string
+    newCalcId: React.PropTypes.string,
+    mapType: React.PropTypes.string
   },
 
   render: function () {
@@ -50,7 +51,9 @@ var Home = React.createClass({
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
         <Legend
-          dataSelection={dataSelection} />
+          dispatch={this.props.dispatch}
+          dataSelection={dataSelection}
+          mapType={this.props.mapType} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
@@ -88,7 +91,8 @@ function mapStateToProps (state) {
     conversion: state.modalCalc.conversion,
     sliderValue: state.modalCalc.sliderValue,
     unitCostOfConstruction: state.modalCalc.unitCostOfConstruction,
-    newCalcId: state.modalCalc.newCalcId
+    newCalcId: state.modalCalc.newCalcId,
+    mapType: state.legend.mapType
   }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { legends, mapSettings } from '../constants'
+import { toggleMapType } from '../actions'
 
 import { shortenNumber } from '../utils/format'
 import { getMapId, getMapDescrip } from '../utils/map-id'
@@ -7,7 +8,18 @@ import { t } from '../utils/i18n'
 
 const Legend = React.createClass({
   propTypes: {
-    dataSelection: React.PropTypes.object
+    dispatch: React.PropTypes.func,
+    dataSelection: React.PropTypes.object,
+
+    mapType: React.PropTypes.string
+  },
+
+  selectAbsolute: function () {
+    this.props.dispatch(toggleMapType('absolute'))
+  },
+
+  selectRelative: function () {
+    this.props.dispatch(toggleMapType('relative'))
   },
 
   render: function () {
