@@ -10,6 +10,7 @@ import MapPopup from './map-popup'
 
 import { mapSources, mapSettings, legends, countryExtents, adminNames } from '../constants'
 import { getMapId, getMapDescrip } from '../utils/map-id'
+import { t } from '../utils/i18n'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
@@ -165,6 +166,7 @@ export const Map = React.createClass({
     let popupContent = document.createElement('div')
     const dataSelection = this.props.dataSelection
     const mapId = getMapId(dataSelection)
+
     const mapDescrip = getMapDescrip(dataSelection)
 
     // in final data, the country code should have the same key in grids and boundaries
@@ -173,7 +175,7 @@ export const Map = React.createClass({
       : feature.properties.country
     adminName.length === 2
       ? adminName = adminNames[adminName]
-      : adminName = `${adminNames[adminName]}, ${sz[adminName.substring(0, 2)]}`
+      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
 
     render(<MapPopup
              adminName={adminName}
