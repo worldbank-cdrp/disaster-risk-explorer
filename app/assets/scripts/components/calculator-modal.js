@@ -153,7 +153,7 @@ const Calculator = React.createClass({
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
     // A little nonsense to create single roots for react
-    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
+    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD M')
     const TopFive = data.topFiveAAL.map((building, i) => {
       return [
         <dl key={i} className='calc__list'>
