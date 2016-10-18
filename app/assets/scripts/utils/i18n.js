@@ -27,7 +27,7 @@ export function t (string, replace = {}) {
 
       // Site Info
       'Disaster Risk Explorer for Central America': 'Disaster Risk Explorer for Central America',
-      'About the project': 'About the project',
+      'About': 'About',
       'Screen is too small': 'Screen is too small',
       'Show/hide parameter options': 'Show/hide parameter options',
 
@@ -55,8 +55,8 @@ export function t (string, replace = {}) {
       '1000 Years': '1000 Years',
       '2500 Years': '2500 Years',
       'data by': 'Select data by',
-      'admin0': 'Admin Level 0',
-      'admin1': 'Admin Level 1',
+      'admin0': 'National',
+      'admin1': 'Sub-National',
       'km10': '10km Grids',
       'AAL': 'AAL',
 
@@ -262,7 +262,7 @@ export function t (string, replace = {}) {
 
       // Site Info
       'Disaster Risk Explorer for Central America': 'Explorador de Riesgo de Desastres para Centroamérica',
-      'About the project': 'Sobre el proyecto',
+      'About': 'Acerca',
       'screen small': 'Pantalla demasiado pequeña',
       'Show/hide parameter options': 'Mostrar/esconder opciones de parámetros',
 
@@ -290,8 +290,8 @@ export function t (string, replace = {}) {
       '1000 Years': '1000 Años',
       '2500 Years': '2500 Años',
       'data by': 'Seleccionar datos por',
-      'admin0': 'Nivel Administrativo 0',
-      'admin1': 'Nivel Administrativo 1',
+      'admin0': 'National',
+      'admin1': 'Sub-National',
       'km10': 'Cuadrículas de 10km',
       'AAL': 'PMA',
       'opacity': 'Visibilidad de los datos',

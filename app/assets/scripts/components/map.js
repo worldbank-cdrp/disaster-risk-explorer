@@ -173,7 +173,7 @@ export const Map = React.createClass({
       : feature.properties.country
     adminName.length === 2
       ? adminName = adminNames[adminName]
-      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
+      : adminName = `${adminNames[adminName]}, ${sz[adminName.substring(0, 2)]}`
 
     render(<MapPopup
              adminName={adminName}
