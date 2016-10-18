@@ -38,6 +38,8 @@ export function t (string, replace = {}) {
       'loss': 'Loss',
       'hazard': 'Hazard',
       'exposure': 'Exposure',
+      '(disabled at national level)': '(disabled at national level)',
+      '(disabled at national level)': '(disabled at subnational level)',
 
       'risk': 'Risk',
       'flood': 'Flood',
@@ -54,7 +56,7 @@ export function t (string, replace = {}) {
       '500 Years': '500 Years',
       '1000 Years': '1000 Years',
       '2500 Years': '2500 Years',
-      'data by': 'Select data by',
+      'data by': 'Level',
       'admin0': 'National',
       'admin1': 'Sub-National',
       'km10': '10km Grids',
@@ -67,14 +69,13 @@ export function t (string, replace = {}) {
 
       'basemap': 'Change Basemap',
       'basic': 'Light',
-      'special': 'Satellite Imagery',
+      'special': 'Satellite',
 
       // Legend
       'Year Return Period': 'Year Return Period',
-      'View': 'View',
-      'by:': 'by:',
-      'Absolute': 'Absolute',
-      'Relative': 'Relative',
+      'View by': 'View by:',
+      'Absolute': 'absolute values',
+      'Relative': 'relative values',
 
       // Results Panel
       'Billions (US$)': 'Billions (US$)',
@@ -290,6 +291,8 @@ export function t (string, replace = {}) {
       'loss': 'Pérdida',
       'exposure': 'Exposición',
       'hazard': 'Amenaza',
+      '(disabled at national level)': '(deshabilitado al nivel nacional)',
+      '(disabled at sub-national level)': '(deshabilitado al nivel subnacional)',
 
       'risk': 'Riesgo',
       'flood': 'Inundación',
@@ -306,26 +309,25 @@ export function t (string, replace = {}) {
       '500 Years': '500 Años',
       '1000 Years': '1000 Años',
       '2500 Years': '2500 Años',
-      'data by': 'Seleccionar datos por',
+      'data by': 'Nível',
       'admin0': 'Nacional',
       'admin1': 'Subnacional',
-      'km10': 'Cuadrículas de 10km',
+      'km10': '10km',
       'AAL': 'PMA',
-      'opacity': 'Visibilidad de los datos',
+      'opacity': 'Visibilidad de datos',
       'full': 'Completa',
       'medium': 'Media',
       'low': 'Ninguna',
 
-      'basemap': 'Cambiar la mapa de base',
+      'basemap': 'Mapa de base',
       'basic': 'Básico',
-      'special': 'Imagenes Satelitales',
+      'special': 'Satelite',
 
       // Legend
       'Year Return Period': 'Año perído de retorno',
-      'View': 'Ver',
-      'by:': 'por:',
-      'Absolute': 'Absoluto',
-      'Relative': 'Relativo',
+      'View by': 'Ver por:',
+      'Absolute': 'valores absolutos',
+      'Relative': 'valores relativos',
 
       // Results Panel
       'Billions (US$)': 'Millardos (US$)',
