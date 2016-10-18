@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 
+import { measurementStrings } from '../constants'
 import { shortenNumber } from '../utils/format'
 
 var MapPopup = React.createClass({
@@ -9,9 +10,13 @@ var MapPopup = React.createClass({
   propTypes: {
     adminName: React.PropTypes.string,
     mapDescrip: React.PropTypes.string,
+    metric: React.PropTypes.string,
     data: React.PropTypes.number
   },
+
   render: function () {
+    const hazard = this.props.mapDescrip.split(' - ')[0].toLowerCase()
+    const string = (measurementStrings[hazard] && this.props.metric !== 'exposure') ? measurementStrings[hazard] : '$'
     return (
       <article className='popover'>
         <div className='popover__contents'>
@@ -20,7 +25,9 @@ var MapPopup = React.createClass({
           </header>
           <div className='popover__body'>
             <p>{this.props.mapDescrip}</p>
-            <p className='popover__stat'>{'$' + shortenNumber(this.props.data, 2, false)}</p>
+            <p className='popover__stat'>{(string === '$' ? string : '') +
+                                          shortenNumber(this.props.data, 2, false) +
+                                          (string !== '$' ? ' ' + string : '')}</p>
           </div>
           <footer className='popover__footer'>
           </footer>

@@ -206,6 +206,12 @@ export const graphCols = {
   ]
 }
 
+export const measurementStrings = {
+  windstorm: 'Cats and Dogs',
+  earthquake: 'Feet Per Second',
+  flood: 'Gallons'
+}
+
 export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',

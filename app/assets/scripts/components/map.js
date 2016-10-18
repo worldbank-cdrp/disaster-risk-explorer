@@ -165,10 +165,8 @@ export const Map = React.createClass({
     let popupContent = document.createElement('div')
     const dataSelection = this.props.dataSelection
     const mapId = getMapId(dataSelection)
-
     const mapDescrip = getMapDescrip(dataSelection)
 
-    // in final data, the country code should have the same key in grids and boundaries
     let adminName = dataSelection.admin.getActive().key !== 'km10'
       ? feature.properties.id
       : feature.properties.country
@@ -179,6 +177,7 @@ export const Map = React.createClass({
     render(<MapPopup
              adminName={adminName}
              mapDescrip={mapDescrip}
+             metric={dataSelection.metric.getActive().key}
              data={feature.properties[mapId]}
            />, popupContent)
 
