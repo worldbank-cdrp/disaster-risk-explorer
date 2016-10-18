@@ -24,7 +24,6 @@ const Legend = React.createClass({
     const activeSource = this.props.dataSelection.admin.getActive().key
     const title = getMapDescrip(dataSelection)
     const metric = dataSelection.metric.getActive().key
-    const capMetric = metric.charAt(0).toUpperCase() + metric.slice(1)
 
     const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
     const mapId = getMapId(this.props.dataSelection) + suffix
