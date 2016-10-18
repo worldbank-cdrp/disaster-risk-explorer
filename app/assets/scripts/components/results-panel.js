@@ -40,10 +40,11 @@ const Results = React.createClass({
     const metric = this.props.dataSelection.metric.getActive().key
     const admin = this.props.dataSelection.admin.getActive().key
 
-    let yTitle = 'Billions (US$)'
+    let yTitle = t('Billions (US$)')
+    let xTitle = t('Return Period')
     let valDenominator = 1000000000
     if (admin === 'admin1') {
-      yTitle = 'Millions (US$)'
+      yTitle = t('Millions (US$)')
       valDenominator = 1000000
     }
 
@@ -69,7 +70,7 @@ const Results = React.createClass({
               <div className='results__container'>
                 <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>GDP</dt>
+                  <dt className='stat__attribute'>{t('GDP')}</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
                   <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
@@ -77,7 +78,7 @@ const Results = React.createClass({
 
                 <div className='results__divider results__divider--first'></div>
 
-                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>{t('loss')}</h3>
                 <dl className='stats'>
                 <div>
                     <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
@@ -90,7 +91,7 @@ const Results = React.createClass({
                       data={data}
                       margin={margin}
                       yTitle={yTitle}
-                      xTitle='Return Period'
+                      xTitle={xTitle}
                     />
                   </dd>
                 </dl>
