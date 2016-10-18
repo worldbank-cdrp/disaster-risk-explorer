@@ -39,7 +39,7 @@ export function t (string, replace = {}) {
       'hazard': 'Hazard',
       'exposure': 'Exposure',
       '(disabled at national level)': '(disabled at national level)',
-      '(disabled at national level)': '(disabled at subnational level)',
+      '(disabled at sub-national level)': '(disabled at subnational level)',
 
       'risk': 'Risk',
       'flood': 'Flood',
