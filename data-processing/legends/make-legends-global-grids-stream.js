@@ -73,7 +73,6 @@ let results = 0
 var c = through2({ objectMode: true }, function (feat, enc, callback) {
   results++
   log('Loading feature: ' + results)
-  // console.log(feat)
   if (results % 3 === 0) features.push(feat)
   callback()
 }).on('finish', () => {
@@ -81,5 +80,5 @@ var c = through2({ objectMode: true }, function (feat, enc, callback) {
   console.log(legends)
 })
 
-const inPath = '../../../data/merged-grid-3.geojson'
+const inPath = process.argv[1]
 fs.createReadStream(inPath).pipe(geoParse).pipe(c)

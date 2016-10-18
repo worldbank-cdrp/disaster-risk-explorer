@@ -8,8 +8,8 @@ state polygons, for either the admin 1 or admin 0 datasets.
 const fs = require('fs')
 const getExtent = require('turf-bbox')
 
-const fc = JSON.parse(fs.readFileSync('../../data/coded/admin0_filtered.geojson'))
-const outputExtents = '../../data/coded/admin0_extents.geojson'
+const fc = JSON.parse(fs.readFileSync(process.argv[1]))
+const outputExtents = process.argv[2]
 const admin = 0
 
 let extents = {}
