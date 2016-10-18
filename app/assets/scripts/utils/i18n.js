@@ -72,7 +72,8 @@ export function t (string, replace = {}) {
       'special': 'Satellite',
 
       // Legend
-      'Year Return Period': 'Year Return Period',
+      'Return Period of': 'Return Period of',
+      'years': 'years',
       'View by': 'View by:',
       'Absolute': 'absolute values',
       'Relative': 'relative values',
@@ -324,7 +325,8 @@ export function t (string, replace = {}) {
       'special': 'Satelite',
 
       // Legend
-      'Year Return Period': 'Año perído de retorno',
+      'Return Period of': 'Período de Retorno de',
+      'years': 'años',
       'View by': 'Ver por:',
       'Absolute': 'valores absolutos',
       'Relative': 'valores relativos',

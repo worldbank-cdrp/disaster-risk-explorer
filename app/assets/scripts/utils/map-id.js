@@ -25,5 +25,5 @@ export function getMapDescrip (dataSelection) {
     return t(risk) + ' ' + t(metric) + ', ' + t('Average Annual Loss')
   } else if (metric === 'Exposure') {
     return t('Building Stock Exposure')
-  } else return t(risk) + ' ' + t(metric) + ', ' + rp + t('Year Return Period')
+  } else return `${t(risk)} - ${t(metric)}, ${t('Return Period of')} ${rp} ${t('years')}`
 }
