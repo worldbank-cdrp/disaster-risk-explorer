@@ -10,7 +10,6 @@ import MapPopup from './map-popup'
 
 import { mapSources, mapSettings, legends, countryExtents, adminNames } from '../constants'
 import { getMapId, getMapDescrip } from '../utils/map-id'
-import { t } from '../utils/i18n'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
 
