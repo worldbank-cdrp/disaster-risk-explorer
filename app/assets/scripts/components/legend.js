@@ -60,7 +60,7 @@ const Legend = React.createClass({
       <section className='legend'>
         <h2 className='legend__title'>{title}</h2>
         <figcaption className='legend__metric'>
-          <p>{legendMetric}</p>
+          <p>{t(legendMetric)}</p>
         </figcaption>
         <figure className='legend__scale'>
           {legendBlocks}

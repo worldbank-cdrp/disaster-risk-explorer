@@ -3,6 +3,7 @@ import React from 'react'
 
 import { measurementStrings } from '../constants'
 import { shortenNumber } from '../utils/format'
+import { t } from '../utils/i18n'
 
 var MapPopup = React.createClass({
   displayName: 'MapPopup',
@@ -11,11 +12,12 @@ var MapPopup = React.createClass({
     adminName: React.PropTypes.string,
     mapDescrip: React.PropTypes.string,
     metric: React.PropTypes.string,
+    hazard: React.PropTypes.string,
     data: React.PropTypes.number
   },
 
   render: function () {
-    const hazard = this.props.mapDescrip.split(' - ')[0].toLowerCase()
+    const hazard = this.props.hazard
     const string = (measurementStrings[hazard] && this.props.metric !== 'exposure') ? measurementStrings[hazard] : '$'
     return (
       <article className='popover'>
@@ -27,7 +29,7 @@ var MapPopup = React.createClass({
             <p>{this.props.mapDescrip}</p>
             <p className='popover__stat'>{(string === '$' ? string : '') +
                                           shortenNumber(this.props.data, 2, false) +
-                                          (string !== '$' ? ' ' + string : '')}</p>
+                                          (string !== '$' ? ' ' + t(string) : '')}</p>
           </div>
           <footer className='popover__footer'>
           </footer>

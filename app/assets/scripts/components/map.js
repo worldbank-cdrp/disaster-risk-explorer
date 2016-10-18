@@ -178,6 +178,7 @@ export const Map = React.createClass({
              adminName={adminName}
              mapDescrip={mapDescrip}
              metric={dataSelection.metric.getActive().key}
+             hazard={dataSelection.risk.getActive().key}
              data={feature.properties[mapId]}
            />, popupContent)
 

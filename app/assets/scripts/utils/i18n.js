@@ -77,6 +77,11 @@ export function t (string, replace = {}) {
       'View by': 'View by:',
       'Absolute': 'absolute values',
       'Relative': 'relative values',
+      'Cats and Dogs': 'Cats and Dogs',
+      'Feet Per Second': 'Feet Per Second',
+      'Gallons': 'Gallons',
+      'US Dollars ($)': 'US Dollars ($)',
+      '$': '$',
 
       // Results Panel
       'Billions (US$)': 'Billions (US$)',
@@ -330,6 +335,11 @@ export function t (string, replace = {}) {
       'View by': 'Ver por:',
       'Absolute': 'valores absolutos',
       'Relative': 'valores relativos',
+      'Cats and Dogs': 'Gatos y Perros',
+      'Feet Per Second': 'Pies por Segundo',
+      'Gallons': 'Galones',
+      'US Dollars ($)': 'Dólares de los EE.UU. ($)',
+      '$': '$',
 
       // Results Panel
       'Billions (US$)': 'Millardos (US$)',
