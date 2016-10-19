@@ -68,8 +68,8 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.countryName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.countryName.map((o, i) => {
+            return (<li key={`${o.key}-country-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
@@ -94,8 +94,8 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.districtName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.districtName.map((o, i) => {
+            return (<li key={`${o.key}-district-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'

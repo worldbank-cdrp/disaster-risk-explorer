@@ -35,7 +35,6 @@ const Legend = React.createClass({
     opacity = mapSettings.opacityLevels[opacity]
 
     const rp = dataSelection.return.getActive().value
-    console.log(rp)
     const hazard = this.props.dataSelection.risk.getActive().key
     const legendMetric = (measurementStrings[hazard] && metric !== 'exposure') ? measurementStrings[hazard] : 'US Dollars ($)'
 
