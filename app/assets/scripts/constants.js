@@ -207,7 +207,7 @@ export const graphCols = {
 }
 
 export const measurementStrings = {
-  windstorm: 'Cats and Dogs',
+  windstorm: 'Feet Per Second',
   earthquake: 'Feet Per Second',
   flood: 'Gallons'
 }
