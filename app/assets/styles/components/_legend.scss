@@ -41,10 +41,9 @@
   font-family: 'Hind';
   font-size: 0.8em;
   color: #999;
-  line-height: 1.25em;
-  padding: 0.25rem 1rem 0.75rem 0;
+  padding: 0 1em 0.75em 0;
   p{
-    margin-right: 0.5rem;
+    margin-right: 0.75em;
     display: inline-block;
   }
 }
@@ -53,7 +52,7 @@
   display: block;
   float: left;
   width: 100%;
-  margin-top: 0.25em;
+  margin-top: 0em;
   font-size: 0.8em;
   font-weight: 500;
   color: #999;
@@ -62,7 +61,7 @@
 
 .legend__rp {
   margin-top: 0;
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5em;
   p{
     line-height: 1em;
   }
