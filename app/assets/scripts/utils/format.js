@@ -22,6 +22,6 @@ export function shortenNumber (number, decimals, abbreviate) {
   } else if (Math.abs(number) >= 1000) {
     return `${Number((number / 1000).toFixed(decimals))} ${k}`
   } else {
-    return number
+    return Math.round(number)
   }
 }

@@ -77,6 +77,12 @@ export function t (string, replace = {}) {
       'View by': 'View by:',
       'Absolute': 'absolute values',
       'Relative': 'relative values',
+      // Windstorm is currently sharing Feet Per Second with Earthquake.
+      // A string for Windstorm's true metric meaning will need to be added here.
+      'Feet Per Second': 'Feet Per Second',
+      'Gallons': 'Gallons',
+      'US Dollars ($)': 'US Dollars ($)',
+      '$': '$',
 
       // Results Panel
       'Billions (US$)': 'Billions (US$)',
@@ -330,6 +336,12 @@ export function t (string, replace = {}) {
       'View by': 'Ver por:',
       'Absolute': 'valores absolutos',
       'Relative': 'valores relativos',
+      // Windstorm is currently sharing Feet Per Second with Earthquake.
+      // A string for Windstorm's true metric meaning will need to be added here.
+      'Feet Per Second': 'Pies por Segundo',
+      'Gallons': 'Galones',
+      'US Dollars ($)': 'Dólar Estadounidense ($)',
+      '$': '$',
 
       // Results Panel
       'Billions (US$)': 'Millardos (US$)',

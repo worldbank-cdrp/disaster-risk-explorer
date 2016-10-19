@@ -1,6 +1,6 @@
 import React from 'react'
 import c from 'classnames'
-import { legends, mapSettings } from '../constants'
+import { legends, mapSettings, measurementStrings } from '../constants'
 import { toggleMapType } from '../actions'
 
 import { shortenNumber } from '../utils/format'
@@ -34,6 +34,11 @@ const Legend = React.createClass({
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
 
+    const rp = dataSelection.return.getActive().value
+    console.log(rp)
+    const hazard = this.props.dataSelection.risk.getActive().key
+    const legendMetric = (measurementStrings[hazard] && metric !== 'exposure') ? measurementStrings[hazard] : 'US Dollars ($)'
+
     const legendBlocks = legend.map((cat, i) => {
       return (
         <span key={i}
@@ -56,6 +61,14 @@ const Legend = React.createClass({
     return (
       <section className='legend'>
         <h2 className='legend__title'>{title}</h2>
+        <figcaption className='legend__metric'>
+          <p>{t(legendMetric)}</p>
+        </figcaption>
+        {rp !== 'AAL' && metric !== 'exposure'
+          ? <figcaption className='legend__rp'>
+             <p>{`${t('Return Period of')} ${rp} ${t('years')}`}</p>
+           </figcaption>
+          : ''}
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
