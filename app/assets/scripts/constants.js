@@ -3,27 +3,27 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'countries-0hf4lw',
+    sourceLayer: 'admin0-99f3zb',
     idProp: 'id',
-    url: 'mapbox://devseed.62tgf8ke'
+    url: 'mapbox://wbg-cdrp.6atr85z8'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'admin1-4ci2r4',
+    sourceLayer: 'admin1-2q7pcm',
     idProp: 'id',
-    url: 'mapbox://devseed.9n7s8els'
+    url: 'mapbox://wbg-cdrp.c5i9nddp'
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'merged-grid-3-aqix2u',
+    sourceLayer: 'km10-86jo9v',
     idProp: 'code',
-    url: 'mapbox://devseed.1x2qvzgw'
+    url: 'mapbox://wbg-cdrp.28e8z2bw'
   },
   km10Circles: {
     id: 'km10Circles',
-    sourceLayer: 'grid-points',
+    sourceLayer: 'km10Points',
     idProp: 'code',
-    url: 'mapbox://devseed.4zp57gcg'
+    url: 'mapbox://wbg-cdrp.85jp7h9w'
   }
 }
 
@@ -31,7 +31,7 @@ export const mapSettings = {
   basemap: {
     basic: {
       id: 'basic',
-      url: 'mapbox://styles/devseed/cisuqq8po004b2wvrf05z0qmv'},
+      url: 'mapbox://styles/wbg-cdrp/ciuh7zn1d00072is1f1utb1h8'},
     special: {
       id: 'satellite',
       url: 'mapbox://mapbox.satellite'}

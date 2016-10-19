@@ -11,7 +11,7 @@ import MapPopup from './map-popup'
 import { mapSources, mapSettings, legends, countryExtents, adminNames } from '../constants'
 import { getMapId, getMapDescrip } from '../utils/map-id'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJnUi1mbkVvIn0.018aLhX0Mb0tdtaT2QNe2Q'
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2JnLWNkcnAiLCJhIjoiY2l1Z3pxZDVwMDBxcDMzcDJjYmRpYnBicSJ9.hjlLP5TEVhqbTwzhFA1rZw'
 
 export const Map = React.createClass({
   propTypes: {
