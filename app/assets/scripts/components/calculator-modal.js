@@ -153,7 +153,7 @@ const Calculator = React.createClass({
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
     // A little nonsense to create single roots for react
-    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
+    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD M')
     const TopFive = data.topFiveAAL.map((building, i) => {
       return [
         <dl key={i} className='calc__list'>
@@ -199,7 +199,7 @@ const Calculator = React.createClass({
                       onClick={() => this.selectConversion('replacement')}>
                       <span className='header__language--text'>{t('Replace')}</span></button>
                     </dd>
-                  <dd className='stat__attribute stat__attribute--main'>{t('Unit cost per')} {(conversion === 'retrofit' ? t('retrofitted') : t('replaced'))} {t('building')}</dd>
+                  <dd className='stat__attribute stat__attribute--main'>{(conversion === 'retrofit' ? t('Unit cost per retrofitted building') : t('Unit cost per replaced building'))}</dd>
                   <dt className='stat__value stat__value--large stat__value--large'><input type='number' className='calculator__input' value={Math.round(ucc)} onChange={this.handleUCC} /><span className='stat__value--cost'></span></dt>
                 </dl>
                 <dl className='calc__selection calc__selection--slider'>
@@ -222,7 +222,7 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>{t('Building Stocks Converted')}</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
-              <div className='calculator__divider-broken-label'>{t('are')} {(conversion === 'retrofit' ? t('retrofitted') : t('replaced'))} {t('with')}</div>
+              <div className='calculator__divider-broken-label'>{(conversion === 'retrofit' ? t('are retrofitted with') : t('are replaced with'))}</div>
               <div className='calculator__divider-broken right'></div>
               <div className='calculator__description bottom'>{data.buildingTo}</div>
             </div>
@@ -239,10 +239,10 @@ const Calculator = React.createClass({
                      )}>
                   ${shortenNumber(data.overallChangeAAL * aal, 0, false)}
                 </dd>
-                <dt className='stat__attribute'>{t('Total')} {(conversion === 'retrofit' ? t('retrofit') : t('replacement'))} {t('cost')}</dt>
+                <dt className='stat__attribute'>{(conversion === 'retrofit' ? t('Total retrofit cost') : t('Total replacement cost'))}</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
                 <dt className='stat__attribute'>{t('Flat rate years to break even')}</dt>
-                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' Years' : 'Never')}</dd>
+                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' ' + t('Years') : t('Never'))}</dd>
                 <dt className='stat__attribute'>{t('Percent Change in AAL for these housing units')}</dt>
                 <dd className=
                   {c('stat__value',
@@ -261,7 +261,7 @@ const Calculator = React.createClass({
 
               <div className='calc__split'></div>
 
-              <h2 className='subtitle calc__subtitle'>{t('Building Stock types most at risk')} ({listKey})</h2>
+              <h2 className='subtitle calc__subtitle'>{t('Building Stock types most at risk')} ({(conversion === 'retrofit' ? t('AAL value') : t('AAL in USD'))})</h2>
               <dl className='calc__selection calc__selection--stocks'>
                 {_.flatten(TopFive)}
               </dl>

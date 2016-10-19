@@ -165,6 +165,7 @@ export const Map = React.createClass({
     let popupContent = document.createElement('div')
     const dataSelection = this.props.dataSelection
     const mapId = getMapId(dataSelection)
+
     const mapDescrip = getMapDescrip(dataSelection)
 
     // in final data, the country code should have the same key in grids and boundaries

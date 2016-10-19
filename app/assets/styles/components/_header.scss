@@ -30,6 +30,9 @@
   }
 
   span {
-    @extend .visually-hidden;
+    vertical-align: middle;
+    line-height: 2.4rem;
+    padding-top: 4px;
+    margin-left: 0.25rem;
   }
 }
