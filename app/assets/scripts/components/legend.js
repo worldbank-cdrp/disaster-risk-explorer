@@ -34,6 +34,8 @@ const Legend = React.createClass({
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
 
+    const rp = dataSelection.return.getActive().value
+    console.log(rp)
     const hazard = this.props.dataSelection.risk.getActive().key
     const legendMetric = (measurementStrings[hazard] && metric !== 'exposure') ? measurementStrings[hazard] : 'US Dollars ($)'
 
@@ -62,6 +64,11 @@ const Legend = React.createClass({
         <figcaption className='legend__metric'>
           <p>{t(legendMetric)}</p>
         </figcaption>
+        {rp !== 'AAL' && metric !== 'exposure'
+          ? <figcaption className='legend__rp'>
+             <p>{`${t('Return Period of')} ${rp} ${t('years')}`}</p>
+           </figcaption>
+          : ''}
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}

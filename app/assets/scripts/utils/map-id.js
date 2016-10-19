@@ -18,12 +18,11 @@ export function getMapDescrip (dataSelection) {
   let risk = dataSelection.risk.getActive().key
   risk = (risk.charAt(0).toUpperCase() + risk.slice(1)).toLowerCase()
   const metric = (dataSelection.metric.getActive().value).toLowerCase()
-  const rp = dataSelection.return.getActive().value
   const mapId = getMapId(dataSelection)
 
   if (mapId.substr(mapId.length - 3) === 'AAL') {
     return t(risk) + ' ' + t(metric) + ', ' + t('Average Annual Loss')
-  } else if (metric === 'Exposure') {
+  } else if (metric === 'exposure') {
     return t('Building Stock Exposure')
-  } else return `${t(risk)} - ${t(metric)}, ${t('Return Period of')} ${rp} ${t('years')}`
+  } else return `${t(risk)} - ${t(metric)}`
 }
