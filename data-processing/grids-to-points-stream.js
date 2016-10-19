@@ -12,8 +12,8 @@ const centerpoint = require('turf-center')
 const fs = require('fs')
 
 // inputs ----------
-const inPath = './merged-grid-3.geojson'
-const outPath = './grid-points.geojson'
+const inPath = process.argv[1]
+const outPath = process.argv[2]
 // ----
 
 const cwd = process.cwd()
