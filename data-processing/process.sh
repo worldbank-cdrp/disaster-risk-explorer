@@ -21,10 +21,10 @@ chmod -R u+x scripts
 # scripts/zsh/clip_all.sh
 
 ## aggregate all data to the grids and merge
-scripts/zsh/agg.sh
-scripts/js/merge.js
+# scripts/zsh/agg.sh
+# scripts/js/merge.js
 
 ## aggregate to the country level
 scripts/zsh/agg_country.sh
-geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
-geojson-merge countries/[A-Z][A-Z]-[A-Z][A-Z]_agg.geojson > admin1.geojson
+# geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
+geojson-merge countries/[A-Z][A-Z]-[A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9][A-Z0-9]_agg.geojson > admin1.geojson
