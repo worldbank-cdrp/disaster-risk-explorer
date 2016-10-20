@@ -2,7 +2,7 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
-import { adminNames, graphCols } from '../constants'
+import { graphCols } from '../constants'
 import { getMapId } from '../utils/map-id'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
