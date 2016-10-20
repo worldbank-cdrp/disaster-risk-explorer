@@ -51652,7 +51652,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "LAKE",
+        "id": "NI-RI",
         "name": "Rivas"
       },
       "geometry": {
@@ -51940,7 +51940,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "NI-",
+        "id": "NI-SJ",
         "name": "Rio San Juan"
       },
       "geometry": {
