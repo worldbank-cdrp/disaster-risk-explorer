@@ -15,7 +15,9 @@ var selectedCountryFeatures = geo.features.filter(feature => {
   var id = feature.properties.iso_a2
   var name = feature.properties.name
   return Object.assign({}, feature, { properties: { id, name } })
-}).forEach(feature => {
+})
+
+selectedCountryFeatures.forEach(feature => {
   fs.writeFileSync(path.join(cwd, `countries/${feature.properties.id}.geojson`), JSON.stringify(feature))
 })
 
@@ -29,12 +31,9 @@ fs.writeFileSync(path.join(cwd, 'countries/all.geojson'), JSON.stringify(selecte
 var selectedAdminOneFeatures = adminOne.features.filter(feature => {
   // we only want provinces in these ten countries
   return ['PA', 'NI', 'HN', 'GT', 'SV', 'CR', 'BZ', 'JM', 'GD', 'LC'].indexOf(feature.properties.iso_a2) > -1
-}).map(feature => {
-  // we only need the id and name properties
-  var id = feature.properties.code_hasc.replace('.', '-').toUpperCase()
-  var name = feature.properties.name
-  return Object.assign({}, feature, { properties: { id, name } })
-}).forEach(feature => {
+})
+
+selectedAdminOneFeatures.forEach(feature => {
   fs.writeFileSync(path.join(cwd, `countries/${feature.properties.id}.geojson`), JSON.stringify(feature))
 })
 
