@@ -320,6 +320,7 @@ export const Map = React.createClass({
       const admin = this.props.dataSelection.admin.getActive().key
       if (features.length) {
         const feature = features[0]
+        console.log(feature.properties)
         if (admin === 'admin0' || admin === 'admin1') {
           const idField = this.activeSource.idProp
           const id = feature.properties[idField]

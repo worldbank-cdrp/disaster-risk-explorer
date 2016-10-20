@@ -216,17 +216,17 @@ export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',
   'BZ-CY': 'Cayo',
-  'BZ-CZL': 'Corozal',
+  'BZ-CZ': 'Corozal',
   'BZ-OW': 'Orange Walk',
   'BZ-SC': 'Stann Creek',
-  'BZ-TOL': 'Toledo',
+  'BZ-TO': 'Toledo',
   'CR': 'Costa Rica',
-  'CR-A': 'Alajuela',
-  'CR-C': 'Cartago',
-  'CR-G': 'Guanacaste',
-  'CR-H': 'Heredia',
-  'CR-L': 'Limón',
-  'CR-P': 'Puntarenas',
+  'CR-AL': 'Alajuela',
+  'CR-CA': 'Cartago',
+  'CR-GU': 'Guanacaste',
+  'CR-HE': 'Heredia',
+  'CR-LI': 'Limón',
+  'CR-PU': 'Puntarenas',
   'CR-SJ': 'San José',
   'GD': 'Grenada',
   'GD-01': 'Saint Andrew',
@@ -703,7 +703,7 @@ export const countryExtents = {
     }
   },
   'admin1': {
-    'CR-A': {
+    'CR-AL': {
       'parent': 'CR',
       'extent': [
         [
@@ -716,7 +716,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-C': {
+    'CR-CA': {
       'parent': 'CR',
       'extent': [
         [
@@ -729,7 +729,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-G': {
+    'CR-GU': {
       'parent': 'CR',
       'extent': [
         [
@@ -742,7 +742,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-H': {
+    'CR-HE': {
       'parent': 'CR',
       'extent': [
         [
@@ -755,7 +755,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-L': {
+    'CR-LI': {
       'parent': 'CR',
       'extent': [
         [
@@ -768,7 +768,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-P': {
+    'CR-PU': {
       'parent': 'CR',
       'extent': [
         [

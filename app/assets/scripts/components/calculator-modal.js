@@ -54,6 +54,7 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
+    console.log(key, value)
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
@@ -95,6 +96,7 @@ const Calculator = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.districtName.map((o, i) => {
+            console.log(o.key)
             return (<li key={`${o.key}-district-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}

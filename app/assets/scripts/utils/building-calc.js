@@ -12,6 +12,7 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
   const endBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}End`].split(', ')
 
   // from all the region keys, filter on the buildings that match our selection
+  console.log(regionCode, buildingData, buildingData[regionCode])
   const startBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
     return startBuildingSel.some(sb => building.match(sb))
   }).map(b => buildingData[regionCode][b])

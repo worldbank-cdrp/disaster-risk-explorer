@@ -214,7 +214,7 @@
   overflow-y: scroll;
 
   &:last-child {
-    margin-bottom: (-$global-spacing);
+    margin-bottom: (-$global-spacing / 3);
     box-shadow: none;
   }
 
