@@ -212,36 +212,29 @@ export const measurementStrings = {
   flood: 'Gallons'
 }
 
-// missing extents
-// belize
-// Jamaica//
-// Saint Lucia
-// Grenada
-
 export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',
   'BZ-CY': 'Cayo',
-  'BZ-CZ': 'Corozal',
+  'BZ-CZL': 'Corozal',
   'BZ-OW': 'Orange Walk',
   'BZ-SC': 'Stann Creek',
-  'BZ-TO': 'Toledo',
+  'BZ-TOL': 'Toledo',
   'CR': 'Costa Rica',
-  'CR-AL': 'Alajuela',
-  'CR-CA': 'Cartago',
-  'CR-GU': 'Guanacaste',
-  'CR-HE': 'Heredia',
-  'CR-LI': 'Limón',
-  'CR-PU': 'Puntarenas',
-  'CR-SJ': 'San José',
+  'CR-A': 'Alajuela',
+  'CR-C': 'Cartago',
+  'CR-G': 'Guanacaste',
+  'CR-H': 'Heredia',
+  'CR-L': 'Limón',
+  'CR-P': 'Puntarenas',
   'GD': 'Grenada',
-  'GD-AN': 'Saint Andrew',
-  'GD-DA': 'Saint David',
-  'GD-GE': 'Saint George',
-  'GD-JO': 'Saint John',
+  'GD-01': 'Saint Andrew',
+  'GD-02': 'Saint David',
+  'GD-03': 'Saint George',
+  'GD-04': 'Saint John',
   'GD-05': 'Saint Mark',
-  'GD-PA': 'Saint Patrick',
-  'GD-CA': 'Southern Grenadine Islands',
+  'GD-06': 'Saint Patrick',
+  'GD-10': 'Southern Grenadine Islands',
   'GT': 'Guatemala',
   'GT-AV': 'Alta Verapaz',
   'GT-BV': 'Baja Verapaz',
@@ -285,31 +278,31 @@ export const adminNames = {
   'HN-VA': 'Valle',
   'HN-YO': 'Yoro',
   'JM': 'Jamaica',
-  'JM-KI': 'Kingston', // 01
-  'JM-SD': 'Saint Andrew',
-  'JM-ST': 'Saint Thomas',
-  'JM-PO': 'Portland',
-  'JM-SM': 'Saint Mary',
-  'JM-SN': 'Saint Ann',
-  'JM-TR': 'Trelawny',
-  'JM-SJ': 'Saint James',
-  'JM-HA': 'Hanover',
-  'JM-WE': 'Westmoreland',
-  'JM-SE': 'Saint Elizabeth',
-  'JM-MA': 'Manchester',
-  'JM-CL': 'Clarendon',
-  'JM-SC': 'Saint Catherine',
-  'LC-AR': 'Anse la Raye',
-  'LC-CN': 'Castries',
-  'LC-CS': 'Choiseul',
-  'LC-DE': 'Dennery',
-  'LC-GI': 'Gros Islet',
-  'LC-LB': 'Laborie',
-  'LC-MI': 'Micoud',
-  'LC-CO': 'Soufrière',
-  'LC-VF': 'Vieux Fort',
-  // 'LC-12': 'Canaries',
-  'LC': 'Saint Lucia',
+  'JM-01': 'Kingston',
+  'JM-02': 'Saint Andrew',
+  'JM-03': 'Saint Thomas',
+  'JM-04': 'Portland',
+  'JM-05': 'Saint Mary',
+  'JM-06': 'Saint Ann',
+  'JM-07': 'Trelawny',
+  'JM-08': 'Saint James',
+  'JM-09': 'Hanover',
+  'JM-10': 'Westmoreland',
+  'JM-11': 'Saint Elizabeth',
+  'JM-12': 'Manchester',
+  'JM-13': 'Clarendon',
+  'JM-14': 'Saint Catherine',
+  'LC-01': 'Anse la Raye',
+  'LC-02': 'Castries',
+  'LC-03': 'Choiseul',
+  'LC-05': 'Dennery',
+  'LC-06': 'Gros Islet',
+  'LC-07': 'Laborie',
+  'LC-08': 'Micoud',
+  'LC-10': 'Soufrière',
+  'LC-11': 'Vieux Fort',
+  'LC-12': 'Canaries',
+  'LI': 'Saint Lucia',
   'NI': 'Nicaragua',
   'NI-AN': 'Atlántico Norte',
   'NI-AS': 'Atlántico Sur',
@@ -1190,7 +1183,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-CA': {
+    'CR-C': {
       'parent': 'CR',
       'extent': [
         [
@@ -1203,7 +1196,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-GU': {
+    'CR-G': {
       'parent': 'CR',
       'extent': [
         [
@@ -1216,7 +1209,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-HE': {
+    'CR-H': {
       'parent': 'CR',
       'extent': [
         [
@@ -1229,7 +1222,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-LI': {
+    'CR-L': {
       'parent': 'CR',
       'extent': [
         [
@@ -1242,7 +1235,7 @@ export const countryExtents = {
         ]
       ]
     },
-    'CR-PU': {
+    'CR-P': {
       'parent': 'CR',
       'extent': [
         [
