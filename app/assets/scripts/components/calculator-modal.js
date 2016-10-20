@@ -54,7 +54,6 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
-    console.log(key, value)
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
@@ -95,7 +94,7 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.districtName.map((o, i) => {
+          {dropOpts.map((o, i) => {
             console.log(o.key)
             return (<li key={`${o.key}-district-${i}`}>
               <a
@@ -121,29 +120,27 @@ const Calculator = React.createClass({
     const activeId = newCalcId
     var countryActive = 'BZ'
     var districtActive = '-'
-    var adminActive = ''
+    var adminActive = 'district'
+
+    // activeID === what populates the tables
+    // activeCountry === which section is active
+    // adminActive === which section to use
 
     console.log(calcDropItems.districtName['CR'])
 
-    // calcDropItems.countryName.map(o => {
-    //   if (o.key === activeId) {
-    //     adminActive = 'country'
-    //   }
-    // })
+    calcDropItems.countryName.map(o => {
+      if (o.key === activeId) {
+        adminActive = 'country'
+      }
+    })
 
-    // calcDropItems.districtName.map(o => {
-    //   if (o.key === activeId) {
-    //     adminActive = 'district'
-    //   }
-    // })
-
-    // if (adminActive === 'country') {
-    //   countryActive = activeId
-    //   districtActive = '-'
-    // } else if (adminActive === 'district') {
-    //   countryActive = activeId.substring(0, 2)
-    //   districtActive = activeId
-    // }
+    if (adminActive === 'country') {
+      countryActive = activeId
+      districtActive = '-'
+    } else if (adminActive === 'district') {
+      countryActive = activeId.substring(0, 2)
+      districtActive = activeId
+    }
 
     // if (activeId) {
     //   then countryActive = SELECTEDID
@@ -190,7 +187,7 @@ const Calculator = React.createClass({
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
                   <dd className='selection__panel--drop'>
-                    {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
+                    {this.renderDistrictDropdown(districtActive, calcDropItems.districtName[countryActive], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>

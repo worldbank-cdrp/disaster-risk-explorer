@@ -2331,6 +2331,9 @@ export let calcDropItems = {
     {key: 'LC', value: 'LC'}
   ],
   districtName: {
+    None: [
+      {key: '-', value: '-'}
+    ],
     CR: [
       {key: 'CR-A', value: 'CR-A'},
       {key: 'CR-C', value: 'CR-C'},
