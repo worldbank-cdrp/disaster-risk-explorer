@@ -212,6 +212,9 @@ export const measurementStrings = {
   flood: 'Gallons'
 }
 
+// missing extents
+// belize
+
 export const adminNames = {
   'BZ': 'Belize',
   'BZ-BZ': 'Belize',
@@ -229,13 +232,13 @@ export const adminNames = {
   'CR-PU': 'Puntarenas',
   'CR-SJ': 'San José',
   'GD': 'Grenada',
-  'GD-01': 'Saint Andrew',
-  'GD-02': 'Saint David',
-  'GD-03': 'Saint George',
-  'GD-04': 'Saint John',
+  'GD-AN': 'Saint Andrew',
+  'GD-DA': 'Saint David',
+  'GD-GE': 'Saint George',
+  'GD-JO': 'Saint John',
   'GD-05': 'Saint Mark',
-  'GD-06': 'Saint Patrick',
-  'GD-10': 'Southern Grenadine Islands',
+  'GD-PA': 'Saint Patrick',
+  'GD-CA': 'Southern Grenadine Islands',
   'GT': 'Guatemala',
   'GT-AV': 'Alta Verapaz',
   'GT-BV': 'Baja Verapaz',
