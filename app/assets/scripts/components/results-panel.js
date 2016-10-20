@@ -31,10 +31,10 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    let adminName = d.id
-    adminName.length === 2
-      ? adminName = adminNames[adminName]
-      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
+    let adminName
+    d.id.length === 2
+      ? adminName = t(d.id)
+      : adminName = `${t(d.id)}, ${t(d.id.substring(0, 2))}`
 
     const risk = this.props.dataSelection.risk.getActive().value
     const metric = this.props.dataSelection.metric.getActive().key
