@@ -119,29 +119,31 @@ const Calculator = React.createClass({
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
-    var countryActive = activeId
+    var countryActive = 'BZ'
     var districtActive = '-'
     var adminActive = ''
 
-    calcDropItems.countryName.map(o => {
-      if (o.key === activeId) {
-        adminActive = 'country'
-      }
-    })
+    console.log(calcDropItems.districtName['CR'])
 
-    calcDropItems.districtName.map(o => {
-      if (o.key === activeId) {
-        adminActive = 'district'
-      }
-    })
+    // calcDropItems.countryName.map(o => {
+    //   if (o.key === activeId) {
+    //     adminActive = 'country'
+    //   }
+    // })
 
-    if (adminActive === 'country') {
-      countryActive = activeId
-      districtActive = '-'
-    } else if (adminActive === 'district') {
-      countryActive = activeId.substring(0, 2)
-      districtActive = activeId
-    }
+    // calcDropItems.districtName.map(o => {
+    //   if (o.key === activeId) {
+    //     adminActive = 'district'
+    //   }
+    // })
+
+    // if (adminActive === 'country') {
+    //   countryActive = activeId
+    //   districtActive = '-'
+    // } else if (adminActive === 'district') {
+    //   countryActive = activeId.substring(0, 2)
+    //   districtActive = activeId
+    // }
 
     // if (activeId) {
     //   then countryActive = SELECTEDID
