@@ -122,12 +122,6 @@ const Calculator = React.createClass({
     var districtActive = '-'
     var adminActive = 'district'
 
-    // activeID === what populates the tables
-    // activeCountry === which section is active
-    // adminActive === which section to use
-
-    console.log(calcDropItems.districtName['CR'])
-
     calcDropItems.countryName.map(o => {
       if (o.key === activeId) {
         adminActive = 'country'
@@ -186,7 +180,7 @@ const Calculator = React.createClass({
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
-                  <dd className='selection__panel--drop'>
+                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (countryActive === 'BZ' || countryActive === 'JM' || countryActive === 'LC' || countryActive === 'GD') })}>
                     {this.renderDistrictDropdown(districtActive, calcDropItems.districtName[countryActive], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>

@@ -363,3 +363,15 @@
   margin-right: 0.25rem;
 }
 
+.selection__panel--disabled{
+  opacity: 0.35;
+  pointer-events: none;
+  line-height: 1.5rem;
+  &:after{
+    content: "No Data";
+    font-size: 0.9rem;
+  }
+  button{
+    display: none;
+  }
+}
