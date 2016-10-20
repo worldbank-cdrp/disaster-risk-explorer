@@ -288,7 +288,7 @@ export function t (string, replace = {}) {
       // Site Info
       'Disaster Risk Explorer for Central America': 'Explorador de Riesgo de Desastres para Centroamérica',
       'About': 'Acerca',
-      'screen small': 'Pantalla demasiado pequeña',
+      'Screen is too small': 'Pantalla demasiado pequeña',
       'Show/hide parameter options': 'Mostrar/esconder opciones de parámetros',
 
       // Selection Panel
@@ -401,16 +401,17 @@ export function t (string, replace = {}) {
       'Million': 'Millón',
       'Billion': 'Millardo',
 
-      'BZ': 'Belize',
+      // Countries
+      'BZ': 'Belice',
       'CR': 'Costa Rica',
       'SV': 'El Salvador',
-      'GD': 'Grenada',
+      'GD': 'Granada',
       'GT': 'Guatemala',
       'HN': 'Honduras',
       'JM': 'Jamaica',
       'NI': 'Nicaragua',
-      'PA': 'Panama',
-      'LC': 'Saint Lucia',
+      'PA': 'Panamá',
+      'LC': 'Santa Lucía',
       '-': '-',
       'BZ-BZ': 'Belize',
       'BZ-CY': 'Cayo',
