@@ -363,3 +363,16 @@
   margin-right: 0.25rem;
 }
 
+.selection__panel--disabled{
+  opacity: 0.35;
+  pointer-events: none;
+  line-height: 1.5rem;
+  &:after{
+    content: "Data unavailable for subregions";
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  button{
+    display: none;
+  }
+}

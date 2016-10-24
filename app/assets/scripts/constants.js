@@ -227,7 +227,6 @@ export const adminNames = {
   'CR-H': 'Heredia',
   'CR-L': 'Limón',
   'CR-P': 'Puntarenas',
-  'CR-SJ': 'San José',
   'GD': 'Grenada',
   'GD-01': 'Saint Andrew',
   'GD-02': 'Saint David',
@@ -703,7 +702,475 @@ export const countryExtents = {
     }
   },
   'admin1': {
-    'CR-A': {
+    'BZ-BZ': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -87.89354407499994,
+          18.175604559000178
+        ],
+        [
+          -87.87413489499991,
+          18.209173895
+        ]
+      ]
+    },
+    'BZ-CY': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -89.19313967145851,
+          16.39262560286889
+        ],
+        [
+          -88.54828467459805,
+          17.48994049675653
+        ]
+      ]
+    },
+    'BZ-CZ': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -88.61405893083744,
+          17.959945715112013
+        ],
+        [
+          -88.08356686099995,
+          18.490758769000053
+        ]
+      ]
+    },
+    'BZ-OW': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -89.1613746749999,
+          17.321032079949276
+        ],
+        [
+          -88.28434729679032,
+          18.247028188999877
+        ]
+      ]
+    },
+    'BZ-SC': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -88.77762468093422,
+          16.497658169315173
+        ],
+        [
+          -88.21507727799991,
+          17.135735157854185
+        ]
+      ]
+    },
+    'BZ-TO': {
+      'parent': 'BZ',
+      'extent': [
+        [
+          -89.23651220799991,
+          15.879651999000089
+        ],
+        [
+          -88.38638261599996,
+          16.69184967722083
+        ]
+      ]
+    },
+    'GD-AN': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.68802818425331,
+          12.06903717731187
+        ],
+        [
+          -61.60322183111188,
+          12.179164864766719
+        ]
+      ]
+    },
+    'GD-CA': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.4962458979999,
+          12.440375067000133
+        ],
+        [
+          -61.42162024599986,
+          12.529730536000073
+        ]
+      ]
+    },
+    'GD-DA': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.69625335041181,
+          12.022040106000105
+        ],
+        [
+          -61.62450110577075,
+          12.08951054887271
+        ]
+      ]
+    },
+    'GD-GE': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.79051673099988,
+          12.002834377000056
+        ],
+        [
+          -61.676512950911956,
+          12.11089598196402
+        ]
+      ]
+    },
+    'GD-JO': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.75104732973526,
+          12.110073465617972
+        ],
+        [
+          -61.66253016763309,
+          12.18394723348446
+        ]
+      ]
+    },
+    'GD-MA': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.715147775418416,
+          12.158601948021456
+        ],
+        [
+          -61.65595003416672,
+          12.223333088514195
+        ]
+      ]
+    },
+    'GD-PA': {
+      'parent': 'GD',
+      'extent': [
+        [
+          -61.600616014999844,
+          12.289740302000098
+        ],
+        [
+          -61.580474412999905,
+          12.315375067000076
+        ]
+      ]
+    },
+    'JM-CL': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.49115597227029,
+          17.703192450000046
+        ],
+        [
+          -77.13060462099992,
+          18.204057114844034
+        ]
+      ]
+    },
+    'JM-HA': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -78.34604260691566,
+          18.28978831637764
+        ],
+        [
+          -77.9214139467962,
+          18.455471096000053
+        ]
+      ]
+    },
+    'JM-KI': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -76.8124558893266,
+          17.953791304267497
+        ],
+        [
+          -76.72143551313837,
+          17.996602078123402
+        ]
+      ]
+    },
+    'JM-MA': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.64029415615042,
+          17.84194570500003
+        ],
+        [
+          -77.35896765813084,
+          18.237233384812868
+        ]
+      ]
+    },
+    'JM-PO': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -76.75143368241845,
+          17.98673187927281
+        ],
+        [
+          -76.25678958585843,
+          18.266780947177978
+        ]
+      ]
+    },
+    'JM-SC': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.21086300302511,
+          17.833441473000107
+        ],
+        [
+          -76.84996738989153,
+          18.24707774524174
+        ]
+      ]
+    },
+    'JM-SD': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -76.8897714905618,
+          17.92969099817094
+        ],
+        [
+          -76.61624813474359,
+          18.166927598729643
+        ]
+      ]
+    },
+    'JM-SE': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.9646205480982,
+          17.853583075000046
+        ],
+        [
+          -77.56454864531256,
+          18.234442856852354
+        ]
+      ]
+    },
+    'JM-SJ': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -78.00745520669244,
+          18.195556342451283
+        ],
+        [
+          -77.73553931799339,
+          18.525091864000046
+        ]
+      ]
+    },
+    'JM-SM': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.07034710703195,
+          18.13860891427001
+        ],
+        [
+          -76.70144878209439,
+          18.4163272160001
+        ]
+      ]
+    },
+    'JM-SN': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.49115597227029,
+          18.184549262038814
+        ],
+        [
+          -76.99640580888098,
+          18.47605407686342
+        ]
+      ]
+    },
+    'JM-ST': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -76.65716059865292,
+          17.860256252000084
+        ],
+        [
+          -76.18797766799989,
+          18.073625799890806
+        ]
+      ]
+    },
+    'JM-TR': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -77.78139665383247,
+          18.1960989448105
+        ],
+        [
+          -77.45115841293043,
+          18.506698879909493
+        ]
+      ]
+    },
+    'JM-WE': {
+      'parent': 'JM',
+      'extent': [
+        [
+          -78.37466386599993,
+          18.050568931766264
+        ],
+        [
+          -77.88591223775956,
+          18.33859670737209
+        ]
+      ]
+    },
+    'LC-AR': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -61.0668839180791,
+          13.866477360841586
+        ],
+        [
+          -60.98062707907647,
+          13.987372137057278
+        ]
+      ]
+    },
+    'LC-CN': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -61.026600715125284,
+          13.87901010063564
+        ],
+        [
+          -60.93558802196958,
+          14.04352448098507
+        ]
+      ]
+    },
+    'LC-CO': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -61.07852128799996,
+          13.792181708109652
+        ],
+        [
+          -60.96057469576556,
+          13.909088675601922
+        ]
+      ]
+    },
+    'LC-CS': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -61.06810462101561,
+          13.756246266565157
+        ],
+        [
+          -60.980942833744734,
+          13.835766204546744
+        ]
+      ]
+    },
+    'LC-DE': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -60.96057469576556,
+          13.897809210326798
+        ],
+        [
+          -60.88296464775016,
+          13.983031839847555
+        ]
+      ]
+    },
+    'LC-GI': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -60.9799698561618,
+          14.017963356223902
+        ],
+        [
+          -60.90103105416975,
+          14.111883856000063
+        ]
+      ]
+    },
+    'LC-LB': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -61.01892275972395,
+          13.730640646362076
+        ],
+        [
+          -60.96245009789365,
+          13.830799669768908
+        ]
+      ]
+    },
+    'LC-MI': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -60.975222833466944,
+          13.774000741023158
+        ],
+        [
+          -60.89220130097456,
+          13.845171703011701
+        ]
+      ]
+    },
+    'LC-VF': {
+      'parent': 'LC',
+      'extent': [
+        [
+          -60.981577931376364,
+          13.714667059000092
+        ],
+        [
+          -60.91803911015725,
+          13.839232621588238
+        ]
+      ]
+    },
+    'CR-AL': {
       'parent': 'CR',
       'extent': [
         [
@@ -1863,138 +2330,122 @@ export let calcDropItems = {
     {key: 'PA', value: 'PA'},
     {key: 'LC', value: 'LC'}
   ],
-  districtName: [
-    {key: '-', value: '-'},
-    {key: 'BZ-BZ', value: 'BZ-BZ'},
-    {key: 'BZ-CY', value: 'BZ-CY'},
-    {key: 'BZ-CZL', value: 'BZ-CZL'},
-    {key: 'BZ-OW', value: 'BZ-OW'},
-    {key: 'BZ-SC', value: 'BZ-SC'},
-    {key: 'BZ-TOL', value: 'BZ-TOL'},
-    {key: 'CR-A', value: 'CR-A'},
-    {key: 'CR-C', value: 'CR-C'},
-    {key: 'CR-G', value: 'CR-G'},
-    {key: 'CR-H', value: 'CR-H'},
-    {key: 'CR-L', value: 'CR-L'},
-    {key: 'CR-P', value: 'CR-P'},
-    {key: 'CR-SJ', value: 'CR-SJ'},
-    {key: 'GD-01', value: 'GD-01'},
-    {key: 'GD-02', value: 'GD-02'},
-    {key: 'GD-03', value: 'GD-03'},
-    {key: 'GD-04', value: 'GD-04'},
-    {key: 'GD-05', value: 'GD-05'},
-    {key: 'GD-06', value: 'GD-06'},
-    {key: 'GD-10', value: 'GD-10'},
-    {key: 'GT-AV', value: 'GT-AV'},
-    {key: 'GT-AV', value: 'GT-AV'},
-    {key: 'GT-BV', value: 'GT-BV'},
-    {key: 'GT-CM', value: 'GT-CM'},
-    {key: 'GT-CQ', value: 'GT-CQ'},
-    {key: 'GT-ES', value: 'GT-ES'},
-    {key: 'GT-GU', value: 'GT-GU'},
-    {key: 'GT-HU', value: 'GT-HU'},
-    {key: 'GT-IZ', value: 'GT-IZ'},
-    {key: 'GT-JA', value: 'GT-JA'},
-    {key: 'GT-JU', value: 'GT-JU'},
-    {key: 'GT-PE', value: 'GT-PE'},
-    {key: 'GT-PR', value: 'GT-PR'},
-    {key: 'GT-QC', value: 'GT-QC'},
-    {key: 'GT-QZ', value: 'GT-QZ'},
-    {key: 'GT-RE', value: 'GT-RE'},
-    {key: 'GT-SA', value: 'GT-SA'},
-    {key: 'GT-SM', value: 'GT-SM'},
-    {key: 'GT-SO', value: 'GT-SO'},
-    {key: 'GT-SR', value: 'GT-SR'},
-    {key: 'GT-SU', value: 'GT-SU'},
-    {key: 'GT-TO', value: 'GT-TO'},
-    {key: 'GT-ZA', value: 'GT-ZA'},
-    {key: 'HN-AT', value: 'HN-AT'},
-    {key: 'HN-CH', value: 'HN-CH'},
-    {key: 'HN-CL', value: 'HN-CL'},
-    {key: 'HN-CM', value: 'HN-CM'},
-    {key: 'HN-CP', value: 'HN-CP'},
-    {key: 'HN-CR', value: 'HN-CR'},
-    {key: 'HN-EP', value: 'HN-EP'},
-    {key: 'HN-FM', value: 'HN-FM'},
-    {key: 'HN-GD', value: 'HN-GD'},
-    {key: 'HN-IB', value: 'HN-IB'},
-    {key: 'HN-IN', value: 'HN-IN'},
-    {key: 'HN-LE', value: 'HN-LE'},
-    {key: 'HN-LP', value: 'HN-LP'},
-    {key: 'HN-OC', value: 'HN-OC'},
-    {key: 'HN-OL', value: 'HN-OL'},
-    {key: 'HN-SB', value: 'HN-SB'},
-    {key: 'HN-VA', value: 'HN-VA'},
-    {key: 'HN-YO', value: 'HN-YO'},
-    {key: 'JM-01', value: 'JM-01'},
-    {key: 'JM-02', value: 'JM-02'},
-    {key: 'JM-03', value: 'JM-03'},
-    {key: 'JM-04', value: 'JM-04'},
-    {key: 'JM-05', value: 'JM-05'},
-    {key: 'JM-06', value: 'JM-06'},
-    {key: 'JM-07', value: 'JM-07'},
-    {key: 'JM-08', value: 'JM-08'},
-    {key: 'JM-09', value: 'JM-09'},
-    {key: 'JM-10', value: 'JM-10'},
-    {key: 'JM-11', value: 'JM-11'},
-    {key: 'JM-12', value: 'JM-12'},
-    {key: 'JM-13', value: 'JM-13'},
-    {key: 'JM-14', value: 'JM-14'},
-    {key: 'LC-01', value: 'LC-01'},
-    {key: 'LC-02', value: 'LC-02'},
-    {key: 'LC-03', value: 'LC-03'},
-    {key: 'LC-05', value: 'LC-05'},
-    {key: 'LC-06', value: 'LC-06'},
-    {key: 'LC-07', value: 'LC-07'},
-    {key: 'LC-08', value: 'LC-08'},
-    {key: 'LC-10', value: 'LC-10'},
-    {key: 'LC-11', value: 'LC-11'},
-    {key: 'LC-12', value: 'LC-12'},
-    {key: 'NI-AN', value: 'NI-AN'},
-    {key: 'NI-AS', value: 'NI-AS'},
-    {key: 'NI-BO', value: 'NI-BO'},
-    {key: 'NI-CA', value: 'NI-CA'},
-    {key: 'NI-CI', value: 'NI-CI'},
-    {key: 'NI-CO', value: 'NI-CO'},
-    {key: 'NI-ES', value: 'NI-ES'},
-    {key: 'NI-GR', value: 'NI-GR'},
-    {key: 'NI-JI', value: 'NI-JI'},
-    {key: 'NI-LE', value: 'NI-LE'},
-    {key: 'NI-MD', value: 'NI-MD'},
-    {key: 'NI-MN', value: 'NI-MN'},
-    {key: 'NI-MS', value: 'NI-MS'},
-    {key: 'NI-MT', value: 'NI-MT'},
-    {key: 'NI-NS', value: 'NI-NS'},
-    {key: 'NI-RI', value: 'NI-RI'},
-    {key: 'NI-SJ', value: 'NI-JS'},
-    {key: 'PA-1', value: 'PA-1'},
-    {key: 'PA-2', value: 'PA-2'},
-    {key: 'PA-3', value: 'PA-3'},
-    {key: 'PA-4', value: 'PA-4'},
-    {key: 'PA-5', value: 'PA-5'},
-    {key: 'PA-6', value: 'PA-6'},
-    {key: 'PA-7', value: 'PA-7'},
-    {key: 'PA-8', value: 'PA-8'},
-    {key: 'PA-9', value: 'PA-9'},
-    {key: 'PA-10', value: 'PA-10'},
-    {key: 'PA-EM', value: 'PA-EM'},
-    {key: 'PA-KY', value: 'PA-KY'},
-    {key: 'PA-NB', value: 'PA-NB'},
-    {key: 'SV-AH', value: 'SV-AH'},
-    {key: 'SV-CA', value: 'SV-CA'},
-    {key: 'SV-CH', value: 'SV-CH'},
-    {key: 'SV-CU', value: 'SV-CU'},
-    {key: 'SV-LI', value: 'SV-LI'},
-    {key: 'SV-MO', value: 'SV-MO'},
-    {key: 'SV-PA', value: 'SV-PA'},
-    {key: 'SV-SA', value: 'SV-SA'},
-    {key: 'SV-SM', value: 'SV-SM'},
-    {key: 'SV-SO', value: 'SV-SO'},
-    {key: 'SV-SS', value: 'SV-SS'},
-    {key: 'SV-SV', value: 'SV-SV'},
-    {key: 'SV-UN', value: 'SV-UN'},
-    {key: 'SV-US', value: 'SV-US'}
-  ]
+  districtName: {
+    None: [
+      {key: '-', value: '-'}
+    ],
+    BZ: [
+    ],
+    CR: [
+      {key: 'CR-A', value: 'CR-A'},
+      {key: 'CR-C', value: 'CR-C'},
+      {key: 'CR-G', value: 'CR-G'},
+      {key: 'CR-H', value: 'CR-H'},
+      {key: 'CR-L', value: 'CR-L'},
+      {key: 'CR-P', value: 'CR-P'},
+      {key: 'CR-SJ', value: 'CR-SJ'}
+    ],
+    GD: [
+    ],
+    GT: [
+      {key: 'GT-AV', value: 'GT-AV'},
+      {key: 'GT-AV', value: 'GT-AV'},
+      {key: 'GT-BV', value: 'GT-BV'},
+      {key: 'GT-CM', value: 'GT-CM'},
+      {key: 'GT-CQ', value: 'GT-CQ'},
+      {key: 'GT-ES', value: 'GT-ES'},
+      {key: 'GT-GU', value: 'GT-GU'},
+      {key: 'GT-HU', value: 'GT-HU'},
+      {key: 'GT-IZ', value: 'GT-IZ'},
+      {key: 'GT-JA', value: 'GT-JA'},
+      {key: 'GT-JU', value: 'GT-JU'},
+      {key: 'GT-PE', value: 'GT-PE'},
+      {key: 'GT-PR', value: 'GT-PR'},
+      {key: 'GT-QC', value: 'GT-QC'},
+      {key: 'GT-QZ', value: 'GT-QZ'},
+      {key: 'GT-RE', value: 'GT-RE'},
+      {key: 'GT-SA', value: 'GT-SA'},
+      {key: 'GT-SM', value: 'GT-SM'},
+      {key: 'GT-SO', value: 'GT-SO'},
+      {key: 'GT-SR', value: 'GT-SR'},
+      {key: 'GT-SU', value: 'GT-SU'},
+      {key: 'GT-TO', value: 'GT-TO'},
+      {key: 'GT-ZA', value: 'GT-ZA'}
+    ],
+    HN: [
+      {key: 'HN-AT', value: 'HN-AT'},
+      {key: 'HN-CH', value: 'HN-CH'},
+      {key: 'HN-CL', value: 'HN-CL'},
+      {key: 'HN-CM', value: 'HN-CM'},
+      {key: 'HN-CP', value: 'HN-CP'},
+      {key: 'HN-CR', value: 'HN-CR'},
+      {key: 'HN-EP', value: 'HN-EP'},
+      {key: 'HN-FM', value: 'HN-FM'},
+      {key: 'HN-GD', value: 'HN-GD'},
+      {key: 'HN-IB', value: 'HN-IB'},
+      {key: 'HN-IN', value: 'HN-IN'},
+      {key: 'HN-LE', value: 'HN-LE'},
+      {key: 'HN-LP', value: 'HN-LP'},
+      {key: 'HN-OC', value: 'HN-OC'},
+      {key: 'HN-OL', value: 'HN-OL'},
+      {key: 'HN-SB', value: 'HN-SB'},
+      {key: 'HN-VA', value: 'HN-VA'},
+      {key: 'HN-YO', value: 'HN-YO'}
+    ],
+    JM: [
+    ],
+    LC: [
+    ],
+    NI: [
+      {key: 'NI-AN', value: 'NI-AN'},
+      {key: 'NI-AS', value: 'NI-AS'},
+      {key: 'NI-BO', value: 'NI-BO'},
+      {key: 'NI-CA', value: 'NI-CA'},
+      {key: 'NI-CI', value: 'NI-CI'},
+      {key: 'NI-CO', value: 'NI-CO'},
+      {key: 'NI-ES', value: 'NI-ES'},
+      {key: 'NI-GR', value: 'NI-GR'},
+      {key: 'NI-JI', value: 'NI-JI'},
+      {key: 'NI-LE', value: 'NI-LE'},
+      {key: 'NI-MD', value: 'NI-MD'},
+      {key: 'NI-MN', value: 'NI-MN'},
+      {key: 'NI-MS', value: 'NI-MS'},
+      {key: 'NI-MT', value: 'NI-MT'},
+      {key: 'NI-NS', value: 'NI-NS'},
+      {key: 'NI-RI', value: 'NI-RI'},
+      {key: 'NI-SJ', value: 'NI-JS'}
+    ],
+    PA: [
+      {key: 'PA-1', value: 'PA-1'},
+      {key: 'PA-2', value: 'PA-2'},
+      {key: 'PA-3', value: 'PA-3'},
+      {key: 'PA-4', value: 'PA-4'},
+      {key: 'PA-5', value: 'PA-5'},
+      {key: 'PA-6', value: 'PA-6'},
+      {key: 'PA-7', value: 'PA-7'},
+      {key: 'PA-8', value: 'PA-8'},
+      {key: 'PA-9', value: 'PA-9'},
+      {key: 'PA-EM', value: 'PA-EM'},
+      {key: 'PA-KY', value: 'PA-KY'},
+      {key: 'PA-NB', value: 'PA-NB'}
+    ],
+    SV: [
+      {key: 'SV-AH', value: 'SV-AH'},
+      {key: 'SV-CA', value: 'SV-CA'},
+      {key: 'SV-CH', value: 'SV-CH'},
+      {key: 'SV-CU', value: 'SV-CU'},
+      {key: 'SV-LI', value: 'SV-LI'},
+      {key: 'SV-MO', value: 'SV-MO'},
+      {key: 'SV-PA', value: 'SV-PA'},
+      {key: 'SV-SA', value: 'SV-SA'},
+      {key: 'SV-SM', value: 'SV-SM'},
+      {key: 'SV-SO', value: 'SV-SO'},
+      {key: 'SV-SS', value: 'SV-SS'},
+      {key: 'SV-SV', value: 'SV-SV'},
+      {key: 'SV-UN', value: 'SV-UN'},
+      {key: 'SV-US', value: 'SV-US'}
+    ]
+  }
 }
 
 export const countryAAL = {

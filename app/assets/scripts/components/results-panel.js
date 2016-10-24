@@ -2,10 +2,11 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
-import { graphCols } from '../constants'
+import { graphCols, calcDropItems } from '../constants'
 import { getMapId } from '../utils/map-id'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
+import c from 'classnames'
 
 import BarChart from './charts/bar-chart'
 
@@ -62,6 +63,26 @@ const Results = React.createClass({
       bottom: 56
     }
 
+    var hasData = false
+    var countryActive = d.id.substring(0, 2)
+    var calcButtonLabel = 'No building data for this region'
+
+    calcDropItems.countryName.forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    calcDropItems.districtName[countryActive].forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    if (hasData) {
+      calcButtonLabel = 'Launch cost and benefit calculator'
+    }
+
     return (
       <div>
         <section className='results'>
@@ -101,7 +122,7 @@ const Results = React.createClass({
           <button onClick={() =>
             this.props.dispatch(showModalCalc()) &&
             this.props.dispatch(newCalcId(d.id))
-          } className='button button__map button--full'><span className='results__calc-hover'><i className='collecticon collecticon-expand-top-left' />{t('Launch cost and benefit calculator')}</span></button>
+          } className={c('button', 'button__map', 'button--full', {'button-full-disabled': hasData === false})}><span className='results__calc-hover'><i className={c('collecticon', 'collecticon-expand-top-left', {'hidden': hasData === false})} />{t(calcButtonLabel)}</span></button>
         </section>
       </div>
     )

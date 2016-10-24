@@ -68,8 +68,8 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.countryName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.countryName.map((o, i) => {
+            return (<li key={`${o.key}-country-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
@@ -94,8 +94,9 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.districtName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.map((o, i) => {
+            console.log(o.key)
+            return (<li key={`${o.key}-district-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
@@ -117,37 +118,23 @@ const Calculator = React.createClass({
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
-    var countryActive = activeId
-    var districtActive = '-'
-    var adminActive = ''
+    var activeCountry = 'BZ'
+    var activeDistrict = '-'
+    var adminActive = 'district'
 
-    calcDropItems.countryName.map(o => {
+    calcDropItems.countryName.forEach(o => {
       if (o.key === activeId) {
         adminActive = 'country'
       }
     })
 
-    calcDropItems.districtName.map(o => {
-      if (o.key === activeId) {
-        adminActive = 'district'
-      }
-    })
-
     if (adminActive === 'country') {
-      countryActive = activeId
-      districtActive = '-'
+      activeCountry = activeId
+      activeDistrict = '-'
     } else if (adminActive === 'district') {
-      countryActive = activeId.substring(0, 2)
-      districtActive = activeId
+      activeCountry = activeId.substring(0, 2)
+      activeDistrict = activeId
     }
-
-    // if (activeId) {
-    //   then countryActive = SELECTEDID
-    //   var districtActive = '-'
-    // }else if SELECTID matches DistrictCode{
-    //   then countryActive = SELECTID string first two letters
-    //   var districtActive = SELECTID
-    // }
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -181,12 +168,12 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dt className='stat__attribute stat__attribute--main'>{t('Country Selected')}</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderCountryDropdown(countryActive, calcDropItems, adminActive)}
+                      {this.renderCountryDropdown(activeCountry, calcDropItems, adminActive)}
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
-                  <dd className='selection__panel--drop'>
-                    {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
+                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (['BZ', 'JM', 'LC', 'GD'].indexOf(activeCountry) > -1) })}>
+                    {this.renderDistrictDropdown(activeDistrict, calcDropItems.districtName[activeCountry], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>

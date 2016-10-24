@@ -36,6 +36,7 @@ var Home = React.createClass({
   render: function () {
     const dataSelection = DataSelection(this.props.location.query)
     const mapSource = mapSources[dataSelection.admin.getActive().key]
+    console.log(this.props.newCalcId)
     return (
       <div>
         <Header

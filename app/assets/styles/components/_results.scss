@@ -140,7 +140,8 @@
       padding-bottom: 6px;    
     }
   }
-*/}
+*/
+}
 
 .results__container--textbox{
   font-size: 0.9rem;
@@ -149,4 +150,11 @@
 
 .collecticon-download{
   margin: 3px 10px 0 0;
+}
+
+.button-full-disabled{
+  pointer-events: none;
+  color: #888;
+  background-color: #ccc;
+  border-color: #888;
 }
