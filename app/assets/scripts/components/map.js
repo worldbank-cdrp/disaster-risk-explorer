@@ -53,6 +53,7 @@ export const Map = React.createClass({
       const basemap = this.props.dataSelection.basemap.getActive().key
       if (basemap === 'special') this._addBasemap(basemap)
       this._loadLayers()
+      this._setMapLanguage()
     })
   },
 
@@ -155,14 +156,14 @@ export const Map = React.createClass({
     this.activeSource = mapSources[nextSourceName]
 
     // Check label language
-    this._setLanguage()
+    this._setMapLanguage()
   },
 
   //
   // Start helper methods
   //
 
-  _setLanguage: function () {
+  _setMapLanguage: function () {
     textLayers.forEach(o => {
       this._map.setLayoutProperty(o, 'text-field', '{name_' + getLanguage() + '}')
     })
