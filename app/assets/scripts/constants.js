@@ -207,8 +207,8 @@ export const graphCols = {
 }
 
 export const measurementStrings = {
-  windstorm: 'Feet Per Second',
-  earthquake: 'Feet Per Second',
+  windstorm: 'Gust Wind Speed (Miles Per Hour)',
+  earthquake: 'Peak Ground Acceleration (gals)',
   flood: 'Gallons'
 }
 
