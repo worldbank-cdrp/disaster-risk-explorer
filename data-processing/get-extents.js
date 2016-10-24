@@ -8,8 +8,8 @@ state polygons, for either the admin 1 or admin 0 datasets.
 const fs = require('fs')
 const getExtent = require('turf-bbox')
 
-const fc = JSON.parse(fs.readFileSync('../../data/recalculate-extents/saint-lucia-states.geojson'))
-const outputExtents = '../../data/recalculate-extents/saint-lucia-extents.geojson'
+const fc = JSON.parse(fs.readFileSync('../../data/recalculate-extents/admin1.geojson'))
+const outputExtents = '../../data/recalculate-extents/admin1-extents.geojson'
 const admin = 1
 
 let extents = {}
@@ -30,5 +30,3 @@ fc.features.map((feat) => {
 
 console.log(extents)
 fs.writeFile(outputExtents, JSON.stringify(extents))
-
-// node get-extents.js ../../data/recalculate-extents/jamaica-states.geojson ../../data/recalculate-extents/jamaica-extents.geojson
