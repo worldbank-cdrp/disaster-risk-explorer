@@ -118,7 +118,6 @@ const Dropdown = React.createClass({
     if (this.state.open && this.props.triggerActiveClassName) {
       triggerKlasses.push(this.props.triggerActiveClassName)
     }
-    console.log(klasses)
     return (
       <TetherComponent
         attachment={tetherAttachment}
