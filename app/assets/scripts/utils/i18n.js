@@ -95,7 +95,7 @@ export function t (string, replace = {}) {
       'Probable Maximum Loss': 'Probable Maximum Loss',
       'Download Country Profile PDF': 'Download Country Profile PDF',
       'Launch cost and benefit calculator': 'Launch cost and benefit calculator',
-      'No building data for risk calculations': 'No building data for risk calculations',
+      'No building data for this region': 'No building data for this region',
 
       // Calculator
       'Risk mitigation cost and benefit calculator': 'Risk mitigation cost and benefit calculator',
@@ -355,7 +355,7 @@ export function t (string, replace = {}) {
       'Probable Maximum Loss': 'Pérdida Máxima Probable',
       'Download Country Profile PDF': 'Descargar el perfil del país',
       'Launch cost and benefit calculator': 'Lanzar calculador del costo y beneficio',
-      'No building data for risk calculations': 'No building data for risk calculations',
+      'No building data for this region': 'No building data for this region',
 
       // Calculator
       'Risk mitigation cost and benefit calculator': 'Calculador del costo y beneficio de la mitigación de riesgo',

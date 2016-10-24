@@ -65,15 +65,15 @@ const Results = React.createClass({
 
     var hasData = false
     var countryActive = d.id.substring(0, 2)
-    var calcButtonLabel = 'No building data for risk calculations'
+    var calcButtonLabel = 'No building data for this region'
 
-    calcDropItems.countryName.map(o => {
+    calcDropItems.countryName.forEach(o => {
       if (o.key === d.id) {
         hasData = true
       }
     })
 
-    calcDropItems.districtName[countryActive].map(o => {
+    calcDropItems.districtName[countryActive].forEach(o => {
       if (o.key === d.id) {
         hasData = true
       }
@@ -82,8 +82,6 @@ const Results = React.createClass({
     if (hasData) {
       calcButtonLabel = 'Launch cost and benefit calculator'
     }
-
-    console.log(hasData)
 
     return (
       <div>

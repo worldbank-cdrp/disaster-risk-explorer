@@ -368,8 +368,9 @@
   pointer-events: none;
   line-height: 1.5rem;
   &:after{
-    content: "No Data";
-    font-size: 0.9rem;
+    content: "Data unavailable for subregions";
+    font-size: 0.8rem;
+    font-weight: 500;
   }
   button{
     display: none;

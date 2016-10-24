@@ -118,8 +118,8 @@ const Calculator = React.createClass({
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
-    var countryActive = 'BZ'
-    var districtActive = '-'
+    var activeCountry = 'BZ'
+    var activeDistrict = '-'
     var adminActive = 'district'
 
     calcDropItems.countryName.map(o => {
@@ -129,20 +129,12 @@ const Calculator = React.createClass({
     })
 
     if (adminActive === 'country') {
-      countryActive = activeId
-      districtActive = '-'
+      activeCountry = activeId
+      activeDistrict = '-'
     } else if (adminActive === 'district') {
-      countryActive = activeId.substring(0, 2)
-      districtActive = activeId
+      activeCountry = activeId.substring(0, 2)
+      activeDistrict = activeId
     }
-
-    // if (activeId) {
-    //   then countryActive = SELECTEDID
-    //   var districtActive = '-'
-    // }else if SELECTID matches DistrictCode{
-    //   then countryActive = SELECTID string first two letters
-    //   var districtActive = SELECTID
-    // }
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -176,12 +168,12 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dt className='stat__attribute stat__attribute--main'>{t('Country Selected')}</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderCountryDropdown(countryActive, calcDropItems, adminActive)}
+                      {this.renderCountryDropdown(activeCountry, calcDropItems, adminActive)}
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
-                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (countryActive === 'BZ' || countryActive === 'JM' || countryActive === 'LC' || countryActive === 'GD') })}>
-                    {this.renderDistrictDropdown(districtActive, calcDropItems.districtName[countryActive], adminActive)}
+                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (['BZ', 'JM', 'LC', 'GD'].indexOf(activeCountry) > -1) })}>
+                    {this.renderDistrictDropdown(activeDistrict, calcDropItems.districtName[activeCountry], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>
