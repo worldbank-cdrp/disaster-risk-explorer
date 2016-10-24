@@ -122,7 +122,7 @@ const Calculator = React.createClass({
     var activeDistrict = '-'
     var adminActive = 'district'
 
-    calcDropItems.countryName.map(o => {
+    calcDropItems.countryName.forEach(o => {
       if (o.key === activeId) {
         adminActive = 'country'
       }
