@@ -9,9 +9,9 @@ export const mapSources = {
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'admin1-2q7pcm',
+    sourceLayer: 'admin1-8tdxy2',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.c5i9nddp'
+    url: 'mapbox://wbg-cdrp.7wehrpy2'
   },
   km10: {
     id: 'km10',
@@ -596,7 +596,7 @@ export const countryExtents = {
       'extent': [
         [
           -87.09486389160142,
-          5.499026775360178
+          8.499026775360178
         ],
         [
           -82.55322265625,
@@ -1240,7 +1240,7 @@ export const countryExtents = {
       'extent': [
         [
           -87.09486389160142,
-          5.499026775360178
+          8.499026775360178
         ],
         [
           -82.71180725097653,
