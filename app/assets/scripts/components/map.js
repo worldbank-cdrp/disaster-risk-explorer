@@ -8,8 +8,9 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, legends, countryExtents, adminNames } from '../constants'
+import { mapSources, mapSettings, legends, countryExtents } from '../constants'
 import { getMapId, getMapDescrip } from '../utils/map-id'
+import { t } from '../utils/i18n'
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2JnLWNkcnAiLCJhIjoiY2l1Z3pxZDVwMDBxcDMzcDJjYmRpYnBicSJ9.hjlLP5TEVhqbTwzhFA1rZw'
 
@@ -167,12 +168,13 @@ export const Map = React.createClass({
     const mapId = getMapId(dataSelection)
     const mapDescrip = getMapDescrip(dataSelection)
 
-    let adminName = dataSelection.admin.getActive().key !== 'km10'
+    let adminId = dataSelection.admin.getActive().key !== 'km10'
       ? feature.properties.id
       : feature.properties.country
-    adminName.length === 2
-      ? adminName = adminNames[adminName]
-      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
+    let adminName
+    adminId.length === 2
+      ? adminName = t(adminId)
+      : adminName = `${t(adminId)}, ${t(adminId.substring(0, 2))}`
 
     render(<MapPopup
              adminName={adminName}
