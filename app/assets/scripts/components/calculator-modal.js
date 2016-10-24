@@ -54,7 +54,6 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
-    console.log(key, value)
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
@@ -95,7 +94,7 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.districtName.map((o, i) => {
+          {dropOpts.map((o, i) => {
             console.log(o.key)
             return (<li key={`${o.key}-district-${i}`}>
               <a
@@ -119,39 +118,23 @@ const Calculator = React.createClass({
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
-    var countryActive = 'BZ'
-    var districtActive = '-'
-    var adminActive = ''
+    var activeCountry = 'BZ'
+    var activeDistrict = '-'
+    var adminActive = 'district'
 
-    console.log(calcDropItems.districtName['CR'])
+    calcDropItems.countryName.forEach(o => {
+      if (o.key === activeId) {
+        adminActive = 'country'
+      }
+    })
 
-    // calcDropItems.countryName.map(o => {
-    //   if (o.key === activeId) {
-    //     adminActive = 'country'
-    //   }
-    // })
-
-    // calcDropItems.districtName.map(o => {
-    //   if (o.key === activeId) {
-    //     adminActive = 'district'
-    //   }
-    // })
-
-    // if (adminActive === 'country') {
-    //   countryActive = activeId
-    //   districtActive = '-'
-    // } else if (adminActive === 'district') {
-    //   countryActive = activeId.substring(0, 2)
-    //   districtActive = activeId
-    // }
-
-    // if (activeId) {
-    //   then countryActive = SELECTEDID
-    //   var districtActive = '-'
-    // }else if SELECTID matches DistrictCode{
-    //   then countryActive = SELECTID string first two letters
-    //   var districtActive = SELECTID
-    // }
+    if (adminActive === 'country') {
+      activeCountry = activeId
+      activeDistrict = '-'
+    } else if (adminActive === 'district') {
+      activeCountry = activeId.substring(0, 2)
+      activeDistrict = activeId
+    }
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -185,12 +168,12 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dt className='stat__attribute stat__attribute--main'>{t('Country Selected')}</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderCountryDropdown(countryActive, calcDropItems, adminActive)}
+                      {this.renderCountryDropdown(activeCountry, calcDropItems, adminActive)}
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
-                  <dd className='selection__panel--drop'>
-                    {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
+                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (['BZ', 'JM', 'LC', 'GD'].indexOf(activeCountry) > -1) })}>
+                    {this.renderDistrictDropdown(activeDistrict, calcDropItems.districtName[activeCountry], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>

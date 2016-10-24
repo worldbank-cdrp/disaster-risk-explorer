@@ -2331,6 +2331,11 @@ export let calcDropItems = {
     {key: 'LC', value: 'LC'}
   ],
   districtName: {
+    None: [
+      {key: '-', value: '-'}
+    ],
+    BZ: [
+    ],
     CR: [
       {key: 'CR-A', value: 'CR-A'},
       {key: 'CR-C', value: 'CR-C'},
@@ -2339,6 +2344,8 @@ export let calcDropItems = {
       {key: 'CR-L', value: 'CR-L'},
       {key: 'CR-P', value: 'CR-P'},
       {key: 'CR-SJ', value: 'CR-SJ'}
+    ],
+    GD: [
     ],
     GT: [
       {key: 'GT-AV', value: 'GT-AV'},
@@ -2386,32 +2393,8 @@ export let calcDropItems = {
       {key: 'HN-YO', value: 'HN-YO'}
     ],
     JM: [
-      {key: 'JM-01', value: 'JM-01'},
-      {key: 'JM-02', value: 'JM-02'},
-      {key: 'JM-03', value: 'JM-03'},
-      {key: 'JM-04', value: 'JM-04'},
-      {key: 'JM-05', value: 'JM-05'},
-      {key: 'JM-06', value: 'JM-06'},
-      {key: 'JM-07', value: 'JM-07'},
-      {key: 'JM-08', value: 'JM-08'},
-      {key: 'JM-09', value: 'JM-09'},
-      {key: 'JM-10', value: 'JM-10'},
-      {key: 'JM-11', value: 'JM-11'},
-      {key: 'JM-12', value: 'JM-12'},
-      {key: 'JM-13', value: 'JM-13'},
-      {key: 'JM-14', value: 'JM-14'}
     ],
     LC: [
-      {key: 'LC-01', value: 'LC-01'},
-      {key: 'LC-02', value: 'LC-02'},
-      {key: 'LC-03', value: 'LC-03'},
-      {key: 'LC-05', value: 'LC-05'},
-      {key: 'LC-06', value: 'LC-06'},
-      {key: 'LC-07', value: 'LC-07'},
-      {key: 'LC-08', value: 'LC-08'},
-      {key: 'LC-10', value: 'LC-10'},
-      {key: 'LC-11', value: 'LC-11'},
-      {key: 'LC-12', value: 'LC-12'}
     ],
     NI: [
       {key: 'NI-AN', value: 'NI-AN'},
@@ -2442,7 +2425,6 @@ export let calcDropItems = {
       {key: 'PA-7', value: 'PA-7'},
       {key: 'PA-8', value: 'PA-8'},
       {key: 'PA-9', value: 'PA-9'},
-      {key: 'PA-10', value: 'PA-10'},
       {key: 'PA-EM', value: 'PA-EM'},
       {key: 'PA-KY', value: 'PA-KY'},
       {key: 'PA-NB', value: 'PA-NB'}
