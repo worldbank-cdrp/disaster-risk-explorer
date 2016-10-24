@@ -45,6 +45,7 @@ const Calculator = React.createClass({
   },
 
   selectConversion: function (conversion) {
+    this.props.dispatch(updateUCC(null))
     this.props.dispatch(selectConversion(conversion))
   },
 
@@ -54,6 +55,7 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
+    this.props.dispatch(updateUCC(null))
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
