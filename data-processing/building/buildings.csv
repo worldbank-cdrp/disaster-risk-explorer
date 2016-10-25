@@ -3,22 +3,22 @@ BZ,avmUCBs,Unreinforced Concrete Block masonry with lime or mortar multi family 
 BZ,avsUCBs,Unreinforced Concrete Block masonry with lime or mortar single family - on stilts,63.79526005,0.262490568,0.297324768,0.004114578,2,350,350,315
 BZ,avmC3s,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise - on stilts,0.46341365,0.001370638,0.00155253,0.002957699,3,,,
 BZ,avsC3s,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise - on stilts,8.06694444,0.023051832,0.026110959,0.002857567,4,,,
-BZ,avmW7s,Wood braced frame with load-bearing infill wall system multi family - on stilts,0.03575661,2.54E-005,0.0000288,0.000710532,5,,,
+BZ,avmW7s,Wood braced frame with load-bearing infill wall system multi family - on stilts,0.03575661,0.0000254,0.0000288,0.000710532,5,,,
 BZ,avsW7s,Wood braced frame with load-bearing infill wall system single family - on stilts,9.98199499,0.007091715,0.008032831,0.000710451,6,,,
 BZ,avsW3s,"Wood frame, prefabricated steel stud panels, wood or stucco exterior walls - multi-family - on stilts",119.1456772,0.081965013,0.092842301,0.000687939,7,235,235,210
 BZ,avmW3s,"Wood frame, prefabricated steel stud panels, wood or stucco exterior walls - single-family - on stilts",1.70402151,0.00113221,0.001282462,0.000664434,8,260,260,230
 BZ,avsW1s,Wood stud-wall frame with plywood/gypsum board sheathing single family - on stilts,213.6735246,0.140983506,0.159692932,0.000659808,9,375,375,340
 BZ,avsS3s,Light Steel Frame single family - on stilts,0.30121431,0.000191321,0.00021671,0.000635164,10,,,
 BZ,avmW1s,Wood stud-wall frame with plywood/gypsum board sheathing multi family - on stilts,6.22075488,0.003821565,0.004328712,0.000614325,11,415,415,375
-BZ,avmS3s,Light Steel Frame  multi family - on stilts,0.00965594,5.34E-006,0.00000605,0.000552706,12,,,
+BZ,avmS3s,Light Steel Frame  multi family - on stilts,0.00965594,0.00000534,0.00000605,0.000552706,12,,,
 BZ,avmUFB,Unreinforced Fire Brick masonry multi family,0.58179058,0.000227022,0.000257149,0.000390212,13,395,395,345
-BZ,avmINF,Informal constructions multi family,0.0128064,4.64E-006,0.00000525,0.000362092,14,,,
+BZ,avmINF,Informal constructions multi family,0.0128064,0.00000464,0.00000525,0.000362092,14,,,
 BZ,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,60.2082234,0.021228955,0.024046175,0.000352592,15,385,385,345
 BZ,avsUFB,Unreinforced Fire Brick masonry single family,4.54636943,0.001425687,0.001614885,0.000313588,16,350,350,315
 BZ,avsINF,Informal constructions single family,0.84776061,0.000245643,0.000278242,0.000289756,17,,,
 BZ,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,596.6140129,0.164216544,0.186009144,0.000275248,18,350,350,315
 BZ,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,35.73198158,0.008772926,0.00993715,0.00024552,19,450,450,405
-BZ,avmUNKN,Unknown multi-family,0.34393561,8.22E-005,0.0000931,0.000238936,20,,,
+BZ,avmUNKN,Unknown multi-family,0.34393561,0.0000822,0.0000931,0.000238936,20,,,
 BZ,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,10.39999201,0.002476986,0.002805698,0.000238172,27,,,
 BZ,avsUNKN,Unknown single-family,7.59209994,0.001530654,0.001733781,0.000201611,21,,,
 BZ,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,149.3894299,0.029173055,0.033044508,0.000195282,22,410,410,370
@@ -27,10 +27,10 @@ BZ,avcomret,Commercial retail,89.1562372,0.011672814,0.013221872,0.000130925,23,
 BZ,avindustr,General industrial,112.0470273,0.014152809,0.016030978,0.000126311,24,,,
 BZ,avcomm,Commercial or other types of warehouse,105.4275525,0.012833291,0.014536351,0.000121726,25,,,
 BZ,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,41.82198401,0.005058297,0.005729566,0.000120948,26,,,
-BZ,avmS3,Steel light frame multi family,0.81348946,9.27E-005,0.000104965,0.000113914,35,,,
+BZ,avmS3,Steel light frame multi family,0.81348946,0.0000927,0.000104965,0.000113914,35,,,
 BZ,avsS3,Steel light frame single family,4.04514696,0.000452592,0.000512653,0.000111885,34,,,
 BZ,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,107.504038,0.01036304,0.011738283,0.0000964,28,,,
-BZ,avmW7,Wood braced frame with load-bearing infill wall system multi family,0.25999734,2.07E-005,0.0000234,0.0000794,30,,,
+BZ,avmW7,Wood braced frame with load-bearing infill wall system multi family,0.25999734,0.0000207,0.0000234,0.0000794,30,,,
 BZ,avcomoff,Commercial offices,340.1783208,0.025169063,0.028509161,0.000074,31,,,
 BZ,avsW7,Wood braced frame with load-bearing infill wall system single family,5.85034037,0.000421887,0.000477875,0.0000721,32,,,
 BZ,avcritica,"Critical buildings - schools, hospitals, medical centers",394.1408873,0.023842692,0.027006772,0.0000605,33,,,
@@ -135,7 +135,7 @@ PA,avcomret,Commercial retail,1742.865396,0.375662268,0.012734399,0.000215543,14
 PA,avcritica,"Critical buildings - schools, hospitals, medical centers",5033.094868,1.072936263,0.036370964,0.000213176,15,,,
 PA,avcomoff,Commercial offices,8040.475936,1.670542924,0.056628952,0.000207767,16,,,
 PA,avindustr,General industrial,3666.716217,0.759843568,0.025757581,0.000207227,17,,,
-PA,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,555.181371,0.107597357,0.003647392,0.000193806,18,,,
+PA,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,555.181371,0.107597357,0.003647392,0.000193806,18,355,315,315
 PA,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,4100.576896,0.7736426,0.026225348,0.000188667,19,,,
 PA-1,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",5,0.02,0.0323,0.00399,1,170,155,145
@@ -155,7 +155,7 @@ PA-1,avcomret,Commercial retail,13,0.01,0.0093,0.00044,14,,,
 PA-1,avcritica,"Critical buildings - schools, hospitals, medical centers",37,0.02,0.0256,0.00043,15,,,
 PA-1,avcomoff,Commercial offices,45,0.02,0.0312,0.00043,16,,,
 PA-1,avindustr,General industrial,67,0.02,0.0388,0.00036,17,,,
-PA-1,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,3,0,0.0012,0.00026,18,,,
+PA-1,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,3,0,0.0012,0.00026,18,355,315,315
 PA-1,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,5,0,0.002,0.00026,19,,,
 PA-4,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",28,0.18,0.0277,0.00662,1,170,155,145
@@ -175,7 +175,7 @@ PA-4,avcomret,Commercial retail,138,0.06,0.0086,0.00041,14,,,
 PA-4,avcritica,"Critical buildings - schools, hospitals, medical centers",384,0.16,0.0239,0.00041,15,,,
 PA-4,avcomoff,Commercial offices,578,0.23,0.0349,0.0004,16,,,
 PA-4,avindustr,General industrial,508,0.18,0.0269,0.00035,17,,,
-PA-4,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,22,0.01,0.0013,0.00041,18,,,
+PA-4,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,22,0.01,0.0013,0.00041,18,355,315,315
 PA-4,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,36,0.01,0.0021,0.0004,19,,,
 PA-2,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",10,0.04,0.036,0.00432,1,170,155,145
@@ -195,7 +195,7 @@ PA-2,avcomret,Commercial retail,66,0.02,0.013,0.00024,14,,,
 PA-2,avcritica,"Critical buildings - schools, hospitals, medical centers",183,0.04,0.0361,0.00024,15,,,
 PA-2,avcomoff,Commercial offices,266,0.06,0.0486,0.00023,16,,,
 PA-2,avindustr,General industrial,259,0.06,0.0478,0.00023,17,,,
-PA-2,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,8,0,0.0009,0.00014,18,,,
+PA-2,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,8,0,0.0009,0.00014,18,355,315,315
 PA-2,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,12,0,0.0014,0.00014,19,,,
 PA-3,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",9,0.04,0.0179,0.00395,1,170,155,145
@@ -215,7 +215,7 @@ PA-3,avcomret,Commercial retail,114,0.02,0.0124,0.00022,14,,,
 PA-3,avcritica,"Critical buildings - schools, hospitals, medical centers",316,0.07,0.0341,0.00022,15,,,
 PA-3,avcomoff,Commercial offices,519,0.11,0.0553,0.00021,16,,,
 PA-3,avindustr,General industrial,346,0.06,0.0321,0.00019,17,,,
-PA-3,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,21,0,0.0021,0.0002,18,,,
+PA-3,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,21,0,0.0021,0.0002,18,355,315,315
 PA-3,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,34,0.01,0.0035,0.00021,19,,,
 PA-5,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",3,0.02,0.0533,0.00478,1,170,155,145
@@ -235,7 +235,7 @@ PA-5,avcomret,Commercial retail,3,0,0.0029,0.00032,14,,,
 PA-5,avcritica,"Critical buildings - schools, hospitals, medical centers",7,0,0.0079,0.00031,15,,,
 PA-5,avcomoff,Commercial offices,9,0,0.0096,0.00031,16,,,
 PA-5,avindustr,General industrial,13,0,0.012,0.00026,17,,,
-PA-5,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,,,
+PA-5,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
 PA-5,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-EM,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",0,0,0.0569,0.00436,1,170,155,145
@@ -255,7 +255,7 @@ PA-EM,avcomret,Commercial retail,0,0,0,#DIV/0!,14,,,
 PA-EM,avcritica,"Critical buildings - schools, hospitals, medical centers",0,0,0,#DIV/0!,15,,,
 PA-EM,avcomoff,Commercial offices,0,0,0,#DIV/0!,16,,,
 PA-EM,avindustr,General industrial,0,0,0,#DIV/0!,17,,,
-PA-EM,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,,,
+PA-EM,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
 PA-EM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-6,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",7,0.03,0.0328,0.00515,1,170,155,145
@@ -275,7 +275,7 @@ PA-6,avcomret,Commercial retail,51,0.02,0.0145,0.0003,14,,,
 PA-6,avcritica,"Critical buildings - schools, hospitals, medical centers",141,0.04,0.0402,0.0003,15,,,
 PA-6,avcomoff,Commercial offices,205,0.06,0.0546,0.00028,16,,,
 PA-6,avindustr,General industrial,197,0.06,0.053,0.00028,17,,,
-PA-6,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,5,0,0.0009,0.00017,18,,,
+PA-6,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,5,0,0.0009,0.00017,18,355,315,315
 PA-6,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,9,0,0.0015,0.00017,19,,,
 PA-KY,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",0,0,0.06,0.00418,1,170,155,145
@@ -295,7 +295,7 @@ PA-KY,avcomret,Commercial retail,0,0,0,#DIV/0!,14,,,
 PA-KY,avcritica,"Critical buildings - schools, hospitals, medical centers",0,0,0,#DIV/0!,15,,,
 PA-KY,avcomoff,Commercial offices,0,0,0,#DIV/0!,16,,,
 PA-KY,avindustr,General industrial,0,0,0,#DIV/0!,17,,,
-PA-KY,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,,,
+PA-KY,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
 PA-KY,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-7,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",11,0.04,0.038,0.00366,1,170,155,145
@@ -315,7 +315,7 @@ PA-7,avcomret,Commercial retail,25,0.01,0.0064,0.00026,14,,,
 PA-7,avcritica,"Critical buildings - schools, hospitals, medical centers",70,0.02,0.0176,0.00026,15,,,
 PA-7,avcomoff,Commercial offices,96,0.02,0.024,0.00026,16,,,
 PA-7,avindustr,General industrial,108,0.02,0.0232,0.00022,17,,,
-PA-7,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,3,0,0.0008,0.00026,18,,,
+PA-7,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,3,0,0.0008,0.00026,18,355,315,315
 PA-7,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,6,0,0.0014,0.00026,19,,,
 PA-NB,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",3,0.01,0.0558,0.00407,1,170,155,145
@@ -335,7 +335,7 @@ PA-NB,avcomret,Commercial retail,1,0,0.0004,0.00014,14,,,
 PA-NB,avcritica,"Critical buildings - schools, hospitals, medical centers",1,0,0.002,0.00027,15,,,
 PA-NB,avcomoff,Commercial offices,2,0,0.0024,0.00027,16,,,
 PA-NB,avindustr,General industrial,3,0,0.003,0.00023,17,,,
-PA-NB,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,,,
+PA-NB,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
 PA-NB,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-8,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",25,0.12,0.0083,0.00469,1,170,155,145
@@ -355,7 +355,7 @@ PA-8,avcomret,Commercial retail,1262,0.23,0.0164,0.00018,14,,,
 PA-8,avcritica,"Critical buildings - schools, hospitals, medical centers",3698,0.68,0.0478,0.00018,15,,,
 PA-8,avcomoff,Commercial offices,6042,1.1,0.0777,0.00018,16,,,
 PA-8,avindustr,General industrial,1881,0.29,0.0205,0.00015,17,,,
-PA-8,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,487,0.09,0.0063,0.00018,18,,,
+PA-8,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,487,0.09,0.0063,0.00018,18,355,315,315
 PA-8,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,3988,0.74,0.0525,0.00019,19,,,
 PA-9,avsA1,"Adobe block, mud mortar, wood
 roof and floors single family",19,0.09,0.0415,0.00476,1,170,155,145
@@ -375,7 +375,7 @@ PA-9,avcomret,Commercial retail,70,0.02,0.0074,0.00023,14,,,
 PA-9,avcritica,"Critical buildings - schools, hospitals, medical centers",196,0.04,0.0202,0.00023,15,,,
 PA-9,avcomoff,Commercial offices,279,0.06,0.0282,0.00022,16,,,
 PA-9,avindustr,General industrial,285,0.06,0.0273,0.00021,17,,,
-PA-9,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,7,0,0.0006,0.0002,18,,,
+PA-9,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,7,0,0.0006,0.0002,18,355,315,315
 PA-9,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,11,0,0.001,0.0002,19,,,
 NI,avsINF,Informal constructions single family,15.26438999,0.210091092,0.002360033,0.013763478,1,,,
 NI,avsM1,Mud walls without horizontal wood elements single family,454.2269958,6.088442788,0.068393782,0.013403965,2,135,125,110
