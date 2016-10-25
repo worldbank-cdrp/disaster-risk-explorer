@@ -97,7 +97,6 @@ const Calculator = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map((o, i) => {
-            console.log(o.key)
             return (<li key={`${o.key}-district-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
