@@ -8,9 +8,9 @@ import _ from 'lodash'
 import { updateSelected } from '../actions'
 import MapPopup from './map-popup'
 
-import { mapSources, mapSettings, legends, countryExtents } from '../constants'
+import { mapSources, mapSettings, legends, countryExtents, textLayers } from '../constants'
 import { getMapId, getMapDescrip } from '../utils/map-id'
-import { t } from '../utils/i18n'
+import { t, getLanguage } from '../utils/i18n'
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2JnLWNkcnAiLCJhIjoiY2l1Z3pxZDVwMDBxcDMzcDJjYmRpYnBicSJ9.hjlLP5TEVhqbTwzhFA1rZw'
 
@@ -53,6 +53,7 @@ export const Map = React.createClass({
       const basemap = this.props.dataSelection.basemap.getActive().key
       if (basemap === 'special') this._addBasemap(basemap)
       this._loadLayers()
+      this._setMapLanguage()
     })
   },
 
@@ -153,11 +154,20 @@ export const Map = React.createClass({
 
     // Done with switching. Update the active source
     this.activeSource = mapSources[nextSourceName]
+
+    // Check label language
+    this._setMapLanguage()
   },
 
   //
   // Start helper methods
   //
+
+  _setMapLanguage: function () {
+    textLayers.forEach(o => {
+      this._map.setLayoutProperty(o, 'text-field', '{name_' + getLanguage() + '}')
+    })
+  },
 
   // Will be created the first time is needed.
   _showPopupThrottled: null,
