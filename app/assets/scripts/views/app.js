@@ -53,13 +53,15 @@ var App = React.createClass({
 
   //
   // Start render methods
-  //
+  // {t('Screen is too small')}
   render: function () {
     let pageClass = _.get(_.last(this.props.routes), 'pageClass', '')
 
     return this.state.vpTooSmall ? (
       <div className='nocando-viewport'>
-        <p>{t('Screen is too small')}</p>
+        <img className='nocando-img' src='../assets/graphics/content/central_america.png'/>
+        <p>The Disaster Risk Explorer for Central America tool can only be used on larger screens.</p>
+        <p>Please switch to desktop.</p>
       </div>
     ) : (
       <div className={c('page', pageClass)}>
