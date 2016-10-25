@@ -2862,3 +2862,30 @@ export const countryAAL = {
     }
   ]
 }
+
+export const textLayers = [
+  'waterway-label',
+  'water-label',
+  'place-hamlet',
+  'place-village',
+  'place-town',
+  'place-city-sm',
+  'place-city-md-s',
+  'place-city-md-n',
+  'place-city-lg-s',
+  'place-city-lg-n',
+  'marine-label-sm-ln',
+  'marine-label-sm-pt',
+  'marine-label-md-ln',
+  'marine-label-md-pt',
+  'marine-label-lg-ln',
+  'marine-label-lg-pt',
+  'state-label-sm',
+  'state-label-md',
+  'state-label-lg',
+  'country-label-sm',
+  'country-label-sm copy',
+  'country-label-sm copy 1',
+  'country-label-md',
+  'country-label-lg'
+]
