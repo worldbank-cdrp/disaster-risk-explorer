@@ -338,9 +338,17 @@
       background-color: #ddd;
       &:hover{
         background-color: #dadada;
-      } 
+      }
     }
   }
+  .button-disabled{
+    background-color: #ccc;
+  }
+}
+
+.button--disabled{
+  color: #bbb;
+  pointer-events: none;
 }
 
 .stat__attribute--stocks {
