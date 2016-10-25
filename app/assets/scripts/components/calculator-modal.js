@@ -115,7 +115,8 @@ const Calculator = React.createClass({
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
-    const {sliderValue, conversion, newCalcId} = this.props
+    const { sliderValue, newCalcId } = this.props
+    let conversion = this.props.conversion
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
@@ -136,6 +137,9 @@ const Calculator = React.createClass({
       activeCountry = activeId.substring(0, 2)
       activeDistrict = activeId
     }
+
+    // force Costa Rica to display replacement as there is no retrofit data
+    conversion = (activeCountry === 'CR') ? 'replacement' : conversion
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -179,11 +183,11 @@ const Calculator = React.createClass({
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>
                     <button
-                      className={'button header__language--toggle button__leftside ' + (conversion === 'retrofit' ? 'button--active' : '')}
+                      className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': conversion === 'retrofit'}, {'button--disabled': activeCountry === 'CR'})}
                       onClick={() => this.selectConversion('retrofit')}>
                       <span className='header__language--text'>{t('Retrofit')}</span></button>
                     <button
-                      className={'button header__language--toggle button__rightside ' + (conversion === 'replacement' ? 'button--active' : '')}
+                      className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': conversion === 'replacement'})}
                       onClick={() => this.selectConversion('replacement')}>
                       <span className='header__language--text'>{t('Replace')}</span></button>
                     </dd>
