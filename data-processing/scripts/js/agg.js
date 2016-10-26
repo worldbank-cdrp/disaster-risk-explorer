@@ -44,6 +44,16 @@ gridLayer.features.forEach(feature => {
           feature.properties[prependor + match[1]] = result.properties[key]
         }
       })
+    } else if (process.argv[2].match('_ws_rp')) {
+      Object.keys(result.properties).forEach(key => {
+        if (result.properties[key]) {
+          // get the return period from the property, 1000 is abbreviated as 1k
+          // and will parse as NaN
+          var rp = Number(key.replace('Vg', ''))
+          rp = isNaN(rp) ? 1000 : rp
+          feature.properties['HZ_WS_' + rp] = result.properties[key]
+        }
+      })
     } else {
       feature.properties[propertyName] = result.properties[tifProperty]
     }
