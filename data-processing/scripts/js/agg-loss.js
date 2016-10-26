@@ -4,8 +4,12 @@ var fs = require('fs')
 var rbush = require('rbush')
 var bb = require('turf-bbox')
 var centroid = require('turf-centroid')
+var prettyMs = require('pretty-ms')
 
+var start = Date.now()
 var data = JSON.parse(fs.readFileSync(process.argv[2]))
+console.log('Reading data from ' + process.argv[2])
+console.log('Grid layer: ' + process.argv[3])
 var grid = JSON.parse(fs.readFileSync(process.argv[3]))
 var prependor = process.argv[4]
 var tree = rbush()
@@ -29,3 +33,5 @@ grid.features.forEach(feature => {
 })
 
 fs.writeFileSync(process.argv[3], JSON.stringify(grid))
+console.log('Wrote to ' + process.argv[3])
+console.log(`Processing took ${prettyMs(Date.now() - start)}`)

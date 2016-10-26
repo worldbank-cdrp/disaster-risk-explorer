@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var fs = require('fs')
-var aggregate = require('geojson-polygon-aggregate')
+var rbush = require('rbush')
+var bb = require('turf-bbox')
 var prettyMs = require('pretty-ms')
 
 var start = Date.now()
@@ -9,6 +10,50 @@ var dataLayer = JSON.parse(fs.readFileSync(process.argv[2]))
 console.log('Reading data from ' + process.argv[2])
 console.log('Grid layer: ' + process.argv[3])
 var gridLayer = JSON.parse(fs.readFileSync(process.argv[3]))
+
+if (process.argv.length > 4) {
+  var prependor = process.argv[4]
+  console.log('Prepending properties with: ' + prependor)
+} else {
+  var propertyName = process.argv[2] // full path
+    .split('/')
+    .slice(2) // only take folder name and file name
+    .map(a => pathArrayElementToKeyInfo(a))
+    .join('')
+  console.log('Adding property: ' + propertyName)
+
+  var tifProperty = folderToTifProperty(process.argv[2].split('/')[3])
+}
+
+var tree = rbush()
+tree.load(dataLayer.features.map(feature => {
+  const [minX, minY, maxX, maxY] = bb(feature)
+  return Object.assign({}, feature, { minX, minY, maxX, maxY })
+}))
+
+gridLayer.features.forEach(feature => {
+  const [minX, minY, maxX, maxY] = bb(feature)
+  const searchResults = tree.search({minX, minY, maxX, maxY})
+
+  searchResults.forEach(result => {
+    // separate procedures when grabbing multiple properties or just one
+    if (process.argv.length > 4) {
+      Object.keys(result.properties).forEach(key => {
+        if (result.properties[key] && key !== 'SUM_PF_T1') {
+          var match = key.match(/(\d+|AAL)/)
+          feature.properties[prependor + match[1]] = result.properties[key]
+        }
+      })
+    } else {
+      feature.properties[propertyName] = result.properties[tifProperty]
+    }
+  })
+})
+
+fs.writeFileSync(process.argv[3], JSON.stringify(gridLayer))
+console.log('')
+console.log('Wrote to ' + process.argv[3])
+console.log(`Processing took ${prettyMs(Date.now() - start)}`)
 
 function pathArrayElementToKeyInfo (el) {
   if (el.match('.geojson')) {
@@ -59,26 +104,3 @@ function folderToTifProperty (folder) {
       return 'Unknownkey'
   }
 }
-
-const propertyName = process.argv[2] // full path
-  .split('/')
-  .slice(2) // only take folder name and file name
-  .map(a => pathArrayElementToKeyInfo(a))
-  .join('')
-console.log('Adding property: ' + propertyName)
-
-const tifProperty = folderToTifProperty(process.argv[2].split('/')[3])
-
-var aggregatedGrid = aggregate.groups(gridLayer, dataLayer, {
-  [propertyName]: function (s, feature) {
-    return feature.properties[tifProperty]
-  },
-  [propertyName + '_R']: function (s, feature) {
-    return feature.properties[tifProperty]
-  }
-})
-
-fs.writeFileSync(process.argv[3], JSON.stringify(aggregatedGrid))
-console.log('')
-console.log('Wrote to ' + process.argv[3])
-console.log(`Processing took ${prettyMs(Date.now() - start)}`)
