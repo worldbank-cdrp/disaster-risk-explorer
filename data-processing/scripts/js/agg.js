@@ -22,7 +22,7 @@ if (process.argv.length > 4) {
     .join('')
   console.log('Adding property: ' + propertyName)
 
-  var tifProperty = folderToTifProperty(process.argv[2].split('/')[3])
+  var tifProperty = pathToTifProperty(process.argv[2])
 }
 
 var tree = rbush()
@@ -61,14 +61,20 @@ gridLayer.features.forEach(feature => {
 })
 
 fs.writeFileSync(process.argv[3], JSON.stringify(gridLayer))
-console.log('')
 console.log('Wrote to ' + process.argv[3])
 console.log(`Processing took ${prettyMs(Date.now() - start)}`)
+console.log('')
 
 function pathArrayElementToKeyInfo (el) {
   if (el.match('.geojson')) {
     // from files we need the return period
-    return (el.match(/\d+/) && el.match(/\d+/)[0]) || ''
+    // remove historic data
+    var rp = (el.match(/\d+/) && el.match(/\d+/)[0]) || ''
+    if (['05', '10', '25', '50', '100', '250', '500', '1000', '2500', '5000'].indexOf(rp) > -1) {
+      return rp
+    } else {
+      return ''
+    }
   } else {
     // from folders we shorten the name
     switch (el) {
@@ -92,25 +98,53 @@ function pathArrayElementToKeyInfo (el) {
         return 'BS'
       case 'probabilistic':
         return ''
+      case 'historic':
+        return 'HS'
       default:
         return 'Unknownkey'
     }
   }
 }
 
-function folderToTifProperty (folder) {
-  switch (folder) {
-    case 'Earthquake':
-    case 'Windstorm':
-    case 'Flood':
-      return 'risk'
-    case 'GDP':
-      return 'gdp'
-    case 'Infrastructure':
-      return 'inf'
-    case 'Building Stock':
-      return 'assetval'
-    default:
-      return 'Unknownkey'
+function pathToTifProperty (path) {
+  var metric = path.split('/')[2]
+  var hazard = path.split('/')[3]
+  var probabilistic = path.split('/')[4] === 'probabilistic'
+
+  if (probabilistic) {
+    switch (hazard) {
+      case 'Earthquake':
+      case 'Windstorm':
+      case 'Flood':
+        return 'risk'
+      case 'GDP':
+        return 'gdp'
+      case 'Infrastructure':
+        return 'inf'
+      case 'Building Stock':
+        return 'assetval'
+      default:
+        return 'Unknownkey'
+    }
+  } else {
+    if (metric === 'Hazard') {
+      switch (hazard) {
+        case 'Earthquake':
+          return 'risk'
+        case 'Windstorm':
+          return 'V10_peakGu'
+        default:
+          return 'Unknownkey'
+      }
+    } else if (metric === 'Loss') {
+      switch (hazard) {
+        case 'Earthquake':
+          return 'Loss'
+        case 'Windstorm':
+          return 'AbsLoss'
+        default:
+          return 'Unknownkey'
+      }
+    }
   }
 }
