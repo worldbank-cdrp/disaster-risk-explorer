@@ -35,4 +35,5 @@ scripts/zsh/relative.sh
 scripts/js/merge.js
 
 # add data from other shapefiles as necessary
-# scripts/js/add-data.js countries_joined.geojson
+# scripts/js/add-data.js countries_joined_all.geojson
+# scripts/js/add-data.js admin1_joined_all.geojson
