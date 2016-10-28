@@ -4,6 +4,7 @@ var fs = require('fs')
 var rbush = require('rbush')
 var bb = require('turf-bbox')
 var prettyMs = require('pretty-ms')
+var centroid = require('turf-centroid')
 
 var start = Date.now()
 var dataLayer = JSON.parse(fs.readFileSync(process.argv[2]))
@@ -14,20 +15,24 @@ var gridLayer = JSON.parse(fs.readFileSync(process.argv[3]))
 if (process.argv.length > 4) {
   var prependor = process.argv[4]
   console.log('Prepending properties with: ' + prependor)
+} else if (process.argv[2].match('_ws_rp')) {
+  prependor = 'HZ_WS_'
 } else {
   var propertyName = process.argv[2] // full path
     .split('/')
     .slice(2) // only take folder name and file name
     .map(a => pathArrayElementToKeyInfo(a))
     .join('')
-  console.log('Adding property: ' + propertyName)
-
   var tifProperty = pathToTifProperty(process.argv[2])
+
+  console.log('Adding property: ' + propertyName + ' from data property: ' + tifProperty)
 }
 
 var tree = rbush()
 tree.load(dataLayer.features.map(feature => {
-  const [minX, minY, maxX, maxY] = bb(feature)
+  const [minX, minY, maxX, maxY] = process.argv[2].split('/')[2] === 'Loss'
+  ? bb(centroid(feature))
+  : bb(feature)
   return Object.assign({}, feature, { minX, minY, maxX, maxY })
 }))
 
@@ -51,7 +56,7 @@ gridLayer.features.forEach(feature => {
           // and will parse as NaN
           var rp = Number(key.replace('Vg', ''))
           rp = isNaN(rp) ? 1000 : rp
-          feature.properties['HZ_WS_' + rp] = result.properties[key]
+          feature.properties[prependor + rp] = result.properties[key]
         }
       })
     } else {
@@ -109,24 +114,9 @@ function pathArrayElementToKeyInfo (el) {
 function pathToTifProperty (path) {
   var metric = path.split('/')[2]
   var hazard = path.split('/')[3]
-  var probabilistic = path.split('/')[4] === 'probabilistic'
+  var historic = path.split('/')[4] === 'historic'
 
-  if (probabilistic) {
-    switch (hazard) {
-      case 'Earthquake':
-      case 'Windstorm':
-      case 'Flood':
-        return 'risk'
-      case 'GDP':
-        return 'gdp'
-      case 'Infrastructure':
-        return 'inf'
-      case 'Building Stock':
-        return 'assetval'
-      default:
-        return 'Unknownkey'
-    }
-  } else {
+  if (historic) {
     if (metric === 'Hazard') {
       switch (hazard) {
         case 'Earthquake':
@@ -145,6 +135,22 @@ function pathToTifProperty (path) {
         default:
           return 'Unknownkey'
       }
+    }
+  } else {
+    // probabilistic and exposure
+    switch (hazard) {
+      case 'Earthquake':
+      case 'Windstorm':
+      case 'Flood':
+        return 'risk'
+      case 'GDP':
+        return 'gdp'
+      case 'Infrastructure':
+        return 'infrastructure'
+      case 'Building Stock':
+        return 'assetval'
+      default:
+        return 'Unknownkey'
     }
   }
 }
