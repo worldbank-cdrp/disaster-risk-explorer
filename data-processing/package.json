@@ -1,8 +1,8 @@
 {
   "name": "data-processing",
-  "version": "1.0.0",
-  "description": "The `buildings.json` file in the `data` folder is created by the following process",
-  "main": "get-extents.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "process.sh",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
