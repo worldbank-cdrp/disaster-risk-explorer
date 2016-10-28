@@ -8,6 +8,8 @@ export const UPDATE_OPACITY = 'UPDATE_OPACITY'
 export const HIDE_MODAL_CALC = 'HIDE_MODAL_CALC'
 export const SHOW_MODAL_CALC = 'SHOW_MODAL_CALC'
 export const UPDATE_UCC = 'UPDATE_UCC'
+export const UPDATE_NEWCALCID = 'UPDATE_NEWCALCID'
+export const TOGGLE_MAP_TYPE = 'TOGGLE_MAP_TYPE'
 
 export function updateMapSource (mapSource) {
   return { type: UPDATE_MAP_SOURCE, data: mapSource }
@@ -43,4 +45,12 @@ export function updateSliderValue (sliderValue) {
 
 export function updateUCC (cost) {
   return { type: UPDATE_UCC, data: cost }
+}
+
+export function newCalcId (id) {
+  return { type: UPDATE_NEWCALCID, data: id }
+}
+
+export function toggleMapType (mapType) {
+  return { type: TOGGLE_MAP_TYPE, data: mapType }
 }

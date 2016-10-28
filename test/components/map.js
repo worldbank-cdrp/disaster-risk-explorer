@@ -18,5 +18,7 @@ test('map test', t => {
   // mock mount
   const instance = component.instance()
   instance._adjustOpacity = () => {}
+  instance._addZoomControls = () => {}
+  instance._setMapLanguage = () => {}
   t.notThrows(() => instance.componentDidMount())
 })

@@ -20,6 +20,7 @@ const paramFactory = function (options, active = null) {
 
   param.setActive = (key) => {
     let val = param.getOptions().find(o => o.key === key)
+
     active = val ? key : param.getDefault().key
   }
 
@@ -61,36 +62,33 @@ export function DataSelectionFactory (availableParams) {
   }
 }
 
-// Export version ready with the actual available parameters
-
 let availableParams = {
   metric: [
-    {key: 'risk', value: 'Risk'},
     {key: 'loss', value: 'Loss'},
+    {key: 'risk', value: 'Hazard'},
     {key: 'exposure', value: 'Exposure'}
   ],
   risk: [
-    {key: 'earthquake', value: 'Earthquake'},
-    {key: 'hurricane', value: 'Hurricane'},
-    {key: 'flood', value: 'Flood'}
-  ],
-  year: [
-    {key: 'Average Annual Loss', value: 'Average Annual Loss'},
-    {key: 'RISK', value: 'Risk'},
-    {key: 'hurricane', value: 'Hurricane'}
+    {key: 'windstorm', value: 'WS'},
+    {key: 'earthquake', value: 'EQ'},
+    {key: 'flood', value: 'FL'}
   ],
   return: [
-    {key: '10 Years', value: '10 Years'},
-    {key: '50 Years', value: '50 Years'},
-    {key: '100 Years', value: '100 Years'},
-    {key: '250 Years', value: '250 Years'},
-    {key: '500 Years', value: '500 Years'},
-    {key: '1000 Years', value: '1000 Years'}
+    {key: 'AAL', value: 'AAL'},
+    {key: '5 Years', value: '05'},
+    {key: '10 Years', value: '10'},
+    {key: '25 Years', value: '25'},
+    {key: '50 Years', value: '50'},
+    {key: '100 Years', value: '100'},
+    {key: '250 Years', value: '250'},
+    {key: '500 Years', value: '500'},
+    {key: '1000 Years', value: '1000'},
+    {key: '2500 Years', value: '2500'}
   ],
   admin: [
     {key: 'admin0', value: 'Admin Level 0'},
     {key: 'admin1', value: 'Admin Level 1'},
-    {key: 'km10', value: '0km Grids'}
+    {key: 'km10', value: '10km Grids'}
   ],
   opacity: [
     {key: 'full', value: 'Full'},

@@ -1,3 +1,5 @@
+import { t } from './i18n'
+
 export function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
@@ -5,13 +7,13 @@ export function capitalizeFirstLetter (string) {
 export function shortenNumber (number, decimals, abbreviate) {
   decimals = (decimals === undefined) ? 0 : decimals
   abbreviate = (abbreviate === undefined) ? true : abbreviate
-  let k = 'K'
-  let m = 'M'
-  let b = 'B'
+  let k = t('K')
+  let m = t('M')
+  let b = t('B')
   if (!abbreviate) {
-    k = 'Thousand'
-    m = 'Million'
-    b = 'Billion'
+    k = t('Thousand')
+    m = t('Million')
+    b = t('Billion')
   }
   if (Math.abs(number) >= 1000000000) {
     return `${Number((number / 1000000000).toFixed(decimals))} ${b}`
@@ -20,6 +22,6 @@ export function shortenNumber (number, decimals, abbreviate) {
   } else if (Math.abs(number) >= 1000) {
     return `${Number((number / 1000).toFixed(decimals))} ${k}`
   } else {
-    return number
+    return Math.round(number)
   }
 }

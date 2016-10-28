@@ -1,7 +1,12 @@
 import React from 'react'
+import multiDownload from 'multi-download'
 
-import { showModalCalc } from '../actions'
+import { showModalCalc, newCalcId } from '../actions'
+import { graphCols, calcDropItems } from '../constants'
+import { getMapId } from '../utils/map-id'
+import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
+import c from 'classnames'
 
 import BarChart from './charts/bar-chart'
 
@@ -10,7 +15,8 @@ const Results = React.createClass({
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
     queryParams: React.PropTypes.object,
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
+    mapType: React.PropTypes.string
   },
 
   deleteThis: function () {
@@ -26,17 +32,29 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    // Placeholder name attribute. For now, will default to ID for grid cells to preserve layout
-    const title = d.NAME_0 ? d.NAME_0 : 'Grid Cell #' + d.UNIQUE_ID
+    let adminName
+    d.id.length === 2
+      ? adminName = t(d.id)
+      : adminName = `${t(d.id)}, ${t(d.id.substring(0, 2))}`
 
-    const data = [
-      {value: Math.round(d.RP_10 / 1000000), name: 'RP 10'},
-      {value: Math.round(d.RP_50 / 1000000), name: 'RP 50'},
-      {value: Math.round(d.RP_100 / 1000000), name: 'RP 100'},
-      {value: Math.round(d.RP_250 / 1000000), name: 'RP 250'},
-      {value: Math.round(d.RP_500 / 1000000), name: 'RP 500'},
-      {value: Math.round(d.RP_1000 / 1000000), name: 'RP 1000'}
-    ]
+    const risk = this.props.dataSelection.risk.getActive().value
+    const metric = this.props.dataSelection.metric.getActive().key
+    const admin = this.props.dataSelection.admin.getActive().key
+
+    let yTitle = t('Billions (US$)')
+    let xTitle = t('Return Period')
+    let valDenominator = 1000000000
+    if (admin === 'admin1') {
+      yTitle = t('Millions (US$)')
+      valDenominator = 1000000
+    }
+
+    const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
+    const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
+    const data = rps.map((rp) => {
+      const value = d[`LS_${risk}_${rp}${suffix}`] ? d[`LS_${risk}_${rp}${suffix}`] : 0
+      return {value: Number((value / valDenominator).toFixed(2)), name: rp}
+    })
 
     let margin = {
       top: 16,
@@ -45,47 +63,74 @@ const Results = React.createClass({
       bottom: 56
     }
 
+    var hasData = false
+    var countryActive = d.id.substring(0, 2)
+    var calcButtonLabel = 'No building data for this region'
+
+    calcDropItems.countryName.forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    calcDropItems.districtName[countryActive].forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    if (hasData) {
+      calcButtonLabel = 'Launch cost and benefit calculator'
+    }
+
     return (
       <div>
         <section className='results'>
           <div className='results__space'>
-            <h2 className='results__title'>{title}</h2>
+            <h2 className='results__title'>{adminName}</h2>
               <div className='results__container'>
-                <h3 className='subtitle results__subtitle'>Exposure</h3>
+                <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>GDP</dt>
-                  <dd className='stat__value unimplemented'>$45 Billion UNIMPLEM</dd>
-                  <dt className='stat__attribute'>Building Stock Exposure</dt>
-                  <dd className='stat__value unimplemented'>$34 Million UNIMPLEM</dd>
+                  <dt className='stat__attribute'>{t('GDP')}</dt>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
+                  <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
                 </dl>
 
                 <div className='results__divider results__divider--first'></div>
 
-                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>{t('loss')}</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>Average Annual Loss</dt>
-                  <dd className='stat__value'>${Number(d.AAL.toFixed(2)).toLocaleString()}</dd>
-                  <dt className='stat__attribute'>Probable loss over time</dt>
-                  <dd className='stat__value unimplemented'>$4 Billion UNIMPLEM</dd>
+                <div>
+                    <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
+                    <dd className='stat__value'>
+                      ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
+                    </dd>
+                  </div>
                   <dd className='stat__value stat__value--chart stat__value--last'>
                     <BarChart
                       data={data}
                       margin={margin}
-                      yTitle='Millions (US$)'
-                      xTitle='Return Period'
+                      yTitle={yTitle}
+                      xTitle={xTitle}
                     />
                   </dd>
                 </dl>
+                <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Country Profile PDF')}</button>
               </div>
-              <button className='button button_results'><i className='collecticon collecticon-download' />{t('Download Profile')}</button>
             </div>
-          <button onClick={() => this.props.dispatch(showModalCalc())} className='button button__map button--full'><span className='results__calc-hover'>Launch Building Stock Calculator</span></button>
+          <button onClick={() =>
+            this.props.dispatch(showModalCalc()) &&
+            this.props.dispatch(newCalcId(d.id))
+          } className={c('button', 'button__map', 'button--full', {'button-full-disabled': hasData === false})}><span className='results__calc-hover'><i className={c('collecticon', 'collecticon-expand-top-left', {'hidden': hasData === false})} />{t(calcButtonLabel)}</span></button>
         </section>
       </div>
     )
+  },
+
+  handleDownload: function () {
+    multiDownload([`assets/data/pdfs/${this.props.data.id}.pdf`])
   }
 })
-
-// <button className='button button_results button_results--half'>View Historical Data</button>
 
 export default Results

@@ -45,6 +45,7 @@
   background: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border-bottom: 3px solid $secondary-color;
 
   > *:last-child {
     margin-bottom: 0;
@@ -198,14 +199,46 @@
   }
 }
 
-.modal--about {
-  .modal__body {
-    font-size: 0.9em;
+.modal__body--about{
+  font-size: 0.9rem;
+  margin: 0 1rem;
+  max-width: 740px;
+  p{
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1px;
+  }
+  h3{
+    margin-bottom: 0.5rem;
+  }
+  br{
+    padding: 0;
+  }
+  dt{
+    float: left;
+    font-weight: 800;
+    padding: 0.15rem 0;
+    min-width: 11rem;
+    clear: both;
+  }
+  dd{
+    padding-top: 0.15rem;
+    float: left;
+  }
+  dl{
     p{
-      margin-bottom: 1.5rem;
+      margin: 0.5rem 0;
+      color: #bbb;
+      font-weight: 500;
+      text-transform: uppercase;
+      border-bottom: 1px solid #ddd;
+      i{
+        margin-right: 0.5rem;
+        vertical-align: middle;
+      }
     }
-    h3{
-      margin-bottom: 0.5rem;
-    }
+    margin-bottom: 1rem;
+    @include clearfix;
   }
 }
+

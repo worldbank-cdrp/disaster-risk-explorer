@@ -117,7 +117,7 @@
 .noUi-horizontal .noUi-handle {
   width: 12px;
   height: 18px;
-  left: -6px;
+  left: -5px;
   top: -10px;
 }
 
@@ -152,8 +152,8 @@
 
 .noUi-handle {
   cursor: pointer;
-  border: 1px solid #bbb;
-  box-shadow: 0 3px 6px -3px #aaa;  
+  border: 1px solid #555;
+  box-shadow: 0 3px 6px -3px #888;
 }
 
 .calculator__description {
@@ -180,7 +180,7 @@
 .calculator__divider-broken {
   border: 0;
   height: 2px;
-  width: 33%;
+  width: 31%;
   background-color: lighten($secondary-color, 15);
   &.left {
     float: left;
@@ -192,7 +192,7 @@
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(34%);
+  width: calc(37%);
   font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
@@ -209,6 +209,7 @@
   padding-right: 2rem;
   @media screen and (max-width: 1010px) {
     max-width: initial;
+    min-width: 650px;
     padding-right: 0;
     border-right: 0;
     float: none;
@@ -220,8 +221,12 @@
   min-width: 520px;
   padding-left: 1.5rem;
   @media screen and (max-width: 1010px) {
+    min-width: 650px;
     padding-left: 0;
     float: none;
+    padding-top: 1rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid #ddd;
   }
 }
 
@@ -234,6 +239,9 @@
 
 .calc__selection{
   clear: both;
+  dt{
+    margin-bottom: 0.5rem;
+  }
   .stat__attribute{
     font-size: 0.9rem;
   }
@@ -271,10 +279,9 @@
 }
 
 .calc__selection--slider{
-  background-color: darken(#fff, 5);
   overflow: auto;
   margin: 0 -1rem 1rem;
-  padding: 0.75rem 1rem 1rem;
+  padding: 0.3rem 1rem 1rem;
   border-radius: 5px;
 }
 
@@ -296,18 +303,21 @@
 }
 
 .calculator__input{
-  max-width: 100px;
+  max-width: 60px;
   text-align: right;
   background-color: white;
   border-radius: 5px;
   transition: all 0.2s;
+  &:after{
+    padding-right: 2rem;
+  }
   &:hover{
-    background-color: #f9f9f9;
+    background-color: #fbfbfb;
   }
 }
 
 .calculator__selection{
-  background-color: #eee;
+  background-color: #f2f2f2;
   margin: 0 -1rem;
   padding: 0.5rem 1rem 0;
   border-radius: 10px;
@@ -328,7 +338,49 @@
       background-color: #ddd;
       &:hover{
         background-color: #dadada;
-      } 
+      }
     }
+  }
+  .button-disabled{
+    background-color: #ccc;
+  }
+}
+
+.button--disabled{
+  color: #bbb;
+  pointer-events: none;
+}
+
+.stat__attribute--stocks {
+  max-width: 420px;
+  line-height: 1.4rem;
+}
+
+.stat__value--stocks {
+  line-height: 1.4rem;
+}
+
+.calc__list{
+  margin-bottom: 0.5rem;
+  clear: both;
+  overflow: auto;
+}
+
+.stat__attribute--tally{
+  font-weight: 800;
+  margin-right: 0.25rem;
+}
+
+.selection__panel--disabled{
+  opacity: 0.35;
+  pointer-events: none;
+  line-height: 1.5rem;
+  &:after{
+    content: "Data unavailable for subregions";
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  button{
+    display: none;
   }
 }

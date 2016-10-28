@@ -6,8 +6,8 @@ var fs = require('fs')
 var rbush = require('rbush')
 var bb = require('turf-bbox')
 
-var pointLayer = JSON.parse(fs.readFileSync('CA-equake-centroids.geojson'))
-var gridLayer = JSON.parse(fs.readFileSync('Building_Stock.geojson'))
+var pointLayer = JSON.parse(fs.readFileSync(process.argv[1]))
+var gridLayer = JSON.parse(fs.readFileSync(process.argv[2]))
 
 var tree = rbush()
 tree.load(gridLayer.features.map(feature => {

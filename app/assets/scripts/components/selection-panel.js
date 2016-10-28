@@ -1,8 +1,10 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
 import c from 'classnames'
+import _ from 'lodash'
 
 import { getLanguage, t } from '../utils/i18n'
+import { availableRPs } from '../constants'
 import DataSelection from '../utils/data-selection'
 import Dropdown from './dropdown'
 
@@ -14,14 +16,45 @@ const Selection = React.createClass({
     queryParams: React.PropTypes.object
   },
 
-  onOptSelect: function (key, value, e) {
+  onOptSelect: function (key, value, admin, metric, hazard, currentRP, e) {
     e.preventDefault()
     const dataSelection = DataSelection(this.props.queryParams)
+
+    // If viewing hazard grids, switch to the default metric when switching back to admin levels
+    const dsMetric = dataSelection.metric
+    if ((value === 'admin0' || value === 'admin1') && dsMetric.getActive().key === 'risk') {
+      dsMetric.setActive(dsMetric.getDefault().key)
+    }
+
+    if (key !== 'return' && key !== 'opacity' && key !== 'basemap' && value !== 'exposure' && metric !== 'exposure') {
+      // Locally update existing key combination with the incoming menu change, before it reaches the state
+      if (key === 'risk') hazard = value
+      if (key === 'admin') admin = value
+      if (key === 'metric') metric = value
+      // If current RP value not in upcoming list of available RPs, switch to the first RP in the upcoming array
+      const nextRPs = availableRPs[admin][metric][hazard]
+      if (!_.includes(nextRPs, currentRP)) {
+        let nextRP = nextRPs[0]
+        nextRP = nextRP === 'AAL' ? 'AAL' : Number(nextRP).toString() + ' Years'
+        dataSelection.return.setActive(nextRP)
+      }
+    }
+
     dataSelection[key].setActive(value)
     hashHistory.push(`/${getLanguage()}?${dataSelection.getQS()}`)
   },
 
   renderDropdown: function (paramKey, active, dropOpts) {
+    const dataSelection = DataSelection(this.props.queryParams)
+    const admin = dataSelection.admin.getActive().key
+    const metric = dataSelection.metric.getActive().key
+    const hazard = dataSelection.risk.getActive().key
+    const currentRP = dataSelection.return.getActive().value
+    let rps = []
+    if (paramKey === 'return' && metric !== 'exposure') {
+      rps = availableRPs[admin][metric][hazard]
+    }
+
     return (
       <Dropdown
         triggerElement='button'
@@ -31,14 +64,27 @@ const Selection = React.createClass({
 
         <ul role='menu' className='drop__menu drop__menu--select'>
           {dropOpts.map(o => {
-            return (<li key={o.key}>
+            const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
+            ? 'disabled' : ''
+
+            let disabledText = ''
+            if (admin === 'admin0' && o.key === 'risk') {
+              disabledText = t('(disabled at national level)')
+            } else if (admin === 'admin1' && o.key === 'risk') {
+              disabledText = t('(disabled at sub-national level)')
+            }
+
+            const hiddenClass = (paramKey === 'return' && !_.includes(rps, o.value))
+            ? 'hidden' : ''
+
+            return (<li key={o.key} className={disabledClass}>
               <a
-                className={c('drop__menu-item', {'drop__menu-item--active': o.key === active.key})}
+                className={c('drop__menu-item', disabledClass, hiddenClass, {'drop__menu-item--active': o.key === active.key})}
                 href='#'
                 title=''
                 data-hook='dropdown:close'
-                onClick={this.onOptSelect.bind(null, paramKey, o.key)}>
-                  <span>{t(o.key)}</span>
+                onClick={this.onOptSelect.bind(null, paramKey, o.key, admin, metric, hazard, currentRP)}>
+                  <span>{t(o.key)} {disabledText}</span>
               </a>
             </li>)
           })}
@@ -52,10 +98,10 @@ const Selection = React.createClass({
 
     return (
       <section className='selection'>
-        <h2 className='legend__title'>Selection Options</h2>
+        <h2 className='legend__title'>{t('Selection Options')}</h2>
 
         <dl className='selection__panel'>
-          <dt className='subtitle selection__panel--attribute'>{t('metric')}</dt>
+          <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-chart-line' />{t('metric')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('metric', dataSelection.metric.getActive(), dataSelection.metric.getOptions())}
           </dd>
@@ -63,13 +109,14 @@ const Selection = React.createClass({
 
         <dl className={'selection__panel ' +
         (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
-          <dt className='subtitle selection__panel--attribute'>{t('risk')}</dt>
+          <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-circle-exclamation' />{t('risk')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('risk', dataSelection.risk.getActive(), dataSelection.risk.getOptions())}
           </dd>
         </dl>
 
-        <dl className='selection__panel'>
+        <dl className={'selection__panel ' +
+        (dataSelection.metric.getActive().key === 'exposure' ? 'disabled' : '')}>
           <dt className='subtitle selection__panel--attribute'><i className='collecticon collecticon-calendar' />{t('return')}</dt>
           <dd className='selection__panel--drop'>
             {this.renderDropdown('return', dataSelection.return.getActive(), dataSelection.return.getOptions())}

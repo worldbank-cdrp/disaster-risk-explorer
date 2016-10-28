@@ -28,12 +28,15 @@ var Home = React.createClass({
     calcVisible: React.PropTypes.bool,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
-    unitCostOfConstruction: React.PropTypes.number
+    unitCostOfConstruction: React.PropTypes.number,
+    newCalcId: React.PropTypes.string,
+    mapType: React.PropTypes.string
   },
 
   render: function () {
     const dataSelection = DataSelection(this.props.location.query)
     const mapSource = mapSources[dataSelection.admin.getActive().key]
+
     return (
       <div>
         <Header
@@ -42,6 +45,7 @@ var Home = React.createClass({
         <Map
           dispatch={this.props.dispatch}
           mapSource={mapSource}
+          mapType={this.props.mapType}
           dataSelection={dataSelection}
           selected={this.props.selected} />
         <Selection
@@ -49,22 +53,28 @@ var Home = React.createClass({
           queryParams={this.props.location.query}
           mapSource={this.props.mapSource} />
         <Legend
-          dataSelection={dataSelection} />
+          dispatch={this.props.dispatch}
+          dataSelection={dataSelection}
+          mapType={this.props.mapType} />
         <Results
           dispatch={this.props.dispatch}
           dataSelection={dataSelection}
           data={this.props.selected}
-          conversion={this.props.conversion} />
+          conversion={this.props.conversion}
+          mapType={this.props.mapType} />
         <About
           dispatch={this.props.dispatch}
           visible={this.props.modalAbout.visible} />
         <Calc
           dispatch={this.props.dispatch}
+          dataSelection={dataSelection}
           attributes={this.props.selected}
           calcVisible={this.props.calcVisible}
           conversion={this.props.conversion}
           sliderValue={this.props.sliderValue}
-          unitCostOfConstruction={this.props.unitCostOfConstruction} />
+          unitCostOfConstruction={this.props.unitCostOfConstruction}
+          newCalcId={this.props.newCalcId}
+          queryParams={this.props.location.query} />
       </div>
     )
   }
@@ -83,7 +93,9 @@ function mapStateToProps (state) {
     calcVisible: state.modalCalc.calcVisible,
     conversion: state.modalCalc.conversion,
     sliderValue: state.modalCalc.sliderValue,
-    unitCostOfConstruction: state.modalCalc.unitCostOfConstruction
+    unitCostOfConstruction: state.modalCalc.unitCostOfConstruction,
+    newCalcId: state.modalCalc.newCalcId,
+    mapType: state.legend.mapType
   }
 }
 
