@@ -20,17 +20,19 @@ chmod -R u+x scripts
 
 # scripts/zsh/clip_all.sh
 
-## aggregate all data to the grids, add some relative fields, and merge
+## aggregate all data to the grids
 # scripts/zsh/agg.sh
-# scripts/zsh/relative.sh
-# scripts/js/merge.js
 
-## aggregate to the country level
-scripts/zsh/agg_country.sh
-geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
-geojson-merge countries/[A-Z][A-Z]-[A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9][A-Z0-9]_agg.geojson > admin1.geojson
+## aggregate to the country and admin1 level
+## scripts/zsh/agg_country.sh
 
-## merge to multipolygons, add data from other shapefiles as necessary
-scripts/js/merge-polygons.js countries.geojson
-scripts/js/merge-polygons.js admin1.geojson
+## merge stuff (countries, multipolygons, the grid), calculate relative values at the "right moment"
+# geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
+# geojson-merge countries/[A-Z][A-Z]-[A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9][A-Z0-9]_agg.geojson > admin1.geojson
+# scripts/js/merge-polygons.js countries.geojson
+# scripts/js/merge-polygons.js admin1.geojson
+scripts/zsh/relative.sh
+scripts/js/merge.js
+
+# add data from other shapefiles as necessary
 # scripts/js/add-data.js countries_joined.geojson
