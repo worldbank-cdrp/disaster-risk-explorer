@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-### HAZARD
-## Rename
-# $0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Earthquake/probabilistic
-# $0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Windstorm/probabilistic
-# $0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Flood/probabilistic
-# $0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Earthquake/historic
-# $0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Windstorm/historic
+## HAZARD
+# Rename
+$0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Earthquake/probabilistic
+$0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Windstorm/probabilistic
+$0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Flood/probabilistic
+$0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Earthquake/historic
+$0:h/rename.sh ../CDRP\ Platform\ Development\ Seed/Hazard/Windstorm/historic
 
 EQ_HZ=../CDRP\ Platform\ Development\ Seed/Hazard/Earthquake
 WS_HZ=../CDRP\ Platform\ Development\ Seed/Hazard/Windstorm
@@ -14,24 +14,24 @@ FL_HZ=../CDRP\ Platform\ Development\ Seed/Hazard/Flood
 
 ## Raster to polygon & clip
 # probabilistic
-# for tif in ${EQ_HZ}/probabilistic/*.tif; do
-#     echo "normalizing ${tif}"
-#     gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
-#     scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
-#     ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
-# done
-# for tif in ${WS_HZ}/probabilistic/*.tif; do
-#     echo "normalizing ${tif}"
-#     gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
-#     scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
-#     ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
-# done
-# for tif in ${FL_HZ}/probabilistic/*.tif; do
-#     echo "normalizing ${tif}"
-#     gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
-#     scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
-#     ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
-# done
+for tif in ${EQ_HZ}/probabilistic/*.tif; do
+    echo "normalizing ${tif}"
+    gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
+    scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
+    ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
+done
+for tif in ${WS_HZ}/probabilistic/*.tif; do
+    echo "normalizing ${tif}"
+    gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
+    scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
+    ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
+done
+for tif in ${FL_HZ}/probabilistic/*.tif; do
+    echo "normalizing ${tif}"
+    gdal_translate -of XYZ ${tif} ${tif/tif/xyz}
+    scripts/js/xyz-to-polygon.js ${tif/tif/xyz} ${tif/tif/geojson} risk
+    ogr2ogr -f GeoJSON -clipsrc countries/${${tif:t}:0:2}.geojson ${tif:r}_clipped.geojson ${tif/tif/geojson}
+done
 
 # historic
 
@@ -108,20 +108,20 @@ FL_LOSS=../CDRP\ Platform\ Development\ Seed/Loss/Flood
 $0:h/rename.sh $EQ_LOSS/historic
 $0:h/rename.sh $WS_LOSS/historic
 
-# # probabilistic
-# ## Polygonize flood tifs
-# for tif in $FL_LOSS/probabilistic/*.tif; do
-#   gdal_polygonize.py ${tif} -f "GeoJSON" ${tif/tif/geojson} fieldname ${${tif:t:r}:4}
-# done
-#
-## Convert all to geojson + merge if necessary
+# probabilistic
+## Polygonize flood tifs
+for tif in $FL_LOSS/probabilistic/*.tif; do
+  gdal_polygonize.py ${tif} -f "GeoJSON" ${tif/tif/geojson} fieldname ${${tif:t:r}:4}
+done
 
-# ogr2ogr -f GeoJSON -t_srs crs:84 $EQ_LOSS/probabilistic/CA_Earthquake_AAL.geojson $EQ_LOSS/CA_Earthquake_AAL.shp
-# ogr2ogr -f GeoJSON -t_srs crs:84 $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.geojson $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.shp
-# geojson-merge $EQ_LOSS/probabilistic/CA_Earthquake_AAL.geojson $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.geojson > $EQ_LOSS/probabilistic/aal.geojson
-# ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/probabilistic/aal.geojson $WS_LOSS/probabilistic/CA_CARIB_WS_AAL.shp
-# ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/probabilistic/pml.geojson $WS_LOSS/probabilistic/CA_CARIB_WS_PML.shp
-# geojson-merge $FL_LOSS/probabilistic/*.geojson > $FL_LOSS/probabilistic/pml.geojson
+# Convert all to geojson + merge if necessary
+
+ogr2ogr -f GeoJSON -t_srs crs:84 $EQ_LOSS/probabilistic/CA_Earthquake_AAL.geojson $EQ_LOSS/CA_Earthquake_AAL.shp
+ogr2ogr -f GeoJSON -t_srs crs:84 $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.geojson $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.shp
+geojson-merge $EQ_LOSS/probabilistic/CA_Earthquake_AAL.geojson $EQ_LOSS/probabilistic/Caribbean_Earthquake_AAL.geojson > $EQ_LOSS/probabilistic/aal.geojson
+ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/probabilistic/aal.geojson $WS_LOSS/probabilistic/CA_CARIB_WS_AAL.shp
+ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/probabilistic/pml.geojson $WS_LOSS/probabilistic/CA_CARIB_WS_PML.shp
+geojson-merge $FL_LOSS/probabilistic/*.geojson > $FL_LOSS/probabilistic/pml.geojson
 
 # historic
 
@@ -148,10 +148,10 @@ ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/historic/HN_mitch1998.geojson $WS_LOSS
 ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/historic/SV_agatha2010.geojson $WS_LOSS/historic/SV_agatha2010.shp
 ogr2ogr -f GeoJSON -t_srs crs:84 $WS_LOSS/historic/NI_felix2007.geojson $WS_LOSS/historic/NI_felix2007.shp
 
-# ### EXPOSURE
-# EX=../CDRP\ Platform\ Development\ Seed/Exposure
-#
-# ## Polygonize or convert to geojson
-# gdal_polygonize.py "$EX/GDP/gdp.tif" -f "GeoJSON" "$EX/GDP/gdp.geojson" fieldname "gdp"
-# gdal_polygonize.py "$EX/Infrastructure/infrastructure.tif" -f "GeoJSON" "$EX/Infrastructure/infrastructure.geojson" fieldname "infrastructure"
-# ogr2ogr -f GeoJSON -t_srs crs:84 "$EX/Building Stock/building-stock.geojson" "$EX/Building Stock/Building stock.shp"
+### EXPOSURE
+EX=../CDRP\ Platform\ Development\ Seed/Exposure
+
+## Polygonize or convert to geojson
+gdal_polygonize.py "$EX/GDP/gdp.tif" -f "GeoJSON" "$EX/GDP/gdp.geojson" fieldname "gdp"
+gdal_polygonize.py "$EX/Infrastructure/infrastructure.tif" -f "GeoJSON" "$EX/Infrastructure/infrastructure.geojson" fieldname "infrastructure"
+ogr2ogr -f GeoJSON -t_srs crs:84 "$EX/Building Stock/building-stock.geojson" "$EX/Building Stock/Building stock.shp"
