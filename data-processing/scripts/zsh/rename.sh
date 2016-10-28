@@ -8,6 +8,7 @@ for f in $1/cri*; do mv $f ${f:s/cri/CR/}; done
 for f in $1/gtm*; do mv $f ${f:s/gtm/GT/}; done
 for f in $1/grenada*; do mv $f ${f:s/grenada/GD/}; done
 for f in $1/gra*; do mv $f ${f:s/gra/GD/}; done
+for f in $1/grd*; do mv $f ${f:s/grd/GD/}; done
 for f in $1/hnd*; do mv $f ${f:s/hnd/HN/}; done
 for f in $1/jamaica*; do mv $f ${f:s/jamaica/JM/}; done
 for f in $1/jam*; do mv $f ${f:s/jam/JM/}; done
