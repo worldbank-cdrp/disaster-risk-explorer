@@ -8,7 +8,7 @@ var through2 = require('through2')
 var r = fs.createReadStream(process.argv[2])
 var geoParse = geojsonStream.parse()
 var geoStringify = geojsonStream.stringify()
-var w = fs.createWriteStream(process.argv[2].replace('_grid', '_grid_all'))
+var w = fs.createWriteStream(process.argv[2].replace('.geojson', '_all.geojson'))
 
 var results = 0
 var c = through2({ objectMode: true }, function (result, enc, callback) {
