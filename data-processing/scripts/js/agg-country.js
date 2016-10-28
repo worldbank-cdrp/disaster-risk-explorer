@@ -17,7 +17,7 @@ data.features.map(feature => {
       allKeys[key] = true
     }
     // only capture numeric keys, 'AAL', or things that already have this "style"
-    var match = key.match(/[A-Z]{2}_[A-Z]{2}(_\d+)?|(\d+)|AAL|HS/)
+    var match = key.match(/[A-Z]{2}_[A-Z]{2}(_\d+)?|(\d+)|AAL|HS|_R$/)
     if (key.match('HZ')) {
       match = false
     }
