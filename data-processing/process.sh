@@ -11,7 +11,7 @@ chmod -R u+x scripts
 
 
 ### "normalize" the raw data: rename to two digit codes, convert to geojson, polygonize where necessary, some clipping
-## scripts/zsh/normalize.sh
+# scripts/zsh/normalize.sh
 
 ### clipping: main grid + grids/exposure for each country
 # echo 'Converting and clipping grid (nearly 6 million records)'
@@ -20,11 +20,17 @@ chmod -R u+x scripts
 
 # scripts/zsh/clip_all.sh
 
-## aggregate all data to the grids and merge
+## aggregate all data to the grids, add some relative fields, and merge
 # scripts/zsh/agg.sh
+# scripts/zsh/relative.sh
 # scripts/js/merge.js
 
 ## aggregate to the country level
 scripts/zsh/agg_country.sh
-# geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
+geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
 geojson-merge countries/[A-Z][A-Z]-[A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9][A-Z0-9]_agg.geojson > admin1.geojson
+
+## merge to multipolygons, add data from other shapefiles as necessary
+scripts/js/merge-polygons.js countries.geojson
+scripts/js/merge-polygons.js admin1.geojson
+# scripts/js/add-data.js countries_joined.geojson
