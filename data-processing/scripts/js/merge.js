@@ -29,7 +29,7 @@ var c = through2({ objectMode: true }, function (result, enc, callback) {
   callback()
 })
 
-glob(path.join(cwd, '/countries/*_grid.geojson'), function (er, files) {
+glob(path.join(cwd, '/countries/*_grid_all.geojson'), function (er, files) {
   var streams = files.map(file => {
     return fs.createReadStream(file)
   })
