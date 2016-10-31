@@ -2,10 +2,11 @@ import React from 'react'
 import multiDownload from 'multi-download'
 
 import { showModalCalc, newCalcId } from '../actions'
-import { adminNames, graphCols } from '../constants'
+import { graphCols, calcDropItems } from '../constants'
 import { getMapId } from '../utils/map-id'
 import { shortenNumber } from '../utils/format'
 import { t } from '../utils/i18n'
+import c from 'classnames'
 
 import BarChart from './charts/bar-chart'
 
@@ -31,19 +32,20 @@ const Results = React.createClass({
       return this.deleteThis()
     }
 
-    let adminName = d.id
-    adminName.length === 2
-      ? adminName = adminNames[adminName]
-      : adminName = `${adminNames[adminName]}, ${adminNames[adminName.substring(0, 2)]}`
+    let adminName
+    d.id.length === 2
+      ? adminName = t(d.id)
+      : adminName = `${t(d.id)}, ${t(d.id.substring(0, 2))}`
 
     const risk = this.props.dataSelection.risk.getActive().value
     const metric = this.props.dataSelection.metric.getActive().key
     const admin = this.props.dataSelection.admin.getActive().key
 
-    let yTitle = 'Billions (US$)'
+    let yTitle = t('Billions (US$)')
+    let xTitle = t('Return Period')
     let valDenominator = 1000000000
     if (admin === 'admin1') {
-      yTitle = 'Millions (US$)'
+      yTitle = t('Millions (US$)')
       valDenominator = 1000000
     }
 
@@ -61,6 +63,26 @@ const Results = React.createClass({
       bottom: 56
     }
 
+    var hasData = false
+    var countryActive = d.id.substring(0, 2)
+    var calcButtonLabel = 'No building data for this region'
+
+    calcDropItems.countryName.forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    calcDropItems.districtName[countryActive].forEach(o => {
+      if (o.key === d.id) {
+        hasData = true
+      }
+    })
+
+    if (hasData) {
+      calcButtonLabel = 'Launch cost and benefit calculator'
+    }
+
     return (
       <div>
         <section className='results'>
@@ -69,7 +91,7 @@ const Results = React.createClass({
               <div className='results__container'>
                 <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
                 <dl className='stats'>
-                  <dt className='stat__attribute'>GDP</dt>
+                  <dt className='stat__attribute'>{t('GDP')}</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
                   <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
                   <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
@@ -77,7 +99,7 @@ const Results = React.createClass({
 
                 <div className='results__divider results__divider--first'></div>
 
-                <h3 className='subtitle results__subtitle results__subtitle--secondary'>Loss</h3>
+                <h3 className='subtitle results__subtitle results__subtitle--secondary'>{t('loss')}</h3>
                 <dl className='stats'>
                 <div>
                     <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
@@ -90,7 +112,7 @@ const Results = React.createClass({
                       data={data}
                       margin={margin}
                       yTitle={yTitle}
-                      xTitle='Return Period'
+                      xTitle={xTitle}
                     />
                   </dd>
                 </dl>
@@ -100,7 +122,7 @@ const Results = React.createClass({
           <button onClick={() =>
             this.props.dispatch(showModalCalc()) &&
             this.props.dispatch(newCalcId(d.id))
-          } className='button button__map button--full'><span className='results__calc-hover'><i className='collecticon collecticon-expand-top-left' />{t('Launch cost and benefit calculator')}</span></button>
+          } className={c('button', 'button__map', 'button--full', {'button-full-disabled': hasData === false})}><span className='results__calc-hover'><i className={c('collecticon', 'collecticon-expand-top-left', {'hidden': hasData === false})} />{t(calcButtonLabel)}</span></button>
         </section>
       </div>
     )

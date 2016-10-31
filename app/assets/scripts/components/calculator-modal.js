@@ -45,6 +45,7 @@ const Calculator = React.createClass({
   },
 
   selectConversion: function (conversion) {
+    this.props.dispatch(updateUCC(null))
     this.props.dispatch(selectConversion(conversion))
   },
 
@@ -54,6 +55,7 @@ const Calculator = React.createClass({
 
   onOptSelect: function (key, value, e) {
     e.preventDefault()
+    this.props.dispatch(updateUCC(null))
     this.props.dispatch(newCalcId(value))
 
     // These functions don't seem to be updating the Data...
@@ -68,8 +70,8 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.countryName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.countryName.map((o, i) => {
+            return (<li key={`${o.key}-country-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
@@ -94,8 +96,8 @@ const Calculator = React.createClass({
         triggerText={t(active)} >
 
         <ul role='menu' className='drop__menu drop__menu--select'>
-          {dropOpts.districtName.map(o => {
-            return (<li key={o.key}>
+          {dropOpts.map((o, i) => {
+            return (<li key={`${o.key}-district-${i}`}>
               <a
                 className={c('drop__menu-item', {'drop__menu-item--active': o.key === active})}
                 href='#'
@@ -113,47 +115,37 @@ const Calculator = React.createClass({
 
   renderModal: function () {
     if (!this.props.calcVisible) return null
-    const {sliderValue, conversion, newCalcId} = this.props
+    const { sliderValue, newCalcId } = this.props
+    let conversion = this.props.conversion
 
     const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
-    var countryActive = activeId
-    var districtActive = '-'
-    var adminActive = ''
+    var activeCountry = 'BZ'
+    var activeDistrict = '-'
+    var adminActive = 'district'
 
-    calcDropItems.countryName.map(o => {
+    calcDropItems.countryName.forEach(o => {
       if (o.key === activeId) {
         adminActive = 'country'
       }
     })
 
-    calcDropItems.districtName.map(o => {
-      if (o.key === activeId) {
-        adminActive = 'district'
-      }
-    })
-
     if (adminActive === 'country') {
-      countryActive = activeId
-      districtActive = '-'
+      activeCountry = activeId
+      activeDistrict = '-'
     } else if (adminActive === 'district') {
-      countryActive = activeId.substring(0, 2)
-      districtActive = activeId
+      activeCountry = activeId.substring(0, 2)
+      activeDistrict = activeId
     }
 
-    // if (activeId) {
-    //   then countryActive = SELECTEDID
-    //   var districtActive = '-'
-    // }else if SELECTID matches DistrictCode{
-    //   then countryActive = SELECTID string first two letters
-    //   var districtActive = SELECTID
-    // }
+    // force Costa Rica to display replacement as there is no retrofit data
+    conversion = (activeCountry === 'CR') ? 'replacement' : conversion
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
 
     // A little nonsense to create single roots for react
-    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD T')
+    const listKey = (conversion === 'retrofit' ? 'AAL as % of Value' : 'AAL in USD M')
     const TopFive = data.topFiveAAL.map((building, i) => {
       return [
         <dl key={i} className='calc__list'>
@@ -181,25 +173,25 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dt className='stat__attribute stat__attribute--main'>{t('Country Selected')}</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderCountryDropdown(countryActive, calcDropItems, adminActive)}
+                      {this.renderCountryDropdown(activeCountry, calcDropItems, adminActive)}
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
-                  <dd className='selection__panel--drop'>
-                    {this.renderDistrictDropdown(districtActive, calcDropItems, adminActive)}
+                  <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (['BZ', 'JM', 'LC', 'GD'].indexOf(activeCountry) > -1) })}>
+                    {this.renderDistrictDropdown(activeDistrict, calcDropItems.districtName[activeCountry], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>
                     <button
-                      className={'button header__language--toggle button__leftside ' + (conversion === 'retrofit' ? 'button--active' : '')}
+                      className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': conversion === 'retrofit'}, {'button--disabled': activeCountry === 'CR'})}
                       onClick={() => this.selectConversion('retrofit')}>
                       <span className='header__language--text'>{t('Retrofit')}</span></button>
                     <button
-                      className={'button header__language--toggle button__rightside ' + (conversion === 'replacement' ? 'button--active' : '')}
+                      className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': conversion === 'replacement'})}
                       onClick={() => this.selectConversion('replacement')}>
                       <span className='header__language--text'>{t('Replace')}</span></button>
                     </dd>
-                  <dd className='stat__attribute stat__attribute--main'>{t('Unit cost per')} {(conversion === 'retrofit' ? t('retrofitted') : t('replaced'))} {t('building')}</dd>
+                  <dd className='stat__attribute stat__attribute--main'>{(conversion === 'retrofit' ? t('Unit cost per retrofitted building') : t('Unit cost per replaced building'))}</dd>
                   <dt className='stat__value stat__value--large stat__value--large'><input type='number' className='calculator__input' value={Math.round(ucc)} onChange={this.handleUCC} /><span className='stat__value--cost'></span></dt>
                 </dl>
                 <dl className='calc__selection calc__selection--slider'>
@@ -222,7 +214,7 @@ const Calculator = React.createClass({
               <h2 className='subtitle calc__subtitle'>{t('Building Stocks Converted')}</h2>
               <div className='calculator__description top'>{data.buildingFrom}</div>
               <div className='calculator__divider-broken left'></div>
-              <div className='calculator__divider-broken-label'>{t('are')} {(conversion === 'retrofit' ? t('retrofitted') : t('replaced'))} {t('with')}</div>
+              <div className='calculator__divider-broken-label'>{(conversion === 'retrofit' ? t('are retrofitted with') : t('are replaced with'))}</div>
               <div className='calculator__divider-broken right'></div>
               <div className='calculator__description bottom'>{data.buildingTo}</div>
             </div>
@@ -239,10 +231,10 @@ const Calculator = React.createClass({
                      )}>
                   ${shortenNumber(data.overallChangeAAL * aal, 0, false)}
                 </dd>
-                <dt className='stat__attribute'>{t('Total')} {(conversion === 'retrofit' ? t('retrofit') : t('replacement'))} {t('cost')}</dt>
+                <dt className='stat__attribute'>{(conversion === 'retrofit' ? t('Total retrofit cost') : t('Total replacement cost'))}</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
                 <dt className='stat__attribute'>{t('Flat rate years to break even')}</dt>
-                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' Years' : 'Never')}</dd>
+                <dd className='stat__value'>{(data.breakEven > 0 ? Math.round(data.breakEven) + ' ' + t('Years') : t('Never'))}</dd>
                 <dt className='stat__attribute'>{t('Percent Change in AAL for these housing units')}</dt>
                 <dd className=
                   {c('stat__value',
@@ -261,7 +253,7 @@ const Calculator = React.createClass({
 
               <div className='calc__split'></div>
 
-              <h2 className='subtitle calc__subtitle'>{t('Building Stock types most at risk')} ({listKey})</h2>
+              <h2 className='subtitle calc__subtitle'>{t('Building Stock types most at risk')} ({(conversion === 'retrofit' ? t('AAL value') : t('AAL in USD'))})</h2>
               <dl className='calc__selection calc__selection--stocks'>
                 {_.flatten(TopFive)}
               </dl>

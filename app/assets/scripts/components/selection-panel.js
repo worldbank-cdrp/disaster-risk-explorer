@@ -66,8 +66,13 @@ const Selection = React.createClass({
           {dropOpts.map(o => {
             const disabledClass = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
             ? 'disabled' : ''
-            const disabledText = (admin === 'admin0' || admin === 'admin1') & o.key === 'risk'
-            ? `(disabled at ${admin})` : ''
+
+            let disabledText = ''
+            if (admin === 'admin0' && o.key === 'risk') {
+              disabledText = t('(disabled at national level)')
+            } else if (admin === 'admin1' && o.key === 'risk') {
+              disabledText = t('(disabled at sub-national level)')
+            }
 
             const hiddenClass = (paramKey === 'return' && !_.includes(rps, o.value))
             ? 'hidden' : ''

@@ -180,7 +180,7 @@
 .calculator__divider-broken {
   border: 0;
   height: 2px;
-  width: 33%;
+  width: 31%;
   background-color: lighten($secondary-color, 15);
   &.left {
     float: left;
@@ -192,7 +192,7 @@
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(34%);
+  width: calc(37%);
   font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
@@ -303,7 +303,7 @@
 }
 
 .calculator__input{
-  max-width: 100px;
+  max-width: 60px;
   text-align: right;
   background-color: white;
   border-radius: 5px;
@@ -338,9 +338,17 @@
       background-color: #ddd;
       &:hover{
         background-color: #dadada;
-      } 
+      }
     }
   }
+  .button-disabled{
+    background-color: #ccc;
+  }
+}
+
+.button--disabled{
+  color: #bbb;
+  pointer-events: none;
 }
 
 .stat__attribute--stocks {
@@ -363,3 +371,16 @@
   margin-right: 0.25rem;
 }
 
+.selection__panel--disabled{
+  opacity: 0.35;
+  pointer-events: none;
+  line-height: 1.5rem;
+  &:after{
+    content: "Data unavailable for subregions";
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  button{
+    display: none;
+  }
+}

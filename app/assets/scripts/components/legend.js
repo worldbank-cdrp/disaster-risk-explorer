@@ -1,6 +1,6 @@
 import React from 'react'
 import c from 'classnames'
-import { legends, mapSettings } from '../constants'
+import { legends, mapSettings, measurementStrings } from '../constants'
 import { toggleMapType } from '../actions'
 
 import { shortenNumber } from '../utils/format'
@@ -24,7 +24,6 @@ const Legend = React.createClass({
     const activeSource = this.props.dataSelection.admin.getActive().key
     const title = getMapDescrip(dataSelection)
     const metric = dataSelection.metric.getActive().key
-    const capMetric = metric.charAt(0).toUpperCase() + metric.slice(1)
 
     const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
     const mapId = getMapId(this.props.dataSelection) + suffix
@@ -34,6 +33,10 @@ const Legend = React.createClass({
     const legend = legends[activeSource][legendId]
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
+
+    const rp = dataSelection.return.getActive().value
+    const hazard = this.props.dataSelection.risk.getActive().key
+    const legendMetric = (measurementStrings[hazard] && metric !== 'exposure') ? measurementStrings[hazard] : 'US Dollars ($)'
 
     const legendBlocks = legend.map((cat, i) => {
       return (
@@ -57,21 +60,29 @@ const Legend = React.createClass({
     return (
       <section className='legend'>
         <h2 className='legend__title'>{title}</h2>
+        <figcaption className='legend__metric'>
+          <p>{t(legendMetric)}</p>
+        </figcaption>
+        {rp !== 'AAL' && metric !== 'exposure'
+          ? <figcaption className='legend__rp'>
+             <p>{`${t('Return Period of')} ${rp} ${t('years')}`}</p>
+           </figcaption>
+          : ''}
         <figure className='legend__scale'>
           {legendBlocks}
           {legendLabels}
           <figcaption
             className={c('legend__caption', {'hidden': metric !== 'loss'})}>
-              <p>{t('View') + ' ' + capMetric + ' ' + t('by:')}</p>
+              <p>{t('View by')}</p>
               <div
                 onClick={this.toggleMapType.bind(null, 'absolute')}
                 className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': this.props.mapType === 'absolute'})}>
-                <span className='header__language--text'>{t('Absolute') + ' ' + capMetric}</span>
+                <span className='header__language--text'>{t('Absolute')}</span>
               </div>
               <div
                 onClick={this.toggleMapType.bind(null, 'relative')}
                 className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': this.props.mapType === 'relative'})}>
-                <span className='header__language--text'>{t('Relative') + ' ' + capMetric}</span>
+                <span className='header__language--text'>{t('Relative')}</span>
               </div>
           </figcaption>
         </figure>

@@ -7,8 +7,8 @@ Transforms a feature collection of grid cells to a feature collection of points.
 const fs = require('fs')
 const centerpoint = require('turf-center')
 
-const inPath = '../../data/merged-grid.geojson'
-const outPath = '../../data/grid-points2.geojson'
+const inPath = process.argv[1]
+const outPath = process.argv[2]
 
 let gridFc = JSON.parse(fs.readFileSync(inPath))
 

@@ -39,10 +39,10 @@
     "distributionMetro": "0.3387",
     "distributionUrban": "0.3121",
     "distributionRural": "0.3492",
-    "retrofitStart": "UFB, UCB",
-    "retrofitEnd": "C3",
-    "replacementStart": "UFB, UCB",
-    "replacementEnd": "C3"
+    "retrofitStart": "avsUFB, avsUCB",
+    "retrofitEnd": "avsC3",
+    "replacementStart": "avsUFB, avsUCB",
+    "replacementEnd": "avsC3"
   },
   "NI": {
     "distributionMetro": "0.175",
