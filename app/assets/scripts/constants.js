@@ -3,21 +3,21 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'admin0-99f3zb',
+    sourceLayer: 'admin0-2ayl5j',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.6atr85z8'
+    url: 'mapbox://wbg-cdrp.79600f31'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'admin1-8tdxy2',
+    sourceLayer: 'admin1-0ylaw3',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.7wehrpy2'
+    url: 'mapbox://wbg-cdrp.3m04h7ry'
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'km10-86jo9v',
+    sourceLayer: 'km10-9v4tlk',
     idProp: 'code',
-    url: 'mapbox://wbg-cdrp.28e8z2bw'
+    url: 'mapbox://wbg-cdrp.dyvw5jza'
   },
   km10Circles: {
     id: 'km10Circles',
