@@ -41,7 +41,7 @@ export function t (string, replace = {}) {
       '(disabled at national level)': '(disabled at national level)',
       '(disabled at sub-national level)': '(disabled at subnational level)',
 
-      'risk': 'Risk',
+      'risk': 'Hazard',
       'flood': 'Flood',
       'earthquake': 'Earthquake',
       'windstorm': 'Windstorm',
@@ -301,7 +301,7 @@ export function t (string, replace = {}) {
       '(disabled at national level)': '(deshabilitado al nivel nacional)',
       '(disabled at sub-national level)': '(deshabilitado al nivel subnacional)',
 
-      'risk': 'Riesgo',
+      'risk': 'Peligro',
       'flood': 'Inundación',
       'earthquake': 'Terremoto',
       'windstorm': 'Huracán',

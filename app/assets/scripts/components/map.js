@@ -80,7 +80,7 @@ export const Map = React.createClass({
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
       opacity = mapSettings.opacityLevels[opacity]
-      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['all', ['has', mapId], ['!=', mapId, 0]], visibility, mapId, colorScale, opacity, id)
+      this._addLayer(`${id}-inactive`, source.sourceLayer, id, ['has', mapId], visibility, mapId, colorScale, opacity, id)
       if (id !== 'km10Circles') {
         this._addActionLayer(`${id}-hover`, source.sourceLayer, id, ['==', mapId, ''], visibility, '#fff')
         this._addActionLayer(`${id}-active`, source.sourceLayer, id, ['==', mapId, ''], visibility, outlineColor)
@@ -124,12 +124,14 @@ export const Map = React.createClass({
     const prevRisk = this.props.dataSelection.risk.getActive().key
     if (nextMapId !== prevMapId) {
       this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
+      this._map.setFilter(nextSourceName + '-inactive', ['has', nextMapId])
     }
 
     if (nextSourceName !== prevSourceName) {
       this.activeSource = mapSources[nextSourceName]
       this._toggleSource(prevSourceName, nextSourceName)
       this._toggleLayerProperties(prevRisk, nextRisk, prevSourceName, nextSourceName, nextOpacity, nextMapId, nextSuffix)
+      this._map.setFilter(nextSourceName + '-inactive', ['has', nextMapId])
     }
 
     const prevId = prevSelected ? prevSelected[this.activeSource.idProp] : null
