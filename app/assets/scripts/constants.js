@@ -3,15 +3,15 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'admin0-2ayl5j',
+    sourceLayer: 'admin0-8vcdi0',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.79600f31'
+    url: 'mapbox://wbg-cdrp.as6pyf0x'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'admin1-0ylaw3',
+    sourceLayer: 'admin1-6kfanw',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.3m04h7ry'
+    url: 'mapbox://wbg-cdrp.akc7hlky'
   },
   km10: {
     id: 'km10',
@@ -23,7 +23,7 @@ export const mapSources = {
     id: 'km10Circles',
     sourceLayer: 'km10Points',
     idProp: 'code',
-    url: 'mapbox://wbg-cdrp.85jp7h9w'
+    url: 'mapbox://wbg-cdrp.azbphggb'
   }
 }
 
