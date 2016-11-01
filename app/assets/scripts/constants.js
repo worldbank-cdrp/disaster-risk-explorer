@@ -378,8 +378,14 @@ export const legends = {
       [1348522516, eqColors[4]],
       [2637887479, eqColors[5]]
     ],
-    // does not exist in data
-    LS_EQ_AAL_R: emptyLegend,
+    // format
+    LS_EQ_AAL_R:
+   [ [ 0.0004951719095934834, eqColors[0] ],
+     [ 0.0004951719095934834, eqColors[1] ],
+     [ 0.0004951719095934834, eqColors[2] ],
+     [ 0.0007980250847091424, eqColors[3] ],
+     [ 0.0007980250847091424, eqColors[4] ],
+     [ 0.000835350030607424, eqColors[5] ] ],
     LS_FL: [
       [1558458, flColors[0]],
       [36168377, flColors[1]],
@@ -388,8 +394,14 @@ export const legends = {
       [220058932, flColors[4]],
       [325581708, flColors[5]]
     ],
-    // does not exist in data
-    LS_FL_R: emptyLegend,
+    // format
+    LS_FL_R:
+     [ [ 0.0011586795879258303, flColors[0] ],
+       [ 0.0021135891994759075, flColors[1] ],
+       [ 0.0021135891994759075, flColors[2] ],
+       [ 0.0027497138208403163, flColors[3] ],
+       [ 0.0033352006268788236, flColors[4] ],
+       [ 0.0035081351347122855, flColors[5] ] ],
     LS_FL_AAL: [
       [48814136, flColors[0]],
       [74455954, flColors[1]],
@@ -416,8 +428,14 @@ export const legends = {
       [5980389237, wsColors[4]],
       [11368933343, wsColors[5]]
     ],
-    // does not exist in data
-    LS_WS_R: emptyLegend,
+    // format
+    LS_WS_R:
+     [ [ 2.998827761237e-8, wsColors[0] ],
+       [ 0.0001908627142827446, wsColors[1] ],
+       [ 0.019942308883228142, wsColors[2] ],
+       [ 0.04609923485613052, wsColors[3] ],
+       [ 0.10349954237731293, wsColors[4] ],
+       [ 0.18505963008585538, wsColors[5] ] ],
     LS_WS_AAL: [
       [8200000, wsColors[0]],
       [9500000, wsColors[1]],
@@ -426,8 +444,14 @@ export const legends = {
       [1731530000, wsColors[4]],
       [2660390000, wsColors[5]]
     ],
-    // does not exist in data
-    LS_WS_AAL_R: emptyLegend,
+    // format
+    LS_WS_AAL_R:
+     [ [ 15086.845363, wsColors[0] ],
+       [ 15086.845363, wsColors[1] ],
+       [ 15086.845363, wsColors[2] ],
+       [ 6987971.347170002, wsColors[3] ],
+       [ 6987971.347170002, wsColors[4] ],
+       [ 64307613.36863112, wsColors[5] ] ],
     EX_BS: [
       [40001548704, exColors[0]],
       [70338592797, exColors[1]],
@@ -450,8 +474,14 @@ export const legends = {
       [75439284, eqColors[4]],
       [125255440, eqColors[5]]
     ],
-    // does not exist in data
-    LS_EQ_AAL_R: emptyLegend,
+    // format
+    LS_EQ_AAL_R:
+       [ [ 0.00005, eqColors[0] ],
+         [ 0.00047, eqColors[1] ],
+         [ 0.00079, eqColors[2] ],
+         [ 0.00126, eqColors[3] ],
+         [ 0.00292, eqColors[4] ],
+         [ 0.00399, eqColors[5] ] ],
     LS_FL: [
       [28859, flColors[0]],
       [9539755, flColors[1]],
@@ -459,8 +489,14 @@ export const legends = {
       [46824678, flColors[3]],
       [79036174, flColors[4]],
       [126559055, flColors[5]]],
-    // does not exist in data
-    LS_FL_R: emptyLegend,
+    // format
+    LS_FL_R:
+     [ [ 0, flColors[0] ],
+       [ 0.00017, flColors[1] ],
+       [ 0.00098, flColors[2] ],
+       [ 0.00367, flColors[3] ],
+       [ 0.00752, flColors[4] ],
+       [ 0.01207, flColors[5] ] ],
     LS_WS: [
       [0.110604, wsColors[0]],
       [53327461, wsColors[1]],
@@ -468,8 +504,14 @@ export const legends = {
       [297403995, wsColors[3]],
       [462105082, wsColors[4]],
       [798351795, wsColors[5]]],
-    // does not exist in data
-    LS_WS_R: emptyLegend,
+    // format
+    LS_WS_R:
+     [ [ 0, eqColors[0] ],
+       [ 0.00005, wsColors[1] ],
+       [ 0.00046, wsColors[2] ],
+       [ 0.00426, wsColors[3] ],
+       [ 0.01368, wsColors[4] ],
+       [ 0.07758, wsColors[5] ] ],
     LS_WS_AAL: [
       [1399, wsColors[0]],
       [862825, wsColors[1]],
@@ -477,8 +519,14 @@ export const legends = {
       [4394840, wsColors[3]],
       [6714980, wsColors[4]],
       [8706085, wsColors[5]]],
-    // does not exist in data
-    LS_WS_AAL_R: emptyLegend,
+    // format
+    LS_WS_AAL_R:
+     [ [ 46959.92369, wsColors[0] ],
+       [ 205480.66233, wsColors[1] ],
+       [ 342398.69885, wsColors[2] ],
+       [ 562533.76799, wsColors[3] ],
+       [ 822722.90752, wsColors[4] ],
+       [ 2462267.00083, wsColors[5] ] ],
     EX_BS: [
       [9281400, exColors[0]],
       [1493131974, exColors[1]],

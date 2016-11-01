@@ -307,6 +307,7 @@ export const Map = React.createClass({
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, suffix) {
     const legendId = /AAL/.test(nextMapId) ? nextMapId : nextMapId.slice(0, 5) + suffix
     const colorScale = legends[this.activeSource.id][legendId]
+    console.log(colorScale)
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',
         'circle-color', {
@@ -384,6 +385,7 @@ export const Map = React.createClass({
   },
 
   _highlightFeature: function (featureProps) {
+    console.log(featureProps)
     this._map.setFilter(this.activeSource.id + '-hover', ['==', this.activeSource.idProp, featureProps[this.activeSource.idProp]])
   },
 
