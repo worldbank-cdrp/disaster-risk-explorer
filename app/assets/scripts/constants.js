@@ -540,14 +540,7 @@ export const legends = {
     // does not exist in data
     LS_EQ: emptyLegend,
      // does not exist in data
-    LS_EQ_R: [
-      [0, eqColors[0]],
-      [1, eqColors[1]],
-      [2, eqColors[2]],
-      [3, eqColors[3]],
-      [4, eqColors[4]],
-      [5, eqColors[5]]
-    ],
+    LS_EQ_R: emptyLegend,
     LS_EQ_AAL: [
       [0, eqColors[0]],
       [299, eqColors[1]],
@@ -573,8 +566,14 @@ export const legends = {
       [396146, flColors[4]],
       [916145, flColors[5]]
     ],
-    // does not exist in data
-    LS_FL_R: emptyLegend,
+    // all zeros
+    LS_FL_R:
+     [ [ 0, 'eqColors[0]' ],
+       [ 0, 'eqColors[1]' ],
+       [ 0, 'eqColors[2]' ],
+       [ 0, 'eqColors[3]' ],
+       [ 0, 'eqColors[4]' ],
+       [ 0, 'eqColors[5]' ] ],
     // does not exist in data
     LS_FL_AAL: emptyLegend,
      // does not exist in data
