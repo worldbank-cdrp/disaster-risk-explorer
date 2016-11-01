@@ -38,7 +38,7 @@ const makeLegends = (features, targets, numSteps) => {
     })
     if (values.length) {
       values = values.map((v) => {
-        return Math.round(v * 100000) / 100000
+        return Math.round(v * 100000000)
       })
       let legend = new Geostats(values)
       legend = legend.getClassQuantile(numSteps).map((step, i) => {
@@ -88,7 +88,7 @@ let results = 0
 var c = through2({ objectMode: true }, function (feat, enc, callback) {
   results++
   log('Loading feature: ' + results)
-  if (results % 3 === 0) features.push(feat)
+  if (results % 5 === 0) features.push(feat)
   callback()
 }).on('finish', () => {
   const legends = makeLegends(features, targets, numSteps)
