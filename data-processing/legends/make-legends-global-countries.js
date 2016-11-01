@@ -47,7 +47,7 @@ const makeLegends = (data, targets, numSteps) => {
 
 // ==========================
 // ----- inputs
-const input = JSON.parse(fs.readFileSync('./admin0.geojson'))
+const input = JSON.parse(fs.readFileSync(process.argv[1]))
 const targets = {
   LS_EQ: ['LS_EQ_10', 'LS_EQ_50', 'LS_EQ_100', 'LS_EQ_250', 'LS_EQ_500', 'LS_EQ_1000'],
   LS_EQ_AAL: ['LS_EQ_AAL'],
