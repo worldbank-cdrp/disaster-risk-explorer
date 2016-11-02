@@ -50,6 +50,7 @@ const Results = React.createClass({
     }
 
     const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
+    console.log(rps)
     const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
     const data = rps.map((rp) => {
       const value = d[`LS_${risk}_${rp}${suffix}`] ? d[`LS_${risk}_${rp}${suffix}`] : 0

@@ -90,8 +90,7 @@ export const availableRPs = {
         '100',
         '250',
         '500',
-        '1000',
-        'Historic'
+        '1000'
       ]
     },
     risk: {
@@ -124,8 +123,7 @@ export const availableRPs = {
         '100',
         '250',
         '500',
-        '1000',
-        'Historic'
+        '1000'
       ]
     },
     risk: {
@@ -158,8 +156,7 @@ export const availableRPs = {
         '100',
         '250',
         '500',
-        '1000',
-        'Historic'
+        '1000'
       ]
     },
     risk: {
@@ -188,6 +185,7 @@ export const availableRPs = {
 
 export const graphCols = {
   'LS_EQ': [
+    'HS',
     '10',
     '50',
     '100',
@@ -206,6 +204,7 @@ export const graphCols = {
     '1000'
   ],
   'LS_WS': [
+    'HS',
     '25',
     '50',
     '100',
