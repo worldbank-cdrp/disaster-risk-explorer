@@ -63,7 +63,7 @@ const Legend = React.createClass({
         <figcaption className='legend__metric'>
           <p>{t(legendMetric)}</p>
         </figcaption>
-        {rp !== 'AAL' && metric !== 'exposure'
+        {rp !== 'AAL' && rp !== 'Historic' && metric !== 'exposure'
           ? <figcaption className='legend__rp'>
              <p>{`${t('Return Period of')} ${rp} ${t('years')}`}</p>
            </figcaption>

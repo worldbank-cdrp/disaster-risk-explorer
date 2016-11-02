@@ -101,5 +101,5 @@ var c = through2({ objectMode: true }, function (feat, enc, callback) {
   console.log(legends)
 })
 
-const inPath = './km10.geojson' // process.argv[1]
+const inPath = process.argv[1]
 fs.createReadStream(inPath).pipe(geoParse).pipe(c)
