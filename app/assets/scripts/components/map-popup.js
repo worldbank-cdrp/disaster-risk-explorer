@@ -18,7 +18,7 @@ var MapPopup = React.createClass({
 
   render: function () {
     const hazard = this.props.hazard
-    const string = (measurementStrings[hazard] && this.props.metric !== 'exposure') ? measurementStrings[hazard] : '$'
+    const string = (measurementStrings[hazard] && this.props.metric === 'risk') ? measurementStrings[hazard] : '$'
     return (
       <article className='popover'>
         <div className='popover__contents'>

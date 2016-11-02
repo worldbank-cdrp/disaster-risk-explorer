@@ -36,7 +36,7 @@ const Legend = React.createClass({
 
     const rp = dataSelection.return.getActive().value
     const hazard = this.props.dataSelection.risk.getActive().key
-    const legendMetric = (measurementStrings[hazard] && metric !== 'exposure') ? measurementStrings[hazard] : 'US Dollars ($)'
+    const legendMetric = (measurementStrings[hazard] && metric === 'risk') ? measurementStrings[hazard] : 'US Dollars ($)'
 
     const legendBlocks = legend.map((cat, i) => {
       return (
