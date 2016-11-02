@@ -87,7 +87,8 @@ export const Map = React.createClass({
       }
     })
 
-    this._map.on('mousemove', this._mouseMove)
+    const throttledMouseMove = _.throttle(this._mouseMove, 200)
+    this._map.on('mousemove', throttledMouseMove)
     this._map.on('click', this._mapClick)
   },
 
@@ -363,7 +364,7 @@ export const Map = React.createClass({
   },
 
   _mouseMove: function (e) {
-    let sourceId = this.activeSource.id
+    const sourceId = this.activeSource.id
     const admin = this.props.dataSelection.admin.getActive().key
     const layer = (admin === 'km10' && this._map.getZoom() < 8.5) ? 'km10Circles-inactive' : `${sourceId}-inactive`
     const features = this._map.queryRenderedFeatures(e.point, {
@@ -373,11 +374,7 @@ export const Map = React.createClass({
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties)
-
-      if (this._showPopupThrottled === null) {
-        this._showPopupThrottled = _.throttle(this._showPopup, 30)
-      }
-      this._showPopupThrottled(e.lngLat, features[0])
+      this._showPopup(e.lngLat, features[0])
     } else {
       this._map.getCanvas().style.cursor = ''
       this._unhighlightFeature()
