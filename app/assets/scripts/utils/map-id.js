@@ -4,9 +4,10 @@ import { t } from '../utils/i18n'
 export function getMapId (dataSelection) {
   const riskCode = dataSelection.risk.getActive().value
   const metric = dataSelection.metric.getActive().key
-  const rp = dataSelection.return.getActive().value
+  let rp = dataSelection.return.getActive().value
 
   let mapId = ''
+  if (rp === 'Historic') rp = 'HS'
   if (metric === 'risk') mapId += `HZ_${riskCode}_${rp}`
   if (metric === 'loss') mapId += `LS_${riskCode}_${rp}`
   if (metric === 'exposure') mapId += 'EX_BS'

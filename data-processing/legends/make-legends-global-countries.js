@@ -23,8 +23,7 @@ const makeLegends = (data, targets, numSteps) => {
       let colValues = input.features.map((feat) => {
         return feat.properties[col]
       }).filter(function (value) {
-        if (typeof value === 'undefined' || value === 0) {
-          console.log(col, ' filtered ', value)
+        if (typeof value === 'undefined' || value === 0 || value === null) {
           return false
         }
         return true

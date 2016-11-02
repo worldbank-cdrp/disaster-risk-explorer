@@ -29,7 +29,7 @@ const Legend = React.createClass({
     const mapId = getMapId(this.props.dataSelection) + suffix
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
-    const legendId = /AAL/.test(mapId) ? mapId : mapId.slice(0, 5) + suffix
+    const legendId = /AAL/.test(mapId) || /HS/.test(mapId) ? mapId : mapId.slice(0, 5) + suffix
     const legend = legends[activeSource][legendId]
     let opacity = this.props.dataSelection.opacity.getActive().key
     opacity = mapSettings.opacityLevels[opacity]
