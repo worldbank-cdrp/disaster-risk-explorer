@@ -25,20 +25,20 @@ scripts/zsh/agg.sh
 ## aggregate to the country and admin1 level
 scripts/zsh/agg_country.sh
 
-## merge stuff (countries, multipolygons, the grid), calculate relative values at the "right moment"
+## merge stuff (countries, multipolygons, the grid), calculate relative values at the "right moment", add data from other shapefiles as necessary
 geojson-merge countries/[A-Z][A-Z]_agg.geojson > countries.geojson
 geojson-merge countries/[A-Z][A-Z]-[A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9]_agg.geojson countries/[A-Z][A-Z]-[A-Z0-9][A-Z0-9][A-Z0-9]_agg.geojson > admin1.geojson
 scripts/js/merge-polygons.js countries.geojson
 scripts/js/merge-polygons.js admin1.geojson
-scripts/zsh/relative.sh
-scripts/js/merge.js
 
-# add data from other shapefiles as necessary
 ogr2ogr -f GeoJSON -t_srs crs:84 ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin0.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin0.shp
 ogr2ogr -f GeoJSON -t_srs crs:84 ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin1.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin1.shp
 ogr2ogr -f GeoJSON -t_srs crs:84 ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/Caribbean_Earthquake_PML_AAL_Admin0.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/Caribbean_Earthquake_PML_AAL_Admin0.shp
 ogr2ogr -f GeoJSON -t_srs crs:84 ../CDRP\ Platform\ Development\ Seed/Loss/Flood/probabilistic/CA_Asset_AAL_admin0.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Flood/probabilistic/CA_Asset_AAL_admin0.shp
-scripts/js/add-data.js countries_joined_all.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin0.geojson LS_EQ_
-scripts/js/add-data.js countries_joined_all.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/Caribbean_Earthquake_PML_AAL_Admin0.geojson LS_EQ_
-scripts/js/add-data.js countries_joined_all.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Flood/probabilistic/CA_Asset_AAL_admin0.geojson LS_FL_
-scripts/js/add-data.js admin1_joined_all.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin1.geojson LS_EQ_
+scripts/js/add-data.js countries_joined.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin0.geojson LS_EQ_
+scripts/js/add-data.js countries_joined.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/Caribbean_Earthquake_PML_AAL_Admin0.geojson LS_EQ_
+scripts/js/add-data.js countries_joined.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Flood/probabilistic/CA_Asset_AAL_admin0.geojson LS_FL_
+scripts/js/add-data.js admin1_joined.geojson ../CDRP\ Platform\ Development\ Seed/Loss/Earthquake/probabilistic/CA_Earthquake_PML_AAL_Admin1.geojson LS_EQ_
+
+scripts/zsh/relative.sh
+scripts/js/merge.js
