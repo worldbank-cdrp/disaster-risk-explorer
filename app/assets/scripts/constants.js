@@ -3,15 +3,15 @@ import chroma from 'chroma-js'
 export const mapSources = {
   admin0: {
     id: 'admin0',
-    sourceLayer: 'admin0-8vcdi0',
+    sourceLayer: 'admin0-5hcmao',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.as6pyf0x'
+    url: 'mapbox://wbg-cdrp.4nltj1lr'
   },
   admin1: {
     id: 'admin1',
-    sourceLayer: 'admin1-6kfanw',
+    sourceLayer: 'admin1-06kllc',
     idProp: 'id',
-    url: 'mapbox://wbg-cdrp.akc7hlky'
+    url: 'mapbox://wbg-cdrp.bh3t3ma8'
   },
   km10: {
     id: 'km10',
