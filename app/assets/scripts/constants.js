@@ -15,15 +15,15 @@ export const mapSources = {
   },
   km10: {
     id: 'km10',
-    sourceLayer: 'km10-9v4tlk',
+    sourceLayer: 'km10-68ow7o',
     idProp: 'code',
-    url: 'mapbox://wbg-cdrp.dyvw5jza'
+    url: 'mapbox://wbg-cdrp.1svo2unq'
   },
   km10Circles: {
     id: 'km10Circles',
-    sourceLayer: 'km10Points',
+    sourceLayer: 'km10Pointsgeojson',
     idProp: 'code',
-    url: 'mapbox://wbg-cdrp.azbphggb'
+    url: 'mapbox://wbg-cdrp.937r9djo'
   }
 }
 
@@ -649,14 +649,13 @@ export const legends = {
     LS_FL_AAL: emptyLegend,
      // does not exist in data
     LS_FL_AAL_R: emptyLegend,
-    // problem data
     HZ_FL:
-     [ [ -2147483647, flColors[0] ],
-       [ -2147483647, flColors[1] ],
-       [ -2147483647, flColors[2] ],
-       [ -2147483647, flColors[3] ],
-       [ -2147483647, flColors[4] ],
-       [ -2147483647, flColors[5] ] ],
+     [ [ 1, flColors[0] ],
+       [ 6, flColors[1] ],
+       [ 10, flColors[2] ],
+       [ 16, flColors[3] ],
+       [ 22, flColors[4] ],
+       [ 33, flColors[5] ] ],
     LS_WS:
     [ [ 0, wsColors[0] ],
       [ 112, wsColors[1] ],
