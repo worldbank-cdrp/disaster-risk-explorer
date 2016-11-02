@@ -60,7 +60,10 @@ gridLayer.features.forEach(feature => {
         }
       })
     } else {
-      feature.properties[propertyName] = result.properties[tifProperty]
+      // skip zeros and -2147483647
+      if (result.properties[tifProperty] > 0) {
+        feature.properties[propertyName] = result.properties[tifProperty]
+      }
     }
   })
 })
