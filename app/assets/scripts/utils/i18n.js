@@ -80,7 +80,7 @@ export function t (string, replace = {}) {
       'Relative': 'relative values',
       'Peak Ground Acceleration (gals)': 'Peak Ground Acceleration (gals)',
       'Gust Wind Speed (Miles Per Hour)': 'Gust Wind Speed (Miles Per Hour)',
-      'Gallons': 'Gallons',
+      'Decimeters': 'Decimeters',
       'US Dollars ($)': 'US Dollars ($)',
       '$': '$',
 
@@ -340,7 +340,7 @@ export function t (string, replace = {}) {
       'Relative': 'valores relativos',
       'Peak Ground Acceleration (gals)': 'Pico de Aceleración del Terreno (gals)',
       'Gust Wind Speed (Miles Per Hour)': 'Ráfagas de Velocidad del Viento (Pillas Por Hora)',
-      'Gallons': 'Galones',
+      'Decimeters': 'Decímetros',
       'US Dollars ($)': 'Dólar Estadounidense ($)',
       '$': '$',
 
