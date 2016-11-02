@@ -177,7 +177,7 @@ export const Map = React.createClass({
   _showPopup: function (lngLat, feature) {
     let popupContent = document.createElement('div')
     const dataSelection = this.props.dataSelection
-    const mapId = getMapId(dataSelection)
+    const mapId = getMapId(dataSelection, this.props.mapType)
     const mapDescrip = getMapDescrip(dataSelection)
 
     let adminId = dataSelection.admin.getActive().key !== 'km10'
