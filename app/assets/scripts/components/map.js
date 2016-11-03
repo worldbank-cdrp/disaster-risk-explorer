@@ -241,7 +241,7 @@ export const Map = React.createClass({
         stops: colorScale
       },
       'fill-opacity': opacity,
-      'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
+      'fill-outline-color': 'rgba(50, 50, 50, 0.2)'
     }
     if (mapId === 'km10') minZoom = 8
     if (mapId === 'km10Circles') {
@@ -317,11 +317,15 @@ export const Map = React.createClass({
         })
       this._map.setFilter('km10Circles-inactive', ['all', ['has', nextMapId], ['!=', nextMapId, 0]])
     }
-    this._map.setPaintProperty(`${nextSourceName}-inactive`,
-      'fill-color', {
+    const paintProperties = {
+      'fill-color': {
         property: nextMapId,
         stops: colorScale
-      })
+      },
+      'fill-opacity': opacity
+    }
+    this._map.setPaintProperty(`${nextSourceName}-inactive`, 'fill-color', paintProperties['fill-color'])
+    this._map.setPaintProperty(`${nextSourceName}-inactive`, 'fill-opacity', paintProperties['fill-opacity'])
     this._map.setFilter(`${nextSourceName}-inactive`, ['all', ['has', nextMapId], ['!=', nextMapId, 0]])
   },
 
@@ -397,7 +401,6 @@ export const Map = React.createClass({
     const maps = ['admin0', 'admin1', 'km10']
     maps.forEach((map) => {
       this._map.setPaintProperty(map + '-inactive', 'fill-opacity', (opacity))
-      this._map.setPaintProperty(map + '-inactive', 'fill-outline-color', `rgba(50, 50, 90, ${opacity})`)
     })
     this._map.setPaintProperty('km10Circles-inactive', 'circle-opacity', (opacity))
   },
