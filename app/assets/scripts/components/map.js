@@ -244,11 +244,11 @@ export const Map = React.createClass({
       'fill-opacity': opacity,
       'fill-outline-color': 'rgba(100, 100, 100, 0.1)'
     }
-    if (mapId === 'km10') minZoom = 8
+    if (mapId === 'km10') minZoom = 9
     if (mapId === 'km10Circles') {
       type = 'circle'
       minZoom = 0
-      maxZoom = 8.5
+      maxZoom = 9.5
       paintProperties = {
         'circle-color': {
           property: colorProperty,
@@ -256,8 +256,13 @@ export const Map = React.createClass({
         },
         'circle-radius': {
           'stops': [
-            [1, 1],
-            [8, 7]
+            [0, 3],
+            [4, 3],
+            [5, 5],
+            [6, 8],
+            [7, 13],
+            [8, 12],
+            [11, 8]
           ]
         },
         'circle-opacity': opacity - 0.2
