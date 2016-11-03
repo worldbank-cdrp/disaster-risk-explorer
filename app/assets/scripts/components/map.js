@@ -87,7 +87,8 @@ export const Map = React.createClass({
       }
     })
 
-    this._map.on('mousemove', this._mouseMove)
+    const throttledMouseMove = _.throttle(this._mouseMove, 200)
+    this._map.on('mousemove', throttledMouseMove)
     this._map.on('click', this._mapClick)
   },
 
@@ -243,11 +244,11 @@ export const Map = React.createClass({
       'fill-opacity': opacity,
       'fill-outline-color': 'rgba(50, 50, 50, 0.2)'
     }
-    if (mapId === 'km10') minZoom = 8
+    if (mapId === 'km10') minZoom = 9
     if (mapId === 'km10Circles') {
       type = 'circle'
       minZoom = 0
-      maxZoom = 8.5
+      maxZoom = 9.5
       paintProperties = {
         'circle-color': {
           property: colorProperty,
@@ -255,8 +256,13 @@ export const Map = React.createClass({
         },
         'circle-radius': {
           'stops': [
-            [1, 1],
-            [8, 7]
+            [0, 3],
+            [4, 3],
+            [5, 5],
+            [6, 8],
+            [7, 13],
+            [8, 12],
+            [11, 8]
           ]
         },
         'circle-opacity': opacity - 0.2
@@ -367,7 +373,7 @@ export const Map = React.createClass({
   },
 
   _mouseMove: function (e) {
-    let sourceId = this.activeSource.id
+    const sourceId = this.activeSource.id
     const admin = this.props.dataSelection.admin.getActive().key
     const layer = (admin === 'km10' && this._map.getZoom() < 8.5) ? 'km10Circles-inactive' : `${sourceId}-inactive`
     const features = this._map.queryRenderedFeatures(e.point, {
@@ -377,11 +383,7 @@ export const Map = React.createClass({
     if (features.length) {
       this._map.getCanvas().style.cursor = 'pointer'
       this._highlightFeature(features[0].properties)
-
-      if (this._showPopupThrottled === null) {
-        this._showPopupThrottled = _.throttle(this._showPopup, 30)
-      }
-      this._showPopupThrottled(e.lngLat, features[0])
+      this._showPopup(e.lngLat, features[0])
     } else {
       this._map.getCanvas().style.cursor = ''
       this._unhighlightFeature()
