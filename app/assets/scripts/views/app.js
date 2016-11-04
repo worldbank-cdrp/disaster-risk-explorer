@@ -5,7 +5,7 @@ import { hashHistory } from 'react-router'
 import _ from 'lodash'
 import c from 'classnames'
 
-import { isValidLanguage, setLanguage, t } from '../utils/i18n'
+import { t, isValidLanguage, setLanguage } from '../utils/i18n'
 
 var App = React.createClass({
   displayName: 'App',
@@ -60,8 +60,8 @@ var App = React.createClass({
     return this.state.vpTooSmall ? (
       <div className='nocando-viewport'>
         <img className='nocando-img' src='../assets/graphics/content/central_america.png'/>
-        <p>The Disaster Risk Explorer for Central America tool can only be used on larger screens.</p>
-        <p>Please switch to desktop.</p>
+        <p>{t('The Disaster Risk Explorer for Central America tool can only be used on larger screens.')}</p>
+        <p>{t('Please switch to desktop.')}</p>
       </div>
     ) : (
       <div className={c('page', pageClass)}>
