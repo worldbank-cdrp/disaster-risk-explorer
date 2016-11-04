@@ -1,0 +1,28 @@
+.nocando-viewport {
+  background-color: rgba($base-color, 0.08);
+  height: 100vh;
+  line-height: 1.6rem;
+  p {
+    text-align: center;
+    color: $base-color;
+    max-width: 320px;
+    margin: 0.5rem auto 1rem;
+  }
+}
+
+#nocando {
+  margin: 200px auto;
+  padding: 32px;
+  max-width: 440px;
+  background: #fff;
+  h1 {
+    font-size: 24px;
+    line-height: 1rem;
+    margin-bottom: 32px;
+  }
+}
+
+.nocando-img{
+  width: 60%;
+  margin: 5rem 20% 0;
+}

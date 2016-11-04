@@ -31,6 +31,9 @@ export function t (string, replace = {}) {
       'Screen is too small': 'Screen is too small',
       'Show/hide parameter options': 'Show/hide parameter options',
 
+      'The Disaster Risk Explorer for Central America tool can only be used on larger screens.': 'The Disaster Risk Explorer for Central America tool can only be used on larger screens.',
+      'Please switch to desktop.': 'Please switch to desktop.',
+
       // Selection Panel
       'Selection Options': 'Selection Options',
 
@@ -304,6 +307,9 @@ export function t (string, replace = {}) {
       'About': 'Acerca',
       'Screen is too small': 'Pantalla demasiado pequeña',
       'Show/hide parameter options': 'Mostrar/esconder opciones de parámetros',
+
+      'The Disaster Risk Explorer for Central America tool can only be used on larger screens.': 'The Disaster Risk Explorer for Central America tool can only be used on larger screens.',
+      'Please switch to desktop.': 'Please switch to desktop.',
 
       // Selection Panel
       'Selection Options': 'Opciones de selección',
