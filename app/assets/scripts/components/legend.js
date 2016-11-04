@@ -24,8 +24,9 @@ const Legend = React.createClass({
     const activeSource = this.props.dataSelection.admin.getActive().key
     const title = getMapDescrip(dataSelection)
     const metric = dataSelection.metric.getActive().key
+    const mapType = this.props.mapType
 
-    const suffix = this.props.mapType === 'relative' && metric === 'loss' ? '_R' : ''
+    const suffix = mapType === 'relative' && metric === 'loss' ? '_R' : ''
     const mapId = getMapId(this.props.dataSelection) + suffix
     // Slice removes the years from disaster and loss columns, since legends
     // statistics are currently derived from all years' data.
@@ -36,7 +37,9 @@ const Legend = React.createClass({
 
     const rp = dataSelection.return.getActive().value
     const hazard = this.props.dataSelection.risk.getActive().key
-    const legendMetric = (measurementStrings[hazard] && metric === 'risk') ? measurementStrings[hazard] : 'US Dollars ($)'
+    let legendMetric = (measurementStrings[hazard] && metric === 'risk')
+      ? measurementStrings[hazard]
+      : mapType === 'absolute' ? 'US Dollars ($)' : 'USD ($) Loss / USD ($) Exposure'
 
     const legendBlocks = legend.map((cat, i) => {
       return (
@@ -76,12 +79,12 @@ const Legend = React.createClass({
               <p>{t('View by')}</p>
               <div
                 onClick={this.toggleMapType.bind(null, 'absolute')}
-                className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': this.props.mapType === 'absolute'})}>
+                className={c('button', 'header__language--toggle', 'button__leftside', {'button--active': mapType === 'absolute'})}>
                 <span className='header__language--text'>{t('Absolute')}</span>
               </div>
               <div
                 onClick={this.toggleMapType.bind(null, 'relative')}
-                className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': this.props.mapType === 'relative'})}>
+                className={c('button', 'header__language--toggle', 'button__rightside', {'button--active': mapType === 'relative'})}>
                 <span className='header__language--text'>{t('Relative')}</span>
               </div>
           </figcaption>

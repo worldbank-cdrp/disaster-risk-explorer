@@ -82,6 +82,7 @@ export function t (string, replace = {}) {
       'Gust Wind Speed (Miles Per Hour)': 'Gust Wind Speed (Miles Per Hour)',
       'Decimeters': 'Decimeters',
       'US Dollars ($)': 'US Dollars ($)',
+      'USD ($) Loss / USD ($) Exposure': 'USD ($) Loss / USD ($) Exposure',
       '$': '$',
 
       // Results Panel
@@ -342,6 +343,7 @@ export function t (string, replace = {}) {
       'Gust Wind Speed (Miles Per Hour)': 'Ráfagas de Velocidad del Viento (Pillas Por Hora)',
       'Decimeters': 'Decímetros',
       'US Dollars ($)': 'Dólar Estadounidense ($)',
+      'USD ($) Loss / USD ($) Exposure': 'Pérdida USD ($) / Exposición USD ($)',
       '$': '$',
 
       // Results Panel
