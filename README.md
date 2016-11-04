@@ -1,4 +1,4 @@
-# Risk Data
+# Risk Disaster Explorer
 
 Modelling of risk susceptibility under a variety of weather event and building material scenarios.
 
