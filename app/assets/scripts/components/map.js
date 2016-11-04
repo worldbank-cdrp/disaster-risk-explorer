@@ -75,7 +75,7 @@ export const Map = React.createClass({
       })
 
       const mapId = getMapId(this.props.dataSelection)
-      const legendId = mapId.substr(mapId.length - 3) === 'AAL' ? mapId : mapId.slice(0, 5)
+      const legendId = mapId.substr(mapId.length - 3) === 'AAL' || mapId.substr(mapId.length - 2) === 'HS' ? mapId : mapId.slice(0, 5)
       const colorScale = legends[this.activeSource.id][legendId]
       const outlineColor = chroma(colorScale[0][1]).darken(4).hex()
       let opacity = this.props.dataSelection.opacity.getActive().key
@@ -178,7 +178,7 @@ export const Map = React.createClass({
   _showPopup: function (lngLat, feature) {
     let popupContent = document.createElement('div')
     const dataSelection = this.props.dataSelection
-    const mapId = getMapId(dataSelection)
+    const mapId = getMapId(dataSelection, this.props.mapType)
     const mapDescrip = getMapDescrip(dataSelection)
 
     let adminId = dataSelection.admin.getActive().key !== 'km10'
@@ -195,6 +195,7 @@ export const Map = React.createClass({
              metric={dataSelection.metric.getActive().key}
              hazard={dataSelection.risk.getActive().key}
              data={feature.properties[mapId]}
+             mapType={this.props.mapType}
            />, popupContent)
 
     if (this._popup === null) {
@@ -313,7 +314,7 @@ export const Map = React.createClass({
   },
 
   _toggleLayerProperties: function (prevRisk, nextRisk, prevSourceName, nextSourceName, opacity, nextMapId, suffix) {
-    const legendId = /AAL/.test(nextMapId) ? nextMapId : nextMapId.slice(0, 5) + suffix
+    const legendId = /AAL/.test(nextMapId) || /HS/.test(nextMapId) ? nextMapId : nextMapId.slice(0, 5) + suffix
     const colorScale = legends[this.activeSource.id][legendId]
     if (nextSourceName === 'km10') {
       this._map.setPaintProperty('km10Circles-inactive',

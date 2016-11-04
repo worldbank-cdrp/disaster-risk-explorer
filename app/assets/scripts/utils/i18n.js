@@ -56,6 +56,7 @@ export function t (string, replace = {}) {
       '500 Years': '500 Years',
       '1000 Years': '1000 Years',
       '2500 Years': '2500 Years',
+      'Historic': 'Historic',
       'data by': 'Level',
       'admin0': 'National',
       'admin1': 'Sub-National',
@@ -79,8 +80,9 @@ export function t (string, replace = {}) {
       'Relative': 'relative values',
       'Peak Ground Acceleration (gals)': 'Peak Ground Acceleration (gals)',
       'Gust Wind Speed (Miles Per Hour)': 'Gust Wind Speed (Miles Per Hour)',
-      'Gallons': 'Gallons',
+      'Decimeters': 'Decimeters',
       'US Dollars ($)': 'US Dollars ($)',
+      'USD ($) Loss / USD ($) Exposure': 'USD ($) Loss / USD ($) Exposure',
       '$': '$',
 
       // Results Panel
@@ -328,6 +330,7 @@ export function t (string, replace = {}) {
       '500 Years': '500 Años',
       '1000 Years': '1000 Años',
       '2500 Years': '2500 Años',
+      'Historic': 'Histórico',
       'data by': 'Nível',
       'admin0': 'Nacional',
       'admin1': 'Subnacional',
@@ -350,8 +353,9 @@ export function t (string, replace = {}) {
       'Relative': 'valores relativos',
       'Peak Ground Acceleration (gals)': 'Pico de Aceleración del Terreno (gals)',
       'Gust Wind Speed (Miles Per Hour)': 'Ráfagas de Velocidad del Viento (Pillas Por Hora)',
-      'Gallons': 'Galones',
+      'Decimeters': 'Decímetros',
       'US Dollars ($)': 'Dólar Estadounidense ($)',
+      'USD ($) Loss / USD ($) Exposure': 'Pérdida USD ($) / Exposición USD ($)',
       '$': '$',
 
       // Results Panel
