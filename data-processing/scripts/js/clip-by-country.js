@@ -8,11 +8,12 @@ var bbox = require('turf-bbox')
 var rbush = require('rbush')
 var log = require('single-line-log').stdout
 var prettyMs = require('pretty-ms')
+var normalize = require('geojson-normalize')
 
 var start = Date.now()
 
 console.log('Clip file: ' + process.argv[2])
-var clipGeo = JSON.parse(fs.readFileSync(process.argv[2]))
+var clipGeo = normalize(JSON.parse(fs.readFileSync(process.argv[2])))
 var tree = rbush()
 tree.load(clipGeo.features.map(cg => {
   const [ minX, minY, maxX, maxY ] = bbox(cg)

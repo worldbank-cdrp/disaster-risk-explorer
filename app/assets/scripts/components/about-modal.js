@@ -2,6 +2,7 @@ import React from 'react'
 
 import { hideModalAbout } from '../actions'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { t } from '../utils/i18n'
 
 const About = React.createClass({
   propTypes: {
@@ -29,19 +30,19 @@ const About = React.createClass({
           </header>
           <section className='modal__body'>
             <div className='modal__body--about'>
-              <h3>What is this?</h3>
-              <p>
-                This tool allows you to explore and visualize Earthquake, Windstorm, & Flood data provided by the World Bank. The data presented as been recieved by The World Bank. Datasets included here showcase data for earthquake, windstorms, and flood hazards for Central American Countries. From there you can filter out the results by metric, return period, and depth.
-              </p>
-              <p>
-                For more details on a partical area, you can click on an area to view the area's GDP, exposure, AAL, and PML. To view how overall losses can be reduced, we include a Calculator you can launch at the bottom of the results.
-              </p>
+              <h3>{t('What is the CDRP Risk Explorer tool?')}</h3>
+              <p>{t('about-1')}</p>
+              <p>{t('about-2')}</p>
+              <p>{t('about-3')}</p>
               <br></br>
-              <h3>Who can I contact for further information?</h3>
-              <p>
-                If you encounter any issues using the tool or would like further explanations on the data shown, please contact exampleJohn@example.com.
-              </p>
+              <h3>{t('Who can I contact for further information?')}</h3>
+              <p>{t('about-4')} <a href='mailto:cdrp@worldbank.org' target='_blank'>cdrp@worldbank.org</a>.</p>
               <br></br>
+              <h3>{t('Disclaimer')}</h3>
+              <p>{t('about-5')}</p>
+              <p>{t('about-6')}</p>
+              <p>{t('about-7')}</p>
+              <p>{t('about-8')}</p>
             </div>
           </section>
         </div>

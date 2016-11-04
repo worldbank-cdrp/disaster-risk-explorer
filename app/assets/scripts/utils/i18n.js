@@ -41,7 +41,7 @@ export function t (string, replace = {}) {
       '(disabled at national level)': '(disabled at national level)',
       '(disabled at sub-national level)': '(disabled at subnational level)',
 
-      'risk': 'Risk',
+      'risk': 'Hazard',
       'flood': 'Flood',
       'earthquake': 'Earthquake',
       'windstorm': 'Windstorm',
@@ -56,6 +56,7 @@ export function t (string, replace = {}) {
       '500 Years': '500 Years',
       '1000 Years': '1000 Years',
       '2500 Years': '2500 Years',
+      'Historic': 'Historic',
       'data by': 'Level',
       'admin0': 'National',
       'admin1': 'Sub-National',
@@ -77,11 +78,11 @@ export function t (string, replace = {}) {
       'View by': 'View by:',
       'Absolute': 'absolute values',
       'Relative': 'relative values',
-      // Windstorm is currently sharing Feet Per Second with Earthquake.
-      // A string for Windstorm's true metric meaning will need to be added here.
-      'Feet Per Second': 'Feet Per Second',
-      'Gallons': 'Gallons',
+      'Peak Ground Acceleration (gals)': 'Peak Ground Acceleration (gals)',
+      'Gust Wind Speed (Miles Per Hour)': 'Gust Wind Speed (Miles Per Hour)',
+      'Decimeters': 'Decimeters',
       'US Dollars ($)': 'US Dollars ($)',
+      'USD ($) Loss / USD ($) Exposure': 'USD ($) Loss / USD ($) Exposure',
       '$': '$',
 
       // Results Panel
@@ -142,6 +143,18 @@ export function t (string, replace = {}) {
       'Thousand': 'Thousand',
       'Million': 'Million',
       'Billion': 'Billion',
+
+      // About Format
+      'What is the CDRP Risk Explorer tool?': 'What is the CDRP Risk Explorer tool?',
+      'about-1': 'The World Bank’s Country Disaster Risk Profiles (CDRP) Risk Explorer tool provides quantitative data to explore, visualize and derive Earthquake, Windstorm and Flood (hazard, exposure and risk) information via an interactive interface.  The Risk Explorer is focused on Central America (Belize, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua and Panama) and some Caribbean countries (Jamaica, Grenada and St Lucia).',
+      'about-2': 'For more detailed information on a particular area (e.g. department or province), you can click on the area to view general information like GDP, exposure of buildings and non-building infrastructure. The user can also explore three key risk metrics such as the Average Annual Loss (AAL), Probable Maximum Losses (PMLs) and scenario losses based on historic events.',
+      'about-3': 'The tool also provides aggregate level cost and benefit analysis for replacement or retrofitting options of buildings. For example, in Guatemala nearly 10% of economic value associated with residential buildings is in single-family houses of mud (adobe) wall construction, housing nearly 16% of the country’s population. If these houses were replaced by earthquake-resistant reinforced masonry with concrete diaphragms, there would be a significant reduction to the country’s earthquake AAL. For a pre-defined scenario, applied to the most seismically prone department of Guatemala, Escuintla, we find that the department’s AAL could be reduced by over 7%. For this, you can launch an interactive calculator at the bottom of the results panel to determine different risk mitigation options.',
+      'Who can I contact for further information?': 'Who can I contact for further information?',
+      'about-4': 'If you encounter any issues using the tool or would like further explanations on the data shown, please contact',
+      'Disclaimer': 'Disclaimer',
+      'about-6': 'Results presented here are part of the ongoing WB LCR Country Disaster Risk Profile (CDRP) Program. Therefore, presented estimations and results should be considered as preliminary.',
+      'about-7': 'The contents expressed in this presentation are entirely those of the authors. They do not necessarily represent the views of the International Bank for Reconstruction and Development/World Bank and its affiliated organizations, or those of the Executive Directors of the World Bank or the governments they represent.',
+      'about-8': 'I agree and comply to with the World Bank Group’s data share policy and guidelines.',
 
       // Countries
       'BZ': 'Belize',
@@ -302,7 +315,7 @@ export function t (string, replace = {}) {
       '(disabled at national level)': '(deshabilitado al nivel nacional)',
       '(disabled at sub-national level)': '(deshabilitado al nivel subnacional)',
 
-      'risk': 'Riesgo',
+      'risk': 'Peligro',
       'flood': 'Inundación',
       'earthquake': 'Terremoto',
       'windstorm': 'Huracán',
@@ -317,6 +330,7 @@ export function t (string, replace = {}) {
       '500 Years': '500 Años',
       '1000 Years': '1000 Años',
       '2500 Years': '2500 Años',
+      'Historic': 'Histórico',
       'data by': 'Nível',
       'admin0': 'Nacional',
       'admin1': 'Subnacional',
@@ -337,11 +351,11 @@ export function t (string, replace = {}) {
       'View by': 'Ver por:',
       'Absolute': 'valores absolutos',
       'Relative': 'valores relativos',
-      // Windstorm is currently sharing Feet Per Second with Earthquake.
-      // A string for Windstorm's true metric meaning will need to be added here.
-      'Feet Per Second': 'Pies por Segundo',
-      'Gallons': 'Galones',
+      'Peak Ground Acceleration (gals)': 'Pico de Aceleración del Terreno (gals)',
+      'Gust Wind Speed (Miles Per Hour)': 'Ráfagas de Velocidad del Viento (Pillas Por Hora)',
+      'Decimeters': 'Decímetros',
       'US Dollars ($)': 'Dólar Estadounidense ($)',
+      'USD ($) Loss / USD ($) Exposure': 'Pérdida USD ($) / Exposición USD ($)',
       '$': '$',
 
       // Results Panel
@@ -402,6 +416,18 @@ export function t (string, replace = {}) {
       'Thousand': 'Millar',
       'Million': 'Millón',
       'Billion': 'Millardo',
+
+      // About Format
+      'What is the CDRP Risk Explorer tool?': 'Qué es el rastreador de riesgo CDRP?',
+      'about-1': 'La herramienta rastreadora de riesgo de la iniciativa Perfiles de Riesgo de Desastre por País (CDRP por sus siglas en inglés) del Banco Mundial, proporciona datos cuantitativos para explorar, visualizar y obtener información de terremotos, tormentas e inundaciones (amenaza, exposición y riesgo) a través de una interfaz interactiva. El rastreador de riesgo se centra en América Central (Belice, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua y Panamá) y algunos países del Caribe (Jamaica, Granada y Santa Lucía).',
+      'about-2': 'Para obtener información más detallada sobre un área en particular (por ejemplo, un departamento o provincia), se puede hacer clic sobre la zona para ver información general como el PIB o la exposición de edificios y de infraestructuras. El usuario también puede examinar tres indicadores clave de riesgo: la pérdida anual media (AAL por sus siglas en inglés), la pérdida máxima probable (PML) y las pérdidas de escenarios basados ​​en eventos históricos.',
+      'about-3': 'La herramienta también proporciona análisis de costo y beneficio agregado para las opciones de reemplazo o reequipamiento de edificios. Por ejemplo, en Guatemala casi el 10% del valor económico asociado con edificios residenciales son casas unifamiliares de muros de adobe, que albergan casi el 16% de la población nacional. Si estas casas fueran reemplazadas por mampostería reforzada resistente a terremotos con diafragmas de hormigón, habría una reducción significativa en la pérdida anual media por terremoto del país. Para un escenario predefinido, aplicado al departamento más propenso a sismos de Guatemala, Escuintla, nos encontramos con que la pérdida anual media del departamento podría reducirse en más del 7%. Para esto, se puede seleccionar la calculadora interactiva en la parte inferior del panel de resultados para determinar diferentes opciones de mitigación de riesgos.',
+      'Who can I contact for further information?': 'A quién puedo contactar para obtener más información? ',
+      'about-4': 'Si tiene algún problema usando la herramienta o necesita más explicaciones sobre los datos mostrados, por favor póngase en contacto con',
+      'Disclaimer': 'Renuncia de responsabilidad',
+      'about-6': 'Los resultados aquí presentados son parte del programa en curso Perfiles de Riesgo de Desastre por País (CDRP por sus siglas en ingles) del Banco Mundial – Región de América Latina y el Caribe. Por tanto, las estimaciones y resultados presentados deben ser considerados como preliminares.',
+      'about-7': 'Los contenidos expresados ​​en esta presentación pertenecen a los autores. No tienen por qué representar los puntos de vista del Banco Internacional de Reconstrucción y Desarrollo/Banco Mundial y sus organizaciones afiliadas, de los Directores Ejecutivos del Banco Mundial o de los gobiernos que representan.',
+      'about-8': 'Acepto cumplir con las políticas y directrices de intercambio de información del Grupo del Banco Mundial.',
 
       // Countries
       'BZ': 'Belice',

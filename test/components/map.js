@@ -19,5 +19,6 @@ test('map test', t => {
   const instance = component.instance()
   instance._adjustOpacity = () => {}
   instance._addZoomControls = () => {}
+  instance._setMapLanguage = () => {}
   t.notThrows(() => instance.componentDidMount())
 })
