@@ -97,9 +97,9 @@ const Results = React.createClass({
                 <h3 className='subtitle results__subtitle'>{t('Exposure')}</h3>
                 <dl className='stats'>
                   <dt className='stat__attribute'>{t('GDP')}</dt>
-                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false)}</dd>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_GD, 2, false) === false ? ' -' : shortenNumber(d.EX_GD, 2, false)}</dd>
                   <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
-                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false)}</dd>
+                  <dd className='stat__value unimplemented'>${shortenNumber(d.EX_BS, 2, false) === false ? ' -' : shortenNumber(d.EX_BS, 2, false)}</dd>
                 </dl>
 
                 <div className='results__divider results__divider--first'></div>
