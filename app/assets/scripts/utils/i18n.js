@@ -125,6 +125,7 @@ export function t (string, replace = {}) {
       'retrofitting': 'retrofitting',
       'replacing': 'replacing',
       'to the vulnerability level of': 'to the vulnerability level of',
+      'Unknown building type': 'Unknown building type',
 
       'Results': 'Results',
       'Years': 'Years',
@@ -402,6 +403,7 @@ export function t (string, replace = {}) {
       'retrofitting': 'retrofitting',
       'replacing': 'replacing',
       'to the vulnerability level of': 'to the vulnerability level of',
+      'Unknown building type': 'Unknown building type',
 
       'Results': 'Resultados',
       'Years': 'Años',
