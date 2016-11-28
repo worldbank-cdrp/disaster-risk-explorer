@@ -38,6 +38,15 @@ const About = React.createClass({
               <h3>{t('Who can I contact for further information?')}</h3>
               <p>{t('about-4')} <a href='mailto:cdrp@worldbank.org' target='_blank'>cdrp@worldbank.org</a>.</p>
               <br></br>
+              <h3>{t('Made Possible Thanks To')}</h3>
+              <section className='about__logos'>
+                <a href='http://www.worldbank.org/'><img src='./assets/graphics/content/wb-logo.jpg'></img></a>
+                <img src='./assets/graphics/content/CDRP-logo.png'></img>
+                <a href='https://www.gfdrr.org/'><img src='./assets/graphics/content/GFDRR-logo.png'></img></a>
+                <a href='http://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10002/'><img src='./assets/graphics/content/DLR-logo.png'></img></a>
+                <a href='http://earthquake-report.com/2013/01/07/damaging-earthquakes-2012-database-report-the-year-in-review/'><img src='./assets/graphics/content/catdat-logo.jpg'></img></a>
+                <a href='http://dfat.gov.au/aid/pages/australias-aid-program.aspx'><img src='./assets/graphics/content/australian-aid-logo.jpeg'></img></a>
+              </section>
               <h3>{t('Disclaimer')}</h3>
               <p>{t('about-5')}</p>
               <p>{t('about-6')}</p>
