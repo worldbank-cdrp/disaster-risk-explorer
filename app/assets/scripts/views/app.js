@@ -59,7 +59,7 @@ var App = React.createClass({
 
     return this.state.vpTooSmall ? (
       <div className='nocando-viewport'>
-        <img className='nocando-img' src='../assets/graphics/content/central_america.png'/>
+        <img className='nocando-img' src='./assets/graphics/content/central_america.png'/>
         <p>{t('The Disaster Risk Explorer for Central America tool can only be used on larger screens.')}</p>
         <p>{t('Please switch to desktop.')}</p>
       </div>

@@ -121,9 +121,11 @@ export function t (string, replace = {}) {
       'building': 'building',
       'Percent of buildings': 'Percent of buildings',
 
-      'Building Stocks Converted': 'Building Stocks Converted',
-      'are retrofitted with': 'are retrofitted with',
-      'are replaced with': 'are replaced with',
+      'Level of': 'Level of',
+      'retrofitting': 'retrofitting',
+      'replacing': 'replacing',
+      'to the vulnerability level of': 'to the vulnerability level of',
+      'Unknown building type': 'Unknown building type',
 
       'Results': 'Results',
       'Years': 'Years',
@@ -397,9 +399,11 @@ export function t (string, replace = {}) {
       'building': 'edificio',
       'Percent of buildings': 'Porcentaje de edificios',
 
-      'Building Stocks Converted': 'Edificios convertidos',
-      'are retrofitted with': 'reconstruido con',
-      'are replaced with': 'reemplazado por',
+      'Level of': 'Edificios convertidos',
+      'retrofitting': 'retrofitting',
+      'replacing': 'replacing',
+      'to the vulnerability level of': 'to the vulnerability level of',
+      'Unknown building type': 'Unknown building type',
 
       'Results': 'Resultados',
       'Years': 'Años',
