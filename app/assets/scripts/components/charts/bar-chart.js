@@ -112,10 +112,6 @@ const BarColumnChart = React.createClass({
     let yLabels = yScale.ticks(3)
     let rectWidth = xScale.bandwidth()
 
-    var yLabelRounded = yLabels.map(function (o) {
-      return Math.round(o * 10000) / 10000
-    })
-
     return (
       <div className='chart-container' ref='chartContainer'>
         <svg className='chart' width={width} height={height} ref='svg'>
@@ -130,7 +126,7 @@ const BarColumnChart = React.createClass({
             />
           <Axis
             scale={yScale}
-            labels={yLabelRounded}
+            labels={yLabels.map((o) => Math.round(o * 10000) / 10000)}
             orientation='left'
             height={height}
             width={width}
