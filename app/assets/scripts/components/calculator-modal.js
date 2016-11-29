@@ -149,7 +149,7 @@ const Calculator = React.createClass({
     const TopFive = data.topFiveAAL.map((building, i) => {
       return [
         <dl key={i} className='calc__list'>
-          <dt key={building['Risk Rank'] + 'dt'} className='stat__attribute stat__attribute--stocks'><span className='stat__attribute--tally'>{i + 1 + '.'}</span> {building['Description'].replace(/single|multi family/, '') !== 'Unknown' ? building['Description'].replace(/single|multi family/, '') : t('Unknown building type')}</dt>
+          <dt key={building['Risk Rank'] + 'dt'} className='stat__attribute stat__attribute--stocks'><span className='stat__attribute--tally'>{i + 1 + '.'}</span> {building['Description'] !== 'Unknown' ? building['Description'] : t('Unknown building type')}</dt>
           <dd key={building['Risk Rank'] + 'dd'} className='stat__value stat__value--stocks'>{`${(conversion === 'retrofit' ? '' : '$')}${(building[listKey] * (conversion === 'retrofit' ? 100 : 1)).toFixed(2)} ${(conversion === 'retrofit' ? '%' : '')}`}</dd>
         </dl>
       ]

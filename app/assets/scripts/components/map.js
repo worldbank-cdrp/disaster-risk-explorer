@@ -176,8 +176,8 @@ export const Map = React.createClass({
   _showPopupThrottled: null,
 
   _showPopup: function (lngLat, feature) {
-    if (feature.layer.source === 'km10' || feature.layer.source === 'km10Circles') {
-      return ''
+    if (feature.layer.source === 'km10' && feature.layer.source === 'km10Circles') {
+      return
     }
 
     let popupContent = document.createElement('div')
