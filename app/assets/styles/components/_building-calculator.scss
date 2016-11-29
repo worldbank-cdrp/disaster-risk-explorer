@@ -180,7 +180,7 @@
 .calculator__divider-broken {
   border: 0;
   height: 2px;
-  width: 31%;
+  width: 25%;
   background-color: lighten($secondary-color, 15);
   &.left {
     float: left;
@@ -192,7 +192,7 @@
 
 .calculator__divider-broken-label {
   float: left;
-  width: calc(37%);
+  width: calc(50%);
   font-size: .9em;
   color: #aaa;
   line-height: 0.1em;
