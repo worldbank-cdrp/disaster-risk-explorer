@@ -126,7 +126,7 @@ const BarColumnChart = React.createClass({
             />
           <Axis
             scale={yScale}
-            labels={yLabels}
+            labels={yLabels.map((o) => Math.round(o * 10000) / 10000)}
             orientation='left'
             height={height}
             width={width}
