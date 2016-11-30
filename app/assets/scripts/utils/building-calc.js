@@ -75,7 +75,7 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
     breakEven: totalBuiltCost / diffAAL || 0,
     buildingFrom: getDescription(startBuildingMatch),
     buildingTo: getDescription(endBuildingMatch),
-    conversionValue: totalBuiltCost * 1000000,
+    conversionValue: totalBuiltCost * 1000000000,
     topFiveAAL
   }
 }
