@@ -56,10 +56,15 @@ const Results = React.createClass({
 
     const rps = graphCols[getMapId(this.props.dataSelection).slice(0, 5)]
     const suffix = mapType === 'relative' && metric === 'loss' ? '_R' : ''
-    const data = rps.map((rp) => {
-      const value = d[`LS_${risk}_${rp}${suffix}`] ? d[`LS_${risk}_${rp}${suffix}`] : 0
-      return {value: Number((value / valDenominator).toFixed(2)), name: rp}
-    })
+
+    let data
+
+    if (rps) {
+      data = rps.map((rp) => {
+        const value = d[`LS_${risk}_${rp}${suffix}`] ? d[`LS_${risk}_${rp}${suffix}`] : 0
+        return {value: Number((value / valDenominator).toFixed(2)), name: rp}
+      })
+    }
 
     let margin = {
       top: 16,
@@ -88,6 +93,35 @@ const Results = React.createClass({
       calcButtonLabel = 'Launch cost and benefit calculator'
     }
 
+    const barChartInfo = () => {
+      return (
+        <div>
+          <div className='results__divider results__divider--first'></div>
+          <h3 className='subtitle results__subtitle results__subtitle--secondary'>{t('loss')}</h3>
+          <dl className='stats'>
+            <div>
+              <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
+              <dd className='stat__value'>
+                ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
+              </dd>
+            </div>
+            <dd className='stat__value stat__value--chart stat__value--last'>
+              <BarChart
+                data={data}
+                margin={margin}
+                yTitle={yTitle}
+                xTitle={xTitle}
+              />
+            </dd>
+          </dl>
+        </div>
+      )
+    }
+
+    const placeholder = () => {
+      return <div className='results__placeholder'></div>
+    }
+
     return (
       <div>
         <section className='results'>
@@ -101,26 +135,7 @@ const Results = React.createClass({
                   <dt className='stat__attribute'>{t('Building Stock Exposure')}</dt>
                   <dd className='stat__value'>$ {!d.EX_BS ? ' -' : shortenNumber(d.EX_BS, 2, false)}</dd>
                 </dl>
-
-                <div className='results__divider results__divider--first'></div>
-
-                <h3 className='subtitle results__subtitle results__subtitle--secondary'>{t('loss')}</h3>
-                <dl className='stats'>
-                <div>
-                    <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
-                    <dd className='stat__value'>
-                      ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
-                    </dd>
-                  </div>
-                  <dd className='stat__value stat__value--chart stat__value--last'>
-                    <BarChart
-                      data={data}
-                      margin={margin}
-                      yTitle={yTitle}
-                      xTitle={xTitle}
-                    />
-                  </dd>
-                </dl>
+                {data ? barChartInfo() : placeholder() }
                 <button className='button button_results' onClick={this.handleDownload}><i className='collecticon collecticon-download' />{t('Download Country Profile PDF')}</button>
               </div>
             </div>
