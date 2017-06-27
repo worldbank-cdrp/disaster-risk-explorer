@@ -58,7 +58,7 @@ export const Map = React.createClass({
   },
 
   _addZoomControls: function () {
-    this._map.addControl(new mapboxgl.Navigation({position: 'bottom-right'}))
+    this._map.addControl(new mapboxgl.NavigationControl(), 'bottom-right')
   },
 
   _loadLayers: function () {
