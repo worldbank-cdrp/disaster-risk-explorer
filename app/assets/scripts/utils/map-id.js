@@ -22,11 +22,11 @@ export function getMapDescrip (dataSelection) {
   const rp = dataSelection.return.getActive().value
   const metric = (dataSelection.metric.getActive().value).toLowerCase()
 
-  if (rp === 'AAL') {
+  if (metric === 'exposure') {
+    return t('Building Stock Exposure')
+  } else if (rp === 'AAL') {
     return t(risk) + ' ' + t(metric) + ', ' + t('Average Annual Loss')
   } else if (rp === 'Historic') {
     return t(risk) + ' ' + t(metric) + ', ' + t('Historic')
-  } else if (metric === 'exposure') {
-    return t('Building Stock Exposure')
   } else return `${t(risk)} - ${t(metric)}`
 }
