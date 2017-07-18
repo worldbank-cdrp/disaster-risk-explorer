@@ -102,7 +102,7 @@ const Results = React.createClass({
             <div>
               <dt className='stat__attribute'>{t('Average Annual Loss')}</dt>
               <dd className='stat__value'>
-                ${shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
+                {isNaN(d[`LS_${risk}_AAL`]) ? 'data unavailable' : '$' + shortenNumber(d[`LS_${risk}_AAL`], 2, false)}
               </dd>
             </div>
             <dd className='stat__value stat__value--chart stat__value--last'>
