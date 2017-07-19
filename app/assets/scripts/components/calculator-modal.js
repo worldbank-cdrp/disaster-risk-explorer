@@ -5,7 +5,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import c from 'classnames'
 import { t } from '../utils/i18n'
 import Dropdown from './dropdown'
-import { calcDropItems } from '../constants'
+import { calcDropItems, aals } from '../constants'
 
 import { newCalcId, hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
@@ -16,7 +16,6 @@ const Calculator = React.createClass({
     dispatch: React.PropTypes.func,
     dataSelection: React.PropTypes.object,
     calcVisible: React.PropTypes.bool,
-    attributes: React.PropTypes.object,
     conversion: React.PropTypes.string,
     sliderValue: React.PropTypes.number,
     unitCostOfConstruction: React.PropTypes.number,
@@ -118,7 +117,6 @@ const Calculator = React.createClass({
     const { sliderValue, newCalcId } = this.props
     let conversion = this.props.conversion
 
-    const aal = this.props.attributes[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
     const activeId = newCalcId
     var activeCountry = 'BZ'
     var activeDistrict = '-'
@@ -140,6 +138,8 @@ const Calculator = React.createClass({
 
     // force Costa Rica to display replacement as there is no retrofit data
     conversion = (activeCountry === 'CR') ? 'replacement' : conversion
+
+    const aal = aals.find(a => a.id === activeId)[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -229,7 +229,7 @@ const Calculator = React.createClass({
                     { 'stat__value--positive': (data.overallChangeAAL * aal) > 0 },
                     { 'stat__value--negative': (data.overallChangeAAL * aal) < 0 }
                      )}>
-                  ${shortenNumber(data.overallChangeAAL * aal, 0, false)}
+                  {isNaN(aal) ? 'data unavialable' : '$' + shortenNumber(data.overallChangeAAL * aal, 0, false)}
                 </dd>
                 <dt className='stat__attribute'>{(conversion === 'retrofit' ? t('Total retrofit cost') : t('Total replacement cost'))}</dt>
                 <dd className='stat__value'>${shortenNumber(data.conversionValue, 0, false)}</dd>
