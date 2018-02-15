@@ -212,44 +212,6 @@ PA-3,avcomoff,Commercial offices,519,0.11,0.0553,0.00021,16,,,
 PA-3,avindustr,General industrial,346,0.06,0.0321,0.00019,17,,,
 PA-3,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,21,0,0.0021,0.0002,18,355,315,315
 PA-3,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,34,0.01,0.0035,0.00021,19,,,
-PA-5,avsA1,"Adobe block, mud mortar, wood roof and floors single family",3,0.02,0.0533,0.00478,1,170,155,145
-PA-5,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",2,0.01,0.0299,0.00482,2,,,
-PA-5,avsINF,Informal constructions single family,0,0,0.0007,0.0048,3,,,
-PA-5,avsRS,Rubble Stone masonry single family,24,0.05,0.1658,0.00201,4,,,
-PA-5,avsUFB,Unreinforced Fire Brick masonry single family,47,0.09,0.3259,0.00201,5,270,245,240
-PA-5,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,29,0.06,0.1968,0.00196,6,250,225,215
-PA-5,avsDS,Rectangular Cut stone masonry block single family,0,0,0,#DIV/0!,7,,,
-PA-5,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,2,0,0.0115,0.00197,8,,,
-PA-5,avmUFB,Unreinforced Fire Brick masonry multi family,1,0,0.0054,0.00201,9,,,
-PA-5,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,50,0.04,0.143,0.00082,10,,,
-PA-5,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,0,0,0.0006,0.00083,11,,,
-PA-5,avsW4,Wood panel or log construction single family,18,0.01,0.0248,0.00039,12,,,
-PA-5,avcomm,Commercial or other types of warehouse,9,0,0.0099,0.00032,13,,,
-PA-5,avcomret,Commercial retail,3,0,0.0029,0.00032,14,,,
-PA-5,avcritica,"Critical buildings - schools, hospitals, medical centers",7,0,0.0079,0.00031,15,,,
-PA-5,avcomoff,Commercial offices,9,0,0.0096,0.00031,16,,,
-PA-5,avindustr,General industrial,13,0,0.012,0.00026,17,,,
-PA-5,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
-PA-5,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
-PA-EM,avsA1,"Adobe block, mud mortar, wood roof and floors single family",0,0,0.0569,0.00436,1,170,155,145
-PA-EM,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",0,0,0.031,0.00427,2,,,
-PA-EM,avsINF,Informal constructions single family,0,0,0.0007,0.00424,3,,,
-PA-EM,avsRS,Rubble Stone masonry single family,3,0,0.1585,0.00164,4,,,
-PA-EM,avsUFB,Unreinforced Fire Brick masonry single family,5,0.01,0.3352,0.00176,5,270,245,240
-PA-EM,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,3,0.01,0.2363,0.00201,6,250,225,215
-PA-EM,avsDS,Rectangular Cut stone masonry block single family,0,0,0,#DIV/0!,7,,,
-PA-EM,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,0,0,0.0133,0.00194,8,,,
-PA-EM,avmUFB,Unreinforced Fire Brick masonry multi family,0,0,0.0056,0.00176,9,,,
-PA-EM,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,6,0,0.1376,0.00068,10,,,
-PA-EM,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,0,0,0.0006,0.00069,11,,,
-PA-EM,avsW4,Wood panel or log construction single family,2,0,0.0243,0.00033,12,,,
-PA-EM,avcomm,Commercial or other types of warehouse,0,0,0,#DIV/0!,13,,,
-PA-EM,avcomret,Commercial retail,0,0,0,#DIV/0!,14,,,
-PA-EM,avcritica,"Critical buildings - schools, hospitals, medical centers",0,0,0,#DIV/0!,15,,,
-PA-EM,avcomoff,Commercial offices,0,0,0,#DIV/0!,16,,,
-PA-EM,avindustr,General industrial,0,0,0,#DIV/0!,17,,,
-PA-EM,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
-PA-EM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-6,avsA1,"Adobe block, mud mortar, wood roof and floors single family",7,0.03,0.0328,0.00515,1,170,155,145
 PA-6,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",4,0.02,0.0188,0.00501,2,,,
 PA-6,avsINF,Informal constructions single family,0,0,0.0005,0.00508,3,,,
@@ -269,25 +231,6 @@ PA-6,avcomoff,Commercial offices,205,0.06,0.0546,0.00028,16,,,
 PA-6,avindustr,General industrial,197,0.06,0.053,0.00028,17,,,
 PA-6,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,5,0,0.0009,0.00017,18,355,315,315
 PA-6,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,9,0,0.0015,0.00017,19,,,
-PA-KY,avsA1,"Adobe block, mud mortar, wood roof and floors single family",0,0,0.06,0.00418,1,170,155,145
-PA-KY,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",0,0,0.0334,0.00418,2,,,
-PA-KY,avsINF,Informal constructions single family,0,0,0.0008,0.00418,3,,,
-PA-KY,avsRS,Rubble Stone masonry single family,3,0.01,0.1699,0.0016,4,,,
-PA-KY,avsUFB,Unreinforced Fire Brick masonry single family,6,0.01,0.3314,0.00158,5,270,245,240
-PA-KY,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,4,0.01,0.2057,0.00159,6,250,225,215
-PA-KY,avsDS,Rectangular Cut stone masonry block single family,0,0,0,#DIV/0!,7,,,
-PA-KY,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,0,0,0.0119,0.00158,8,,,
-PA-KY,avmUFB,Unreinforced Fire Brick masonry multi family,0,0,0.0056,0.0016,9,,,
-PA-KY,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,7,0,0.1539,0.00069,10,,,
-PA-KY,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,0,0,0.0006,0.00069,11,,,
-PA-KY,avsW4,Wood panel or log construction single family,2,0,0.0268,0.00033,12,,,
-PA-KY,avcomm,Commercial or other types of warehouse,0,0,0,#DIV/0!,13,,,
-PA-KY,avcomret,Commercial retail,0,0,0,#DIV/0!,14,,,
-PA-KY,avcritica,"Critical buildings - schools, hospitals, medical centers",0,0,0,#DIV/0!,15,,,
-PA-KY,avcomoff,Commercial offices,0,0,0,#DIV/0!,16,,,
-PA-KY,avindustr,General industrial,0,0,0,#DIV/0!,17,,,
-PA-KY,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
-PA-KY,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-7,avsA1,"Adobe block, mud mortar, wood roof and floors single family",11,0.04,0.038,0.00366,1,170,155,145
 PA-7,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",6,0.02,0.0219,0.00371,2,,,
 PA-7,avsINF,Informal constructions single family,0,0,0.0005,0.00368,3,,,
@@ -307,25 +250,6 @@ PA-7,avcomoff,Commercial offices,96,0.02,0.024,0.00026,16,,,
 PA-7,avindustr,General industrial,108,0.02,0.0232,0.00022,17,,,
 PA-7,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,3,0,0.0008,0.00026,18,355,315,315
 PA-7,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,6,0,0.0014,0.00026,19,,,
-PA-NB,avsA1,"Adobe block, mud mortar, wood roof and floors single family",3,0.01,0.0558,0.00407,1,170,155,145
-PA-NB,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",2,0.01,0.031,0.00405,2,,,
-PA-NB,avsINF,Informal constructions single family,0,0,0.0007,0.00404,3,,,
-PA-NB,avsRS,Rubble Stone masonry single family,21,0.03,0.163,0.00161,4,,,
-PA-NB,avsUFB,Unreinforced Fire Brick masonry single family,41,0.07,0.3432,0.00171,5,270,245,240
-PA-NB,avsUCB,Unreinforced Concrete Block masonry with lime or mortar single family,25,0.04,0.2104,0.0017,6,250,225,215
-PA-NB,avsDS,Rectangular Cut stone masonry block single family,0,0,0,#DIV/0!,7,,,
-PA-NB,avmUCB,Unreinforced Concrete Block masonry with lime or mortar multi family,1,0,0.0125,0.00174,8,,,
-PA-NB,avmUFB,Unreinforced Fire Brick masonry multi family,1,0,0.0053,0.00161,9,,,
-PA-NB,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,43,0.03,0.1434,0.00067,10,,,
-PA-NB,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,0,0,0.0006,0.00068,11,,,
-PA-NB,avsW4,Wood panel or log construction single family,16,0.01,0.0249,0.00032,12,,,
-PA-NB,avcomm,Commercial or other types of warehouse,2,0,0.0013,0.00014,13,,,
-PA-NB,avcomret,Commercial retail,1,0,0.0004,0.00014,14,,,
-PA-NB,avcritica,"Critical buildings - schools, hospitals, medical centers",1,0,0.002,0.00027,15,,,
-PA-NB,avcomoff,Commercial offices,2,0,0.0024,0.00027,16,,,
-PA-NB,avindustr,General industrial,3,0,0.003,0.00023,17,,,
-PA-NB,avsC3,Non ductile reinforced concrete frame with masonry infill walls single family and/or concrete frame high rise,0,0,0,#DIV/0!,18,355,315,315
-PA-NB,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0,#DIV/0!,19,,,
 PA-8,avsA1,"Adobe block, mud mortar, wood roof and floors single family",25,0.12,0.0083,0.00469,1,170,155,145
 PA-8,avsA5,"Adobe block, mud mortar, with bamboo or rope reinforcement single family",17,0.07,0.0051,0.00424,2,,,
 PA-8,avsINF,Informal constructions single family,1,0,0.0001,0.00381,3,,,
@@ -939,35 +863,6 @@ HN,avcritica,"Critical buildings - schools, hospitals, medical centers",2433.868
 HN,avcomret,Commercial retail,1146.763831,0.309519545,0.012154636,0.000269907,27,,,
 HN,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,92.42300523,0.02290804,0.000899584,0.000247861,28,360,335,310
 HN,avindustr,General industrial,1059.35419,0.24697037,0.00969837,0.000233133,29,,,
-HN-AT,avsA1,"Adobe block, mud mortar, wood roof and floors single family",270,0.23,0.3767,0.00084,1,145,130,115
-HN-AT,avsINF,Informal constructions single family,3,0,0.0039,0.00078,2,,,
-HN-AT,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",2,0,0.0028,0.00073,3,160,150,120
-HN-AT,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00058,4,,,
-HN-AT,avsW7,Wood braced frame with load-bearing infill wall system single family,86,0.05,0.0789,0.00055,5,,,
-HN-AT,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,557,0.16,0.2621,0.00028,6,,,
-HN-AT,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,32,0.01,0.0141,0.00027,7,,,
-HN-AT,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,220,0.06,0.0997,0.00027,8,300,280,260
-HN-AT,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,42,0.01,0.0183,0.00026,9,330,310,290
-HN-AT,avsRS,Rubble Stone masonry single family,5,0,0.0025,0.0003,10,,,
-HN-AT,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0002,0.00028,11,,,
-HN-AT,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.00026,12,,,
-HN-AT,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,25,0.01,0.0118,0.00028,13,250,230,200
-HN-AT,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,53,0.01,0.0244,0.00028,14,270,250,215
-HN-AT,avmRS,Rubble Stone masonry multi family,0,0,0.0001,0.00026,15,,,
-HN-AT,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,38,0.01,0.0169,0.00027,16,280,270,225
-HN-AT,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,14,0,0.0061,0.00027,17,320,290,260
-HN-AT,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,1,0,0.0006,0.00026,18,290,275,215
-HN-AT,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,3,0,0.0015,0.00026,19,310,295,230
-HN-AT,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,1,0,0.0003,0.00026,20,275,255,195
-HN-AT,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,2,0,0.0009,0.00026,21,350,320,245
-HN-AT,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,117,0.02,0.0351,0.00018,22,,,
-HN-AT,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,7,0,0.0018,0.00015,23,,,
-HN-AT,avcomm,Commercial or other types of warehouse,99,0.01,0.0089,0.00005,24,,,
-HN-AT,avcomoff,Commercial offices,94,0.01,0.0084,0.00005,25,,,
-HN-AT,avcritica,"Critical buildings - schools, hospitals, medical centers",143,0.01,0.0129,0.00005,26,,,
-HN-AT,avcomret,Commercial retail,68,0,0.0059,0.00005,27,,,
-HN-AT,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,9,0,0.0007,0.00005,28,360,335,310
-HN-AT,avindustr,General industrial,59,0,0.0044,0.00004,29,,,
 HN-CH,avsA1,"Adobe block, mud mortar, wood roof and floors single family",143,1.1,0.3352,0.00771,1,145,130,115
 HN-CH,avsINF,Informal constructions single family,2,0.01,0.0036,0.00768,2,,,
 HN-CH,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",1,0.01,0.0028,0.00766,3,160,150,120
@@ -997,35 +892,6 @@ HN-CH,avcritica,"Critical buildings - schools, hospitals, medical centers",77,0.
 HN-CH,avcomret,Commercial retail,35,0.03,0.0094,0.00089,27,,,
 HN-CH,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,4,0,0.0012,0.0009,28,360,335,310
 HN-CH,avindustr,General industrial,33,0.02,0.0072,0.00071,29,,,
-HN-CL,avsA1,"Adobe block, mud mortar, wood roof and floors single family",178,0.07,0.4004,0.00042,1,145,130,115
-HN-CL,avsINF,Informal constructions single family,2,0,0.0039,0.00044,2,,,
-HN-CL,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",1,0,0.0027,0.00048,3,160,150,120
-HN-CL,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00017,4,,,
-HN-CL,avsW7,Wood braced frame with load-bearing infill wall system single family,61,0.01,0.057,0.00018,5,,,
-HN-CL,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,281,0.05,0.2728,0.00018,6,,,
-HN-CL,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,14,0,0.0144,0.00019,7,,,
-HN-CL,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,101,0.02,0.1025,0.00019,8,300,280,260
-HN-CL,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,18,0,0.0186,0.0002,9,330,310,290
-HN-CL,avsRS,Rubble Stone masonry single family,3,0,0.0027,0.00017,10,,,
-HN-CL,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0002,0.00018,11,,,
-HN-CL,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.0002,12,,,
-HN-CL,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,13,0,0.0123,0.00018,13,250,230,200
-HN-CL,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,26,0,0.0253,0.00018,14,270,250,215
-HN-CL,avmRS,Rubble Stone masonry multi family,0,0,0.0001,0.0002,15,,,
-HN-CL,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,17,0,0.0173,0.00019,16,280,270,225
-HN-CL,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,6,0,0.0062,0.00019,17,320,290,260
-HN-CL,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,1,0,0.0006,0.0002,18,290,275,215
-HN-CL,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,1,0,0.0015,0.0002,19,310,295,230
-HN-CL,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,0,0,0.0003,0.0002,20,275,255,195
-HN-CL,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,1,0,0.0009,0.0002,21,350,320,245
-HN-CL,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,71,0,0.0264,0.00007,22,,,
-HN-CL,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,3,0,0.0013,0.00008,23,,,
-HN-CL,avcomm,Commercial or other types of warehouse,52,0,0.0078,0.00003,24,,,
-HN-CL,avcomoff,Commercial offices,42,0,0.0065,0.00003,25,,,
-HN-CL,avcritica,"Critical buildings - schools, hospitals, medical centers",63,0,0.0098,0.00003,26,,,
-HN-CL,avcomret,Commercial retail,28,0,0.0043,0.00003,27,,,
-HN-CL,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,4,0,0.0005,0.00003,28,360,335,310
-HN-CL,avindustr,General industrial,28,0,0.0036,0.00002,29,,,
 HN-CM,avsA1,"Adobe block, mud mortar, wood roof and floors single family",175,0.34,0.2957,0.00195,1,145,130,115
 HN-CM,avsINF,Informal constructions single family,2,0,0.0035,0.00213,2,,,
 HN-CM,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",1,0,0.0028,0.0023,3,160,150,120
@@ -1171,35 +1037,6 @@ HN-FM,avcritica,"Critical buildings - schools, hospitals, medical centers",779,0
 HN-FM,avcomret,Commercial retail,415,0.13,0.0284,0.00031,27,,,
 HN-FM,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,8,0,0.0006,0.0003,28,360,335,310
 HN-FM,avindustr,General industrial,317,0.08,0.018,0.00025,29,,,
-HN-GD,avsA1,"Adobe block, mud mortar, wood roof and floors single family",96,0.02,0.6117,0.0002,1,145,130,115
-HN-GD,avsINF,Informal constructions single family,1,0,0.0039,0.0002,2,,,
-HN-GD,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.0012,0.0002,3,160,150,120
-HN-GD,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00006,4,,,
-HN-GD,avsW7,Wood braced frame with load-bearing infill wall system single family,36,0,0.0666,0.00006,5,,,
-HN-GD,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,81,0.01,0.1973,0.00007,6,,,
-HN-GD,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,2,0,0.0041,0.00008,7,,,
-HN-GD,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,19,0,0.0473,0.00008,8,300,280,260
-HN-GD,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,1,0,0.0038,0.00009,9,330,310,290
-HN-GD,avsRS,Rubble Stone masonry single family,1,0,0.0029,0.00007,10,,,
-HN-GD,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0002,0.00007,11,,,
-HN-GD,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.00009,12,,,
-HN-GD,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,3,0,0.0083,0.00007,13,250,230,200
-HN-GD,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,6,0,0.0154,0.00008,14,270,250,215
-HN-GD,avmRS,Rubble Stone masonry multi family,0,0,0,0.00009,15,,,
-HN-GD,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,3,0,0.0065,0.00008,16,280,270,225
-HN-GD,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,1,0,0.0024,0.00008,17,320,290,260
-HN-GD,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,0,0,0.0002,0.00008,18,290,275,215
-HN-GD,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,0,0,0.0003,0.00009,19,310,295,230
-HN-GD,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,0,0,0.0001,0.00008,20,275,255,195
-HN-GD,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,0,0,0.0002,0.00009,21,350,320,245
-HN-GD,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,34,0,0.0242,0.00002,22,,,
-HN-GD,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,1,0,0.0004,0.00002,23,,,
-HN-GD,avcomm,Commercial or other types of warehouse,7,0,0.001,0,24,,,
-HN-GD,avcomoff,Commercial offices,4,0,0.0006,0,25,,,
-HN-GD,avcritica,"Critical buildings - schools, hospitals, medical centers",5,0,0.0008,0,26,,,
-HN-GD,avcomret,Commercial retail,2,0,0.0002,0,27,,,
-HN-GD,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0.0001,0.00001,28,360,335,310
-HN-GD,avindustr,General industrial,3,0,0.0004,0,29,,,
 HN-IN,avsA1,"Adobe block, mud mortar, wood roof and floors single family",34,0.19,0.3922,0.00549,1,145,130,115
 HN-IN,avsINF,Informal constructions single family,0,0,0.0034,0.00518,2,,,
 HN-IN,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.002,0.00478,3,160,150,120
@@ -1229,93 +1066,6 @@ HN-IN,avcritica,"Critical buildings - schools, hospitals, medical centers",14,0.
 HN-IN,avcomret,Commercial retail,5,0,0.0066,0.00059,27,,,
 HN-IN,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1,0,0.0008,0.00058,28,360,335,310
 HN-IN,avindustr,General industrial,7,0,0.0077,0.00053,29,,,
-HN-IB,avsA1,"Adobe block, mud mortar, wood roof and floors single family",25,0.02,0.4899,0.00092,1,145,130,115
-HN-IB,avsINF,Informal constructions single family,0,0,0.0038,0.00092,2,,,
-HN-IB,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.0018,0.00091,3,160,150,120
-HN-IB,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00041,4,,,
-HN-IB,avsW7,Wood braced frame with load-bearing infill wall system single family,9,0,0.0776,0.00041,5,,,
-HN-IB,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,30,0.01,0.2324,0.00036,6,,,
-HN-IB,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,1,0,0.0087,0.00036,7,,,
-HN-IB,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,9,0,0.0722,0.00036,8,300,280,260
-HN-IB,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,1,0,0.0104,0.00036,9,330,310,290
-HN-IB,avsRS,Rubble Stone masonry single family,0,0,0.0028,0.00037,10,,,
-HN-IB,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0002,0.00036,11,,,
-HN-IB,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.00036,12,,,
-HN-IB,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,1,0,0.0101,0.00036,13,250,230,200
-HN-IB,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,3,0,0.0199,0.00036,14,270,250,215
-HN-IB,avmRS,Rubble Stone masonry multi family,0,0,0.0001,0.00036,15,,,
-HN-IB,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,1,0,0.0113,0.00036,16,280,270,225
-HN-IB,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,1,0,0.0041,0.00036,17,320,290,260
-HN-IB,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,0,0,0.0004,0.00036,18,290,275,215
-HN-IB,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,0,0,0.0009,0.00036,19,310,295,230
-HN-IB,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,0,0,0.0002,0.00036,20,275,255,195
-HN-IB,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,0,0,0.0005,0.00036,21,350,320,245
-HN-IB,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,9,0,0.0277,0.00014,22,,,
-HN-IB,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,0,0,0.0008,0.00014,23,,,
-HN-IB,avcomm,Commercial or other types of warehouse,6,0,0.0065,0.00005,24,,,
-HN-IB,avcomoff,Commercial offices,4,0,0.0047,0.00005,25,,,
-HN-IB,avcritica,"Critical buildings - schools, hospitals, medical centers",6,0,0.0069,0.00005,26,,,
-HN-IB,avcomret,Commercial retail,3,0,0.0029,0.00005,27,,,
-HN-IB,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0.0003,0.00005,28,360,335,310
-HN-IB,avindustr,General industrial,3,0,0.0028,0.00004,29,,,
-HN-LP,avsA1,"Adobe block, mud mortar, wood roof and floors single family",41,0.15,0.3703,0.00368,1,145,130,115
-HN-LP,avsINF,Informal constructions single family,0,0,0.0032,0.00342,2,,,
-HN-LP,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.002,0.00312,3,160,150,120
-HN-LP,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00395,4,,,
-HN-LP,avsW7,Wood braced frame with load-bearing infill wall system single family,14,0.05,0.1304,0.00384,5,,,
-HN-LP,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,67,0.08,0.2076,0.00125,6,,,
-HN-LP,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,3,0,0.0097,0.00116,7,,,
-HN-LP,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,25,0.03,0.0729,0.0012,8,300,280,260
-HN-LP,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,4,0,0.0123,0.00114,9,330,310,290
-HN-LP,avsRS,Rubble Stone masonry single family,1,0,0.0022,0.00132,10,,,
-HN-LP,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0002,0.00126,11,,,
-HN-LP,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.00114,12,,,
-HN-LP,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,3,0,0.0092,0.00124,13,250,230,200
-HN-LP,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,6,0.01,0.0187,0.00123,14,270,250,215
-HN-LP,avmRS,Rubble Stone masonry multi family,0,0,0.0001,0.00115,15,,,
-HN-LP,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,4,0,0.012,0.00118,16,280,270,225
-HN-LP,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,1,0,0.0044,0.00118,17,320,290,260
-HN-LP,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,0,0,0.0004,0.00116,18,290,275,215
-HN-LP,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,0,0,0.001,0.00115,19,310,295,230
-HN-LP,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,0,0,0.0002,0.00116,20,275,255,195
-HN-LP,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,0,0,0.0006,0.00115,21,350,320,245
-HN-LP,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,17,0.02,0.0508,0.00124,22,,,
-HN-LP,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,1,0,0.0021,0.00109,23,,,
-HN-LP,avcomm,Commercial or other types of warehouse,22,0.01,0.0248,0.00046,24,,,
-HN-LP,avcomoff,Commercial offices,16,0.01,0.0176,0.00045,25,,,
-HN-LP,avcritica,"Critical buildings - schools, hospitals, medical centers",24,0.01,0.0256,0.00044,26,,,
-HN-LP,avcomret,Commercial retail,10,0,0.0102,0.00042,27,,,
-HN-LP,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,1,0,0.0009,0.00039,28,360,335,310
-HN-LP,avindustr,General industrial,11,0,0.0105,0.00038,29,,,
-HN-LE,avsA1,"Adobe block, mud mortar, wood roof and floors single family",105,0.54,0.4729,0.00515,1,145,130,115
-HN-LE,avsINF,Informal constructions single family,1,0,0.003,0.00505,2,,,
-HN-LE,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.0009,0.00471,3,160,150,120
-HN-LE,avmW7,Wood braced frame with load-bearing infill wall system multi family,0,0,0,0.00517,4,,,
-HN-LE,avsW7,Wood braced frame with load-bearing infill wall system single family,39,0.2,0.1753,0.00515,5,,,
-HN-LE,avsRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms single family,94,0.17,0.1515,0.00185,6,,,
-HN-LE,avmRM1,Reinforced mas. bearing walls with wood/metal deck diaphragms multi family,2,0,0.003,0.00166,7,,,
-HN-LE,avsRM2,Reinforced masonry bearing walls with concrete diaphragms single family,23,0.04,0.0356,0.00178,8,300,280,260
-HN-LE,avmRM2,Reinforced masonry bearing walls with concrete diaphragms multi family,2,0,0.0027,0.00155,9,330,310,290
-HN-LE,avsRS,Rubble Stone masonry single family,1,0,0.0022,0.00189,10,,,
-HN-LE,avsRS5,Local field stones with cement mortar and reinforced concrete bond beams single family,0,0,0.0001,0.00186,11,,,
-HN-LE,avmRS5,Local field stones with cement mortar and reinforced concrete bond beams multi family,0,0,0,0.00156,12,,,
-HN-LE,avsUFB1,Unreinforced brick masonry in mud mortar without timber posts single family,4,0.01,0.0064,0.00184,13,250,230,200
-HN-LE,avsUFB2,Unreinforced brick masonry in mud mortar with timber posts single family,7,0.01,0.0118,0.00183,14,270,250,215
-HN-LE,avmRS,Rubble Stone masonry multi family,0,0,0,0.00159,15,,,
-HN-LE,avsUFB3,Unreinforced fired brick masonry in lime mortar single family,3,0.01,0.0048,0.00174,16,280,270,225
-HN-LE,avsUFB4,Unreinforced fired brick masonry in cement mortar single family,1,0,0.0018,0.00174,17,320,290,260
-HN-LE,avmUFB2,Unreinforced brick masonry in mud mortar with timber posts multi family,0,0,0.0001,0.00164,18,290,275,215
-HN-LE,avmUFB3,Unreinforced fired brick masonry in lime mortar multi family,0,0,0.0002,0.0016,19,310,295,230
-HN-LE,avmUFB1,Unreinforced brick masonry in mud mortar without timber posts multi family,0,0,0.0001,0.00164,20,275,255,195
-HN-LE,avmUFB4,Unreinforced fired brick masonry in cement mortar multi family,0,0,0.0001,0.00157,21,350,320,245
-HN-LE,avsW1,Wood stud-wall frame with plywood/gypsum board sheathing single family,37,0.06,0.0552,0.00168,22,,,
-HN-LE,avmW1,Wood stud-wall frame with plywood/gypsum board sheathing multi family,1,0,0.0009,0.00156,23,,,
-HN-LE,avcomm,Commercial or other types of warehouse,34,0.03,0.0242,0.00081,24,,,
-HN-LE,avcomoff,Commercial offices,20,0.02,0.0134,0.00078,25,,,
-HN-LE,avcritica,"Critical buildings - schools, hospitals, medical centers",27,0.02,0.0184,0.00078,26,,,
-HN-LE,avcomret,Commercial retail,9,0.01,0.0059,0.00075,27,,,
-HN-LE,avmC3,Non ductile reinforced concrete frame with masonry infill walls multi family and/or concrete frame high rise,0,0,0.0002,0.00053,28,360,335,310
-HN-LE,avindustr,General industrial,16,0.01,0.009,0.00066,29,,,
 HN-OC,avsA1,"Adobe block, mud mortar, wood roof and floors single family",111,0.62,0.4283,0.00562,1,145,130,115
 HN-OC,avsINF,Informal constructions single family,1,0,0.0031,0.00567,2,,,
 HN-OC,avmA1,"Adobe block, mud mortar, wood roof and floors multi family",0,0,0.0013,0.00582,3,160,150,120
