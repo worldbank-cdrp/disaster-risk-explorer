@@ -5,7 +5,6 @@ import buildingData from '../../data/buildings.json'
  * country, conversion type, slider value (conversion %), user-input "unit cost of conversion"
  * returns object with necessary data for building calculator display
  */
-
 export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
   // get building selection from the country level
   const startBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}Start`].split(', ')
@@ -13,12 +12,11 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
 
   // from all the region keys, filter on the buildings that match our selection
   const startBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
-    return startBuildingSel.some(sb => building.match(sb))
+    return startBuildingSel.some(sb => building.replace(/av[sm]?/,'') === sb)
   }).map(b => buildingData[regionCode][b])
   let endBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
-    return endBuildingSel.some(eb => building.match(eb))
+    return endBuildingSel.some(eb => building.replace(/av[sm]?/,'') === eb)
   }).map(b => buildingData[regionCode][b])
-
   // check for later null conditions and overwrite if necessary with country level
   if (endBuildingMatch.some(a => a['Value in USD M'] === '0')) {
     endBuildingMatch = Object.keys(buildingData[regionCode.slice(0, 2)]).filter(building => {
