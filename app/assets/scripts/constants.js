@@ -2651,6 +2651,137 @@ export let calcDropItems = {
   }
 }
 
+export let buildingCalcDropItems = {
+  countryName: [
+    {key: 'BZ', value: 'BZ'},
+    {key: 'CR', value: 'CR'},
+    {key: 'SV', value: 'SV'},
+    {key: 'GD', value: 'GD'},
+    {key: 'GT', value: 'GT'},
+    {key: 'HN', value: 'HN'},
+    {key: 'JM', value: 'JM'},
+    {key: 'NI', value: 'NI'},
+    {key: 'PA', value: 'PA'},
+    {key: 'LC', value: 'LC'}
+  ],
+  districtName: {
+    None: [
+      {key: '-', value: '-'}
+    ],
+    BZ: [
+    ],
+    CR: [
+      {key: 'CR-A', value: 'CR-A'},
+      {key: 'CR-C', value: 'CR-C'},
+      {key: 'CR-G', value: 'CR-G'},
+      {key: 'CR-H', value: 'CR-H'},
+      {key: 'CR-L', value: 'CR-L'},
+      {key: 'CR-P', value: 'CR-P'},
+      {key: 'CR-SJ', value: 'CR-SJ'}
+    ],
+    GD: [
+    ],
+    GT: [
+      {key: 'GT-AV', value: 'GT-AV'},
+      {key: 'GT-AV', value: 'GT-AV'},
+      {key: 'GT-BV', value: 'GT-BV'},
+      {key: 'GT-CM', value: 'GT-CM'},
+      {key: 'GT-CQ', value: 'GT-CQ'},
+      {key: 'GT-ES', value: 'GT-ES'},
+      {key: 'GT-GU', value: 'GT-GU'},
+      {key: 'GT-HU', value: 'GT-HU'},
+      {key: 'GT-IZ', value: 'GT-IZ'},
+      {key: 'GT-JA', value: 'GT-JA'},
+      {key: 'GT-JU', value: 'GT-JU'},
+      {key: 'GT-PE', value: 'GT-PE'},
+      {key: 'GT-PR', value: 'GT-PR'},
+      {key: 'GT-QC', value: 'GT-QC'},
+      {key: 'GT-QZ', value: 'GT-QZ'},
+      {key: 'GT-RE', value: 'GT-RE'},
+      {key: 'GT-SA', value: 'GT-SA'},
+      {key: 'GT-SM', value: 'GT-SM'},
+      {key: 'GT-SO', value: 'GT-SO'},
+      {key: 'GT-SR', value: 'GT-SR'},
+      {key: 'GT-SU', value: 'GT-SU'},
+      {key: 'GT-TO', value: 'GT-TO'},
+      {key: 'GT-ZA', value: 'GT-ZA'}
+    ],
+    HN: [
+      // {key: 'HN-AT', value: 'HN-AT'},
+      {key: 'HN-CH', value: 'HN-CH'},
+      // {key: 'HN-CL', value: 'HN-CL'},
+      {key: 'HN-CM', value: 'HN-CM'},
+      {key: 'HN-CP', value: 'HN-CP'},
+      {key: 'HN-CR', value: 'HN-CR'},
+      {key: 'HN-EP', value: 'HN-EP'},
+      {key: 'HN-FM', value: 'HN-FM'},
+      // {key: 'HN-GD', value: 'HN-GD'},
+      // {key: 'HN-IB', value: 'HN-IB'},
+      {key: 'HN-IN', value: 'HN-IN'},
+      // {key: 'HN-LE', value: 'HN-LE'},
+      // {key: 'HN-LP', value: 'HN-LP'},
+      {key: 'HN-OC', value: 'HN-OC'},
+      {key: 'HN-OL', value: 'HN-OL'},
+      {key: 'HN-SB', value: 'HN-SB'},
+      {key: 'HN-VA', value: 'HN-VA'},
+      {key: 'HN-YO', value: 'HN-YO'}
+    ],
+    JM: [
+    ],
+    LC: [
+    ],
+    NI: [
+      {key: 'NI-AN', value: 'NI-AN'},
+      {key: 'NI-AS', value: 'NI-AS'},
+      {key: 'NI-BO', value: 'NI-BO'},
+      {key: 'NI-CA', value: 'NI-CA'},
+      {key: 'NI-CI', value: 'NI-CI'},
+      {key: 'NI-CO', value: 'NI-CO'},
+      {key: 'NI-ES', value: 'NI-ES'},
+      {key: 'NI-GR', value: 'NI-GR'},
+      {key: 'NI-JI', value: 'NI-JI'},
+      {key: 'NI-LE', value: 'NI-LE'},
+      {key: 'NI-MD', value: 'NI-MD'},
+      {key: 'NI-MN', value: 'NI-MN'},
+      {key: 'NI-MS', value: 'NI-MS'},
+      {key: 'NI-MT', value: 'NI-MT'},
+      {key: 'NI-NS', value: 'NI-NS'},
+      {key: 'NI-RI', value: 'NI-RI'},
+      {key: 'NI-SJ', value: 'NI-JS'}
+    ],
+    PA: [
+      {key: 'PA-1', value: 'PA-1'},
+      {key: 'PA-2', value: 'PA-2'},
+      {key: 'PA-3', value: 'PA-3'},
+      {key: 'PA-4', value: 'PA-4'},
+      // {key: 'PA-5', value: 'PA-5'},
+      {key: 'PA-6', value: 'PA-6'},
+      {key: 'PA-7', value: 'PA-7'},
+      {key: 'PA-8', value: 'PA-8'},
+      {key: 'PA-9', value: 'PA-9'}
+      // {key: 'PA-EM', value: 'PA-EM'},
+      // {key: 'PA-KY', value: 'PA-KY'},
+      // {key: 'PA-NB', value: 'PA-NB'}
+    ],
+    SV: [
+      {key: 'SV-AH', value: 'SV-AH'},
+      {key: 'SV-CA', value: 'SV-CA'},
+      {key: 'SV-CH', value: 'SV-CH'},
+      {key: 'SV-CU', value: 'SV-CU'},
+      {key: 'SV-LI', value: 'SV-LI'},
+      {key: 'SV-MO', value: 'SV-MO'},
+      {key: 'SV-PA', value: 'SV-PA'},
+      {key: 'SV-SA', value: 'SV-SA'},
+      {key: 'SV-SM', value: 'SV-SM'},
+      {key: 'SV-SO', value: 'SV-SO'},
+      {key: 'SV-SS', value: 'SV-SS'},
+      {key: 'SV-SV', value: 'SV-SV'},
+      {key: 'SV-UN', value: 'SV-UN'},
+      {key: 'SV-US', value: 'SV-US'}
+    ]
+  }
+}
+
 export const aals = [
   {
     'LS_EQ_AAL': 882840.94,

@@ -5,7 +5,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import c from 'classnames'
 import { t } from '../utils/i18n'
 import Dropdown from './dropdown'
-import { calcDropItems, aals } from '../constants'
+import { buildingCalcDropItems, aals } from '../constants'
 
 import { newCalcId, hideModalCalc, selectConversion, updateSliderValue, updateUCC } from '../actions'
 import { shortenNumber } from '../utils/format'
@@ -122,7 +122,7 @@ const Calculator = React.createClass({
     var activeDistrict = '-'
     var adminActive = 'district'
 
-    calcDropItems.countryName.forEach(o => {
+    buildingCalcDropItems.countryName.forEach(o => {
       if (o.key === activeId) {
         adminActive = 'country'
       }
@@ -173,12 +173,12 @@ const Calculator = React.createClass({
                 <dl className='calc__selection'>
                   <dt className='stat__attribute stat__attribute--main'>{t('Country Selected')}</dt>
                     <dd className='selection__panel--drop'>
-                      {this.renderCountryDropdown(activeCountry, calcDropItems, adminActive)}
+                      {this.renderCountryDropdown(activeCountry, buildingCalcDropItems, adminActive)}
                     </dd>
 
                   <dt className='stat__attribute stat__attribute--main'>{t('Subregion Selected')}</dt>
                   <dd className= {c('selection__panel--drop', { 'selection__panel--disabled': (['BZ', 'JM', 'LC', 'GD'].indexOf(activeCountry) > -1) })}>
-                    {this.renderDistrictDropdown(activeDistrict, calcDropItems.districtName[activeCountry], adminActive)}
+                    {this.renderDistrictDropdown(activeDistrict, buildingCalcDropItems.districtName[activeCountry], adminActive)}
                   </dd>
                   <dt className='stat__attribute stat__attribute--button stat__attribute--main'>{t('Type of Conversion')}</dt>
                   <dd className='stat__value'>
