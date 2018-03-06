@@ -5,24 +5,41 @@ import buildingData from '../../data/buildings.json'
  * country, conversion type, slider value (conversion %), user-input "unit cost of conversion"
  * returns object with necessary data for building calculator display
  */
+console.log(buildingData)
 export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
+  console.log(regionCode, conversion, sliderValue, ucc)
   // get building selection from the country level
   const startBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}Start`].split(', ')
   const endBuildingSel = buildingData[regionCode.slice(0, 2)][`${conversion}End`].split(', ')
 
   // from all the region keys, filter on the buildings that match our selection
   const startBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
-    return startBuildingSel.some(sb => building.replace(/av[sm]?/,'') === sb)
+    return startBuildingSel.some(sb => {
+      if (building.match(sb)) {
+        return true
+      } else if (building.replace(/av[sm]?/,'') === sb) {
+        return true
+      }
+    })
   }).map(b => buildingData[regionCode][b])
   let endBuildingMatch = Object.keys(buildingData[regionCode]).filter(building => {
-    return endBuildingSel.some(eb => building.replace(/av[sm]?/,'') === eb)
+    return endBuildingSel.some(eb =>  {
+      if (building.match(eb)) {
+        return true
+      } else if (building.replace(/av[sm]?/,'') === eb) {
+        return true
+      }
+    })
   }).map(b => buildingData[regionCode][b])
+  console.log('start', startBuildingMatch)
+  console.log('first', endBuildingMatch)
   // check for later null conditions and overwrite if necessary with country level
   if (endBuildingMatch.some(a => a['Value in USD M'] === '0')) {
     endBuildingMatch = Object.keys(buildingData[regionCode.slice(0, 2)]).filter(building => {
       return endBuildingSel.some(eb => building.match(eb))
     }).map(b => buildingData[regionCode.slice(0, 2)][b])
   }
+  console.log('second', endBuildingMatch)
 
   // used in multiple calculations
   const sumBuildingValue = startBuildingMatch.reduce((a, b) => a + Number(b['Value in USD M']), 0)
@@ -46,6 +63,19 @@ export function getBuildingData (regionCode, conversion, sliderValue, ucc) {
   const oldAAL = startBuildingMatch.reduce((a, b) => a + Number(b['AAL in USD M']), 0) / 1000 * sliderValue// 7
   const newAAL = totalBuiltValue * getAALWeight(endBuildingMatch)// 8
   const diffAAL = oldAAL - newAAL // 9
+
+  console.log({
+    1: oldCost,
+    2: newCost,
+    3: demolitionCost,
+    4: ucc,
+    5: ratioNewToOld,
+    6: totalBuiltCost,
+    '6a': totalBuiltValue,
+    7: oldAAL,
+    8: newAAL,
+    9: diffAAL
+  });
 
   const totalBuildingAAL = Object.keys(buildingData[regionCode]).filter(building => {
     // only want building types, not other keys
