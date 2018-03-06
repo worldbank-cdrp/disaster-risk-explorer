@@ -2682,18 +2682,17 @@ export let buildingCalcDropItems = {
     GD: [
     ],
     GT: [
-      {key: 'GT-AV', value: 'GT-AV'},
-      {key: 'GT-AV', value: 'GT-AV'},
+      // {key: 'GT-AV', value: 'GT-AV'},
       {key: 'GT-BV', value: 'GT-BV'},
       {key: 'GT-CM', value: 'GT-CM'},
-      {key: 'GT-CQ', value: 'GT-CQ'},
+      // {key: 'GT-CQ', value: 'GT-CQ'},
       {key: 'GT-ES', value: 'GT-ES'},
       {key: 'GT-GU', value: 'GT-GU'},
-      {key: 'GT-HU', value: 'GT-HU'},
-      {key: 'GT-IZ', value: 'GT-IZ'},
+      // {key: 'GT-HU', value: 'GT-HU'},
+      // {key: 'GT-IZ', value: 'GT-IZ'},
       {key: 'GT-JA', value: 'GT-JA'},
       {key: 'GT-JU', value: 'GT-JU'},
-      {key: 'GT-PE', value: 'GT-PE'},
+      // {key: 'GT-PE', value: 'GT-PE'},
       {key: 'GT-PR', value: 'GT-PR'},
       {key: 'GT-QC', value: 'GT-QC'},
       {key: 'GT-QZ', value: 'GT-QZ'},
@@ -2703,8 +2702,8 @@ export let buildingCalcDropItems = {
       {key: 'GT-SO', value: 'GT-SO'},
       {key: 'GT-SR', value: 'GT-SR'},
       {key: 'GT-SU', value: 'GT-SU'},
-      {key: 'GT-TO', value: 'GT-TO'},
-      {key: 'GT-ZA', value: 'GT-ZA'}
+      {key: 'GT-TO', value: 'GT-TO'}
+      // {key: 'GT-ZA', value: 'GT-ZA'}
     ],
     HN: [
       // {key: 'HN-AT', value: 'HN-AT'},
@@ -2731,23 +2730,23 @@ export let buildingCalcDropItems = {
     LC: [
     ],
     NI: [
-      {key: 'NI-AN', value: 'NI-AN'},
-      {key: 'NI-AS', value: 'NI-AS'},
-      {key: 'NI-BO', value: 'NI-BO'},
+      // {key: 'NI-AN', value: 'NI-AN'},
+      // {key: 'NI-AS', value: 'NI-AS'},
+      // {key: 'NI-BO', value: 'NI-BO'},
       {key: 'NI-CA', value: 'NI-CA'},
       {key: 'NI-CI', value: 'NI-CI'},
-      {key: 'NI-CO', value: 'NI-CO'},
-      {key: 'NI-ES', value: 'NI-ES'},
+      // {key: 'NI-CO', value: 'NI-CO'},
+      // {key: 'NI-ES', value: 'NI-ES'},
       {key: 'NI-GR', value: 'NI-GR'},
-      {key: 'NI-JI', value: 'NI-JI'},
+      // {key: 'NI-JI', value: 'NI-JI'},
       {key: 'NI-LE', value: 'NI-LE'},
-      {key: 'NI-MD', value: 'NI-MD'},
+      // {key: 'NI-MD', value: 'NI-MD'},
       {key: 'NI-MN', value: 'NI-MN'},
       {key: 'NI-MS', value: 'NI-MS'},
-      {key: 'NI-MT', value: 'NI-MT'},
-      {key: 'NI-NS', value: 'NI-NS'},
-      {key: 'NI-RI', value: 'NI-RI'},
-      {key: 'NI-SJ', value: 'NI-JS'}
+      // {key: 'NI-MT', value: 'NI-MT'},
+      // {key: 'NI-NS', value: 'NI-NS'},
+      {key: 'NI-RI', value: 'NI-RI'}
+      // {key: 'NI-SJ', value: 'NI-JS'}
     ],
     PA: [
       {key: 'PA-1', value: 'PA-1'},
