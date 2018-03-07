@@ -3,8 +3,8 @@
     "distributionMetro": "0.1741",
     "distributionUrban": "0.2741",
     "distributionRural": "0.5518",
-    "retrofitStart": "W3",
-    "retrofitEnd": "W1",
+    "retrofitStart": "UCB, UCBs",
+    "retrofitEnd": "RM2",
     "replacementStart": "UCB, UCBs",
     "replacementEnd": "RM2"
   },

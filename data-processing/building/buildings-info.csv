@@ -1,5 +1,5 @@
 Code,distributionMetro,distributionUrban,distributionRural,retrofitStart,retrofitEnd,replacementStart,replacementEnd
-BZ,0.1741,0.2741,0.5518,W3,W1,"UCB, UCBs",RM2
+BZ,0.1741,0.2741,0.5518,"UCB, UCBs",RM2,"UCB, UCBs",RM2
 GD,1,0,0,"UCB, CM, RM2",C3,"UCB, CM",C6
 JM,0.2168,0.3222,0.461,RM2,C3,W7,RM2
 LC,1,0,0,"UCB, CM, RM2",C3,"UCB, CM",C6
