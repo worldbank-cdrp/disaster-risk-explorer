@@ -102,7 +102,7 @@ export function t (string, replace = {}) {
       'No building data for this region': 'No building data for this region',
 
       // Calculator
-      'Risk mitigation cost and benefit calculator': 'Risk mitigation cost and benefit calculator',
+      'Risk mitigation cost and benefit calculator - earthquake': 'Risk mitigation cost and benefit calculator - earthquake',
       'Conversion Settings': 'Conversion Settings',
       'Country Selected': 'Country Selected',
       'Subregion Selected': 'Subregion Selected',
@@ -381,7 +381,7 @@ export function t (string, replace = {}) {
       'No building data for this region': 'No building data for this region',
 
       // Calculator
-      'Risk mitigation cost and benefit calculator': 'Calculador del costo y beneficio de la mitigación de riesgo',
+      'Risk mitigation cost and benefit calculator - earthquake': 'Calculador del costo y beneficio de la mitigación de riesgo - terremoto',
       'Conversion Settings': 'Configuraciones de conversión',
       'Country Selected': 'País seleccionado',
       'Subregion Selected': 'Subregión seleccionada',

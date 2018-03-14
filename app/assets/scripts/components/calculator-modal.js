@@ -139,7 +139,7 @@ const Calculator = React.createClass({
     // force Costa Rica to display replacement as there is no retrofit data
     conversion = (activeCountry === 'CR') ? 'replacement' : conversion
 
-    const aal = aals.find(a => a.id === activeId)[`LS_${this.props.dataSelection.risk.getActive().value}_AAL`]
+    const aal = aals.find(a => a.id === activeId)['LS_EQ_AAL']
 
     const data = getBuildingData(activeId, conversion, sliderValue, this.props.unitCostOfConstruction)
     let ucc = this.props.unitCostOfConstruction || data.unitCostOfConstruction
@@ -160,7 +160,7 @@ const Calculator = React.createClass({
         <div className='modal__inner'>
           <header className='modal__header'>
             <div className='modal__headline'>
-              <h1 className='modal__title'>{t('Risk mitigation cost and benefit calculator')}</h1>
+              <h1 className='modal__title'>{t('Risk mitigation cost and benefit calculator - earthquake')}</h1>
               <button className='modal__button-dismiss' title='Close' onClick={this.hideModal}><span>Dismiss</span></button>
             </div>
           </header>
